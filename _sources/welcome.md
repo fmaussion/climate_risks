@@ -12,7 +12,7 @@ These materials are tailored for this 10 weeks-long class, but they might also b
 
 ![](img/welcome_img.jpg)
 
-## Authors
+**Authors**
 
 - [Fabien Maussion](http://fabienmaussion.info/) wrote these notes (unless specified otherwise).
 <!---

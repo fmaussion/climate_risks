@@ -18,6 +18,7 @@ Resources used (and linked) in these lecture notes:
 **Interactive:**
 
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)
+- [Met Office Climate Data Portal - ](https://climatedataportal.metoffice.gov.uk/) (see local authority)
 - [IPCC Interactive Atlas](https://interactive-atlas.ipcc.ch)
 - [Climate Impact Explorer](https://climate-impact-explorer.climateanalytics.org)
 

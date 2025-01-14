@@ -58,5 +58,6 @@ Like everything else in our climate system, the three themes are interlinked!
 ### Interactive atlases
 
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at) (also discussed in class)
+- [Met Office Climate Data Portal](https://climatedataportal.metoffice.gov.uk/) (see local authority risk assessment)
 - [IPCC Interactive Atlas](https://interactive-atlas.ipcc.ch)
 - [Climate Impact Explorer](https://climate-impact-explorer.climateanalytics.org)

@@ -63,6 +63,7 @@ In the week leading to the workshop:
 
 - [Summary for Policymakers, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
 - [Full report, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/)
+- [Uncertainty Guidance Note for IPCC Authors](https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf)
 
 ### Interactive Tools
 

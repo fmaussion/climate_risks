@@ -66,10 +66,12 @@ Like everything else in our climate system, the three themes are interlinked!
 
 - [Summary for Policymakers, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
 - [Full report, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/)
+- [Uncertainty Guidance Note for IPCC Authors](https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf)
 
 (inter-atlas)=
 ### Interactive atlases
 
+- [Climate Action Tracker](https://climateactiontracker.org/global/cat-thermometer/)
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at) (also discussed in class)
 - [Met Office Climate Data Portal](https://climatedataportal.metoffice.gov.uk/) (see local authority risk assessment)
 - [IPCC Interactive Atlas](https://interactive-atlas.ipcc.ch)

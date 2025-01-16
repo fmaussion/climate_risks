@@ -67,6 +67,7 @@ In the week leading to the workshop:
 
 ### Interactive Tools
 
+- [Climate Action Tracker](https://climateactiontracker.org/global/cat-thermometer/)
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)
 - [Met Office Climate Data Portal](https://climatedataportal.metoffice.gov.uk/)
 - [IPCC Interactive Atlas](https://interactive-atlas.ipcc.ch)

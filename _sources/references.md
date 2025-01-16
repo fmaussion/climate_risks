@@ -11,6 +11,10 @@ Resources used (and linked) in these lecture notes:
 - [Summary for Policymakers, IPCC AR WG2: Impacts, Adaptation and Vulnerability](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
 - [Full report, IPCC AR WG2: Impacts, Adaptation and Vulnerability](https://www.ipcc.ch/report/ar6/wg2/)
 - [Guidance note – The concept of risk in the IPCC Sixth Assessment Report: a summary of cross Working Group discussions — IPCC](https://www.ipcc.ch/event/guidance-note-concept-of-risk-in-the-6ar-cross-wg-discussions/)
+- [Guidance Note on Uncertainty for IPCC Authors](https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf)
+
+**Climate policy:**
+- [Climate Action Tracker](https://climateactiontracker.org/global/cat-thermometer/)
 
 **Books:**
 - [Quantifying Climate Risk and Building Resilience in the UK](https://link.springer.com/book/10.1007/978-3-031-39729-5) (Open Access)

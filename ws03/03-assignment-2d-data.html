@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>IPCC AR6 WG2 - Part 1 &#8212; Quantifying Climate Risks</title>
+    <title>Assignment: Invariant (2d) data &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -61,13 +61,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ws01/briefing';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws03/03-assignment-2d-data';</script>
     <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="IPCC AR6 WG2 - Part 2" href="../ws02/briefing.html" />
-    <link rel="prev" title="External resources" href="../references.html" />
+    <link rel="prev" title="Lesson: working with netCDF data" href="02-lesson-netcdf-data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -178,8 +177,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01 &amp; 02</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">IPCC AR6 WG2 - Part 1</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/briefing.html">IPCC AR6 WG2 - Part 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws02/briefing.html">IPCC AR6 WG2 - Part 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
@@ -190,10 +189,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws03/01-primer.html">Python and Jupyter: a primer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws03/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws03/03-assignment-2d-data.html">Assignment: Invariant (2d) data</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: Invariant (2d) data</a></li>
 </ul>
 
     </div>
@@ -270,7 +269,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/edit/master/book/ws01/briefing.md" target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/master/book/ws03/03-assignment-2d-data.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -287,7 +286,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws01/briefing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws03/03-assignment-2d-data.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +316,7 @@
       
       
       
-      <li><a href="../_sources/ws01/briefing.md" target="_blank"
+      <li><a href="../_sources/ws03/03-assignment-2d-data.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -327,7 +326,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -393,7 +392,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>IPCC AR6 WG2 - Part 1</h1>
+    <h1>Assignment: Invariant (2d) data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,21 +402,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-the-workshop">Before the workshop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakout-groups">Breakout groups</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiet-reading-time">(Quiet) reading time</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-discussion">Group discussion</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-next-week">Preparation for next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plenary-sharing">Plenary sharing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes">Themes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipcc-ar6-wg2">IPCC AR6 WG2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-atlases">Interactive atlases</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-file">NetCDF file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
 </ul>
             </nav>
         </div>
@@ -429,95 +417,91 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ipcc-ar6-wg2-part-1">
-<h1>IPCC AR6 WG2 - Part 1<a class="headerlink" href="#ipcc-ar6-wg2-part-1" title="Link to this heading">#</a></h1>
-<section id="before-the-workshop">
-<h2>Before the workshop<a class="headerlink" href="#before-the-workshop" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Access the Summary for Policymakers (SPM) from the IPCC AR6 WG2 report <a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">here</a>.</p></li>
-<li><p>Have a skim through the SPM up until <em>“Section C: Adaptation Measures and Enabling Conditions”</em> (excluded) and identify the key messages and figures.</p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-invariant-2d-data">
+<h1>Assignment: Invariant (2d) data<a class="headerlink" href="#assignment-invariant-2d-data" title="Link to this heading">#</a></h1>
+<p>To solve the following exercises you can copy and paste code from the previous notebook. The code modifications required to solve the exercises are minimal (e.g. changing the name of a variable, add a small computation…): don’t think too “complicated”!</p>
+<section id="importing-the-modules">
+<h2>Importing the modules<a class="headerlink" href="#importing-the-modules" title="Link to this heading">#</a></h2>
+<p>This one is easy. I’ll do it for you:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the tools we are going to need today:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># plotting library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># numerical library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>  <span class="c1"># netCDF library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>  <span class="c1"># Map projections libary</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>  <span class="c1"># Projections list</span>
+<span class="c1"># Some defaults:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Default plot size</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p><em>(15 minutes)</em></p>
-<p>Fabien will briefly explain the role of the IPCC, WG2, and WG1. We form the thematic groups and introduce the breakout group activity.</p>
+<section id="netcdf-file">
+<h2>NetCDF file<a class="headerlink" href="#netcdf-file" title="Link to this heading">#</a></h2>
+<p>Download the <code class="docutils literal notranslate"><span class="pre">ERA5_LowRes_Invariant.nc</span></code> file, store it alongside the temperature one. Open it with xarray, and explore its content</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>How many variables does the file have? What are their names and units? What do they represent?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="breakout-groups">
-<h2>Breakout groups<a class="headerlink" href="#breakout-groups" title="Link to this heading">#</a></h2>
-<p>For the first two workshops on the IPCC WG2, you will be split into three groups. Each group will be assigned a broader theme (see below) and will discuss it in more depth. The goal is to identify the key impacts for each theme and to choose an impact in particular to work on for the next workshop. The timings below are indicative and can be adjusted as needed.</p>
-<section id="quiet-reading-time">
-<h3>(Quiet) reading time<a class="headerlink" href="#quiet-reading-time" title="Link to this heading">#</a></h3>
-<p><em>(~ 30 minutes)</em></p>
-<p>Groups read relevant parts of the SPM (this now includes also the sections including and after <em>“C: Adaptation Measures and Enabling Conditions”</em>) and identify as many impacts as possible within their theme. Each group member should list these impacts for themselves and take personal notes. If you can, incorporate the time horizon as well: are these impacts already occurring? If not, when are these impacts expected to occur?</p>
-<p>If you have time, have a look at one of the <a class="reference internal" href="#inter-atlas"><span class="std std-ref">Interactive atlases</span></a> to see if you can find more impacts there. I recommend starting with the <a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a>!</p>
+<section id="topography-according-to-era5">
+<h2>Topography according to ERA5<a class="headerlink" href="#topography-according-to-era5" title="Link to this heading">#</a></h2>
+<p>Plot the model topography on a map in the Equal Earth projection. Interpret what you see.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the highest and lowest point on Earth according to these ERA5 data. Compare with the actual values. Discuss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="group-discussion">
-<h3>Group discussion<a class="headerlink" href="#group-discussion" title="Link to this heading">#</a></h3>
-<p><em>(~ 30 minutes)</em></p>
-<p>As a group, try to obtain a comprehensive list of impacts within your theme. Discuss the most important impacts and for each one, identify the hazard, what creates exposure, and who or what might be vulnerable under certain conditions (present or future?). This is a wide-ranging discussion! Aim to cover as many impacts as possible, but no need to go too deep in the details here. The aim is to have a good overview and enough information to choose a specific impact to focus on for the next item.</p>
-</section>
-</section>
-<section id="preparation-for-next-week">
-<h2>Preparation for next week<a class="headerlink" href="#preparation-for-next-week" title="Link to this heading">#</a></h2>
-<p><em>(~ 20 minutes)</em></p>
-<p>As a group, you will be expected to prepare a short presentation for the next workshop. The presentation should include all three components of climate risk: hazard, exposure, and vulnerability. At this stage you will need to:</p>
-<ul class="simple">
-<li><p>focus on one specific impact within your theme to focus on. The impact should be relevant enough to have enough litterature to work with, but not too broad to be unmanageable. You may find it useful to choose an impact that is covered in the one of the <a class="reference internal" href="#inter-atlas"><span class="std std-ref">Interactive atlases</span></a>, but it is not mandatory.</p></li>
-<li><p>assign roles within the group: two to focus on hazard, two on exposure, and two on vulnerability. Each role will be responsible for gathering information on their respective component of the risk. For example, can you find examples of the impact you chose in the literature? What are the key drivers of the <em>hazard</em>? What are the key drivers of <em>exposure</em>? Who or what is <em>vulnerable</em> to this impact?</p></li>
-<li><p>it might be a good idea to find a case study to work with, e.g. a specific region or country that is particularly vulnerable to the impact you chose. Maybe this can be something based on recent events, or a region which will be particularly affected in the future.</p></li>
-<li><p>start gathering information on the impact you chose. You can use the SPM, the full report, and other sources you find relevant.</p></li>
-</ul>
-</section>
-<section id="plenary-sharing">
-<h2>Plenary sharing<a class="headerlink" href="#plenary-sharing" title="Link to this heading">#</a></h2>
-<p><em>(15 minutes, 5 minutes per group)</em></p>
-<p>Each group summarize the list of impacts they identified, and present the impact they chose to focus on for the next workshop.</p>
-</section>
-<section id="themes">
-<h2>Themes<a class="headerlink" href="#themes" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><strong>Ecosystems and biodiversity</strong> <em>(natural systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on natural ecosystems and biodiversity, including non-human species and ecological processes.</p></li>
-<li><p>Example impacts include voral reef bleaching due to ocean warming, shifts in species distributions (e.g., alpine flora moving to higher altitudes), etc.</p></li>
-</ul>
-</li>
-<li><p><strong>Human systems (health, food, and water)</strong> <em>(societal systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on human well-being and livelihoods, emphasizing agriculture, water security, and public health. This theme applies across rural and urban contexts.</p></li>
-<li><p>Example impacts include reduced crop yields due to drought in agricultural regions, water scarcity for populations dependent on snow and ice melt, etc.</p></li>
-</ul>
-</li>
-<li><p><strong>Urban and infrastructure systems</strong> <em>(built systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on cities and infrastructure, including transportation, energy systems, and housing. Emphasis is on infrastructure resilience and adaptation.</p></li>
-<li><p>Example impacts include flooding of urban areas from sea-level rise and heavy rainfall, energy grid failures, etc.</p></li>
-</ul>
-</li>
-</ol>
-<p>Like everything else in our climate system, the three themes are interlinked!</p>
-</section>
-<section id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
-<section id="ipcc-ar6-wg2">
-<h3>IPCC AR6 WG2<a class="headerlink" href="#ipcc-ar6-wg2" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">Summary for Policymakers, IPCC AR WG2</a></p></li>
-<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/">Full report, IPCC AR WG2</a></p></li>
-<li><p><a class="reference external" href="https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf">Uncertainty Guidance Note for IPCC Authors</a></p></li>
-</ul>
-</section>
-<section id="interactive-atlases">
-<span id="inter-atlas"></span><h3>Interactive atlases<a class="headerlink" href="#interactive-atlases" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><a class="reference external" href="https://climateactiontracker.org/global/cat-thermometer/">Climate Action Tracker</a></p></li>
-<li><p><a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a> (also discussed in class)</p></li>
-<li><p><a class="reference external" href="https://climatedataportal.metoffice.gov.uk/">Met Office Climate Data Portal</a> (see local authority risk assessment)</p></li>
-<li><p><a class="reference external" href="https://interactive-atlas.ipcc.ch">IPCC Interactive Atlas</a></p></li>
-<li><p><a class="reference external" href="https://climate-impact-explorer.climateanalytics.org">Climate Impact Explorer</a></p></li>
-</ul>
-</section>
+<section id="water-covered-areas-on-earth-according-to-era5">
+<h2>Water covered areas on Earth according to ERA5<a class="headerlink" href="#water-covered-areas-on-earth-according-to-era5" title="Link to this heading">#</a></h2>
+<p>Plot the land-sea mask on a map in the Equal Earth projection. Interpret what you see.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute the percentage (%) of <em>ocean</em> cover accross latidudes (100% means there is only ocean at this specific latitude). Make a zonal plot showing your result. Interpret what you see.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compute the % coverage of water over the planet. Hint: you will need to remember how to compute averages on a sphere! Compare your result with a google search.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -534,7 +518,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./ws01"
+            path: "./ws03"
         },
         predefinedOutput: true
     }
@@ -552,22 +536,13 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../references.html"
+       href="02-lesson-netcdf-data.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">External resources</p>
+        <p class="prev-next-title">Lesson: working with netCDF data</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../ws02/briefing.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">IPCC AR6 WG2 - Part 2</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -586,21 +561,10 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-the-workshop">Before the workshop</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#breakout-groups">Breakout groups</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quiet-reading-time">(Quiet) reading time</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#group-discussion">Group discussion</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparation-for-next-week">Preparation for next week</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plenary-sharing">Plenary sharing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#themes">Themes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipcc-ar6-wg2">IPCC AR6 WG2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-atlases">Interactive atlases</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-file">NetCDF file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
 </ul>
   </nav></div>
 

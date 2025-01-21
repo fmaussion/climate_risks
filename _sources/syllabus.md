@@ -48,11 +48,11 @@ It's the first time I'm teaching this class, so the lesson plan is subject to ch
 1. Week 13: Introduction to climate risks
    - Lecture: Welcome and introduction
    - Workshop: IPCC AR6 WG2 - Part 1
-2. Week 14: Sea-level rise
-   - Lecture: Causes of sea-level rise and impacts
+2. Week 14: Climate risks methods - Part 1
+   - Lecture: Climate data sources and formats
    - Workshop: IPCC AR6 WG2 - Part 2 (presentations)
-3. Week 15: Analysing climate data
-   - Lecture: Climate scenarios, climate data sources and formats
+3. Week 15: Climate risks methods - Part 2
+   - Lecture: Statistical methods for climate risk assessment
    - Workshop: Getting started with Python and climate data analysis
 
 <!---

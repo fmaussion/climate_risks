@@ -19,6 +19,14 @@ Resources used (and linked) in these lecture notes:
 **Books:**
 - [Quantifying Climate Risk and Building Resilience in the UK](https://link.springer.com/book/10.1007/978-3-031-39729-5) (Open Access)
 
+**Learning python:**
+
+Here are my favorites resources for Python beginers in STEM:
+
+- There is an excellent Python tutorial provided by the [Software Carpentry](http://swcarpentry.github.io/python-novice-inflammation). It's based on a real data analysis and I strongly recommend it.
+- Chapter 1 from the [Scientific Python lectures](https://lectures.scientific-python.org) is also excellent.
+- Finally, my own classes provide some resources as well, but they are more adapted to a classroom than self-study: [beginner](http://fabienmaussion.info/intro_to_programming), [advanced](http://fabienmaussion.info/scientific_programming).
+
 **Interactive:**
 
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)

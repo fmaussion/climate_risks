@@ -35,6 +35,8 @@ The term is 10 weeks long, with a consolidation week half-term. Each week is org
 
 For the practical exercises, you will need a computer with an internet connection. You can work either on your own computer (laptop) or on the working stations in the computer room.
 
+Each week, I will ask one group to present the assignment from the week before. Each of you will therefore have to present once. This is not marked, and is purely for me to check if the class is following, and if I need to adapt the pace of the lecture.
+
 ## Assessment
 
 The assessment for this class will be an individual **climate change risk assessment** project. You will prepare a technical report that quantifies a physical hazard (e.g., floods, extreme events, heatwaves) and discusses its impacts on populations or ecosystems in a region and context of your choice. Detailed instructions for the assessment will be released in Week 17, the week before consolidation week.
@@ -55,11 +57,13 @@ It's the first time I'm teaching this class, so the lesson plan is subject to ch
    - Lecture: Statistical methods for climate risk assessment
    - Workshop: Getting started with Python and climate data analysis
 
+The lecture slides are available on blackboard. Everything else is available here!
+
 <!---
-4. Week 16:
+1. Week 16:
    - Lecture:
    - Workshop:
-5. Week 17:
+2. Week 17:
    - Lecture:
    - Workshop:
    - Assignment setting

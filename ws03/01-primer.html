@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Jan 21, 2025"/>
+    <meta name="docbuild:last-update" content="Jan 23, 2025"/>
   </head>
   
   
@@ -440,14 +440,16 @@
   <section class="tex2jax_ignore mathjax_ignore" id="python-and-jupyter-a-primer">
 <h1>Python and Jupyter: a primer<a class="headerlink" href="#python-and-jupyter-a-primer" title="Link to this heading">#</a></h1>
 <p>Download and open this notebook on your computer. Feel free to mess around with it, there is always a fresh copy available for you to download!</p>
-<p>If you are not following the class in person, you might find these introduction videos useful:</p>
+<div class="alert alert-success">
+    <b>This primer provides a very brief overview of Python syntax, designed for those with little prior experience in Python or those familiar with another programming language (e.g., R). It is largely independent of the rest of the unit. I recommend going through it once, revisiting it as needed, or—if you’re interested in mastering the fundamentals—taking a dedicated Python programming course. Our focus here is on using Python as a tool to study climate risks, rather than learning Python for its own sake.</b>
+</div><p>If you are not following the class in person, you might find these introduction videos useful:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://fabienmaussion.info/intro_to_programming/week_02/02-Intro-jupyter.html">Introduction to Jupyter</a></p></li>
 <li><p><a class="reference external" href="https://fabienmaussion.info/intro_to_programming/week_03/01-Intro-notebooks.html">Introduction to Notebooks</a></p></li>
 </ul>
 <section id="first-steps">
 <h2>First steps<a class="headerlink" href="#first-steps" title="Link to this heading">#</a></h2>
-<p>At first sight the notebook looks like a text editor. Below the toolbar you can see a <strong>cell</strong>. The default purpose of a cell is to write code:</p>
+<p>At first sight, the jupyter notebook looks like a text editor. Below the toolbar you can see a <strong>cell</strong>. The default purpose of a cell is to write code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
@@ -462,16 +464,17 @@
 </div>
 </div>
 <p>You can write one or more lines of code in a cell. You can run this code by clicking on the “Play” button from the toolbar. However it is much faster to use the keybord shortcut: <code class="docutils literal notranslate"><span class="pre">[Shift+Enter]</span></code>. Once you have executed a cell, a new cell should appear below. You can also insert cells with the “Insert” menu. Again, it is much faster to learn the keybord shortcut for this: <code class="docutils literal notranslate"><span class="pre">[Esc]</span></code> to enter in command mode then press <code class="docutils literal notranslate"><span class="pre">[a]</span></code> for “above” or <code class="docutils literal notranslate"><span class="pre">[b]</span></code> for “below”.</p>
-<p>You can click on a cell or type <code class="docutils literal notranslate"><span class="pre">[Enter]</span></code> to edit it. Create a few empty cells above and below the current one and try to create some variables. You can delete a cell by clicking “delete” in the “edit” menu, or you can use the shortcut: <code class="docutils literal notranslate"><span class="pre">[Esc]</span></code> to enter in command mode then press <code class="docutils literal notranslate"><span class="pre">[d]</span></code> for “delete”, two times!</p>
-<p>The variables created in one cell can be used (or overwritten) in subsequent cells:</p>
+<p>You can click on a cell or type <code class="docutils literal notranslate"><span class="pre">[Enter]</span></code> to edit it.</p>
+<p><strong>Practice: Create a few empty cells above and below the current one and try to create and print some variables.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This is text</p>
+<p>You can delete a cell by clicking “delete” in the “edit” menu, or you can use the shortcut: <code class="docutils literal notranslate"><span class="pre">[Esc]</span></code> to enter in command mode then press <code class="docutils literal notranslate"><span class="pre">[d]</span></code> for “delete”, twice!</p>
+<p>The variables created in one cell can be used (or overwritten) in subsequent cells:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
@@ -505,16 +508,14 @@
 <h2>Code Cells<a class="headerlink" href="#code-cells" title="Link to this heading">#</a></h2>
 <p>In code cells, you can write and execute code. The output will appear underneath the cell, once you execute it.</p>
 <p>You can execute your code, as already mentioned before, with the keyboard shortcut <code class="docutils literal notranslate"><span class="pre">[Shift+Enter]</span></code> or press the <code class="docutils literal notranslate"><span class="pre">Run</span></code> button in the toolbar. Afterwards, the next cell underneath will be selected automatically.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Cell</span></code> menu (classic) or <code class="docutils literal notranslate"><span class="pre">Run</span></code> menu (lab) has a number of menu items for running code in different ways. These includes:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Run</span></code> tab has a number of menu items for running code in different ways. These include:</p>
 <ul class="simple">
-<li><p><strong>Run and Select Below</strong>: Runs the currently selected cell and afterwards selects the cell below.
+<li><p><strong>Run Selected Cell</strong>: Runs the currently selected cell and afterwards selects the cell below.
 That’s what you get by pressing <code class="docutils literal notranslate"><span class="pre">[Shift+Enter]</span></code></p></li>
-<li><p><strong>Run and Insert Below</strong>: Runs the currently selected cell and inserts a new cell below. Press <code class="docutils literal notranslate"><span class="pre">[Alt+Enter]</span></code> (<code class="docutils literal notranslate"><span class="pre">[Option+Enter]</span></code> on MacOS)</p></li>
+<li><p><strong>Run Selected Cell and Insert Below</strong>: Runs the currently selected cell and inserts a new cell below. Press <code class="docutils literal notranslate"><span class="pre">[Alt+Enter]</span></code> on windows, <code class="docutils literal notranslate"><span class="pre">[Option+Enter]</span></code> on MacOS</p></li>
 <li><p><strong>Run All</strong>: Runs all the code cells included in your jupyter-notebook</p></li>
 <li><p><strong>Run All Above</strong>: Runs all the code cells above the cell you currently selected, excluding this one</p></li>
-<li><p><strong>Run All Below</strong>: All below</p></li>
 </ul>
-<p>The normal workflow in a notebook is, then, quite similar to a standard IPython session, with the difference that you can edit cells in-place multiple times until you obtain the desired results, rather than having to rerun separate scripts with the <code class="docutils literal notranslate"><span class="pre">%run</span></code> command.</p>
 <p>Typically, you will work on a computational problem in pieces, organizing related ideas into cells and moving forward once previous parts work correctly. This is much more convenient for interactive exploration than breaking up a computation into scripts that must be executed together, as was previously necessary, especially if parts of them take a long time to run.</p>
 </section>
 <section id="basic-python-syntax">
@@ -538,7 +539,7 @@ That’s what you get by pressing <code class="docutils literal notranslate"><sp
 <p>In python, the <strong>indentation</strong> is important:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">1</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">1</span>
   <span class="n">var</span> <span class="o">+=</span> <span class="mi">1</span>  <span class="c1"># this raises an Error</span>
 </pre></div>
 </div>
@@ -555,7 +556,8 @@ That’s what you get by pressing <code class="docutils literal notranslate"><sp
 <p>Why is it important? Because Python uses whitespace indentation instead of curly braces or keywords to delimit blocks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="kc">True</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m here!&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Am I?&quot;</span><span class="p">)</span>
@@ -570,7 +572,7 @@ Now I&#39;m there
 </div>
 </div>
 </div>
-<p>It’s much less typing! Most beginners don’t like Python because of this, but almost everybody ends up agreeing that this is a great idea.</p>
+<p>It’s much less typing than in most languages! Some people don’t like Python because of its reliance on indentation to organise code blocks, but most Python enthusiasts end up agreeing that this is a great idea.</p>
 <p>In Python, you can call functions, like for example <code class="docutils literal notranslate"><span class="pre">abs()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -584,7 +586,7 @@ Now I&#39;m there
 </div>
 </div>
 </div>
-<p>If you feel like it, you can even make your own functions:</p>
+<p>If you feel like it, you can even define your own functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -607,6 +609,14 @@ Now I&#39;m there
 </div>
 </div>
 </div>
+<p><strong>Practice: write a function called “greetings” that accepts the variable “y” as an argument. The function  prints “Hello!” if the variable a is smaller than 10, and “Bye!” otherwise.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="the-import-mechanism-in-python">
 <h2>The “import” mechanism in Python<a class="headerlink" href="#the-import-mechanism-in-python" title="Link to this heading">#</a></h2>
@@ -624,7 +634,7 @@ Now I&#39;m there
 </div>
 </div>
 <p>However, there are only a few dozens of available <a class="reference external" href="https://docs.python.org/3.4/library/functions.html">built-in functions</a> in python. Definitely not enough to do serious data-crunching and make Python a competitor to Matlab or R. So what?</p>
-<p>Python has a particular mechanism to give access to other functions. This is the <strong>import</strong> mechanism and is one of the greatest strengths of the Python language (just believe me on this one for now).</p>
+<p>Python has a particular mechanism to give access to other functions. This is the <strong>import</strong> mechanism and is one of the great strengths of the Python language.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
@@ -646,7 +656,7 @@ Now I&#39;m there
 </div>
 </div>
 </div>
-<p>To get an idea of all the new functions available to us, you can write “<code class="docutils literal notranslate"><span class="pre">numpy.</span></code>” (“numpy” followed by a dot) in a free cell, then type <code class="docutils literal notranslate"><span class="pre">tab</span></code> (<code class="docutils literal notranslate"><span class="pre">tab</span></code> is the <strong>autocompletion</strong> shortcut of ipython, it is very helpful when writing code).</p>
+<p><strong>Practice:</strong> to get an idea of all the new functions available to us, you can write “<code class="docutils literal notranslate"><span class="pre">numpy.</span></code>” (“numpy” followed by a dot) in a free cell, then type <code class="docutils literal notranslate"><span class="pre">tab</span></code> (<code class="docutils literal notranslate"><span class="pre">tab</span></code> is the <strong>autocompletion</strong> shortcut of ipython, it is very helpful when writing code).</p>
 <p>Because writing “<code class="docutils literal notranslate"><span class="pre">numpy.function()</span></code>” can be time consuming (especially if one uses numpy often), there is the possibility to give an <strong>alias</strong> to the imported module. The convention for numpy is following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -690,13 +700,13 @@ Hi!
 </div>
 </div>
 </div>
-<p>There are several variable types in Python. We are going to need only very few of them:</p>
+<p>There are several variable types in Python. We are going to need only few of them in this class. Here are the most common ones:</p>
 <section id="numbers-integers-and-floats">
 <h3>Numbers: integers and floats<a class="headerlink" href="#numbers-integers-and-floats" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">f</span> <span class="o">=</span> <span class="mf">12.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># This is an integer</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">12.5</span>  <span class="c1"># This is a float</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -745,7 +755,7 @@ Hi!
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;The answer is: &#39;</span> <span class="o">+</span> <span class="n">answer</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># this will raise a TypeError</span>
@@ -783,6 +793,14 @@ Hi!
 </div>
 </div>
 </div>
+<p><strong>Practice: write a code snippet that computes the area of a circle of radius 5. Print the output with 3 decimal precition.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="lists">
 <h3>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h3>
@@ -810,7 +828,7 @@ Blue
 </div>
 </div>
 <p><strong>Note: in python the indexes start at zero and not at 1 like in Matlab!</strong></p>
-<p>Lists are <strong>not</strong> like Matlab arrays:</p>
+<p>Python lists are <strong>not</strong> like Matlab or R arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">]</span>  <span class="c1"># adding lists together concatenates them</span>
@@ -824,7 +842,7 @@ Blue
 </div>
 </div>
 </div>
-<p>For Matlab-like arrays we will need Numpy:</p>
+<p>For scientifically useful arrays, we will need Numpy:</p>
 </section>
 <section id="arrays">
 <h3>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h3>
@@ -904,10 +922,18 @@ Blue
 </div>
 </div>
 </div>
+<p><strong>Practice: create an array that goes from 0 to 100 (hint: use np.arange() taught earlier). Divide it by 100, and compute the sum of all elements with np.sum().</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="multidimensional-arrays">
 <h3>Multidimensional arrays<a class="headerlink" href="#multidimensional-arrays" title="Link to this heading">#</a></h3>
-<p>In science, most of the data is multidimensional. Numpy (like Matlab) has been designed for such data arrays:</p>
+<p>In climate science, most of the data is multidimensional. Numpy has been designed for such data arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
@@ -963,6 +989,7 @@ Blue
 </div>
 </div>
 </div>
+<p><strong>In this class you will become expert in multidimensional data analysis! You’ll have enough time to practice, starting with the next lesson!</strong></p>
 </section>
 </section>
 <section id="python-objects">
@@ -1030,7 +1057,7 @@ The imaginary part of a is 0
 </div>
 </div>
 <p>It is not necessary to know the details about object oriented programming to use python (in fact, most of the time you don’t need to implement these concepts yourselves). But it is important to know that you can have access to attributes and methods on almost <em>everything</em> in python.</p>
-<p>As you will see, we are going to use various attributes and methods available on <a class="reference external" href="http://xarray.pydata.org">xarray</a> objects starting from Week 02.</p>
+<p>As you will see, we are going to use various attributes and methods available on <a class="reference external" href="http://xarray.pydata.org">xarray</a> objects starting today.</p>
 </section>
 <section id="getting-help-about-python-variables-and-functions">
 <h2>Getting help about python variables and functions<a class="headerlink" href="#getting-help-about-python-variables-and-functions" title="Link to this heading">#</a></h2>
@@ -1331,17 +1358,18 @@ class int(object)
 </div>
 </div>
 </div>
-<p>I personally don’t use these tools often, because most of the time they don’t provide examples on how to do things. They are useful mostly if you would like to know how the arguments of a function are named, or what a variable is. Especially in the beginning, the best help you can get is with a search machine and especially on the documentation pages of the libraries we are using. This semester, we are going to rely mostly on three components:</p>
+<p>I personally don’t use these tools often because they usually lack practical examples. They are mostly useful if you need to check how the arguments of a function are named or to understand what a variable represents. Especially when starting out, the best help often comes from search engines and, more importantly, the documentation pages of the libraries we’re using.</p>
+<p>This semester, we’ll primarily rely on three key components:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/">numpy</a>: this is the base on which any scientific python project is built.</p></li>
 <li><p><a class="reference external" href="http://matplotlib.org/index.html">matplotlib</a>: plotting tools</p></li>
 <li><p><a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a>: working with multidimensional data</p></li>
 </ul>
-<p>It’s always useful to have their documentation webpage open on your browser for easy reference.</p>
+<p>It’s always helpful to keep their documentation pages open in your browser for quick reference.</p>
 </section>
 <section id="plotting">
 <h2>Plotting<a class="headerlink" href="#plotting" title="Link to this heading">#</a></h2>
-<p>The most widely used plotting tool for Python is <a class="reference external" href="http://matplotlib.org/">Matplotlib</a>. Its syntax is directly inspired from Matlab so you should be able to recognise some commands. First, import it:</p>
+<p>The most widely used plotting tool for Python is <a class="reference external" href="http://matplotlib.org/">Matplotlib</a>. First, import it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1380,6 +1408,14 @@ class int(object)
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/dbfca2a83a161abbc6897611eb358a4560dd5582ea49a5d896c00ce3f32e1b16.png" src="../_images/dbfca2a83a161abbc6897611eb358a4560dd5582ea49a5d896c00ce3f32e1b16.png" />
+</div>
+</div>
+<p><strong>Practice: add a third curve to the plot above (e.g. x<span class="math notranslate nohighlight">\(^3\)</span>) and save the plot to a png on your computer.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here </span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1425,7 +1461,7 @@ Now you can</p>
 <li><p><strong>Switch your cell between code and markdown</strong>: press <code class="docutils literal notranslate"><span class="pre">[m]</span></code> to markdown and <code class="docutils literal notranslate"><span class="pre">[y]</span></code> to code.</p></li>
 <li><p><strong>Add a cell:</strong> press <code class="docutils literal notranslate"><span class="pre">[b]</span></code> to add a cell below, <code class="docutils literal notranslate"><span class="pre">[a]</span></code> to add one above.</p></li>
 <li><p><strong>Delete a cell:</strong> double-press <code class="docutils literal notranslate"><span class="pre">[d]</span></code>.</p></li>
-<li><p><strong>Move up/down:</strong> <code class="docutils literal notranslate"><span class="pre">[k]</span></code> / <code class="docutils literal notranslate"><span class="pre">[j]</span></code> or <code class="docutils literal notranslate"><span class="pre">[arrow</span> <span class="pre">up]</span></code> / <code class="docutils literal notranslate"><span class="pre">[arrow</span> <span class="pre">down]</span></code></p></li>
+<li><p><strong>Move up/down:</strong> <code class="docutils literal notranslate"><span class="pre">[arrow</span> <span class="pre">up]</span></code> / <code class="docutils literal notranslate"><span class="pre">[arrow</span> <span class="pre">down]</span></code></p></li>
 <li><p><strong>Cut/Copy/paste cells:</strong> <code class="docutils literal notranslate"><span class="pre">[x]</span></code> /<code class="docutils literal notranslate"><span class="pre">[c]</span></code> / <code class="docutils literal notranslate"><span class="pre">[v]</span></code></p></li>
 <li><p><strong>Select multiple cells (lab only):</strong> <code class="docutils literal notranslate"><span class="pre">shift+up/down</span> <span class="pre">arrows</span></code></p></li>
 <li><p><strong>Interrupt a computation</strong>: double-press <code class="docutils literal notranslate"><span class="pre">[i]</span></code>.</p></li>
@@ -1555,7 +1591,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 21, 2025.
+  Last updated on Jan 23, 2025.
   <br/>
 </p>
   </div>

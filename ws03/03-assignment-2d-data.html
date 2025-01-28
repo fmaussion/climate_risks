@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment: Invariant (2d) data &#8212; Quantifying Climate Risks</title>
+    <title>Assignment: 1D and 2D data &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Jan 23, 2025"/>
+    <meta name="docbuild:last-update" content="Jan 28, 2025"/>
   </head>
   
   
@@ -192,7 +192,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-primer.html">Python and Jupyter: a primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: Invariant (2d) data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: 1D and 2D data</a></li>
 </ul>
 
     </div>
@@ -392,7 +392,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment: Invariant (2d) data</h1>
+    <h1>Assignment: 1D and 2D data</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,9 +403,16 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-file">NetCDF file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-data">Invariant data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-data">Temperature data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries">Timeseries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-timeslices">2D timeslices</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -417,9 +424,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-invariant-2d-data">
-<h1>Assignment: Invariant (2d) data<a class="headerlink" href="#assignment-invariant-2d-data" title="Link to this heading">#</a></h1>
-<p>To solve the following exercises you can copy and paste code from the previous notebook. The code modifications required to solve the exercises are minimal (e.g. changing the name of a variable, add a small computation…): don’t think too “complicated”!</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-1d-and-2d-data">
+<h1>Assignment: 1D and 2D data<a class="headerlink" href="#assignment-1d-and-2d-data" title="Link to this heading">#</a></h1>
+<p>With one exception, you should be able to copy and paste code from the previous notebook and make minimal code modifications (e.g. changing the name of a variable, add a small computation…) to solve the following exercises.</p>
+<p>Don’t think too “complicated”!</p>
 <section id="importing-the-modules">
 <h2>Importing the modules<a class="headerlink" href="#importing-the-modules" title="Link to this heading">#</a></h2>
 <p>This one is easy. I’ll do it for you:</p>
@@ -438,8 +446,8 @@
 </div>
 </div>
 </section>
-<section id="netcdf-file">
-<h2>NetCDF file<a class="headerlink" href="#netcdf-file" title="Link to this heading">#</a></h2>
+<section id="invariant-data">
+<h2>Invariant data<a class="headerlink" href="#invariant-data" title="Link to this heading">#</a></h2>
 <p>Download the <code class="docutils literal notranslate"><span class="pre">ERA5_LowRes_Invariant.nc</span></code> file, store it alongside the temperature one. Open it with xarray, and explore its content</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -456,9 +464,8 @@
 </div>
 </div>
 </div>
-</section>
 <section id="topography-according-to-era5">
-<h2>Topography according to ERA5<a class="headerlink" href="#topography-according-to-era5" title="Link to this heading">#</a></h2>
+<h3>Topography according to ERA5<a class="headerlink" href="#topography-according-to-era5" title="Link to this heading">#</a></h3>
 <p>Plot the model topography on a map in the Equal Earth projection. Interpret what you see.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -475,9 +482,17 @@
 </div>
 </div>
 </div>
+<p><strong>Bonus question: we didn’t learn about how to find the location (in longitude and latitude) of the maximum value. Now use a web search or generative AI to find out how to do this. The task is to find out the longitude and latitude of the highest grid point in ERA5.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="water-covered-areas-on-earth-according-to-era5">
-<h2>Water covered areas on Earth according to ERA5<a class="headerlink" href="#water-covered-areas-on-earth-according-to-era5" title="Link to this heading">#</a></h2>
+<h3>Water covered areas on Earth according to ERA5<a class="headerlink" href="#water-covered-areas-on-earth-according-to-era5" title="Link to this heading">#</a></h3>
 <p>Plot the land-sea mask on a map in the Equal Earth projection. Interpret what you see.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,6 +517,40 @@
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="temperature-data">
+<h2>Temperature data<a class="headerlink" href="#temperature-data" title="Link to this heading">#</a></h2>
+<p>Read the temperature data from the lesson:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="timeseries">
+<h3>Timeseries<a class="headerlink" href="#timeseries" title="Link to this heading">#</a></h3>
+<p>Now select the temperature timeseries at two or three locations of your choice. Compute and compare their average temperature (in °C), and plot them on a single graph.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-timeslices">
+<h3>2D timeslices<a class="headerlink" href="#d-timeslices" title="Link to this heading">#</a></h3>
+<p>Finally, select the decades 2015-2024 and 1979-1988 out of the 3D temperature data. Compute their time average. This should give you two 2D data arrays, yes? Each of them is a decadal average temperature. Now plot the difference between the last and the first decade of the ERA5 period. Interpret what you see!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
@@ -562,9 +611,16 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#netcdf-file">NetCDF file</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-data">Invariant data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-data">Temperature data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries">Timeseries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-timeslices">2D timeslices</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -591,7 +647,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Jan 23, 2025.
+  Last updated on Jan 28, 2025.
   <br/>
 </p>
   </div>

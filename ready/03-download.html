@@ -198,6 +198,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson_moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-precip-cmip6.html">Assignment: CMIP6 temperature projections</a></li>
 </ul>
 
     </div>
@@ -412,7 +413,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data">CMIP6 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data">CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ultra-low-resolution-era5-data">“Ultra” low resolution ERA5 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-1979-2100-temperature-data">CMIP6 1979-2100 temperature data</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -465,11 +470,22 @@
 </section>
 <section id="cmip6-data">
 <h2>CMIP6 data<a class="headerlink" href="#cmip6-data" title="Link to this heading">#</a></h2>
-<p>TODO</p>
+<p>CMIP6 stands for the Coupled Model Intercomparison Project Phase 6. It is a large collection of climate model simulations from many different models and institutions that formed the basis of IPCC AR6. The data is stored on the <a class="reference external" href="https://esgf-node.llnl.gov/projects/cmip6/">ESGF</a> (Earth System Grid Federation) servers. I provide a subset of the data on my webserver for you to download. The data is already regridded to a common 2° grid and averaged to monthly values.</p>
+<section id="ultra-low-resolution-era5-data">
+<h3>“Ultra” low resolution ERA5 data<a class="headerlink" href="#ultra-low-resolution-era5-data" title="Link to this heading">#</a></h3>
+<p>This is the same data as you’ve used so far, but at an even lower resolution of 2°. I’ve coarsened the data even more to reduce the volume of climate projection data you’ll have to manipulate for the assignments. <strong>These datasets should only be used as reference historical data for the CMIP assignments.</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Invariant.nc">ERA5_UltraLowRes_Invariant.nc</a>: invariant data at 2° resolution</p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Monthly_t2m.nc">ERA5_UltraLowRes_Monthly_t2m.nc</a>: 2m temperature data at 2° resolution</p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Monthly_tp.nc">ERA5_UltraLowRes_Monthly_tp.nc</a>: precipitation data at 2° resolution</p></li>
+</ul>
+</section>
+<section id="cmip6-1979-2100-temperature-data">
+<h3>CMIP6 1979-2100 temperature data<a class="headerlink" href="#cmip6-1979-2100-temperature-data" title="Link to this heading">#</a></h3>
+<p>This is the list of Earth System Models (ESMs, sometimes still called Global Circulation Models GCMs) and scenarios for which I provide temperature data. The data is already regridded to a common 2° grid and averaged to monthly values.</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">BCC-CSM2-MR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_tas.nc">BCC-CSM2-MR_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_tas.nc">BCC-CSM2-MR_ssp245</a></p></li>
@@ -480,7 +496,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">CAMS-CSM1-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_tas.nc">CAMS-CSM1-0_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_tas.nc">CAMS-CSM1-0_ssp245</a></p></li>
@@ -491,7 +506,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">CESM2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp126_regridded_tas.nc">CESM2_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp245_regridded_tas.nc">CESM2_ssp245</a></p></li>
@@ -502,7 +516,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">CESM2-WACCM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_tas.nc">CESM2-WACCM_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_tas.nc">CESM2-WACCM_ssp245</a></p></li>
@@ -513,7 +526,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">EC-Earth3</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp126_regridded_tas.nc">EC-Earth3_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp245_regridded_tas.nc">EC-Earth3_ssp245</a></p></li>
@@ -524,7 +536,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">EC-Earth3-Veg</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_tas.nc">EC-Earth3-Veg_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_tas.nc">EC-Earth3-Veg_ssp245</a></p></li>
@@ -535,7 +546,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">FGOALS-f3-L</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_tas.nc">FGOALS-f3-L_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_tas.nc">FGOALS-f3-L_ssp245</a></p></li>
@@ -546,7 +556,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">GFDL-ESM4</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_tas.nc">GFDL-ESM4_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_tas.nc">GFDL-ESM4_ssp245</a></p></li>
@@ -557,7 +566,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">INM-CM4-8</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp126_regridded_tas.nc">INM-CM4-8_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp245_regridded_tas.nc">INM-CM4-8_ssp245</a></p></li>
@@ -568,7 +576,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">INM-CM5-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp126_regridded_tas.nc">INM-CM5-0_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp245_regridded_tas.nc">INM-CM5-0_ssp245</a></p></li>
@@ -579,7 +586,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">MPI-ESM1-2-HR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_tas.nc">MPI-ESM1-2-HR_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_tas.nc">MPI-ESM1-2-HR_ssp245</a></p></li>
@@ -590,7 +596,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">MRI-ESM2-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_tas.nc">MRI-ESM2-0_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_tas.nc">MRI-ESM2-0_ssp245</a></p></li>
@@ -601,7 +606,6 @@
 </details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
 <span class="sd-summary-text">NorESM2-MM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
-<p class="sd-card-text"><strong>Temperature</strong> (<code class="docutils literal notranslate"><span class="pre">tas</span></code>)</p>
 <ul class="simple">
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp126_regridded_tas.nc">NorESM2-MM_ssp126</a></p></li>
 <li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp245_regridded_tas.nc">NorESM2-MM_ssp245</a></p></li>
@@ -610,6 +614,7 @@
 </ul>
 </div>
 </details></section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -682,7 +687,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data">CMIP6 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data">CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ultra-low-resolution-era5-data">“Ultra” low resolution ERA5 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-1979-2100-temperature-data">CMIP6 1979-2100 temperature data</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

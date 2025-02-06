@@ -1,0 +1,1251 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Assignment: CMIP6 temperature projections &#8212; Quantifying Climate Risks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws04/02-assignment-precip-cmip6';</script>
+    <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lesson: more tools for statistical and climatological analysis" href="01-lesson_moredatacrunching.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Feb 06, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01 &amp; 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/briefing.html">IPCC AR6 WG2 - Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/briefing.html">IPCC AR6 WG2 - Part 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ready/00-howto.html">How to use this website and prepare for each week</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-lesson_moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: CMIP6 temperature projections</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws04/02-assignment-precip-cmip6.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws04/02-assignment-precip-cmip6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ws04/02-assignment-precip-cmip6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment: CMIP6 temperature projections</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-cmip6-data">Global CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-reference-data-era5">Historical reference data: ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-cmip6-data">Historical CMIP6 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-and-local-and-global-gcm-bias">Averages and local and global GCM bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interannual-variability">Interannual variability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-projections">CMIP6 projections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-more-analyses">Optional : more analyses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-precipitation-in-era5">Optional: precipitation in ERA5</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-cmip6-temperature-projections">
+<h1>Assignment: CMIP6 temperature projections<a class="headerlink" href="#assignment-cmip6-temperature-projections" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the tools we are going to need today:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># plotting library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># numerical library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>  <span class="c1"># netCDF library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>  <span class="c1"># Map projections libary</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>  <span class="c1"># Projections list</span>
+<span class="c1"># Some defaults:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Default plot size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="global-cmip6-data">
+<h2>Global CMIP6 data<a class="headerlink" href="#global-cmip6-data" title="Link to this heading">#</a></h2>
+<p>Visit the <a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#cmip6-data">data download page for CMIP6 data</a>.</p>
+<p>Download the “ultra low resolution” ERA5 temperature data from the link. This is the same data as you’ve used so far, but at an even lower resolution of 2°. I’ve coarsened the data even more to reduce the volume of climate projection data you’ll have to manipulate for this assignment.</p>
+<p>Now download <strong>temperature</strong> data from the climate model of your choice (it doesn’t matter which one) and for the scenarios <strong>ssp126</strong> and <strong>ssp585</strong>. I have prepared these data to make your life a bit easier. Most notably, I have resampled the data to be on the same grid as the ultra low resolution (2°) ERA5 data, which makes working with the data considerably easier. Normally, each GCM has their own resolution, ranging from xx° (for xx) to yy° (for yy).</p>
+<section id="historical-reference-data-era5">
+<h3>Historical reference data: ERA5<a class="headerlink" href="#historical-reference-data-era5" title="Link to this heading">#</a></h3>
+<p><strong>Let me open the 2° ERA5 data for you and extract the 2m temperature data in °C. I’ll also select the 1979, 2015 period, and compute the annual averages as well as the time period average of this data. This should be familiar to you:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the file</span>
+<span class="n">ds_era</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_UltraLowRes_Monthly_t2m.nc&#39;</span><span class="p">)</span>
+
+<span class="c1"># Select temperature for the given time period and convert to °C</span>
+<span class="n">t2m_era</span> <span class="o">=</span> <span class="n">ds_era</span><span class="o">.</span><span class="n">t2m</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mf">273.15</span>
+
+<span class="c1"># Compute the annual average</span>
+<span class="n">t2m_era_annual_avg</span> <span class="o">=</span> <span class="n">t2m_era</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Compute the period average</span>
+<span class="n">t2m_era_avg</span> <span class="o">=</span> <span class="n">t2m_era</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now let me also compute the globally averaged, annual mean temperature time series for you. Here again, this should hopefully be familiar to you as well:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Meridional weights</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">t2m_era</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">weight</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Meridionally weighted zonal mean - we did this before, but here I&#39;m squeezing it into one single line</span>
+<span class="n">t2m_era_ats</span> <span class="o">=</span> <span class="p">(</span><span class="n">t2m_era_annual_avg</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;latitude&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now make sure you understand what each of the variable above represents. This should be a repetition of what we’ve learned in the lessons so far, but it’s always good to make sure we are on the same page. In the markdown cell below, explain in your own words:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_annual_avg</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_avg</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> is … Its dimensions are …</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the variables here to be sure</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="historical-cmip6-data">
+<h3>Historical CMIP6 data<a class="headerlink" href="#historical-cmip6-data" title="Link to this heading">#</a></h3>
+<p>If any of what we’ve done above is too complex for you, you may pause, and go back to the previous lessons. You may also use the time in class to ask your questions!</p>
+<p>Now, if your comfortable going forward, let’s go!</p>
+</section>
+<section id="averages-and-local-and-global-gcm-bias">
+<h3>Averages and local and global GCM bias<a class="headerlink" href="#averages-and-local-and-global-gcm-bias" title="Link to this heading">#</a></h3>
+<p><strong>Now open the ssp126 GCM file you downloaded. Give it a recognizable name. Explore the file’s content.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note that the temperature variable name has changed. Other than that, the file content should be familiar to you?</strong></p>
+<p><strong>Now repeat the steps above, but with this GCM file, and renaming the variables accordingly. I suggest replacing <code class="docutils literal notranslate"><span class="pre">era</span></code> with <code class="docutils literal notranslate"><span class="pre">ssp126</span></code> for simplicity. Your goal should be to compute the following variables in a similar fashion as you did for ERA5:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_annual_avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great!</p>
+<p><strong>Now let’s get started with the interesting stuff. Start by computing the period average of the global average temperature for each dataset. This should be one single, scalar value: the global temperature according to ERA5, and according to the GCM you downloaded. Compare the two values.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now plot a world map of the period average temperature (<code class="docutils literal notranslate"><span class="pre">t2m_era_avg</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg</span></code>) using the same colorscale values. Plot a third map: the difference between the two.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The map “GCM minus ERA5” is called the “average temperature bias” of the GCM you chose. Look it up online if you don’t know what I am talking about when I mention “bias”.</p>
+<p><strong>Now write down your answer to the following questions</strong>:</p>
+<ul class="simple">
+<li><p><strong>If the climate model would be perfect, would we expect any difference between ERA5 and the climate model? Why?</strong></p></li>
+<li><p><strong>Are the differences always positive, or always negative? Why?</strong></p></li>
+<li><p><strong>Where are the largest differences to be seen, i.e. in which regions. Can you detect a pattern, or at least formulate hypotheses as to why these regions show such differences?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interannual-variability">
+<h4>Interannual variability<a class="headerlink" href="#interannual-variability" title="Link to this heading">#</a></h4>
+<p><strong>Now plot the two annual timeseries together on the same line plot (<code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code>). Make the plot nice: add a legend, a y-axis label, and a title.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpret what you see, and try to answer the following questions:</strong></p>
+<ul class="simple">
+<li><p><strong>If the GCM you downloaded has a bias. Is this bias “systematic” (i.e. similar over the same time period), or random?</strong></p></li>
+<li><p><strong>Do the GCM and ERA5 display similar trends (qualitatively)?</strong></p></li>
+<li><p><strong>If any given year is warmer/colder than usual in the ERA5 timeseries, is it also the case in the GCM? Or, in other worlds, are the two timeseries correlated?</strong></p></li>
+<li><p><strong>Do we expect the two timeseries to correlate, or not? Why?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The (likely) bias between a given GCM realisation and “observations” (here, ERA5) is a very well documented problem in climate science. The existence of this bias means that scientist have developped specific strategies to deal with this problem. One strategy is called <em>bias correction</em>, and there exists entire textbooks on the subject. We will get to this later.</p>
+<p>Another strategy is to assume that despite having a bias, the GCM can still be considered skilfull at representing <em>slow</em> changes in the climate system. I.e., even if the average climate is a bit off at any given time, the difference between two periods (i.e. the climate change signal) might still be skilfull and provide useful information.</p>
+<p><strong>Now let’s test this hypothesis. For each timeseries, (<code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code>), compute the average of the first decade, and subtract it from the timeseries. Create two new timeseries from this operation, called <code class="docutils literal notranslate"><span class="pre">delta_t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code>. Plot them.</strong></p>
+<p><em>Tip: a good way to check if you’ve done this correctly is to check your plot: the first years should vary around the 0°C line.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now (qualitatively) test the hypothesis that your GCM is skillful at representing the global warming trend (or not). Discuss.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cmip6-projections">
+<h3>CMIP6 projections<a class="headerlink" href="#cmip6-projections" title="Link to this heading">#</a></h3>
+<p>Now that we’ve tested the past, let’s have a first look at the global projections. We can put ERA5 aside, and focus on the two scenarios we’ve downloaded: ssp126 and ssp585. The exercises below are independant from the above, but you’ll find it much easier if you have done the above first!</p>
+<p><em>Tip: the commands you’ll have to run below are extremely similar to the above: they only differ by the time periods considered!</em></p>
+<p>Open the two GCM files (I suggest to name each dataset <code class="docutils literal notranslate"><span class="pre">ds_ssp126</span></code> and <code class="docutils literal notranslate"><span class="pre">ds_ssp585</span></code>). Compute the following variables for each SSP:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_annual_avg</span></code> : the annual averages of the GCM temperatures in °C</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_historical</span></code> : the time average of t2m_ssp126_annual_avg for 1985-2014</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_2100</span></code> : the time average of t2m_ssp126_annual_avg for 2070-2099</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> : the annual global average timeseries of temperature change with respect to 1985-20154</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp585_ats</span></code> on the same plot. Answer the following questions:</strong></p>
+<ul class="simple">
+<li><p><strong>When are the two timeseries identical, and when do they start to vary from another? Can you figure out why?</strong></p></li>
+<li><p><strong>What is the (approximate) temperature change at the end of the century for each scenario?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Is there any difference between <code class="docutils literal notranslate"><span class="pre">t2m_ssp585_avg_historical</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_historical</span></code>?</strong> <em>hint: there should be none</em>. <strong>Again: can you figure out why?</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Finally, now plot the climate change map (2100 minus historical) for both scenarios, with the same colorbars. Interpret what you see.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="optional-more-analyses">
+<h2>Optional : more analyses<a class="headerlink" href="#optional-more-analyses" title="Link to this heading">#</a></h2>
+<p>From there, I’m sure you can envision for yourself the number of (in my opinion) interesting analyses you could do with very little modifications to the code above! On the top of my mind:</p>
+<ul class="simple">
+<li><p>download another GCM, and see if the results are similar</p></li>
+<li><p>repeat the timeseries analysis for a specific region, or a city or place. You know how to select a specific location already! What is the expected warming in Bristol, for example?</p></li>
+<li><p>download more SSPs, and check the differences.</p></li>
+</ul>
+<p>Doing any of the above will help you to train all the skills you’ve learned recently. They are a very good way to spend some time exercising!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-precipitation-in-era5">
+<h2>Optional: precipitation in ERA5<a class="headerlink" href="#optional-precipitation-in-era5" title="Link to this heading">#</a></h2>
+<p>The assignment below is a nice way to train the plotting skills learned in the previous lesson. It should be relatively quick to do, and you can do it at your own pace.</p>
+<p>Download the <code class="docutils literal notranslate"><span class="pre">ERA5_LowRes_Monthly_tp</span></code> precipitation file.</p>
+<p>Open the file with xarray and explore it. The units of monthly precipitation are wrongly labeled (unfortunately). They should read: <strong>m per day</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_LowRes_Monthly_tp.nc&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">tp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;tp&#x27; (time: 552, latitude: 241, longitude: 480)&gt; Size: 255MB
+[63855360 values with dtype=float32]
+Coordinates:
+  * time       (time) datetime64[ns] 4kB 1979-01-01T06:00:00 ... 2024-12-01T0...
+  * latitude   (latitude) float64 2kB 90.0 89.25 88.5 ... -88.5 -89.25 -90.0
+  * longitude  (longitude) float64 4kB -179.6 -178.9 -178.1 ... 178.9 179.6
+Attributes:
+    long_name:      Total precipitation
+    units:          m
+    standard_name:  unknown</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'tp'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 552</li><li><span class='xr-has-index'>latitude</span>: 241</li><li><span class='xr-has-index'>longitude</span>: 480</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-53271ac3-f9a5-4ce3-87ff-5d50e0e64633' class='xr-array-in' type='checkbox' checked><label for='section-53271ac3-f9a5-4ce3-87ff-5d50e0e64633' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>...</span></div><div class='xr-array-data'><pre>[63855360 values with dtype=float32]</pre></div></div></li><li class='xr-section-item'><input id='section-70676f1c-6402-422b-9013-4ebddccc187c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-70676f1c-6402-422b-9013-4ebddccc187c' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01T06:00:00 ... 2024-12-...</div><input id='attrs-091817f4-85e7-469d-a31d-0f485682e403' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-091817f4-85e7-469d-a31d-0f485682e403' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-412c278d-bb3e-4d19-a91b-44c92acce9a0' class='xr-var-data-in' type='checkbox'><label for='data-412c278d-bb3e-4d19-a91b-44c92acce9a0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T06:00:00.000000000&#x27;, &#x27;1979-02-01T06:00:00.000000000&#x27;,
+       &#x27;1979-03-01T06:00:00.000000000&#x27;, ..., &#x27;2024-10-01T06:00:00.000000000&#x27;,
+       &#x27;2024-11-01T06:00:00.000000000&#x27;, &#x27;2024-12-01T06:00:00.000000000&#x27;],
+      shape=(552,), dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.25 88.5 ... -89.25 -90.0</div><input id='attrs-3bf7072d-4568-4fb4-9922-e8764329c6da' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3bf7072d-4568-4fb4-9922-e8764329c6da' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3a9603d-a914-437d-8850-a1d1217b774b' class='xr-var-data-in' type='checkbox'><label for='data-c3a9603d-a914-437d-8850-a1d1217b774b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.25,  88.5 , ..., -88.5 , -89.25, -90.  ], shape=(241,))</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.6 -178.9 ... 178.9 179.6</div><input id='attrs-cdd25b8f-2386-4079-b6b4-c5c953b2307a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cdd25b8f-2386-4079-b6b4-c5c953b2307a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-74907540-8860-4b09-94bd-227d8c6fc9f2' class='xr-var-data-in' type='checkbox'><label for='data-74907540-8860-4b09-94bd-227d8c6fc9f2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([-179.625, -178.875, -178.125, ...,  178.125,  178.875,  179.625],
+      shape=(480,))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8d066be7-0447-4eab-8c10-3f7166255ed5' class='xr-section-summary-in' type='checkbox'  ><label for='section-8d066be7-0447-4eab-8c10-3f7166255ed5' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-f400bc20-6406-4cca-926a-8f27351704ff' class='xr-index-data-in' type='checkbox'/><label for='index-f400bc20-6406-4cca-926a-8f27351704ff' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01 06:00:00&#x27;, &#x27;1979-02-01 06:00:00&#x27;,
+               &#x27;1979-03-01 06:00:00&#x27;, &#x27;1979-04-01 06:00:00&#x27;,
+               &#x27;1979-05-01 06:00:00&#x27;, &#x27;1979-06-01 06:00:00&#x27;,
+               &#x27;1979-07-01 06:00:00&#x27;, &#x27;1979-08-01 06:00:00&#x27;,
+               &#x27;1979-09-01 06:00:00&#x27;, &#x27;1979-10-01 06:00:00&#x27;,
+               ...
+               &#x27;2024-03-01 06:00:00&#x27;, &#x27;2024-04-01 06:00:00&#x27;,
+               &#x27;2024-05-01 06:00:00&#x27;, &#x27;2024-06-01 06:00:00&#x27;,
+               &#x27;2024-07-01 06:00:00&#x27;, &#x27;2024-08-01 06:00:00&#x27;,
+               &#x27;2024-09-01 06:00:00&#x27;, &#x27;2024-10-01 06:00:00&#x27;,
+               &#x27;2024-11-01 06:00:00&#x27;, &#x27;2024-12-01 06:00:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=552, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-cb0f1375-1fb4-4915-aaba-41107f0e606e' class='xr-index-data-in' type='checkbox'/><label for='index-cb0f1375-1fb4-4915-aaba-41107f0e606e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  90.0,  89.25,   88.5,  87.75,   87.0,  86.25,   85.5,  84.75,   84.0,
+        83.25,
+       ...
+       -83.25,  -84.0, -84.75,  -85.5, -86.25,  -87.0, -87.75,  -88.5, -89.25,
+        -90.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=241))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-e4a6a844-d97d-40ce-8b12-3185daa8de60' class='xr-index-data-in' type='checkbox'/><label for='index-e4a6a844-d97d-40ce-8b12-3185daa8de60' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.625, -178.875, -178.125, -177.375, -176.625, -175.875, -175.125,
+       -174.375, -173.625, -172.875,
+       ...
+        172.875,  173.625,  174.375,  175.125,  175.875,  176.625,  177.375,
+        178.125,  178.875,  179.625],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=480))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-ab4df9a8-d850-4f3b-a20f-b4a6c6cf36b9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ab4df9a8-d850-4f3b-a20f-b4a6c6cf36b9' class='xr-section-summary' >Attributes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Total precipitation</dd><dt><span>units :</span></dt><dd>m</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p><strong>Compute the average total annual precipitation (average precipitation over a year, in mm yr<span class="math notranslate nohighlight">\(^{-1}\)</span>) and store it in a variable called “annual_prcp”. Plot it.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Draw a new plot of “annual_prcp”, this time with a new colormap (‘YlGnBu’) and with the following discrete levels specified: [50, 200, 500, 700, 1000, 1500, 2000, 3000, 5000]. Now have a look at the patterns again.</strong></p>
+<p><strong>Where does it fall more than 3000 mm precipitation a year? Less than 50 mm precipitation a year?</strong> Note that it could be possible to use the “.where()” function (not taught yet) to highlight these areas easily. Bonus: can you come up with a plot showing these areas on the map?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot the average precipitation in January on a map. Do the same with precipitation in July, and choose the same levels for both maps in order to compare them. Discuss the patterns that you see.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ws04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-lesson_moredatacrunching.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lesson: more tools for statistical and climatological analysis</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-cmip6-data">Global CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-reference-data-era5">Historical reference data: ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-cmip6-data">Historical CMIP6 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-and-local-and-global-gcm-bias">Averages and local and global GCM bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interannual-variability">Interannual variability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-projections">CMIP6 projections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-more-analyses">Optional : more analyses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-precipitation-in-era5">Optional: precipitation in ERA5</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Maussion
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Feb 06, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+<br>
+&copy; Copyright 2024-2025.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

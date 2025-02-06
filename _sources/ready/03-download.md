@@ -39,108 +39,19 @@ You may want to use their online platform to analyze/download the data, or you c
 
 ## CMIP6 data
 
-TODO
+CMIP6 stands for the Coupled Model Intercomparison Project Phase 6. It is a large collection of climate model simulations from many different models and institutions that formed the basis of IPCC AR6. The data is stored on the [ESGF](https://esgf-node.llnl.gov/projects/cmip6/) (Earth System Grid Federation) servers. I provide a subset of the data on my webserver for you to download. The data is already regridded to a common 2° grid and averaged to monthly values.
 
-```{dropdown} BCC-CSM2-MR
-**Temperature** (`tas`)
-- [BCC-CSM2-MR_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_tas.nc)
-- [BCC-CSM2-MR_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_tas.nc)
-- [BCC-CSM2-MR_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp370_regridded_tas.nc)
-- [BCC-CSM2-MR_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/BCC-CSM2-MR/BCC-CSM2-MR_ssp585_regridded_tas.nc)
-```
+### "Ultra" low resolution ERA5 data
 
-```{dropdown} CAMS-CSM1-0
-**Temperature** (`tas`)
-- [CAMS-CSM1-0_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_tas.nc)
-- [CAMS-CSM1-0_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_tas.nc)
-- [CAMS-CSM1-0_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp370_regridded_tas.nc)
-- [CAMS-CSM1-0_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CAMS-CSM1-0/CAMS-CSM1-0_ssp585_regridded_tas.nc)
-```
+This is the same data as you've used so far, but at an even lower resolution of 2°. I've coarsened the data even more to reduce the volume of climate projection data you'll have to manipulate for the assignments. **These datasets should only be used as reference historical data for the CMIP assignments.**
 
-```{dropdown} CESM2
-**Temperature** (`tas`)
-- [CESM2_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp126_regridded_tas.nc)
-- [CESM2_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp245_regridded_tas.nc)
-- [CESM2_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp370_regridded_tas.nc)
-- [CESM2_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2/CESM2_ssp585_regridded_tas.nc)
-```
+- [ERA5_UltraLowRes_Invariant.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Invariant.nc): invariant data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Monthly_t2m.nc): 2m temperature data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Monthly_tp.nc): precipitation data at 2° resolution
 
-```{dropdown} CESM2-WACCM
-**Temperature** (`tas`)
-- [CESM2-WACCM_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_tas.nc)
-- [CESM2-WACCM_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_tas.nc)
-- [CESM2-WACCM_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp370_regridded_tas.nc)
-- [CESM2-WACCM_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/CESM2-WACCM/CESM2-WACCM_ssp585_regridded_tas.nc)
-```
+### CMIP6 1979-2100 temperature data
 
-```{dropdown} EC-Earth3
-**Temperature** (`tas`)
-- [EC-Earth3_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp126_regridded_tas.nc)
-- [EC-Earth3_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp245_regridded_tas.nc)
-- [EC-Earth3_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp370_regridded_tas.nc)
-- [EC-Earth3_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3/EC-Earth3_ssp585_regridded_tas.nc)
-```
+This is the list of Earth System Models (ESMs, sometimes still called Global Circulation Models GCMs) and scenarios for which I provide temperature data. The data is already regridded to a common 2° grid and averaged to monthly values.
 
-```{dropdown} EC-Earth3-Veg
-**Temperature** (`tas`)
-- [EC-Earth3-Veg_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_tas.nc)
-- [EC-Earth3-Veg_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_tas.nc)
-- [EC-Earth3-Veg_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp370_regridded_tas.nc)
-- [EC-Earth3-Veg_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/EC-Earth3-Veg/EC-Earth3-Veg_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} FGOALS-f3-L
-**Temperature** (`tas`)
-- [FGOALS-f3-L_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_tas.nc)
-- [FGOALS-f3-L_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_tas.nc)
-- [FGOALS-f3-L_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp370_regridded_tas.nc)
-- [FGOALS-f3-L_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/FGOALS-f3-L/FGOALS-f3-L_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} GFDL-ESM4
-**Temperature** (`tas`)
-- [GFDL-ESM4_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_tas.nc)
-- [GFDL-ESM4_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_tas.nc)
-- [GFDL-ESM4_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp370_regridded_tas.nc)
-- [GFDL-ESM4_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/GFDL-ESM4/GFDL-ESM4_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} INM-CM4-8
-**Temperature** (`tas`)
-- [INM-CM4-8_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp126_regridded_tas.nc)
-- [INM-CM4-8_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp245_regridded_tas.nc)
-- [INM-CM4-8_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp370_regridded_tas.nc)
-- [INM-CM4-8_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM4-8/INM-CM4-8_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} INM-CM5-0
-**Temperature** (`tas`)
-- [INM-CM5-0_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp126_regridded_tas.nc)
-- [INM-CM5-0_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp245_regridded_tas.nc)
-- [INM-CM5-0_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp370_regridded_tas.nc)
-- [INM-CM5-0_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/INM-CM5-0/INM-CM5-0_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} MPI-ESM1-2-HR
-**Temperature** (`tas`)
-- [MPI-ESM1-2-HR_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_tas.nc)
-- [MPI-ESM1-2-HR_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_tas.nc)
-- [MPI-ESM1-2-HR_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp370_regridded_tas.nc)
-- [MPI-ESM1-2-HR_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} MRI-ESM2-0
-**Temperature** (`tas`)
-- [MRI-ESM2-0_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_tas.nc)
-- [MRI-ESM2-0_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_tas.nc)
-- [MRI-ESM2-0_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp370_regridded_tas.nc)
-- [MRI-ESM2-0_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/MRI-ESM2-0/MRI-ESM2-0_ssp585_regridded_tas.nc)
-```
-
-```{dropdown} NorESM2-MM
-**Temperature** (`tas`)
-- [NorESM2-MM_ssp126](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp126_regridded_tas.nc)
-- [NorESM2-MM_ssp245](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp245_regridded_tas.nc)
-- [NorESM2-MM_ssp370](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp370_regridded_tas.nc)
-- [NorESM2-MM_ssp585](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/NorESM2-MM/NorESM2-MM_ssp585_regridded_tas.nc)
+```{include} cmip6-list.md
 ```

@@ -39,11 +39,11 @@ You may want to use their online platform to analyze/download the data, or you c
 
 ## CMIP6 data
 
-CMIP6 stands for the Coupled Model Intercomparison Project Phase 6. It is a large collection of climate model simulations from many different models and institutions that formed the basis of IPCC AR6. The data is stored on the [ESGF](https://esgf-node.llnl.gov/projects/cmip6/) (Earth System Grid Federation) servers. I provide a subset of the data on my webserver for you to download. The data is already regridded to a common 2° grid and averaged to monthly values.
+CMIP6 stands for the [Coupled Model Intercomparison Project Phase 6](https://pcmdi.llnl.gov/CMIP6/). It is a large collection of climate model simulations from many different models and institutions that formed the basis of IPCC AR6. The data is stored on the [ESGF](https://esgf-node.llnl.gov/projects/cmip6/) (Earth System Grid Federation) servers. Here I provide a subset of the data on my webserver for you to download. The data is already regridded to a common 2° grid and averaged to monthly values.
 
 ### "Ultra" low resolution ERA5 data
 
-This is the same data as you've used so far, but at an even lower resolution of 2°. I've coarsened the data even more to reduce the volume of climate projection data you'll have to manipulate for the assignments. **These datasets should only be used as reference historical data for the CMIP assignments.**
+This is the same ERA5 data as you've used so far, but at an even lower resolution of 2°. I've coarsened the data even more to reduce the volume of climate projection data you'll have to manipulate for the assignments. **These datasets should only be used as reference historical data for the CMIP assignments.**
 
 - [ERA5_UltraLowRes_Invariant.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Invariant.nc): invariant data at 2° resolution
 - [ERA5_UltraLowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes_Monthly_t2m.nc): 2m temperature data at 2° resolution
@@ -51,7 +51,7 @@ This is the same data as you've used so far, but at an even lower resolution of 
 
 ### CMIP6 1979-2100 temperature data
 
-This is the list of Earth System Models (ESMs, sometimes still called Global Circulation Models GCMs) and scenarios for which I provide temperature data. The data is already regridded to a common 2° grid and averaged to monthly values.
+This is the list of Earth System Models (ESMs), sometimes still called Global Circulation Models (GCMs) and scenarios for which I provide temperature data. The data is already regridded to a common 2° grid and averaged to monthly values.
 
 ```{include} cmip6-list.md
 ```

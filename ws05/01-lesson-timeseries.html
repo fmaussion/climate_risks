@@ -1,0 +1,1833 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lesson: timeseries analysis and extreme values &#8212; Quantifying Climate Risks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws05/01-lesson-timeseries';</script>
+    <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Assignment: CMIP6 temperature projections" href="../ws04/02-assignment-precip-cmip6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Feb 13, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01 &amp; 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/briefing.html">IPCC AR6 WG2 - Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/briefing.html">IPCC AR6 WG2 - Part 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ready/00-howto.html">How to use this website and prepare for each week</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-precip-cmip6.html">Assignment: CMIP6 temperature projections</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson: timeseries analysis and extreme values</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws05/01-lesson-timeseries.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws05/01-lesson-timeseries.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ws05/01-lesson-timeseries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson: timeseries analysis and extreme values</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-meteorological-observations-at-heathrow">Daily meteorological observations at Heathrow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ouliers-artifacts">Ouliers / artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-descriptive-statistics">Data exploration and descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#period-selection">Period selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation (resampling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-condition">Selection by condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-category-groupby">Selection by category: Groupby</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-functions">Probability density functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-return-levels">Empirical return levels</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-timeseries-analysis-and-extreme-values">
+<h1>Lesson: timeseries analysis and extreme values<a class="headerlink" href="#lesson-timeseries-analysis-and-extreme-values" title="Link to this heading">#</a></h1>
+<p>Over the past two weeks, you’ve learned how to work with <em>NetCDF</em> files, exploring their complex multidimensional structures, plotting global maps, and summarizing climate projection datasets. Today, we’re shifting gears slightly. Instead of working with gridded data, we’ll (temporarily) return to something more familiar perhaps: time series in tabular form. While this may seem simpler at first, handling time series data comes with its own set of challenges (and rewards)!</p>
+<p>To get started, let’s import the libraries we’ll be using. This week, we’re introducing two key newcomers:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a>, replacing xarray for now: pandas is the backbone of data analysis in Python. It actually predates xarray and serves as the foundation for many of its core functions. If you’ve grown comfortable with xarray, you’ll likely find pandas’ syntax quite familiar.</p></li>
+<li><p><a class="reference external" href="https://scipy.org/">SciPy</a>: the Swiss Army knife of statistical analysis in Python. Whether you’re performing interpolation, fitting models, or conducting statistical tests, SciPy is an essential tool for scientific computing.</p></li>
+</ul>
+<p><em>Copyright notice: parts of this class is inpired by the excellent <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial2.html">climatematch tutorials</a>. I really recommend you to check them out!</em></p>
+<div class="alert alert-warning">
+    <b>This a dense section. I know! This is why you are receiving this before the consolidation week - I encourage you to take your time, and spend next week to revisit the fundamentals of both pandas and xarray. Using these resources, but also my <a href="https://fabienmaussion.info/climate_risks/references.html">recommended resources</a>. I recommend Climatematch and Project Pythia.</b>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># This is new</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="daily-meteorological-observations-at-heathrow">
+<h2>Daily meteorological observations at Heathrow<a class="headerlink" href="#daily-meteorological-observations-at-heathrow" title="Link to this heading">#</a></h2>
+<p>Go to the <a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html">download page</a>. Download the Heathrow meteorological data and put it in your <code class="docutils literal notranslate"><span class="pre">data</span></code> folder. To keep things clean, I decided to put mine in a <code class="docutils literal notranslate"><span class="pre">csv</span></code> folder within <code class="docutils literal notranslate"><span class="pre">data</span></code>. “CSV” stands for comma-separated values, and I’m sure you already heard of it? If not, a quick web search is in order.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">gsod-heathrow.csv</span></code> data file is a text file I downloaded from the “<a class="reference external" href="https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00516">Global Surface Summary of the Day</a>” database, managed by NOAA. Since we can’t trust the current US adminstration to keep this infrastructure running for the duration of the class, I mirrored the GSOD readme on our server - you’ll find it <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">here</a>.</p>
+<p>Let’s open the file and display its content:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/gsod-heathrow.csv&#39;</span><span class="p">,</span>  <span class="c1"># Read the CSV file using Pandas</span>
+                  <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># what&#39;s this doing?</span>
+                  <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># and this?</span>
+                 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION</th>
+      <th>DEWP</th>
+      <th>FRSHTT</th>
+      <th>GUST</th>
+      <th>MAX</th>
+      <th>MIN</th>
+      <th>MXSPD</th>
+      <th>PRCP</th>
+      <th>SLP</th>
+      <th>SNDP</th>
+      <th>STP</th>
+      <th>TEMP</th>
+      <th>VISIB</th>
+      <th>WDSP</th>
+    </tr>
+    <tr>
+      <th>DATE</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1948-12-01</th>
+      <td>3772099999</td>
+      <td>37.2</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>44.4</td>
+      <td>33.4</td>
+      <td>8.9</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>37.6</td>
+      <td>0.0</td>
+      <td>3.4</td>
+    </tr>
+    <tr>
+      <th>1948-12-02</th>
+      <td>3772099999</td>
+      <td>44.5</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>53.4</td>
+      <td>40.3</td>
+      <td>19.0</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>48.6</td>
+      <td>0.0</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>1948-12-03</th>
+      <td>3772099999</td>
+      <td>50.9</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>56.3</td>
+      <td>51.3</td>
+      <td>15.9</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>54.1</td>
+      <td>0.0</td>
+      <td>11.5</td>
+    </tr>
+    <tr>
+      <th>1948-12-04</th>
+      <td>3772099999</td>
+      <td>43.1</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>51.3</td>
+      <td>35.4</td>
+      <td>14.0</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>46.7</td>
+      <td>0.0</td>
+      <td>6.4</td>
+    </tr>
+    <tr>
+      <th>1948-12-05</th>
+      <td>3772099999</td>
+      <td>39.2</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>48.4</td>
+      <td>33.4</td>
+      <td>19.0</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>43.0</td>
+      <td>0.0</td>
+      <td>10.5</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2025-02-01</th>
+      <td>3772099999</td>
+      <td>37.4</td>
+      <td>0</td>
+      <td>13.2</td>
+      <td>42.8</td>
+      <td>32.0</td>
+      <td>8.4</td>
+      <td>0.00</td>
+      <td>1028.9</td>
+      <td>999.9</td>
+      <td>25.8</td>
+      <td>40.6</td>
+      <td>23.7</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>2025-02-02</th>
+      <td>3772099999</td>
+      <td>32.6</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>47.7</td>
+      <td>28.4</td>
+      <td>8.0</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>37.3</td>
+      <td>5.8</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2025-02-03</th>
+      <td>3772099999</td>
+      <td>37.4</td>
+      <td>10000</td>
+      <td>18.1</td>
+      <td>47.3</td>
+      <td>30.2</td>
+      <td>9.9</td>
+      <td>0.01</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>40.1</td>
+      <td>5.8</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>2025-02-04</th>
+      <td>3772099999</td>
+      <td>42.5</td>
+      <td>110000</td>
+      <td>21.0</td>
+      <td>50.2</td>
+      <td>38.1</td>
+      <td>14.0</td>
+      <td>0.01</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>46.2</td>
+      <td>6.1</td>
+      <td>8.7</td>
+    </tr>
+    <tr>
+      <th>2025-02-05</th>
+      <td>3772099999</td>
+      <td>37.4</td>
+      <td>0</td>
+      <td>999.9</td>
+      <td>49.8</td>
+      <td>35.6</td>
+      <td>11.1</td>
+      <td>0.00</td>
+      <td>9999.9</td>
+      <td>999.9</td>
+      <td>999.9</td>
+      <td>43.3</td>
+      <td>6.7</td>
+      <td>4.9</td>
+    </tr>
+  </tbody>
+</table>
+<p>22697 rows × 14 columns</p>
+</div></div></div>
+</div>
+<p>Like xarray objects, pandas objects are tailored for data exploration. In xarray, we manipulated objects called “Datasets” and “DataArrays”. In pandas, the equivalents are “Dataframes” and “Series”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DATE
+1948-12-01    37.6
+1948-12-02    48.6
+1948-12-03    54.1
+1948-12-04    46.7
+1948-12-05    43.0
+              ... 
+2025-02-01    40.6
+2025-02-02    37.3
+2025-02-03    40.1
+2025-02-04    46.2
+2025-02-05    43.3
+Name: TEMP, Length: 22697, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>All “Series” in a “Dataframe” share the same coordinate, the “index”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;1948-12-01&#39;, &#39;1948-12-02&#39;, &#39;1948-12-03&#39;, &#39;1948-12-04&#39;,
+               &#39;1948-12-05&#39;, &#39;1948-12-06&#39;, &#39;1948-12-07&#39;, &#39;1948-12-08&#39;,
+               &#39;1948-12-09&#39;, &#39;1948-12-10&#39;,
+               ...
+               &#39;2025-01-27&#39;, &#39;2025-01-28&#39;, &#39;2025-01-29&#39;, &#39;2025-01-30&#39;,
+               &#39;2025-01-31&#39;, &#39;2025-02-01&#39;, &#39;2025-02-02&#39;, &#39;2025-02-03&#39;,
+               &#39;2025-02-04&#39;, &#39;2025-02-05&#39;],
+              dtype=&#39;datetime64[ns]&#39;, name=&#39;DATE&#39;, length=22697, freq=None)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/de966a8a0c886b3dd9a5b52996ddfeb347d63032eb2964ebaa59f3c5b5baa72e.png" src="../_images/de966a8a0c886b3dd9a5b52996ddfeb347d63032eb2964ebaa59f3c5b5baa72e.png" />
+</div>
+</div>
+<p><strong>Q: spend some time exploring the dataset. Plot one or two variables, including <code class="docutils literal notranslate"><span class="pre">MAX</span></code> and <code class="docutils literal notranslate"><span class="pre">PRCP</span></code>. What can you notice?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Welcome to the messy world of real-world observations! Historical data is always incomplete or imperfect, and we have to deal with it. This file, by the way, is considerably easier to deal with and has much less missing data than the Bristol or Cardiff stations data.</p>
+<p>This is an unfortunate bit of working with in-situ observations and non-model data: they always need a bit of “cleaning”, and I won’t lie: it’s the boring bit and we have to go through it.</p>
+</section>
+<section id="data-preparation">
+<h2>Data preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<div class="alert alert-success">
+    <b>Data preparation is an annoying but indispensable process of any data analysis workflow. In your real-world job as an environmental consultant or analyst, you'll find that a lot of the work has to do with data preparation. In the few cells below I guide you through the process I did to get your data ready for analysis. If you really can't be bothered, fast forward to the next section. If you want to learn more, stay with me!</b>
+</div>
+<section id="missing-values">
+<h3>Missing values<a class="headerlink" href="#missing-values" title="Link to this heading">#</a></h3>
+<p>Let’s start by noting that the <a class="reference internal" href="#bla"><span class="xref myst">README</span></a> mentions missing values. GSOD chose to replace them with specific numbers, which are messing with our plots and statistics. Let’s replace these with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, which is short for “Not a Number”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mf">99.99</span><span class="p">,</span> <span class="mf">999.9</span><span class="p">,</span> <span class="mf">9999.9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q: compare your new plot of <code class="docutils literal notranslate"><span class="pre">MAX</span></code> and <code class="docutils literal notranslate"><span class="pre">PRCP</span></code> with the ones you’ve plotted above. Notice the difference?</strong></p>
+<p>Note that while the missing values are not messing with the plot anymore, they are still missing. Somewhere in the plot, there are “holes”. We can actually count missing values each year with a simple trick:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>  <span class="c1"># We&#39;ll explain this below</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Missing values per calendar year for the variable PRCP&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Missing values (%)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cacc35bf57505061e9540717c988288a1a51c873907234c19b0781c91d004a5c.png" src="../_images/cacc35bf57505061e9540717c988288a1a51c873907234c19b0781c91d004a5c.png" />
+</div>
+</div>
+<p>OK - let’s take a step back and see what we’ve done.</p>
+<p><strong>Q: step by step, decompose the one-liner above. First, check what <code class="docutils literal notranslate"><span class="pre">dfh['PRCP'].isnull()</span></code> does. Then remember when you’ve see <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> last time, and note that it works exactly the same!</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The final trick is to note that averaging booleans (”<code class="docutils literal notranslate"><span class="pre">False</span></code>” and “<code class="docutils literal notranslate"><span class="pre">True</span></code>”) is just averaging 0s and 1s:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.3333333333333333)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the above is not clear yet, please ask!</p>
+<p>Now, let’s analyse the plot. We have about 30% of missing PRCP data in the first year of the series, followed by a blank period in the 1960s. To complicate the matter a bit, it turns out that in that period we have no data at all: no timestamps, and no measurements. This is actually hiding the fact that we have 100% data missing here!</p>
+<p>One more step of data preparation is to notice that we expect a certain format for these files. Since we know the frequency of the measurements (daily) as well as the start and end dates, we can use pandas to create a timestamp index of the length (in days) of the full time period:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>  <span class="c1"># Initial date</span>
+                           <span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># Last date</span>
+                           <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span>  <span class="c1"># Frequency (daily)</span>
+                          <span class="p">)</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">dfh</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_dates</span><span class="p">)</span>  <span class="c1"># Compare the lengths</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(22697, 27826)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that we are missing approx. 5000 records in the Dataframe. Fortunately, it’s fairly easy to format the data appropriately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">full_dates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s reevaluate our missing values plot from before:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>  <span class="c1"># We&#39;ll explain this below</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Missing values per calendar year for the variable PRCP&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Missing values (%)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7d8f69f1c7f62cf265218c039256953c4b54e19326a5e18055f5f8f457b8144a.png" src="../_images/7d8f69f1c7f62cf265218c039256953c4b54e19326a5e18055f5f8f457b8144a.png" />
+</div>
+</div>
+<p>That’s more like it. For over a decade, 100% of the data is missing. This makes the record a bit useless before 1973. Also, since 2025 is not complete yet, we might as well get rid of it!</p>
+<p>We now select the time period we’ll focus on for further analysis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1973&#39;</span><span class="p">:</span><span class="s1">&#39;2024&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ouliers-artifacts">
+<h3>Ouliers / artifacts<a class="headerlink" href="#ouliers-artifacts" title="Link to this heading">#</a></h3>
+<p>Now, we’re done! Or, are we really? Let’s have a final look at precipitation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/d5548791860fde73817c7953489aefd676383c88e25b2425819a87cd13e19e21.png" src="../_images/d5548791860fde73817c7953489aefd676383c88e25b2425819a87cd13e19e21.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mh, there are 4 days with over 10 inches (254 millimeters) of recorded rain in 24 hours. While this is not strictly impossible, these values would crush many confirmed UK record precipitation at weather stations (<a class="reference external" href="https://rmets.onlinelibrary.wiley.com/doi/10.1002/wea.3910">which are around 50-60 mm daily rain</a>) and would represent more than a quarter of the annual rain in a single day. While I can’ be 100% sure, I’m quite confifent that this represent true outliers and should be removed.</p>
+<p>Let’s do that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Replace values above 10 inches with NaN</span>
+
+<span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" src="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" />
+</div>
+</div>
+<p>This just looks more plausible now. The last most visible extreme value (4 inches, i.e. ~ 100 mm in a day) is still very high but plausible. It happened on 1994-02-24, and might or might not be correct:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(4.02), Timestamp(&#39;1994-02-24 00:00:00&#39;))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="units">
+<h3>Units<a class="headerlink" href="#units" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">README</a> tells us the units of our variables. They are (horror!) in US units. Fortunately, it is easy to convert)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP_c&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+<span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP_c&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" src="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" />
+</div>
+</div>
+<p>Good! We’re done now and can move forward with the analyses.</p>
+<div class="alert alert-success">
+    <b>The main steps of data preparation:</b>
+    <ul>
+    <li><b>Identify missing values / missing data</b></li>
+    <li><b>For fixed frequency data (majority of data in climate research), check that the index is complete</b></li>
+    <li><b>Decide what to do with missing values</b></li>
+    <li><b>Select period of interest</b></li>
+    <li><b>Remove outlier (if any)</b></li>
+    </ul>
+</div></section>
+</section>
+<section id="data-exploration-and-descriptive-statistics">
+<h2>Data exploration and descriptive statistics<a class="headerlink" href="#data-exploration-and-descriptive-statistics" title="Link to this heading">#</a></h2>
+<p>Let’s repeat the data preparation steps in a single cell to make sure we are on the same page:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the data</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/gsod-heathrow.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Missing values</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mf">99.99</span><span class="p">,</span> <span class="mf">999.9</span><span class="p">,</span> <span class="mf">9999.9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
+
+<span class="c1"># Period selection</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1973&#39;</span><span class="p">:</span><span class="s1">&#39;2024&#39;</span><span class="p">]</span>
+
+<span class="c1"># Outlier filtering</span>
+<span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> 
+
+<span class="c1"># Keep the variables we want</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;MIN&#39;</span><span class="p">,</span> <span class="s1">&#39;PRCP&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Convert units</span>
+<span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;MIN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;MIN&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+<span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">25.4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TEMP</th>
+      <th>MAX</th>
+      <th>MIN</th>
+      <th>PRCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1973-01-01</th>
+      <td>0.611111</td>
+      <td>3.000000</td>
+      <td>-3.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1973-01-02</th>
+      <td>3.055556</td>
+      <td>7.000000</td>
+      <td>-1.000000</td>
+      <td>0.254</td>
+    </tr>
+    <tr>
+      <th>1973-01-03</th>
+      <td>8.055556</td>
+      <td>10.000000</td>
+      <td>4.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1973-01-04</th>
+      <td>8.888889</td>
+      <td>11.000000</td>
+      <td>7.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>1973-01-05</th>
+      <td>6.111111</td>
+      <td>9.000000</td>
+      <td>3.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2024-12-27</th>
+      <td>5.777778</td>
+      <td>6.388889</td>
+      <td>5.000000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2024-12-28</th>
+      <td>4.722222</td>
+      <td>6.111111</td>
+      <td>3.611111</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2024-12-29</th>
+      <td>5.055556</td>
+      <td>9.000000</td>
+      <td>2.722222</td>
+      <td>0.254</td>
+    </tr>
+    <tr>
+      <th>2024-12-30</th>
+      <td>8.277778</td>
+      <td>9.000000</td>
+      <td>6.888889</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>2024-12-31</th>
+      <td>10.166667</td>
+      <td>12.111111</td>
+      <td>6.500000</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>18993 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>Like xarray, pandas allows to compute simple statics, such at the average temperature and standard deviation of daily temperature:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s1">&#39;The temp average is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">°C and the daily standard deviation is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">°C &#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The temp average is 11.31°C and the daily standard deviation is 5.58°C &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="period-selection">
+<h3>Period selection<a class="headerlink" href="#period-selection" title="Link to this heading">#</a></h3>
+<p>It’s equally easy to select only parts of the index. For example, to plot the daily temperatures over the year 1987:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_87</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1987&#39;</span><span class="p">]</span>  <span class="c1"># Similar to &quot;.sel()&quot; in xarray</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_87</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily avg&#39;</span><span class="p">)</span>
+<span class="n">dfh_87</span><span class="p">[</span><span class="s1">&#39;MAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily max&#39;</span><span class="p">)</span>
+<span class="n">dfh_87</span><span class="p">[</span><span class="s1">&#39;MIN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Daily min&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Daily temperature statistics at LHR in 1987&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;°C&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" src="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" />
+</div>
+</div>
+<p><strong>E: Now repeat the plot with the year 2022 (the hottest day on record), and zoom in the months of June to September 2022.</strong> <em>Hint: you need to use <code class="docutils literal notranslate"><span class="pre">.loc[date1:date2]</span></code></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="temporal-aggregation-resampling">
+<h3>Temporal aggregation (resampling)<a class="headerlink" href="#temporal-aggregation-resampling" title="Link to this heading">#</a></h3>
+<p>Like xarray, pandas allows to compute statistics for sepcific time average. For example monthly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;MS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3711a44ddf36838f143592f2ee2901ea7616fca3107dcf23475eecd203532c46.png" src="../_images/3711a44ddf36838f143592f2ee2901ea7616fca3107dcf23475eecd203532c46.png" />
+</div>
+</div>
+<p>Or annual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" src="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" />
+</div>
+</div>
+<p><strong>E: compute the difference between the average temperature over the last decade (2015-2024) and the first decade in the record (1973-1982), for all for variables.</strong> (<em>Tip: you can do statistics on entire dataframes!</em>)</p>
+<p><strong>Q: Did the maximum or mean temperatures change more during the two period? Was it on average wetter or drier over the past decade?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selection-by-condition">
+<h3>Selection by condition<a class="headerlink" href="#selection-by-condition" title="Link to this heading">#</a></h3>
+<p>You may find it useful to select parts of the data only, for example all August days, or all days above 0 mm precipitation. This is done with comarison operators (e.g. <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, etc.).</p>
+<p>For example, let’s select all days where precip is non zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfhp</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q: do you understand what <code class="docutils literal notranslate"><span class="pre">dfh['PRCP']</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> is doing? Perhaps it’s worth exploring it step by step, for example by printing the output of <code class="docutils literal notranslate"><span class="pre">dfh['PRCP']</span></code>, then remember what <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> does.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: count the number of rainy days at Heathrow. Compute the ratio of rainy days over all days. Now repeat with heavy rain days, with more than &gt; 10 mm precipitation per day. What’s the ratio of heavy rain days over all rainy days?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the same strategy to pick days withing a given month:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_aug</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q: do you understand what <code class="docutils literal notranslate"><span class="pre">dfh.index.month</span> <span class="pre">==</span> <span class="pre">8</span></code> is doing? Perhaps it’s worth exploring it step by step, for example by printing the output of <code class="docutils literal notranslate"><span class="pre">dfh.index.month</span></code>, then remember what <code class="docutils literal notranslate"><span class="pre">==</span></code> does.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: OK, now compute the average daily temperature in August. Repeat for the month of January.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="selection-by-category-groupby">
+<h3>Selection by category: Groupby<a class="headerlink" href="#selection-by-category-groupby" title="Link to this heading">#</a></h3>
+<p>What we’ve done with two months above can be generalized for all various categories. For example, it is possible to compute summary statistics organised by monthss:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfhm</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">dfhm</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/77da40bb36ac24f53557e06c95b06f7106edec24505d91110919206567a0250a.png" src="../_images/77da40bb36ac24f53557e06c95b06f7106edec24505d91110919206567a0250a.png" />
+</div>
+</div>
+<p><strong>Q: do you understand what <code class="docutils literal notranslate"><span class="pre">dfh.groupby(dfh.index.month)</span></code> is doing? Perhaps it’s worth exploring it step by step, for example by printing the output of <code class="docutils literal notranslate"><span class="pre">dfh.index.month</span></code>, then remember what <code class="docutils literal notranslate"><span class="pre">groupby</span></code> does, and what <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> does.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q: check that the monthly averages for January and August you computed above match the plot.</strong></p>
+<p><strong>E: now plot (and interpret) the monthly average precipitation chart (instead of temperature):</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Groupby is very useful. We could also group by rain categories, but this is perhaps for another time. We can however easily adapt “groupby” to use days instead of months:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfhd</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dayofyear</span><span class="p">)</span>  <span class="c1"># We have only grouped! No statistics yet</span>
+
+<span class="n">dfhd</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+<span class="n">dfhd</span><span class="p">[</span><span class="s1">&#39;MAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">);</span>
+<span class="n">dfhd</span><span class="p">[</span><span class="s1">&#39;MAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a813fda8a1cb26c988e8a273543efc7a4ad66c7e46ad1e0cee56ce7c0d7f70ef.png" src="../_images/a813fda8a1cb26c988e8a273543efc7a4ad66c7e46ad1e0cee56ce7c0d7f70ef.png" />
+</div>
+</div>
+<p><strong>E: Add proper labels to the curves above. Do you understand what’s plotted there? Now also add the equivalent for the MIN temperatures.</strong> <em>Hint: the goal is to reproduce a plot similar to the <a class="reference external" href="https://www.meteoblue.com/en/weather/historyclimate/climateobserved/bristol_united-kingdom_2654675">Meteoblue climate diagrams</a>.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Link to this heading">#</a></h2>
+<p>Let’s start by selecting all daily values in the month of July:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_jul</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These represent 1612 values altogether. We are talking about a statistical sample of a population. The histogram of this sample can be plotted with pandas easily, here with the example TEMP:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">dfh_jul</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of daily temperature in July&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a793dc2f128946d2570c6c38feeee3113021f259bf2ef57a9bd24a04124df3c8.png" src="../_images/a793dc2f128946d2570c6c38feeee3113021f259bf2ef57a9bd24a04124df3c8.png" />
+</div>
+</div>
+<p>The Y axis represents the number of events by bins in the sample (“frequency” is a bit misleading). Usually we like to work in density (percentages).</p>
+<p>Pandas decides on the bins automatically. It’s possible to impose a number of bins, or bin size, or bin ranges:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">51</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of daily temperature in July&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3f5c46c8ed86cc60b3c3a418b274e190d6506020241257c3b21cc389702346f1.png" src="../_images/3f5c46c8ed86cc60b3c3a418b274e190d6506020241257c3b21cc389702346f1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                 <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>  <span class="c1"># Note: this implies you know the range of values you want to cover</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of daily temperature in July&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/431568d7b171afd5db998ad63c7a28405e630d5d6a9698d13f1b97f9d547a2c5.png" src="../_images/431568d7b171afd5db998ad63c7a28405e630d5d6a9698d13f1b97f9d547a2c5.png" />
+</div>
+</div>
+<p>The histogram values can also be computed for further analysis instead of plotting:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute histogram values (raw counts)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">hist_values</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: Explore the <code class="docutils literal notranslate"><span class="pre">hist_values</span></code> and <code class="docutils literal notranslate"><span class="pre">bin_edges</span></code> variables. Can you understand what is done?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: repeat the analysis for precipitation, first by letting pandas decide on the bins, then by defining bins yourself starting at 0mm, then 1mm per day up to 45. Discuss the differences in the plot.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="probability-density-functions">
+<h2>Probability density functions<a class="headerlink" href="#probability-density-functions" title="Link to this heading">#</a></h2>
+<p>A population can be approximated mathematically with probabilty density functions (PDFs). The most common one is the gaussian PDF, which is defined by only two parameters, the mean and standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_temp</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_temp</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of daily temperature in July&#39;</span><span class="p">);</span>
+
+<span class="c1"># add in vertical line at mean</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mean_temp</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ymax</span><span class="o">=</span><span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+
+<span class="c1"># add PDF</span>
+<span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">mean_temp</span><span class="p">,</span> <span class="n">std_temp</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian PDF&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9736eb8f9941b2ca76f7394e120f9d92ec5ddf022253914014dd8cd6277dd308.png" src="../_images/9736eb8f9941b2ca76f7394e120f9d92ec5ddf022253914014dd8cd6277dd308.png" />
+</div>
+</div>
+<p>The gaussian PDF approximate the data quite well, but there are also quite some deviations from the Gaussian. Can you spot them?</p>
+<p><strong>Now is the time to refresh your knowledge about normality tests and Q-Q plots.</strong> I wont cover the fundamentals here, (we’re not that much interested in this topic here), but the Climatematch tutorials offer excellent code examples and explanations: <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/chapter_title.html">climatematch Extremes and Variability</a>.</p>
+<p>For now, let’s assume that Gaussian is a good approximation of our population. From the histogram and the PDF, we can compute the probability of occurrence of a certain even. For example, the probability of a day to be hotter than 25°C on average.</p>
+<p>The <em>empirical</em> probability this event is simply given by the data. We count the number of events and evaluate their occurence in the past:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_events</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span>   <span class="c1"># Equivalent: len(sample.loc[sample &gt; 25])</span>
+<span class="n">n_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="sa">f</span><span class="s1">&#39;Empirical probability of daily avg temperature &gt; 25°C: </span><span class="si">{</span><span class="n">n_events</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n_sample</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Empirical probability of daily avg temperature &gt; 25°C: 1.6%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the theoretical probability based on the approximated (fitted) Gaussian distribution, we have to refer to the cumulative PDF. Remember?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_y_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y_pdf</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pdf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">cum_y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian cumulative PDF&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/37e76726d3baaa913376caf3ca725c2708ea7afe092391f709b3df6df3f2ef72.png" src="../_images/37e76726d3baaa913376caf3ca725c2708ea7afe092391f709b3df6df3f2ef72.png" />
+</div>
+</div>
+<p>The probability of exceedance is 1 - the value of the cumulative PDF at 25°C. Can you try to see it from the plot? It’s quite hard for small probabilities isn’t it? Therefore, scipy gives us a way to compute it with cenrtainty:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_exceedance</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mean_temp</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">std_temp</span><span class="p">)</span>
+<span class="sa">f</span><span class="s1">&#39;Theoretical probability of daily avg temperature &gt; 25°C: </span><span class="si">{</span><span class="n">prob_exceedance</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Theoretical probability of daily avg temperature &gt; 25°C: 0.8%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Q: discuss the differences between the empirical and theoretical probability of exceedance by looking at the histogram plot overlaid with the PDF. Does this make sense to you?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: now create two samples:</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s1</span></code> is the sample of daily average temperatures in July from 1973-1987 (15 years)</strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">s2</span></code> is the sample of daily average temperatures in July from 2010-2024 (15 years)</strong>
+<strong>Fit a Gaussian PDF for each of these samples, and plot the two PDFs on a single plot.</strong> <em>Hint: you should aim at creating a plot similar to <a class="reference external" href="https://archive.ipcc.ch/ipccreports/tar/wg1/fig2-32.htm">this famous IPCC plot</a>.</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: Compute the empirical and theoretical probability for a day to exceed 25°C average temperature in both samples. Interpret what you computed.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="empirical-return-levels">
+<h2>Empirical return levels<a class="headerlink" href="#empirical-return-levels" title="Link to this heading">#</a></h2>
+<p>Let’s continue our exploration of extreme events. We could for example have a look at the maximum recorded temperature each year.</p>
+<p>We can use resample for this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maxt</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;MAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>  <span class="c1"># .max() is the important bit here!</span>
+<span class="n">maxt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;-o&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Annual max temperature at Heathrow&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;°C&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f825041e3574a89d36cfb9f69a700bc1e5273150cf895e7681e8ab23f0ed55b2.png" src="../_images/f825041e3574a89d36cfb9f69a700bc1e5273150cf895e7681e8ab23f0ed55b2.png" />
+</div>
+</div>
+<p>The sample size is now much smaller! Just the number of years in the time series. It becomes trickier to do stats on this sample:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">maxt</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">26</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/afe9daa9c4b4e5809664b40ccec5a893c85e93f725a72c9017cd6f9b2310572d.png" src="../_images/afe9daa9c4b4e5809664b40ccec5a893c85e93f725a72c9017cd6f9b2310572d.png" />
+</div>
+</div>
+<p>The shape of the ditribution is far from Gaussian. This is a problem we will tackle at another time.</p>
+<p>What we are interested here is to compute the probability of a given temperature to occur each year, based on the data only. Intuitively, the probability of annual maximum temperature exceeding 40°C can be computed easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob_over_40</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">maxt</span><span class="p">)</span>
+<span class="sa">f</span><span class="s1">&#39;The probability of this event is </span><span class="si">{</span><span class="n">prob_over_40</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The probability of this event is 1.9%&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is because this event occurred only once in the 52 years of the observational record. In other terms, the empirical return period of this event if 52 years. This is easier to understand than 1.9%, yet it’s exactly the same concept. Mathematically:</p>
+<p><span class="math notranslate nohighlight">\(R = 1 / p\)</span></p>
+<p>or</p>
+<p><span class="math notranslate nohighlight">\(p = 1 / R\)</span></p>
+<p>With R the return period and p the probability of the event.</p>
+<p>Now, let’s try to work more systematically on the classification of extreme events. Let’s start by noticing that the <em>year</em> at which an event occurred is irrelevant. What matters is how “extreme” an event it. Therefore, we will work with another organisation of the data. We create a new table, where we will organise the events by their “rank”, from most extreme to least extreme:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty dataframe indexed by the number of years</span>
+<span class="n">edf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">maxt</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Add the sorted temperature data</span>
+<span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">maxt</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>  <span class="c1"># Careful! Note the use of .values here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: Explore the edf dataframe. What is the maximum temperature? What is the smallest maximum temperature?</strong></p>
+<p><strong>E: note that we used <code class="docutils literal notranslate"><span class="pre">.values</span></code> here to assign the values from one dataframe to the other. That’s because pandas wants to align indices where possible. Check for example what happens if you remove <code class="docutils literal notranslate"><span class="pre">.values</span></code>. The role of <code class="docutils literal notranslate"><span class="pre">.values</span></code> is to use the numpy arrays (the numbers) to fill the <code class="docutils literal notranslate"><span class="pre">edf</span></code> dataframe, not the combination of index + values.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Good. Now we can notice that the index of the Dataframe represents the “rank” of the event, from most extreme to least extreme. Let’s verify that events of equal intensity are not given similar ranks. This occurs if we rely on categorical data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(52, 36)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: explore <code class="docutils literal notranslate"><span class="pre">edf</span></code> again. Can you spot the identical values? Can you figure out how this would happen in the data records?</strong></p>
+<p>In nature, extreme events are truly unique, but our observational systems and the storage of numbers with computers leads to this effect (discretisation).</p>
+<p>OK well, then we have to rank the data differently, since we dont want to assign the same return level with a different rank. Let’s use scipy instead (rankdata):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rank via scipy instead to deal with duplicate values</span>
+<span class="n">edf</span><span class="p">[</span><span class="s1">&#39;ranks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]))</span>  <span class="c1"># Note the &quot;-&quot; to rank from max to min</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: explore edf again. Can you detect what the ranking function did to the data?</strong></p>
+<p>Let’s make sure we have the same number of unique ranks as unique values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">])),</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;ranks&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(36, 36)
+</pre></div>
+</div>
+</div>
+</div>
+<p>OK all good now.</p>
+<p>Next we compute the empirical probability of exceedance by dividing the rank (r) by the total amount of values (n) plus 1.</p>
+<p><strong>Important! This is a slightly different formula than above, because the n+1. The return period of 52 years computed above from the data assumes that the sample is perfect. Although arithmetically a bit surprising, it is recommended to account for uncertainty in the data.</strong> See also <a class="reference external" href="https://glossary.ametsoc.org/wiki/Weibull_plotting_position">Weibull plotting position</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find exceedance probability</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span>
+<span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Despite this small difference, we can verify that the probability of exceedance of the &gt;40°C event matches our simple calculations from above. Now however, we can compute the probabilities of exceedance (and therefore the return values) of all extreme events in the timeseries. Let’s go:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute the return period</span>
+<span class="n">edf</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: explore edf again and get aquainted with the new data.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot (finally!) our long awaited return level plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum temperature at Heathrow&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (°C)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>  <span class="c1"># notice the xscale</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/97c62aa1db0d00a01e7d568865eb81fd840022c5712c149ccb7f5bac519388cb.png" src="../_images/97c62aa1db0d00a01e7d568865eb81fd840022c5712c149ccb7f5bac519388cb.png" />
+</div>
+</div>
+<p>For readability and ease of use, we often discuss return periods using a logarithmic scale, referring to events with return periods of 1 year, 10 years, and 100 years. Let’s modify the plot above by changing the x-axis to a logarithmic scale.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum temperature at Heathrow (log scale)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (°C)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>  <span class="c1"># change the xscale</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/27cee0d993bc8a42e5a6052f4b0080c39785de7ef94b1eda91ee0c62af725e56.png" src="../_images/27cee0d993bc8a42e5a6052f4b0080c39785de7ef94b1eda91ee0c62af725e56.png" />
+</div>
+</div>
+<p><strong>What is the approximative empirical return period of a 34°C max temperature? And of a 38°C max temperature?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: now repeat the steps above but with precipitation instead. Compute the return period of a 40 mm/day event. What do you think about the 100 mm/day event, by looking at the plot?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ws05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ws04/02-assignment-precip-cmip6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Assignment: CMIP6 temperature projections</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-meteorological-observations-at-heathrow">Daily meteorological observations at Heathrow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ouliers-artifacts">Ouliers / artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-descriptive-statistics">Data exploration and descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#period-selection">Period selection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation (resampling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-condition">Selection by condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-category-groupby">Selection by category: Groupby</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-functions">Probability density functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-return-levels">Empirical return levels</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Maussion
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Feb 13, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+<br>
+&copy; Copyright 2024-2025.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -55,3 +55,23 @@ This is the list of Earth System Models (ESMs), sometimes still called Global Ci
 
 ```{include} cmip6-list.md
 ```
+
+## Timeseries data
+
+### Weather station data
+
+The "[Global Surface Summary of the Day](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00516)"
+database is managed by NOAA. It contains daily weather station data from all over the world.
+
+I downloaded the data for the Heathrow weather station near London and provide it here:
+- [gsod-heathrow.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-heathrow.csv)
+
+I also downloaded Bristol and Cardiff data if you are interested:
+
+- [gsod-bristol.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv)
+- [gsod-cardiff.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv)
+
+These data are open access by the way!
+Since we can't trust the current US adminstration to keep this infrastructure
+running for the duration of the class, I mirred the GSOD readme on our server -
+you'll find it [here](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt).

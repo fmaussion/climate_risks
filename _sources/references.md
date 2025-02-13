@@ -27,6 +27,15 @@ Here are my favorites resources for Python beginers in STEM:
 - Chapter 1 from the [Scientific Python lectures](https://lectures.scientific-python.org) is also excellent.
 - Finally, my own classes provide some resources as well, but they are more adapted to a classroom than self-study: [beginner](http://fabienmaussion.info/intro_to_programming), [advanced](http://fabienmaussion.info/scientific_programming).
 
+**Learning climate analysis with python:**
+
+The excellent resources by Climatematch inspired some of my notes:
+- [comptools.climatematch.io](https://comptools.climatematch.io)
+
+[Project Pythia](https://projectpythia.org/) contains fantastic resources:
+- [Foundations](https://foundations.projectpythia.org)
+- [CookBooks](https://cookbooks.projectpythia.org)
+
 **Interactive:**
 
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)

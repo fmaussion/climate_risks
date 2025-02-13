@@ -416,7 +416,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-meteorological-observations-at-heathrow">Daily meteorological observations at Heathrow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data preparation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ouliers-artifacts">Ouliers / artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-artifacts">Outliers / artifacts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
 </ul>
 </li>
@@ -923,8 +923,8 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 </section>
-<section id="ouliers-artifacts">
-<h3>Ouliers / artifacts<a class="headerlink" href="#ouliers-artifacts" title="Link to this heading">#</a></h3>
+<section id="outliers-artifacts">
+<h3>Outliers / artifacts<a class="headerlink" href="#outliers-artifacts" title="Link to this heading">#</a></h3>
 <p>Now, we’re done! Or, are we really? Let’s have a final look at precipitation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -990,17 +990,18 @@ Name: TEMP, Length: 22697, dtype: float64
 <img alt="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" src="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" />
 </div>
 </div>
-<p>Good! We’re done now and can move forward with the analyses.</p>
+<p>Good job! Now we’re ready to move forward with the analysis. 🚀</p>
 <div class="alert alert-success">
-    <b>The main steps of data preparation:</b>
+    <b>Key Steps in Data Preparation:</b>
     <ul>
-    <li><b>Identify missing values / missing data</b></li>
-    <li><b>For fixed frequency data (majority of data in climate research), check that the index is complete</b></li>
-    <li><b>Decide what to do with missing values</b></li>
-    <li><b>Select period of interest</b></li>
-    <li><b>Remove outlier (if any)</b></li>
+    <li><b>Identify missing values</b> – Are there gaps in the data? How much is missing?</li>
+    <li><b>Check time consistency</b> – For fixed-frequency data (like daily temperature records), ensure no missing timestamps.</li>
+    <li><b>Handle missing values</b> – Decide whether to fill gaps (e.g., interpolation) or replace incomplete data with nans (not-a-number, recommended).</li>
+    <li><b>Choose a study period</b> – Select the timeframe relevant to your research.</li>
+    <li><b>Detect and remove outliers</b> – Are there extreme values that don't make sense? (e.g., negative or extreme rainfall)</li>
     </ul>
-</div></section>
+</div>
+</section>
 </section>
 <section id="data-exploration-and-descriptive-statistics">
 <h2>Data exploration and descriptive statistics<a class="headerlink" href="#data-exploration-and-descriptive-statistics" title="Link to this heading">#</a></h2>
@@ -1147,12 +1148,12 @@ Name: TEMP, Length: 22697, dtype: float64
 <p>Like xarray, pandas allows to compute simple statics, such at the average temperature and standard deviation of daily temperature:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s1">&#39;The temp average is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">°C and the daily standard deviation is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">°C &#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;The temp average is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C and the daily standard deviation is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The temp average is 11.31°C and the daily standard deviation is 5.58°C &#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The temp average is 11.31°C and the daily standard deviation is 5.58°C&#39;
 </pre></div>
 </div>
 </div>
@@ -1615,13 +1616,23 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <p>OK all good now.</p>
-<p>Next we compute the empirical probability of exceedance by dividing the rank (r) by the total amount of values (n) plus 1.</p>
-<p><strong>Important! This is a slightly different formula than above, because the n+1. The return period of 52 years computed above from the data assumes that the sample is perfect. Although arithmetically a bit surprising, it is recommended to account for uncertainty in the data.</strong> See also <a class="reference external" href="https://glossary.ametsoc.org/wiki/Weibull_plotting_position">Weibull plotting position</a>.</p>
+<p>Next, we compute the empirical probability of exceedance by dividing the rank (r) by the total number of values (n) plus 1:</p>
+<p><strong>Important! This formula is slightly different from the one used earlier — we divide by n+1 instead of n.</strong></p>
+<p>Why? Without this adjustment, the probability of exceeding the lowest maximum value (19.05°C) would be 1, meaning the probability of observing a maximum temperature below 19°C in any given year would be zero. This is not realistic.</p>
+<p>Adding n+1 accounts for the fact that our dataset is just a sample, and we haven’t observed all possible values in the true population. See also <a class="reference external" href="https://glossary.ametsoc.org/wiki/Weibull_plotting_position">Weibull plotting position</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># find exceedance probability</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span>
 <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: as an excercise, compute the probability of exceedance by dividing by n instead of n+1, and verify the claim aboce. Does it make sense to use n+1 now?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1755,7 +1766,7 @@ Name: TEMP, Length: 22697, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-meteorological-observations-at-heathrow">Daily meteorological observations at Heathrow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">Data preparation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ouliers-artifacts">Ouliers / artifacts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#outliers-artifacts">Outliers / artifacts</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#units">Units</a></li>
 </ul>
 </li>

@@ -62,6 +62,7 @@ This is the list of Earth System Models (ESMs), sometimes still called Global Ci
 
 The "[Global Surface Summary of the Day](https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00516)"
 database is managed by NOAA. It contains daily weather station data from all over the world.
+These data are open access by the way! You can download them yourself from the page linked above.
 
 I downloaded the data for the Heathrow weather station near London and provide it here:
 - [gsod-heathrow.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-heathrow.csv)
@@ -71,7 +72,18 @@ I also downloaded Bristol and Cardiff data if you are interested:
 - [gsod-bristol.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv)
 - [gsod-cardiff.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv)
 
-These data are open access by the way!
 Since we can't trust the current US adminstration to keep this infrastructure
 running for the duration of the class, I mirred the GSOD readme on our server -
 you'll find it [here](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt).
+
+### Daily precipitation and streamflow
+
+The [national river flow archive](https://nrfa.ceh.ac.uk) is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data for the Chew river near Bristol ([station 53004](https://nrfa.ceh.ac.uk/data/station/meanflow/53004)) and provide it here:
+
+- Chew at Compton Dando - Gauged Daily Flow (gdf): [53004_gdf.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv)
+- Chew at Compton Dando - Catchment daily rainfall (cdr): [53004_cdr.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_cdr.csv)
+
+Documentation:
+
+- [Gauged Daily Flow](https://nrfa.ceh.ac.uk/gauged-daily-flow-data)
+- [Catchment daily rainfall](https://nrfa.ceh.ac.uk/catchment-rainfall)

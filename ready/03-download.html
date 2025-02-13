@@ -203,6 +203,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
 </ul>
 
     </div>
@@ -424,6 +425,7 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow">Daily precipitation and streamflow</a></li>
 </ul>
 </li>
 </ul>
@@ -628,7 +630,8 @@
 <section id="weather-station-data">
 <h3>Weather station data<a class="headerlink" href="#weather-station-data" title="Link to this heading">#</a></h3>
 <p>The “<a class="reference external" href="https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00516">Global Surface Summary of the Day</a>”
-database is managed by NOAA. It contains daily weather station data from all over the world.</p>
+database is managed by NOAA. It contains daily weather station data from all over the world.
+These data are open access by the way! You can download them yourself from the page linked above.</p>
 <p>I downloaded the data for the Heathrow weather station near London and provide it here:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-heathrow.csv">gsod-heathrow.csv</a></p></li>
@@ -638,10 +641,22 @@ database is managed by NOAA. It contains daily weather station data from all ove
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv">gsod-bristol.csv</a></p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv">gsod-cardiff.csv</a></p></li>
 </ul>
-<p>These data are open access by the way!
-Since we can’t trust the current US adminstration to keep this infrastructure
+<p>Since we can’t trust the current US adminstration to keep this infrastructure
 running for the duration of the class, I mirred the GSOD readme on our server -
 you’ll find it <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">here</a>.</p>
+</section>
+<section id="daily-precipitation-and-streamflow">
+<h3>Daily precipitation and streamflow<a class="headerlink" href="#daily-precipitation-and-streamflow" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data for the Chew river near Bristol (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">station 53004</a>) and provide it here:</p>
+<ul class="simple">
+<li><p>Chew at Compton Dando - Gauged Daily Flow (gdf): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv">53004_gdf.csv</a></p></li>
+<li><p>Chew at Compton Dando - Catchment daily rainfall (cdr): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_cdr.csv">53004_cdr.csv</a></p></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/gauged-daily-flow-data">Gauged Daily Flow</a></p></li>
+<li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/catchment-rainfall">Catchment daily rainfall</a></p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -723,6 +738,7 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow">Daily precipitation and streamflow</a></li>
 </ul>
 </li>
 </ul>

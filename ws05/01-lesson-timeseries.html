@@ -68,6 +68,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment: timeseries analysis and extreme values" href="02-assignment-timeseries.html" />
     <link rel="prev" title="Assignment: CMIP6 temperature projections" href="../ws04/02-assignment-precip-cmip6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -204,6 +205,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
 </ul>
 
     </div>
@@ -421,8 +423,10 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-descriptive-statistics">Data exploration and descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics">Descriptive statistics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#period-selection">Period selection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation (resampling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation: resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-rolling-window">Temporal aggregation: rolling window</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-condition">Selection by condition</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-category-groupby">Selection by category: Groupby</a></li>
 </ul>
@@ -443,7 +447,7 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lesson-timeseries-analysis-and-extreme-values">
 <h1>Lesson: timeseries analysis and extreme values<a class="headerlink" href="#lesson-timeseries-analysis-and-extreme-values" title="Link to this heading">#</a></h1>
-<p>Over the past two weeks, you’ve learned how to work with <em>NetCDF</em> files, exploring their complex multidimensional structures, plotting global maps, and summarizing climate projection datasets. Today, we’re shifting gears slightly. Instead of working with gridded data, we’ll (temporarily) return to something more familiar perhaps: time series in tabular form. While this may seem simpler at first, handling time series data comes with its own set of challenges (and rewards)!</p>
+<p>Over the past two weeks, you’ve learned how to work with <em>NetCDF</em> files, exploring their complex multidimensional structures, plotting global maps, and summarizing climate projection datasets. Today, we’re shifting gears slightly. Instead of working with gridded data, we’ll (temporarily) return to something more familiar perhaps: time series in tabular form. While this may seem simpler at first, handling time series data comes with its own set of challenges!</p>
 <p>To get started, let’s import the libraries we’ll be using. This week, we’re introducing two key newcomers:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a>, replacing xarray for now: pandas is the backbone of data analysis in Python. It actually predates xarray and serves as the foundation for many of its core functions. If you’ve grown comfortable with xarray, you’ll likely find pandas’ syntax quite familiar.</p></li>
@@ -826,7 +830,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 <section id="missing-values">
 <h3>Missing values<a class="headerlink" href="#missing-values" title="Link to this heading">#</a></h3>
-<p>Let’s start by noting that the <a class="reference internal" href="#bla"><span class="xref myst">README</span></a> mentions missing values. GSOD chose to replace them with specific numbers, which are messing with our plots and statistics. Let’s replace these with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, which is short for “Not a Number”:</p>
+<p>Let’s start by noting that the <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">README</a> mentions missing values. GSOD chose to replace them with specific numbers, which are messing with our plots and statistics. Let’s replace these with <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, which is short for “Not a Number”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mf">99.99</span><span class="p">,</span> <span class="mf">999.9</span><span class="p">,</span> <span class="mf">9999.9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
@@ -962,7 +966,7 @@ Name: TEMP, Length: 22697, dtype: float64
 <img alt="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" src="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" />
 </div>
 </div>
-<p>This just looks more plausible now. The last most visible extreme value (4 inches, i.e. ~ 100 mm in a day) is still very high but plausible. It happened on 1994-02-24, and might or might not be correct:</p>
+<p>This just looks more plausible now. The remaining most visible extreme value (4 inches, i.e. ~ 100 mm in a day) is still very high but more plausible. It happened on 1994-02-24, and might or might not be correct:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
@@ -1145,10 +1149,15 @@ Name: TEMP, Length: 22697, dtype: float64
 <p>18993 rows × 4 columns</p>
 </div></div></div>
 </div>
-<p>Like xarray, pandas allows to compute simple statics, such at the average temperature and standard deviation of daily temperature:</p>
+<section id="descriptive-statistics">
+<h3>Descriptive statistics<a class="headerlink" href="#descriptive-statistics" title="Link to this heading">#</a></h3>
+<p>Like xarray, pandas allows to compute simple statics, such as the average temperature and standard deviation of daily temperature:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;The temp average is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C and the daily standard deviation is </span><span class="si">{</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="sa">f</span><span class="s2">&quot;The temp average is </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C and the daily standard deviation is </span><span class="si">{</span><span class="n">avg</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1158,6 +1167,32 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 </div>
+<p>It also allows to compute the quantiles of the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">q75</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">q25</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+
+<span class="sa">f</span><span class="s2">&quot;The temp median is </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C and the interquartile range is [</span><span class="si">{</span><span class="n">q25</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">q75</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">]°C&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The temp median is 11.22°C and the interquartile range is [7.17-15.67]°C&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: compute the mean, median, and 10 and 90% quantiles of daily precipitation.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="period-selection">
 <h3>Period selection<a class="headerlink" href="#period-selection" title="Link to this heading">#</a></h3>
 <p>It’s equally easy to select only parts of the index. For example, to plot the daily temperatures over the year 1987:</p>
@@ -1181,7 +1216,7 @@ Name: TEMP, Length: 22697, dtype: float64
 <img alt="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" src="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" />
 </div>
 </div>
-<p><strong>E: Now repeat the plot with the year 2022 (the hottest day on record), and zoom in the months of June to September 2022.</strong> <em>Hint: you need to use <code class="docutils literal notranslate"><span class="pre">.loc[date1:date2]</span></code></em></p>
+<p><strong>E: Now repeat the plot with the year 2022 (the hottest day on record), and zoom in the months of June to September 2022.</strong> <em>Hint: to select a time period, you will need to use <code class="docutils literal notranslate"><span class="pre">.loc[date1:date2]</span></code></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -1191,7 +1226,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </section>
 <section id="temporal-aggregation-resampling">
-<h3>Temporal aggregation (resampling)<a class="headerlink" href="#temporal-aggregation-resampling" title="Link to this heading">#</a></h3>
+<h3>Temporal aggregation: resampling<a class="headerlink" href="#temporal-aggregation-resampling" title="Link to this heading">#</a></h3>
 <p>Like xarray, pandas allows to compute statistics for sepcific time average. For example monthly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1214,8 +1249,36 @@ Name: TEMP, Length: 22697, dtype: float64
 <img alt="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" src="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" />
 </div>
 </div>
-<p><strong>E: compute the difference between the average temperature over the last decade (2015-2024) and the first decade in the record (1973-1982), for all for variables.</strong> (<em>Tip: you can do statistics on entire dataframes!</em>)</p>
+<p><strong>E: compute the difference between the average temperature over the last decade (2015-2024) and the first decade in the record (1973-1982). Repeat with maximum, minimum temperature and precipitation.</strong> (<em>Hint: you can avoid repetition by noticing that one can do statistics on entire dataframes.</em></p>
 <p><strong>Q: Did the maximum or mean temperatures change more during the two period? Was it on average wetter or drier over the past decade?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="temporal-aggregation-rolling-window">
+<h3>Temporal aggregation: rolling window<a class="headerlink" href="#temporal-aggregation-rolling-window" title="Link to this heading">#</a></h3>
+<p>“Rolling window” statistics is another way to compute temporal averages. As the name suggests, for each timestamp, statistics are computed over a window before or centered on that timestamp.</p>
+<p>Let’s compute, for example, the decadal average of temperature change over the annual timeseries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">at</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">roll</span> <span class="o">=</span> <span class="n">at</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">at</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Annual temperature&#39;</span><span class="p">);</span>
+<span class="n">roll</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;11-year rolling mean&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8d741e2cbda6ab98d7fffaecbe33a1a82239f770ff76d5d981d3f68e07829f8c.png" src="../_images/8d741e2cbda6ab98d7fffaecbe33a1a82239f770ff76d5d981d3f68e07829f8c.png" />
+</div>
+</div>
+<p><strong>Q: interpret the plot. Why do you think the rolling timeseries are not covering the full period? Now repet the plot without the <code class="docutils literal notranslate"><span class="pre">center=True</span></code> argument.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -1226,7 +1289,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </section>
 <section id="selection-by-condition">
 <h3>Selection by condition<a class="headerlink" href="#selection-by-condition" title="Link to this heading">#</a></h3>
-<p>You may find it useful to select parts of the data only, for example all August days, or all days above 0 mm precipitation. This is done with comarison operators (e.g. <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, etc.).</p>
+<p>You may find it useful to select parts of the data only, for example all August days, or all days above 0 mm precipitation. This is done with comparison operators (e.g. <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, etc.).</p>
 <p>For example, let’s select all days where precip is non zero:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1271,6 +1334,15 @@ Name: TEMP, Length: 22697, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Bonus: selection for multiple months:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_jja</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)]</span>  <span class="c1"># OK</span>
+<span class="n">dfh_jja</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">month</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])]</span>  <span class="c1"># better</span>
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1470,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 </div>
-<p><strong>E: repeat the analysis for precipitation, first by letting pandas decide on the bins, then by defining bins yourself starting at 0mm, then 1mm per day up to 45. Discuss the differences in the plot.</strong></p>
+<p><strong>E: repeat the analysis for precipitation, first by letting pandas decide on the bins, then by defining bins yourself starting at 0 mm up to 45 mm (plot A). Now do another plot (plot B) where bins start at 1 mm instead of 0 mm. Discuss the differences in the plot.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -1436,23 +1508,23 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 <p>The gaussian PDF approximate the data quite well, but there are also quite some deviations from the Gaussian. Can you spot them?</p>
 <p><strong>Now is the time to refresh your knowledge about normality tests and Q-Q plots.</strong> I wont cover the fundamentals here, (we’re not that much interested in this topic here), but the Climatematch tutorials offer excellent code examples and explanations: <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/chapter_title.html">climatematch Extremes and Variability</a>.</p>
-<p>For now, let’s assume that Gaussian is a good approximation of our population. From the histogram and the PDF, we can compute the probability of occurrence of a certain even. For example, the probability of a day to be hotter than 25°C on average.</p>
+<p>For now, let’s assume that a Gaussian is a good approximation of our population. From the histogram and the PDF, we can compute the probability of occurrence of a certain even. For example, the probability of a day to be hotter than 25°C on average.</p>
 <p>The <em>empirical</em> probability this event is simply given by the data. We count the number of events and evaluate their occurence in the past:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_events</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">sample</span> <span class="o">&gt;</span> <span class="mi">25</span><span class="p">)</span>   <span class="c1"># Equivalent: len(sample.loc[sample &gt; 25])</span>
 <span class="n">n_sample</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
-<span class="sa">f</span><span class="s1">&#39;Empirical probability of daily avg temperature &gt; 25°C: </span><span class="si">{</span><span class="n">n_events</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n_sample</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+<span class="sa">f</span><span class="s1">&#39;Empirical probability of daily avg temperature &gt; 25°C: </span><span class="si">{</span><span class="n">n_events</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">n_sample</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Empirical probability of daily avg temperature &gt; 25°C: 1.6%&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Empirical probability of daily avg temperature &gt; 25°C: 1.5%&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>For the theoretical probability based on the approximated (fitted) Gaussian distribution, we have to refer to the cumulative PDF. Remember?</p>
+<p>Note that we used (n + 1) to compute the probability. The reason for this will be explained below. For the theoretical probability based on the approximated (fitted) Gaussian distribution, we have to refer to the cumulative PDF. Remember?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cum_y_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y_pdf</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pdf</span><span class="p">)</span>
@@ -1480,27 +1552,6 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <p><strong>Q: discuss the differences between the empirical and theoretical probability of exceedance by looking at the histogram plot overlaid with the PDF. Does this make sense to you?</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>E: now create two samples:</strong></p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">s1</span></code> is the sample of daily average temperatures in July from 1973-1987 (15 years)</strong></p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">s2</span></code> is the sample of daily average temperatures in July from 2010-2024 (15 years)</strong>
-<strong>Fit a Gaussian PDF for each of these samples, and plot the two PDFs on a single plot.</strong> <em>Hint: you should aim at creating a plot similar to <a class="reference external" href="https://archive.ipcc.ch/ipccreports/tar/wg1/fig2-32.htm">this famous IPCC plot</a>.</em></p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>E: Compute the empirical and theoretical probability for a day to exceed 25°C average temperature in both samples. Interpret what you computed.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -1696,7 +1747,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 </div>
-<p><strong>E: now repeat the steps above but with precipitation instead. Compute the return period of a 40 mm/day event. What do you think about the 100 mm/day event, by looking at the plot?</strong></p>
+<p><strong>E: now repeat the steps above but with precipitation instead. Compute the return period of a 40 mm/day event.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -1746,6 +1797,15 @@ Name: TEMP, Length: 22697, dtype: float64
         <p class="prev-next-title">Assignment: CMIP6 temperature projections</p>
       </div>
     </a>
+    <a class="right-next"
+       href="02-assignment-timeseries.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assignment: timeseries analysis and extreme values</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1771,8 +1831,10 @@ Name: TEMP, Length: 22697, dtype: float64
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-exploration-and-descriptive-statistics">Data exploration and descriptive statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#descriptive-statistics">Descriptive statistics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#period-selection">Period selection</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation (resampling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-resampling">Temporal aggregation: resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation-rolling-window">Temporal aggregation: rolling window</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-condition">Selection by condition</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-by-category-groupby">Selection by category: Groupby</a></li>
 </ul>

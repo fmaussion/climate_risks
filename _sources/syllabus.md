@@ -47,42 +47,24 @@ As a formative assessment (not marked), you will be asked to outline your projec
 
 It's the first time I'm teaching this class, so the lesson plan is subject to change (I'll update this page regularly). Here is the current plan:
 
-1. Week 13: Introduction to climate risks
-   - Lecture: Welcome and introduction
-   - Workshop: IPCC AR6 WG2 - Part 1
-2. Week 14: Climate risks methods - Part 1
-   - Lecture: Climate data sources and formats
-   - Workshop: IPCC AR6 WG2 - Part 2 (presentations)
-3. Week 15: Climate risks methods - Part 2
-   - Lecture: Statistical methods for climate risk assessment
-   - Workshop: Getting started with Python and climate data analysis
+### Lecture schedule
 
-The lecture slides are available on blackboard. Everything else is available here!
+- Lecture 1: Introduction to Climate Change and Risk
+- Lecture 2: Climate data
+- Lecture 3: Statistical methods for risk assessments
+- Lecture 4: Attribution of climate risks
+- Lecture 5: Sea level rise and coastal risks
 
-<!---
-1. Week 16:
-   - Lecture:
-   - Workshop:
-2. Week 17:
-   - Lecture:
-   - Workshop:
-   - Assignment setting
+The lecture slides are available on blackboard.
 
-Week 18 (Consolidation week)
+### Workshop schedule
 
-6. Week 19:
-   - Lecture:
-   - Workshop:
-7. Week 20
-   - Lecture:
-   - Workshop:
-8.  Week 21:
-   - Lecture:
-   - Workshop:
-9.  Week 22:
-   - Lecture:
-   - Workshop:
-10. Week 23
-   - Lecture:
-   - Workshop: discussion & drop-in session / time to work on assessments
--->
+- Workshop 01: IPCC AR6 WG2 - Part 1
+- Workshop 02: IPCC AR6 WG2 - Part 2
+- Workshop 03: Getting started with Python and climate data analysis (Assignment: ERA5 data)
+- Workshop 04: More advanced tools for gridded climate data (Assignment: CMIP6 data)
+- Workshop 05: Timeseries analysis and extreme values (Assignment: timeseries analysis)
+- Workshop 06: Extreme value distribution (Assignment: ISIMIP timeseries)
+- Workshop 07: Flood
+- Workshop 08: Glacier runoff
+- Workshop 09: Climada

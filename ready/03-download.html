@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bd95c4b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2d5429a7" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -208,6 +208,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
 </ul>
 
     </div>
@@ -429,7 +430,11 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow">Daily precipitation and streamflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-timeseries-from-isimip">Daily timeseries from ISIMIP</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-workshop-06-heathrow">Data for Workshop 06 (Heathrow)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -649,8 +654,8 @@ These data are open access by the way! You can download them yourself from the p
 running for the duration of the class, I mirred the GSOD readme on our server -
 you’ll find it <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">here</a>.</p>
 </section>
-<section id="daily-precipitation-and-streamflow">
-<h3>Daily precipitation and streamflow<a class="headerlink" href="#daily-precipitation-and-streamflow" title="Link to this heading">#</a></h3>
+<section id="daily-precipitation-and-streamflow-from-the-national-river-flow-archive">
+<h3>Daily precipitation and streamflow from the national river flow archive<a class="headerlink" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data for the Chew river near Bristol (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">station 53004</a>) and provide it here:</p>
 <ul class="simple">
 <li><p>Chew at Compton Dando - Gauged Daily Flow (gdf): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv">53004_gdf.csv</a></p></li>
@@ -661,6 +666,30 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/gauged-daily-flow-data">Gauged Daily Flow</a></p></li>
 <li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/catchment-rainfall">Catchment daily rainfall</a></p></li>
 </ul>
+</section>
+<section id="daily-timeseries-from-isimip">
+<h3>Daily timeseries from ISIMIP<a class="headerlink" href="#daily-timeseries-from-isimip" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.isimip.org/">ISIMIP</a> stands for the “Inter-Sectoral Impact Model Intercomparison Project”.
+It is a community-driven modelling effort to understand the impacts of climate change across sectors.
+It aims at providing a consistent set of climate change projections for impacts assessments, and coordinates
+the development and application of global and regional impact models.</p>
+<p>ISIMIP also provides a set of gridded daily data for a number of climate variables. This represents a lot of data, and therefore I provide only a selection of timeseries here. <strong>Do not hesitate to keep in touch if you would like me to prepare more data for you</strong>.</p>
+<p>The timeseries for precipitation and temperature are available for a number of locations. Visit the following webpage to explore them all:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/">ISIMIP Timeseries</a></p></li>
+</ul>
+<section id="data-for-workshop-06-heathrow">
+<h4>Data for Workshop 06 (Heathrow)<a class="headerlink" href="#data-for-workshop-06-heathrow" title="Link to this heading">#</a></h4>
+<p>For this workshop, we will use the following timeseries at Heathrow airport:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/W5E5v2.0_tas_lhr_daily.csv">W5E5v2.0_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv</a></p></li>
+</ul>
+<p>The content of these files is explained in the assignment.</p>
+</section>
 </section>
 </section>
 </section>
@@ -742,7 +771,11 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow">Daily precipitation and streamflow</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-timeseries-from-isimip">Daily timeseries from ISIMIP</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-workshop-06-heathrow">Data for Workshop 06 (Heathrow)</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

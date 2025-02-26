@@ -76,7 +76,7 @@ Since we can't trust the current US adminstration to keep this infrastructure
 running for the duration of the class, I mirred the GSOD readme on our server -
 you'll find it [here](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt).
 
-### Daily precipitation and streamflow
+### Daily precipitation and streamflow from the national river flow archive
 
 The [national river flow archive](https://nrfa.ceh.ac.uk) is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data for the Chew river near Bristol ([station 53004](https://nrfa.ceh.ac.uk/data/station/meanflow/53004)) and provide it here:
 
@@ -87,3 +87,27 @@ Documentation:
 
 - [Gauged Daily Flow](https://nrfa.ceh.ac.uk/gauged-daily-flow-data)
 - [Catchment daily rainfall](https://nrfa.ceh.ac.uk/catchment-rainfall)
+
+### Daily timeseries from ISIMIP
+
+[ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project".
+It is a community-driven modelling effort to understand the impacts of climate change across sectors.
+It aims at providing a consistent set of climate change projections for impacts assessments, and coordinates
+the development and application of global and regional impact models.
+
+ISIMIP also provides a set of gridded daily data for a number of climate variables. This represents a lot of data, and therefore I provide only a selection of timeseries here. **Do not hesitate to keep in touch if you would like me to prepare more data for you**.
+
+The timeseries for precipitation and temperature are available for a number of locations. Visit the following webpage to explore them all:
+
+- [ISIMIP Timeseries](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/)
+
+#### Data for Workshop 06 (Heathrow)
+
+For this workshop, we will use the following timeseries at Heathrow airport:
+- [W5E5v2.0_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/W5E5v2.0_tas_lhr_daily.csv)
+- [gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv)
+- [gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv)
+- [gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv)
+- [gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv)
+
+The content of these files is explained in the assignment.

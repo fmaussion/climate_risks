@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment: timeseries analysis and extreme values &#8212; Quantifying Climate Risks</title>
+    <title>Assignment: scenario dependence of climate risks &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -61,13 +61,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ws05/02-assignment-timeseries';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws06/02-assignment-gev';</script>
     <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lesson: extreme value distributions" href="../ws06/01-lesson-gev.html" />
-    <link rel="prev" title="Lesson: timeseries analysis and extreme values" href="01-lesson-timeseries.html" />
+    <link rel="prev" title="Lesson: extreme value distributions" href="01-lesson-gev.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -201,14 +200,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-precip-cmip6.html">Assignment: CMIP6 temperature projections</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: timeseries analysis and extreme values</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws06/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: scenario dependence of climate risks</a></li>
 </ul>
 
     </div>
@@ -285,7 +284,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws05/02-assignment-timeseries.ipynb" target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws06/02-assignment-gev.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +301,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws05/02-assignment-timeseries.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws06/02-assignment-gev.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -332,7 +331,7 @@
       
       
       
-      <li><a href="../_sources/ws05/02-assignment-timeseries.ipynb" target="_blank"
+      <li><a href="../_sources/ws06/02-assignment-gev.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +407,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment: timeseries analysis and extreme values</h1>
+    <h1>Assignment: scenario dependence of climate risks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,8 +417,20 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heathrow-dataset">Heathrow dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precipitation-and-streamflow-at-chew-valley">Precipitation and streamflow at Chew valley</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-past-climate-at-heathrow-observations-and-models">Part 1: past climate at Heathrow - observations and models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-observed-global-summary-of-the-day">Historical observed: global summary of the day</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reanalysis-w5e5">Reanalysis: W5E5</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-simulated-gfdl-esm4">Historical simulated: gfdl-esm4</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-look-into-isimip-s-bias-correction">A look into ISIMIP’s bias correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-w5e5-the-same-as-ground-truth">Is W5E5 the same as “ground truth”?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-part-1-past-climate">Conclusions part 1: past climate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-future-climate-at-heathrow">Part 2: future climate at Heathrow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-optional-other-variables-locations-include-uncertainties">Going further (optional): other variables / locations, include uncertainties</a></li>
 </ul>
             </nav>
         </div>
@@ -431,22 +442,26 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-timeseries-analysis-and-extreme-values">
-<h1>Assignment: timeseries analysis and extreme values<a class="headerlink" href="#assignment-timeseries-analysis-and-extreme-values" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-scenario-dependence-of-climate-risks">
+<h1>Assignment: scenario dependence of climate risks<a class="headerlink" href="#assignment-scenario-dependence-of-climate-risks" title="Link to this heading">#</a></h1>
 <p>Import the packages. I’ll do this for you:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span> 
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># This is new</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="heathrow-dataset">
-<h2>Heathrow dataset<a class="headerlink" href="#heathrow-dataset" title="Link to this heading">#</a></h2>
-<p>Open the file a prepare the data the same way we did in the lesson. Let me do this for you as well:</p>
+<section id="part-1-past-climate-at-heathrow-observations-and-models">
+<h2>Part 1: past climate at Heathrow - observations and models<a class="headerlink" href="#part-1-past-climate-at-heathrow-observations-and-models" title="Link to this heading">#</a></h2>
+<section id="read-the-data">
+<h3>Read the data<a class="headerlink" href="#read-the-data" title="Link to this heading">#</a></h3>
+<section id="historical-observed-global-summary-of-the-day">
+<h4>Historical observed: global summary of the day<a class="headerlink" href="#historical-observed-global-summary-of-the-day" title="Link to this heading">#</a></h4>
+<p>Let’s read the <em>observed</em> Heathrow dataset (you should have it in your folder after last week). Let’s also fill the gaps, and convert the units :</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the data</span>
@@ -456,8 +471,8 @@
 <span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="mf">99.99</span><span class="p">,</span> <span class="mf">999.9</span><span class="p">,</span> <span class="mf">9999.9</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
 <span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dfh</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span>
 
-<span class="c1"># Period selection</span>
-<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1973&#39;</span><span class="p">:</span><span class="s1">&#39;2024&#39;</span><span class="p">]</span>
+<span class="c1"># Period selection - note that we go only from 1979 until 2014 here</span>
+<span class="n">dfh</span> <span class="o">=</span> <span class="n">dfh</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;1979&#39;</span><span class="p">:</span><span class="s1">&#39;2014&#39;</span><span class="p">]</span>
 
 <span class="c1"># Outlier filtering</span>
 <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> 
@@ -468,65 +483,15 @@
 <span class="c1"># Convert units</span>
 <span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;MIN&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">,</span> <span class="s1">&#39;MAX&#39;</span><span class="p">,</span> <span class="s1">&#39;MIN&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
 <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">25.4</span>
+
+<span class="c1"># Separate tas to stay organised</span>
+<span class="n">dftas</span> <span class="o">=</span> <span class="n">dfh</span><span class="p">[[</span><span class="s1">&#39;TEMP&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dftas</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;obs&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Now create two samples:</strong></p>
-<ul class="simple">
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">s1</span></code> is the sample of daily average temperatures in July from 1973-1987 (15 years)</strong></p></li>
-<li><p><strong><code class="docutils literal notranslate"><span class="pre">s2</span></code> is the sample of daily average temperatures in July from 2010-2024 (15 years)</strong></p></li>
-</ul>
-<p>Verify that both samples have the same number of days. How many are that?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Plot an histogram for each of these distributions, using the same bins for boths. If you are a bit ambitious, plot both histograms on the same graph.</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Fit a Gaussian PDF for each of these samples, and plot the two PDFs on a single plot.</strong> <em>Hint: you should aim at creating a plot similar to <a class="reference external" href="https://archive.ipcc.ch/ipccreports/tar/wg1/fig2-32.htm">this famous IPCC plot</a>.</em></p>
-<p><strong>Interpret the plot. Are there changes in the central value, in the spread of the distribution?</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>E: Compute (i) the empirical and (ii) the theoretical probability based on the PDF for a day to exceed 25°C average temperature in both samples.</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Interpret what you computed. What is the increased risk ratio for hot days (&gt;25°) between both periods?</strong> <em>Hint: I’m expecting a statement similar to “Hot days have become x times more likely between period 1 and 2.”</em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Sometimes, it’s also cold in the UK. <strong>Count the average number of days per year where the daily <em>maximal</em> temperature is below freezing</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>How many freezing days were there on average before 2000? And after?</strong></p>
+<p><strong>Exercise: familiarise yourself with the <code class="docutils literal notranslate"><span class="pre">dftas</span></code> dataframe. What is the time period they cover? Their units? Make sure you understand what the code above does.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -535,77 +500,123 @@
 </div>
 </div>
 </section>
-<section id="precipitation-and-streamflow-at-chew-valley">
-<h2>Precipitation and streamflow at Chew valley<a class="headerlink" href="#precipitation-and-streamflow-at-chew-valley" title="Link to this heading">#</a></h2>
-<p>Go to the download page, and download the catchment daily rainfall (<code class="docutils literal notranslate"><span class="pre">53004_cdr.csv</span></code>) and gauged daily flow (<code class="docutils literal notranslate"><span class="pre">53004_gdf.csv</span></code>) from the server. Put the files in your <code class="docutils literal notranslate"><span class="pre">data/csv</span></code> folder.</p>
-<p><strong>Open the files in a text editor of your choice, or in jupyterlab itself. Note the header of the file, and how the data is structured.</strong></p>
-<p>Reading these files requires to skip the header (<code class="docutils literal notranslate"><span class="pre">skiprows</span></code>). We will also ignore the second column in each file, and put the two timeseries (streamflow and precipitation) into one dataframe for simplicity. Let me do all this for you:</p>
+<section id="reanalysis-w5e5">
+<h4>Reanalysis: W5E5<a class="headerlink" href="#reanalysis-w5e5" title="Link to this heading">#</a></h4>
+<p>Go to the download page (<a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#data-for-workshop-06-heathrow">link to the files</a>) to download the ISIMIP <code class="docutils literal notranslate"><span class="pre">W5E5v2.0</span></code> <code class="docutils literal notranslate"><span class="pre">tas</span></code> dataset for Heathrow. W5E5 is derived from ERA5 and has been further corrected and blended with observational datasets to improve its representation of historical climate conditions. It provides a consistent, bias-adjusted dataset for climate impact studies (see the <a class="reference external" href="https://essd.copernicus.org/articles/12/2097/2020/">W5E5 description paper</a> for more info).</p>
+<p>I’ll read the data for you, and add a new column to <code class="docutils literal notranslate"><span class="pre">dftas</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/53004_cdr.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Date&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_w5e5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/isimip/lhr/W5E5v2.0_tas_lhr_daily.csv&#39;</span><span class="p">,</span> 
+                       <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dftas</span><span class="p">[</span><span class="s1">&#39;w5e5&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh_w5e5</span><span class="p">[</span><span class="s1">&#39;tas&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span>  <span class="c1"># Units!</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise: explore the dfh_w5e5 dataframe. Check the lon and lat values, and compare them to the true lon and lat values for Heathrow. Where does this difference come from?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="historical-simulated-gfdl-esm4">
+<h4>Historical simulated: gfdl-esm4<a class="headerlink" href="#historical-simulated-gfdl-esm4" title="Link to this heading">#</a></h4>
+<p>Go to the download page (<a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#data-for-workshop-06-heathrow">link to the files</a>) to download the ISIMIP <code class="docutils literal notranslate"><span class="pre">gfdl-esm4</span></code> <code class="docutils literal notranslate"><span class="pre">historical</span></code> <code class="docutils literal notranslate"><span class="pre">tas</span></code> dataset for Heathrow.</p>
+<p>I’ll read the data for you, and add a new column to <code class="docutils literal notranslate"><span class="pre">dftas</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfh_hist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/isimip/lhr/gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv&#39;</span><span class="p">,</span> 
+                       <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dftas</span><span class="p">[</span><span class="s1">&#39;gfdl_hist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfh_hist</span><span class="p">[</span><span class="s1">&#39;tas&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span>  <span class="c1"># Units!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="a-look-into-isimip-s-bias-correction">
+<h3>A look into ISIMIP’s bias correction<a class="headerlink" href="#a-look-into-isimip-s-bias-correction" title="Link to this heading">#</a></h3>
+<p>In Workshop 04, we established that climate models, such as GFDL-ESM4, often exhibit both <em>systematic</em> and <em>random biases</em>. Biases of several degrees for temperature or factors of 2 to 3 for precipitation amounts are not uncommon. The <a class="reference external" href="https://www.isimip.org/gettingstarted/isimip3b-bias-adjustment/">ISIMIP protocol for bias adjustment</a> specifically addresses these biases to provide homogenized, bias-corrected inputs for impact models.</p>
+<p>The ISIMIP methodology applies a process called <em>quantile mapping</em> to correct climate model biases, using the W5E5 dataset as a reference.</p>
+<hr class="docutils" />
+<p><strong>Exercise: eevelop a few simple tests to verify that <code class="docutils literal notranslate"><span class="pre">gfdl_hist</span></code> does not exhibit strong, systematic biases compared to <code class="docutils literal notranslate"><span class="pre">w5e5</span></code> at Heathrow. A well-structured analysis should include:</strong></p>
+<ul class="simple">
+<li><p><strong>at least 2 key metrics to quantify the similarity between <code class="docutils literal notranslate"><span class="pre">gfdl_hist</span></code> and <code class="docutils literal notranslate"><span class="pre">w5e5</span></code> climatologies.</strong></p></li>
+<li><p><strong>at least 3 plots to visually compare the datasets.</strong></p></li>
+<li><p><strong>at least one metric related to extreme values to check whether bias correction properly preserves extreme events</strong></p></li>
+</ul>
+<p><em>Hint: Keep in mind that <code class="docutils literal notranslate"><span class="pre">gfdl_hist</span></code> is not expected to reproduce the observed weather for specific years (e.g., whether a given year was cold or warm). Instead, it should represent the overall statistics of weather patterns well enough.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="is-w5e5-the-same-as-ground-truth">
+<h3>Is W5E5 the same as “ground truth”?<a class="headerlink" href="#is-w5e5-the-same-as-ground-truth" title="Link to this heading">#</a></h3>
+<p>By now, you should have gained confidence that the bias correction method applied by ISIMIP is quite robust: most statistics are well preserved, even though extreme value statistics may differ more. However, so far, we have only compared GFDL-ESM4 with W5E5. How well does W5E5 match actual ground-truth observations at Heathrow?</p>
+<hr class="docutils" />
+<p><strong>Exercise: comparing W5E5 with observations. Repeat the comparisons you conducted above, but this time:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Compare W5E5 against actual observations at Heathrow instead of GFDL-ESM4.</strong></p></li>
+<li><p><strong>Plot the annual average time series of temperature for both W5E5 and observations.</strong></p></li>
+<li><p><strong>Confirm that W5E5, unlike a climate model, aims to represent actual weather at that location, not just long-term climate statistics.</strong></p></li>
+<li><p><strong>Write down your findings, discussing any systematic biases.</strong></p></li>
+</ol>
+<hr class="docutils" />
+<p><em>Hints about expected findings:</em></p>
+<ul class="simple">
+<li><p><em>There is a systematic bias between W5E5 and observations.</em></p></li>
+<li><p><em>This bias is relatively constant throughout the year but tends to be slightly larger in summer.</em></p></li>
+<li><p><em>Extreme temperatures tend to be slightly less extreme in W5E5 compared to observations.</em>
+<em>Consider these aspects when analyzing your results.</em></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusions-part-1-past-climate">
+<h3>Conclusions part 1: past climate<a class="headerlink" href="#conclusions-part-1-past-climate" title="Link to this heading">#</a></h3>
+<p>Despite the systematic biases between reanalysis and observations, it is very common for climate impact studies to skip the comparison step we just performed. This is mainly because:</p>
+<ol class="arabic simple">
+<li><p>High-quality, long-term observations like those available at Heathrow are not available for most locations.</p></li>
+<li><p>Reanalysis datasets are not designed to represent the weather at a single location but rather the average climate over a larger grid area.</p></li>
+</ol>
+<p>The appropriate next step depends on the specific research question:</p>
+<ul class="simple">
+<li><p><em>If I am interested in predicting future climate extremes at Heathrow</em>, I would apply an additional bias correction to both reanalysis and projected data. This is not straightforward to do well, but as a first approximation, adjusting for the systematic bias (~1.18°C for temperature) would be a reasonable starting point.</p></li>
+<li><p><em>If I am only interested in changes in climate extremes</em>, then no bias correction is necessary. Instead, I can focus on the relative changes in extremes over time. This is the approach we will take next.</p></li>
+</ul>
+</section>
+</section>
+<section id="part-2-future-climate-at-heathrow">
+<h2>Part 2: future climate at Heathrow<a class="headerlink" href="#part-2-future-climate-at-heathrow" title="Link to this heading">#</a></h2>
+<p>Now return to the download page (<a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#data-for-workshop-06-heathrow">link to the files</a>), and download the <code class="docutils literal notranslate"><span class="pre">gfdl-esm4</span></code> projections for the scenarios <code class="docutils literal notranslate"><span class="pre">ssp126</span></code> and <code class="docutils literal notranslate"><span class="pre">ssp585</span></code> at Heathrow. Put them in the same folder, and let me read the data for you:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read SSP126</span>
+<span class="n">dfh_ssp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/isimip/lhr/gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv&#39;</span><span class="p">,</span> 
+                       <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dftas_ssp</span> <span class="o">=</span> <span class="n">dfh_ssp</span><span class="p">[[</span><span class="s1">&#39;tas&#39;</span><span class="p">]]</span> <span class="o">-</span> <span class="mf">273.15</span>  <span class="c1"># Units!</span>
+<span class="n">dftas_ssp</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ssp126&#39;</span><span class="p">]</span>
 
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cdr&#39;</span><span class="p">,</span> <span class="s1">&#39;gdf&#39;</span><span class="p">]</span>
-
-<span class="c1"># Check that time series is complete</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span> 
-<span class="k">assert</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cdr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
-
-<span class="c1"># Read streamflow and add it to the dataframe</span>
-<span class="n">df_gdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/53004_gdf.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df_gdf</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;gdf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_gdf</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">]</span>
+<span class="c1"># Read SSP585</span>
+<span class="n">dftas_ssp</span><span class="p">[</span><span class="s1">&#39;ssp585&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/isimip/lhr/gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv&#39;</span><span class="p">,</span> 
+                                  <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="s1">&#39;tas&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span>  <span class="c1"># Units!</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Explore the dataset. Read the documentation for the <a class="reference external" href="https://nrfa.ceh.ac.uk/catchment-rainfall">catchment rainfall</a> and the <a class="reference external" href="https://nrfa.ceh.ac.uk/gauged-daily-flow-data">gauged streamflow</a>. What are the units of the two variables?</strong></p>
-<p>Let me plot the two datasets over a year for you:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6431665dccb5ce45c15c69e87b26817769784338009870ec486e21f94ded30c4.png" src="../_images/6431665dccb5ce45c15c69e87b26817769784338009870ec486e21f94ded30c4.png" />
-</div>
-</div>
-<p>By chance, the two variables have a similar range of values. It is however cleaner to plot them on separate axes:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">secondary_y</span><span class="o">=</span><span class="s1">&#39;gdf&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/6dacaa10e1cddbf30ce54b8c87cc9e2f962ba33eb878fedda913279c459bb97a.png" src="../_images/6dacaa10e1cddbf30ce54b8c87cc9e2f962ba33eb878fedda913279c459bb97a.png" />
-</div>
-</div>
-<p>Or, with more control:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000&#39;</span><span class="p">][</span><span class="s1">&#39;cdr&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rainfall&#39;</span><span class="p">);</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2000&#39;</span><span class="p">][</span><span class="s1">&#39;gdf&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Streamflow- right&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Rainfall (mm/day)&#39;</span><span class="p">);</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Streamflow (m3/s)&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Year 2000&#39;</span><span class="p">);</span>
-
-<span class="c1"># Combine legends</span>
-<span class="n">lines</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-<span class="n">lines2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span> <span class="o">+</span> <span class="n">lines2</span><span class="p">,</span> <span class="n">labels</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/45a95a24e3487dc5e24b904512c7aa2bbdb8caa0cabe57f290be92dffcd4aea1.png" src="../_images/45a95a24e3487dc5e24b904512c7aa2bbdb8caa0cabe57f290be92dffcd4aea1.png" />
-</div>
-</div>
-<p><strong>Now, instead of plotting the daily rainfall, plot the 5-day rolling mean of the rainfall. Repeat for the year 2012.</strong></p>
+<p><strong>Exercise: explore the <code class="docutils literal notranslate"><span class="pre">dftas_ssp</span></code> dataframe. What period does it cover? What is the time resolution? Etc. Now plot the annual averages of temperature for <code class="docutils literal notranslate"><span class="pre">w5e5</span></code>, <code class="docutils literal notranslate"><span class="pre">ssp126</span></code>, and <code class="docutils literal notranslate"><span class="pre">ssp585</span></code> on the same timeseries plot.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -613,7 +624,13 @@
 </div>
 </div>
 </div>
-<p><strong>Plot the average daily streamflow and precipitation on one single plot. It’s probably a good idea to smooth the data with a rolling average before grouping for clarity.</strong> <em>Hint: the x-axis should show day of year</em></p>
+<p><strong>Exercise: now compute the following three variables:</strong></p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">annual_max_hist</span></code>: annual maximum temperature for <code class="docutils literal notranslate"><span class="pre">w5e5</span></code> over the historical period</strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">annual_max_ssp126</span></code>: annual maximum temperature for <code class="docutils literal notranslate"><span class="pre">ssp126</span></code> over the period 2065-2100</strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">annual_max_ssp585</span></code>: annual maximum temperature for <code class="docutils literal notranslate"><span class="pre">ssp585</span></code> over the period 2065-2100</strong></p></li>
+</ul>
+<p><em>(verify that the lentgh is 36 years in all three cases)</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -621,7 +638,7 @@
 </div>
 </div>
 </div>
-<p><strong>Plot the percentage of missing values for both cdr and gdr variable per year over the entire period. Plot both variabls for the time period (2 calendar years) around the period where data is missing.</strong></p>
+<p><strong>Now fit a GEV distribution for each of these samples, like we did in the lesson.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -629,7 +646,7 @@
 </div>
 </div>
 </div>
-<p><strong>With a web search, find out what happened in Chew Magna and Bristol in July 1968 and in the rest of UK later that year.</strong></p>
+<p><strong>Plot the GEV return values / periods for all three sample (<code class="docutils literal notranslate"><span class="pre">hist</span></code>, <code class="docutils literal notranslate"><span class="pre">ssp126</span></code>, <code class="docutils literal notranslate"><span class="pre">ssp585</span></code>) on the same plot. I’m looking for a plot similar to the one we discussed during the lecture (the superstorm Sandy sea-level with and without anthropogenic climate change).</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -637,7 +654,9 @@
 </div>
 </div>
 </div>
-<p><strong>Run an empirical return levels analysis for <em>maximal annual daily rainfall</em> at Chew. Your goal is to do a plot similar to the final plot you did in the lesson. For precipitation, it’s a good idea to use log axes on both the x- and y-axis.</strong></p>
+<p><strong>Finally, compute the return level of a 100-year event according to W5E5 at Heathrow during the historical period. Then, use this value to determine the return periods of this event under each SSP scenario. Write down the increased likelihood of such an event in each scenario.</strong></p>
+<p><em>Hint: Your answer should be in the form of a statement like:</em><br />
+<em>“By 2100, the return period of a present-day 100-year event in the SSP126 scenario is <strong>x</strong> years (<strong>y</strong> times more likely).”</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -645,8 +664,10 @@
 </div>
 </div>
 </div>
-<p><strong>Extend the x-axis range to [1, 1100] using <code class="docutils literal notranslate"><span class="pre">ax.set_xlim([1,</span> <span class="pre">1100])</span></code>.</strong></p>
-<p><strong>Qualitative analysis: based on the plot, visually extrapolate the trend formed by all the points excluding the last two extreme events. Estimate the expected return period for an event exceeding 100 mm, assuming these two events had not occurred.</strong></p>
+</section>
+<section id="going-further-optional-other-variables-locations-include-uncertainties">
+<h2>Going further (optional): other variables / locations, include uncertainties<a class="headerlink" href="#going-further-optional-other-variables-locations-include-uncertainties" title="Link to this heading">#</a></h2>
+<p>The data download page lists several other locations / variables where you could run an extreme value analysis. You may also want to consider uncertainties as well!</p>
 </section>
 </section>
 
@@ -663,7 +684,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./ws05"
+            path: "./ws06"
         },
         predefinedOutput: true
     }
@@ -681,22 +702,13 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="01-lesson-timeseries.html"
+       href="01-lesson-gev.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lesson: timeseries analysis and extreme values</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../ws06/01-lesson-gev.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lesson: extreme value distributions</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -715,8 +727,20 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heathrow-dataset">Heathrow dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precipitation-and-streamflow-at-chew-valley">Precipitation and streamflow at Chew valley</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-past-climate-at-heathrow-observations-and-models">Part 1: past climate at Heathrow - observations and models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-data">Read the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-observed-global-summary-of-the-day">Historical observed: global summary of the day</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reanalysis-w5e5">Reanalysis: W5E5</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-simulated-gfdl-esm4">Historical simulated: gfdl-esm4</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-look-into-isimip-s-bias-correction">A look into ISIMIP’s bias correction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-w5e5-the-same-as-ground-truth">Is W5E5 the same as “ground truth”?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions-part-1-past-climate">Conclusions part 1: past climate</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-future-climate-at-heathrow">Part 2: future climate at Heathrow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#going-further-optional-other-variables-locations-include-uncertainties">Going further (optional): other variables / locations, include uncertainties</a></li>
 </ul>
   </nav></div>
 

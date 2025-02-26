@@ -72,7 +72,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Feb 25, 2025"/>
+    <meta name="docbuild:last-update" content="Feb 26, 2025"/>
   </head>
   
   
@@ -419,14 +419,16 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-1968-bristol-flood">Revisiting the 1968 Bristol flood</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalise-the-compute-of-empirical-return-periods-with-a-function">Generalise the compute of empirical return periods with a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalise-the-computation-of-empirical-return-periods-with-a-function">Generalise the computation of empirical return periods with a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-robust-are-these-results">How robust are these results?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-get-a-sense-of-empirical-uncertainty-with-bootstrapping">Bonus: get a sense of empirical uncertainty with “bootstrapping”</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gev-distribution">The GEV distribution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-gev">Fitting the GEV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-levels-and-return-periods-with-the-gev">Computing return levels and return periods with the GEV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gev-return-level-return-values-plot">The GEV return level / return values plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-periods-with-the-gev">Computing return periods with the GEV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-levels-with-the-gev">Computing return levels with the GEV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-graphical-summary">A graphical summary</a></li>
 </ul>
 </li>
 </ul>
@@ -449,16 +451,16 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># This is new</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span> 
 </pre></div>
 </div>
 </div>
 </div>
 <section id="revisiting-the-1968-bristol-flood">
 <h2>Revisiting the 1968 Bristol flood<a class="headerlink" href="#revisiting-the-1968-bristol-flood" title="Link to this heading">#</a></h2>
-<p>After last week’s assignment, the catchment daily rainfall data (<code class="docutils literal notranslate"><span class="pre">53004_cdr.csv</span></code>) should already be in your <code class="docutils literal notranslate"><span class="pre">data/csv</span></code> folder. As a reminder, these are precipitation data for the Chew river near Bristol.</p>
-<p>We’ll resume our work on the catchment daily rainfall timeseries. Let me do all the reading again for you:</p>
+<p>After last week’s assignment, the catchment daily rainfall data (<code class="docutils literal notranslate"><span class="pre">53004_cdr.csv</span></code>) should already be in your <code class="docutils literal notranslate"><span class="pre">data/csv</span></code> folder. As a reminder, these are <a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">gridded precipitation data averaged over the Chew river catchment</a> near Bristol.</p>
+<p>We’ll resume our work on the daily rainfall timeseries. Let me do all the reading for you:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/53004_cdr.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -475,9 +477,22 @@
 </div>
 </div>
 </div>
-<section id="generalise-the-compute-of-empirical-return-periods-with-a-function">
-<h3>Generalise the compute of empirical return periods with a function<a class="headerlink" href="#generalise-the-compute-of-empirical-return-periods-with-a-function" title="Link to this heading">#</a></h3>
-<p>As explained in the previous lesson, the computation of return periods involves ranking the data and then compute return periods based on these ranks (an event of rank 1 has a low probability of exceedance and a long return period, while an event ranked last has a high probability of exceedance and a short return period). These probabilities and ranks can be computed on data of any size and any type, therefore it can be generalised with a function:</p>
+<p><strong>Q: in case you have forgotten, familiarise yourself again with the <code class="docutils literal notranslate"><span class="pre">cdr</span></code> timeseries (start / end date, datatype, units…).</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="generalise-the-computation-of-empirical-return-periods-with-a-function">
+<h3>Generalise the computation of empirical return periods with a function<a class="headerlink" href="#generalise-the-computation-of-empirical-return-periods-with-a-function" title="Link to this heading">#</a></h3>
+<p>As explained in the previous lesson, computing return periods involves ranking the data and then calculating return periods based on these ranks.</p>
+<ul class="simple">
+<li><p>An event of <em>rank 1</em> has a <em>low probability of exceedance</em> and a <em>long return period</em>.</p></li>
+<li><p>An event ranked <em>last</em> has a <em>high probability of exceedance</em> and a <em>short return period</em>.</p></li>
+</ul>
+<p>These probabilities and ranks can be computed on data of any size and type, making it possible to generalize the process into a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
@@ -514,7 +529,8 @@
 </div>
 </div>
 </div>
-<p>No need to learn the details of python functions if you don’t want to - the documentation should hopefully help. Now it’s simple to compute the empirical return levels of any sample, say for example annual extreme daily precipitation at Chew valley:</p>
+<p>No need to learn the details of python functions if you don’t want to - but if you want a gentle but thorough introduction, check out the <a class="reference external" href="https://www.py4e.com/html3/04-functions">Python4Everybody</a> lecture notes.</p>
+<p>Using this function, it’s simple to compute the empirical return levels of any sample, say for example annual extreme daily precipitation at Chew valley:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Annual daily maxima</span>
@@ -538,17 +554,22 @@
 <img alt="../_images/6774e3b003e6191c28c66514fd665c37177877ceef779e027315a46ed9787e09.png" src="../_images/6774e3b003e6191c28c66514fd665c37177877ceef779e027315a46ed9787e09.png" />
 </div>
 </div>
-<p>The plot above is the same than last week. Now let’s make an experiment. How would the return levels change if the most extreme event didn’t happen and was replaced, say, with a “normal” annual precipitation maxima? Let’s play the game:</p>
+</section>
+<section id="how-robust-are-these-results">
+<h3>How robust are these results?<a class="headerlink" href="#how-robust-are-these-results" title="Link to this heading">#</a></h3>
+<p>Now let’s make an experiment. How would the return levels change if the most extreme event didn’t happen and was replaced, say, with a “normal” annual precipitation maxima? Let’s test this scenario:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Annual daily maxima - but altered. We replace the max with the median</span>
-<span class="n">annual_max_fake</span> <span class="o">=</span> <span class="n">cdr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Annual daily maxima - but altered </span>
+<span class="c1"># We copy the real data...</span>
+<span class="n">annual_max_fake</span> <span class="o">=</span> <span class="n">annual_max</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># ... and replace the max value with the median</span>
 <span class="n">annual_max_fake</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">annual_max_fake</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">annual_max_fake</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>E: Explore the content of <code class="docutils literal notranslate"><span class="pre">annual_max</span></code> and <code class="docutils literal notranslate"><span class="pre">annual_max_fake</span></code>. Can you spot the one difference? What is the new maximal value?</strong></p>
+<p><strong>E: Explore the content of <code class="docutils literal notranslate"><span class="pre">annual_max</span></code> and <code class="docutils literal notranslate"><span class="pre">annual_max_fake</span></code>. Can you spot the one difference? What is the new maximal value for <code class="docutils literal notranslate"><span class="pre">annual_max_fake</span></code>?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -579,19 +600,26 @@
 <img alt="../_images/5db9d41388bfacaec438482d4f0274d7d5c0ec572be3a91ea95419fdf6656b9f.png" src="../_images/5db9d41388bfacaec438482d4f0274d7d5c0ec572be3a91ea95419fdf6656b9f.png" />
 </div>
 </div>
-<p><strong>E: either by looking at the plot (with or without logarithmic scales) or by looking at the <code class="docutils literal notranslate"><span class="pre">edf</span></code> and <code class="docutils literal notranslate"><span class="pre">edf_fake</span></code> variables, adress the following questions:</strong></p>
+<p><strong>E: either by looking at the plot (with or without logarithmic scales) or by looking at the <code class="docutils literal notranslate"><span class="pre">edf</span></code> and <code class="docutils literal notranslate"><span class="pre">edf_fake</span></code> variables, answer the following questions:</strong></p>
 <ul class="simple">
 <li><p><strong>what is the approximate return level of a 30-year precipitation event in each case (real or “altered”)?</strong></p></li>
 <li><p><strong>what is the approximate return period of a 55 mm/day precipitation event in each case (real or “altered”)?</strong></p></li>
-<li><p><strong>is there any visible impact for the “lower” extreme values, i.e. &lt; 30 mm/day?</strong>
-<strong>Discuss the robustness of empirical return periods based on this simple example.</strong></p></li>
+<li><p><strong>is there any visible impact for the “lower” extreme values, i.e. &lt; 30 mm/day?</strong></p></li>
 </ul>
+<p><strong>Discuss the robustness of empirical return periods based on this simple example.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="bonus-get-a-sense-of-empirical-uncertainty-with-bootstrapping">
 <h3>Bonus: get a sense of empirical uncertainty with “bootstrapping”<a class="headerlink" href="#bonus-get-a-sense-of-empirical-uncertainty-with-bootstrapping" title="Link to this heading">#</a></h3>
 <p>We have seen above that even a very small change in the data series can have large consequences for the computation of return levels and return periods, especially for very rare events. Intuitively, this makes sense: rare events are, by definition, rare and difficult to predict. Until they actually occur, we are prone to making large errors in estimating their probability of occurrence or their intensity.</p>
-<p>Another way to understand this uncertainty is by considering the 1968 flood event. It occurred after only 10 years of measurements, meaning that if we had performed this exercise at the time, its empirical return period would have been estimated at 10 years. Today, after 60 years of measurements, the empirical return period has increased to 60 years because no stronger event has occurred since. In short, we have likely still underestimated the true return period of this event, as we lack insights into the next, even larger event that may occur in the future.</p>
-<p>Beyond these qualitative considerations, there are more quantitative methods to explore the uncertainty arising from the fact that our records are always too short to fully capture extreme values—even when they span 60 years. A key technique that allows us to assess this uncertainty using the data itself is called bootstrapping, named after the saying “pulling oneself up by one’s bootstraps.” In essence, we will leverage our limited dataset to estimate the uncertainty that arises from its finite length.</p>
+<p>Another way to understand this uncertainty is by considering the 1968 flood event. It occurred after only 10 years of measurements, meaning that if we had performed this exercise at the time, its empirical return period would have been estimated at 10 years. Today, after 60 years of measurements, the empirical return period has increased to 60 years because no stronger event has occurred since. In short, we have likely still underestimated the true return period of this event, as we can’t predict how long this event will continue to be the largest ever recorded.</p>
+<p>Beyond these qualitative considerations, there are more quantitative methods to explore the uncertainty arising from the fact that our records are <em>always</em> too short to fully capture extreme values - even when they span 60 years. A key technique that allows us to assess this uncertainty using the data itself is called bootstrapping, named after the saying “pulling oneself up by one’s bootstraps.” In essence, we will leverage our limited dataset to estimate the uncertainty that arises from its finite length.</p>
 <p>Quoting <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial2.html">climatematch</a>:</p>
 <blockquote>
 <div><p>This method works by assuming that while we have limited data, the data that we do have is nevertheless a representative sample of possible events - that is we assume that we did not miss anything systematic. Then, we use the data as a distribution to draw “fake” observations from, and compute uncertainties using those:</p>
@@ -632,11 +660,11 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ab4401f2c860615d1f3c8c040b52267ca632c455d2bec4aeb2685d8ed1438fad.png" src="../_images/ab4401f2c860615d1f3c8c040b52267ca632c455d2bec4aeb2685d8ed1438fad.png" />
+<img alt="../_images/e2c0f751f65b52aa263e18a12f0fb14d0ed67aab5525ccc92cc219cb96ae37da.png" src="../_images/e2c0f751f65b52aa263e18a12f0fb14d0ed67aab5525ccc92cc219cb96ae37da.png" />
 </div>
 </div>
 <p>The plot above (Fig. 3) is a generalisation of “Fig. 2” further up. While the previous attempt was only one example, in the above we explored many other possible sequences of 60 years, where certain extreme events happened more, or less often than they happened in reality.</p>
-<p><strong>Q: by looking at the plot (possibly by trying with / without log axes), answer the following questions:</strong></p>
+<p><strong>Q: by looking at the plot (possibly by trying with / without logarithmic axes), answer the following questions:</strong></p>
 <ul class="simple">
 <li><p><strong>What is the full possible range of return periods for a 100 mm/day event, based on the bootstrapped samples?</strong></p></li>
 <li><p><strong>What is the full possible range of return levels for a 50-year event, based on the bootstrapped samples?</strong></p></li>
@@ -653,7 +681,7 @@ Remember, this only works under the assumption that our data is representative o
 </section>
 <section id="the-gev-distribution">
 <h2>The GEV distribution<a class="headerlink" href="#the-gev-distribution" title="Link to this heading">#</a></h2>
-<p>To address some of the limitations of empirical return values and to make predictions about return levels and return periods for events that haven’t occurred yet, risk analysts rely on a branch of statistics called <a class="reference external" href="https://en.wikipedia.org/wiki/Extreme_value_theory">extreme value theory</a>. We won’t cover all the details here — you’ll learn them if you need them for your dissertation or future job — but it’s still useful to have a basic understanding of how it works.</p>
+<p>To address some of the limitations of empirical return values and to make predictions about return levels and return periods for events that haven’t occurred yet, risk analysts rely on a branch of statistics called <a class="reference external" href="https://en.wikipedia.org/wiki/Extreme_value_theory">extreme value theory</a>. We won’t cover all the details here (you’ll learn them if you need them for your dissertation or future job!) but it’s still useful to have a basic understanding of how it works.</p>
 <p>Let’s start by recalling that probabilities of exceedance (the inverse of return periods) can be computed from theoretical distributions. Last week, we used a Gaussian distribution to calculate probabilities of exceedance. The approach we’ll take here follows the same principle, but with one key observation: while a Gaussian distribution provides a reasonable representation of daily temperatures, it does not adequately capture extreme values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -663,9 +691,13 @@ Remember, this only works under the assumption that our data is representative o
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of annual max daily precipitation at Chew&#39;</span><span class="p">);</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily precipitation (mm/day)&#39;</span><span class="p">);</span>
 
-<span class="c1"># add PDF</span>
+<span class="c1"># Normal distrib parameters</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
+<span class="n">std_dev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
+
+<span class="c1"># add PDF to the plot</span>
 <span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">annual_max</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">annual_max</span><span class="p">))</span>
+<span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian PDF&#39;</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
@@ -675,9 +707,9 @@ Remember, this only works under the assumption that our data is representative o
 <img alt="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" src="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" />
 </div>
 </div>
-<p><strong>Q: describe qualitatively how well (or how bad) the Gaussian distribution fits the data. Is there a tendency to underestimate the occurence of some values? Or overestimate others?</strong></p>
-<p><strong>Bonus excercise (optional): a good way to check if a distribution matches the data well is to generate a <a class="reference external" href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">Q-Q plot</a>. This is not a statistics class - but if you are adventurous, visit <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial3.html#section-1-precipitation-data-histogram-and-normal-distribution">climatematch</a> for some context, and code your own below!</strong></p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/fmaussion/climate_risks/refs/heads/main/book/img/qq_gaussian.png">Q-Q plot for the bonus exercise</a>, &amp; <a class="reference external" href="https://github.com/fmaussion/climate_risks/blob/main/book/ws06/qqplot.py">code</a>.</p>
+<p><strong>Q: describe qualitatively how well (or how poorly) the Gaussian distribution fits the data. Is there a tendency to underestimate the occurence of some values? Or overestimate others?</strong></p>
+<p><strong>Bonus excercise (optional): a good way to check if a distribution matches the data well is to generate a <a class="reference external" href="https://en.wikipedia.org/wiki/Q%E2%80%93Q_plot">Q-Q plot</a>. We are not in a statistics class and therefore I won’t delve into the details here - but if you are adventurous, visit <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial3.html#section-1-precipitation-data-histogram-and-normal-distribution">climatematch</a> for some context, and code your own Q-Q plot below!</strong></p>
+<p><em>Solution: <a class="reference external" href="https://raw.githubusercontent.com/fmaussion/climate_risks/refs/heads/main/book/img/qq_gaussian.png">Q-Q plot</a>, <a class="reference external" href="https://github.com/fmaussion/climate_risks/blob/main/book/ws06/qqplot.py">code</a></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -716,7 +748,7 @@ Remember, this only works under the assumption that our data is representative o
 
 <span class="c1"># add Gaussian PDF</span>
 <span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
-<span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">annual_max</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">annual_max</span><span class="p">))</span>
+<span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian PDF&#39;</span><span class="p">);</span>
 
 <span class="c1"># add GEV PDF</span>
@@ -734,8 +766,8 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 <p><strong>Q: Describe (qualitatively) how the GEV matches the data. Now look closely at the more extreme values in the range - do you see an improvement here as well?</strong></p>
 <p><strong>E: in a separate graph, try various values for the shape, location and scale parameters, and see how it influences the distribution.</strong> <em>Hint: you can get some inspiration from <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial3.html#coding-exercise-1">climatematch</a></em>.</p>
-<p><strong>Bonus exercise: if you did the qq plot exercise above, repeat it here. Does it look better?</strong>\</p>
-<p><a class="reference external" href="https://raw.githubusercontent.com/fmaussion/climate_risks/refs/heads/main/book/img/qq_gev.png">Q-Q plot for the bonus exercise</a></p>
+<p><strong>Bonus exercise: if you did the qq plot exercise above, repeat it here. Does it look better?</strong></p>
+<p><em>Solution: <a class="reference external" href="https://raw.githubusercontent.com/fmaussion/climate_risks/refs/heads/main/book/img/qq_gev.png">Q-Q plot</a></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -744,15 +776,15 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 </section>
-<section id="computing-return-levels-and-return-periods-with-the-gev">
-<h3>Computing return levels and return periods with the GEV<a class="headerlink" href="#computing-return-levels-and-return-periods-with-the-gev" title="Link to this heading">#</a></h3>
+<section id="computing-return-periods-with-the-gev">
+<h3>Computing return periods with the GEV<a class="headerlink" href="#computing-return-periods-with-the-gev" title="Link to this heading">#</a></h3>
 <p>Now we have a mathematical representation of the distribution of our extreme values. Unlike our previous computations on a discrete sample of values, we can now use SciPy to compute return levels and return periods for <em>any event</em> using a continuous distribution.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">stats.genextreme.cdf()</span></code> gives us the <strong>cumulative distribution function (CDF)</strong> for a given value.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">stats.genextreme.ppf()</span></code> provides the <strong>inverse of the CDF</strong> (also called the <strong>percent point function, PPF</strong>).</p></li>
 </ul>
 <p>These may sound like complex terms, but they represent simple concepts that are best understood through examples.</p>
-<p>Last week, we learned that the <strong>probability of exceedance</strong> is simply:</p>
+<p>Last week and in the lectures, we learned that the <strong>probability of exceedance</strong> is simply:</p>
 <div class="math notranslate nohighlight">
 \[
 P(X \geq x) = 1 - F(x)
@@ -761,9 +793,9 @@ P(X \geq x) = 1 - F(x)
 <p>For example, to compute the probability of exceedance for a return level of <strong>50 mm/day</strong>, we can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
-<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Between 0 and 1. Multiply by 100 for %</span>
-<span class="sa">f</span><span class="s1">&#39;The probability of exceedance for a return level of </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">p</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Between 0 and 1. Multiply by 100 for %</span>
+<span class="sa">f</span><span class="s1">&#39;The probability of exceedance for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -799,10 +831,10 @@ T = \frac{1}{1 - F(x)}
 <p>Or, in python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
-<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span> 
 <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">p</span>
-<span class="sa">f</span><span class="s1">&#39;The return period for a return level of </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> years&#39;</span>
+<span class="sa">f</span><span class="s1">&#39;The return period for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> years&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -820,6 +852,9 @@ T = \frac{1}{1 - F(x)}
 </div>
 </div>
 </div>
+</section>
+<section id="computing-return-levels-with-the-gev">
+<h3>Computing return levels with the GEV<a class="headerlink" href="#computing-return-levels-with-the-gev" title="Link to this heading">#</a></h3>
 <p>We have now learned how to compute <strong>return periods</strong> for a given level. But what about the inverse, i.e. <strong>computing a return level</strong> from a chosen return period?</p>
 <p>This is where the <strong>percent point function (PPF)</strong> comes into play. The PPF is the inverse of the <strong>cumulative distribution function (CDF)</strong> and allows us to determine the return value <span class="math notranslate nohighlight">\(x\)</span> associated with a given probability.</p>
 <p>Since the <strong>return period</strong> is defined as:</p>
@@ -835,15 +870,15 @@ x = F^{-1}(1 - \frac{1}{T})
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x\)</span> is the <strong>return level</strong> for a given return period <span class="math notranslate nohighlight">\(T\)</span>,</p></li>
-<li><p><span class="math notranslate nohighlight">\(F^{-1}\)</span> is the <strong>inverse CDF</strong> (also called the PPF),</p></li>
+<li><p><span class="math notranslate nohighlight">\(F^{-1}\)</span> is the <strong>inverse CDF</strong> (also called the <strong>PPF</strong>),</p></li>
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is the <strong>return period</strong> (e.g., 100 years for a 100-year event).</p></li>
 </ul>
 <p>Or, in python:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># chosen return period in years</span>
-<span class="n">v</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Return value</span>
-<span class="sa">f</span><span class="s1">&#39;The return value for an </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day&#39;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Return value</span>
+<span class="sa">f</span><span class="s1">&#39;The return value for an </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -870,8 +905,8 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 </section>
-<section id="the-gev-return-level-return-values-plot">
-<h3>The GEV return level / return values plot<a class="headerlink" href="#the-gev-return-level-return-values-plot" title="Link to this heading">#</a></h3>
+<section id="a-graphical-summary">
+<h3>A graphical summary<a class="headerlink" href="#a-graphical-summary" title="Link to this heading">#</a></h3>
 <p>Let’s summarize all the computations above in a single plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,7 +923,7 @@ x = F^{-1}(1 - \frac{1}{T})
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV&#39;</span><span class="p">)</span>
 
 <span class="c1"># Gaussian return values for these years</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">annual_max</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">annual_max</span><span class="o">.</span><span class="n">std</span><span class="p">()),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
@@ -900,7 +935,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d8e8d369380737a5c7094dd3741852801ff14b89ce7cd84147a7ed82819295e6.png" src="../_images/d8e8d369380737a5c7094dd3741852801ff14b89ce7cd84147a7ed82819295e6.png" />
+<img alt="../_images/6353de099dd6bd4462595fb0e647ca6938b923cc48af9f61dfe2f0be63dc0183.png" src="../_images/6353de099dd6bd4462595fb0e647ca6938b923cc48af9f61dfe2f0be63dc0183.png" />
 </div>
 </div>
 <p>Remember that the purpose of the GEV is to address some of the issues posed by empirical return levels (as explained above) and by the use of gaussian distribution for highly non-normal extreme values distributions.</p>
@@ -965,14 +1000,16 @@ x = F^{-1}(1 - \frac{1}{T})
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-1968-bristol-flood">Revisiting the 1968 Bristol flood</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalise-the-compute-of-empirical-return-periods-with-a-function">Generalise the compute of empirical return periods with a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalise-the-computation-of-empirical-return-periods-with-a-function">Generalise the computation of empirical return periods with a function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-robust-are-these-results">How robust are these results?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bonus-get-a-sense-of-empirical-uncertainty-with-bootstrapping">Bonus: get a sense of empirical uncertainty with “bootstrapping”</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gev-distribution">The GEV distribution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-the-gev">Fitting the GEV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-levels-and-return-periods-with-the-gev">Computing return levels and return periods with the GEV</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-gev-return-level-return-values-plot">The GEV return level / return values plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-periods-with-the-gev">Computing return periods with the GEV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-return-levels-with-the-gev">Computing return levels with the GEV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-graphical-summary">A graphical summary</a></li>
 </ul>
 </li>
 </ul>
@@ -1001,7 +1038,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 25, 2025.
+  Last updated on Feb 26, 2025.
   <br/>
 </p>
   </div>

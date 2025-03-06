@@ -27,7 +27,7 @@ Open a miniforge prompt (or a terminal on Linux/macOS) and type:
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge python=3.12 jupyterlab numpy scipy matplotlib xarray netcdf4 cartopy
+conda create --name qcr --channel conda-forge python=3.12 jupyterlab numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
 ```
 
 ````
@@ -36,14 +36,14 @@ conda create --name qcr --channel conda-forge python=3.12 jupyterlab numpy scipy
 :sync: forge
 
 ```
-mamba create --name qcr --channel conda-forge jupyterlab numpy scipy matplotlib xarray netcdf4 cartopy
+mamba create --name qcr --channel conda-forge jupyterlab numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
 ```
 
 ````
 
 `````
 
-This will install both jupyter-lab and all the packages at the same time. Say "yes" to the install question. To check if it worked, type `ipython
+This will install jupyter-lab and all the packages at the same time. Say "yes" to the install question. To check if it worked, type `ipython
 ` in the terminal, which should display something like:
 
 ```none
@@ -57,6 +57,10 @@ In [1]:
 The only *visual* difference between the `ipython` and `python` interpreters is that `>>>` has been replaced by `In [1]:`. More on this in class if you are interested.
 
 Exit `ipython` (remember how? Use `exit()`) and move on to the next step.
+
+```{note}
+The packages `geopandas` and `rioxarray` have been added as a requirement for Workshop 7. To install them *in an existing `qcr` environment*, start by activating the environment with `conda activate qcr` and then type `mamba install --channel conda-forge geopandas rioxarray` or, if `mamba` is not available, `conda install --channel conda-forge geopandas rioxarray`.
+```
 
 ## Opening JupyterLab in the qcr environment and folder
 

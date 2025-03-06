@@ -111,3 +111,15 @@ For this workshop, we will use the following timeseries at Heathrow airport:
 - [gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv)
 
 The content of these files is explained in the assignment.
+
+## Glacier data
+
+For Workshop 07, we will use data from the [OGGM standard projections](https://github.com/OGGM/oggm-standard-projections-csv-files). We will use the data organised in river basins, which is a bit more hidden than the globally aggregated files.
+
+All 75 river basins (see workshop 07, lesson 02) are available in a single folder: [https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/). Basins are numbered, and I recommend to download the tar file for the basin you are interested in. These folder contain projection data for the scenarios ssp126 and ssp585.
+
+**For workshop 07, you will need three files to get started**:
+
+- glacier projections for the Rhone basin (id 6243), a netCDF file: [6243.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/6243.tar.gz)
+- statistics for all glaciers in the world (a csv file): [rgi60_stats.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/rgi60_stats.csv)
+- the river basins outlines (a shapefile): [glacier_basins.zip](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/glacier_basins.zip)

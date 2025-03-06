@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Feb 26, 2025"/>
+    <meta name="docbuild:last-update" content="Mar 06, 2025"/>
   </head>
   
   
@@ -211,6 +211,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson: extreme value distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 07</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws07/01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws07/02-lesson-basins.html">Lesson 02: geospatial datasets</a></li>
 </ul>
 
     </div>
@@ -455,7 +460,6 @@
 <li><p><strong>Calculate return levels and periods using the GEV:</strong> Derive return levels and periods from the GEV distribution to predict the likelihood of future extreme events.</p></li>
 </ul>
 <p><em><strong>Copyright notice</strong>: substantial parts of this class are inpired by the excellent <a class="reference external" href="https://comptools.climatematch.io/tutorials/W2D3_ExtremesandVariability/student/W2D3_Tutorial2.html">climatematch tutorials</a>. I really recommend you to check them out!</em></p>
-<p>Let’s begin by importing the necessary packages and loading our dataset.</p>
 <p>Let’s start by importing the packages as usual. We’ll continue to use Pandas today.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -662,7 +666,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c098362e0b8b8d32681467257ecfb0b1b75d42ca324ec623ec2095b21c225b6d.png" src="../_images/c098362e0b8b8d32681467257ecfb0b1b75d42ca324ec623ec2095b21c225b6d.png" />
+<img alt="../_images/1fbb3757fad6280b721ae0449c513068bd4371a7bbdbb4313d1ed7f5d7100e33.png" src="../_images/1fbb3757fad6280b721ae0449c513068bd4371a7bbdbb4313d1ed7f5d7100e33.png" />
 </div>
 </div>
 <p>The plot above (Fig. 3) is a generalisation of “Fig. 2” further up. While the previous attempt was only one example, in the above we explored many other possible sequences of 60 years, where certain extreme events happened more, or less often than they happened in reality.</p>
@@ -811,6 +815,32 @@ P(X \geq x) = 1 - F(x)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_mean</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_mean</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 3, 4, 5]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(3.5)
 </pre></div>
 </div>
 </div>
@@ -877,7 +907,7 @@ x = F^{-1}(1 - \frac{1}{T})
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># chosen return period in years</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Return value</span>
-<span class="sa">f</span><span class="s1">&#39;The return value for an </span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day&#39;</span>
+<span class="sa">f</span><span class="s1">&#39;The return value for an </span><span class="si">{</span><span class="mi">100</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -986,7 +1016,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/52dd9964c65aacb415d89396f5cb4971c923208331fd363ed11d1252c627b576.png" src="../_images/52dd9964c65aacb415d89396f5cb4971c923208331fd363ed11d1252c627b576.png" />
+<img alt="../_images/5f9198af6e17687781b0ad39a0662a548e307d7f3f7b4a3a8085a0aa1c1df569.png" src="../_images/5f9198af6e17687781b0ad39a0662a548e307d7f3f7b4a3a8085a0aa1c1df569.png" />
 </div>
 </div>
 </section>
@@ -1106,7 +1136,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Feb 26, 2025.
+  Last updated on Mar 06, 2025.
   <br/>
 </p>
   </div>

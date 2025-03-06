@@ -66,6 +66,7 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment: future glacier change" href="03-assignment-glacier-future.html" />
     <link rel="prev" title="Lesson 01: future glacier change" href="01-lesson-glaciers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,6 +214,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 02: geospatial datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-assignment-glacier-future.html">Assignment: future glacier change</a></li>
 </ul>
 
     </div>
@@ -422,8 +424,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-glacier-locations-and-other-statistics">Global glacier locations and other statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glacier-locations-and-other-global-statistics">Glacier locations and other global statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#river-basins-shapefile">River basins shapefile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-geopandas">Plotting with geopandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-out-in-which-basin-each-glacier-belongs">Finding out in which basin each glacier belongs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
@@ -439,12 +442,21 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lesson-02-geospatial-datasets">
 <h1>Lesson 02: geospatial datasets<a class="headerlink" href="#lesson-02-geospatial-datasets" title="Link to this heading">#</a></h1>
-<p>In this lesson we will use a typical use case in glacier research as a excuse to learn something about simple geospatial checks.</p>
-<p>The main question we are trying to address is: how do we know which of the &gt; 200’000 glaciers worldwide are located in the Rhone basin? And in the Indus basin?</p>
+<p>In this lesson we will use a typical use case in glacier research as an opportunity to learn about geospatial joins: a very common operation in climate risk analysis, to align datasets with each other.</p>
+<p>The main question we are trying to address is: <strong>how do we know which of the &gt; 200’000 glaciers worldwide are located in the Rhone basin? And in the Indus basin? And in the other basins?</strong></p>
+<p>This question is similar to asking: which cities were affected by the drought, if I know the location of cities and the extent of the drought? And many similar questions.</p>
 <p>Let’s start by importing the packages. We have a new package this week!</p>
-<div class="alert alert-success">
-    This workshop and the next require the installation of new python packages. This needs to be done once on the machine you are running this notebook. You can head to [the install instruction]() page to find the instructions.
-</div><div class="cell docutils container">
+<div class="alert alert-warning">
+    This workshop and the next require the installation of new python packages. This needs to be done once on the machine you are running this notebook. Find the instructions below.
+</div>
+<p><strong>Installing additional packages in an existing environmnent is easy:</strong></p>
+<ol class="arabic simple">
+<li><p>Start by opening a prompt and activating the <code class="docutils literal notranslate"><span class="pre">qcr</span></code> environment as usual: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">qcr</span></code></p></li>
+<li><p>Now, install the requested packages. Let’s install a few at a time: type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">--channel</span> <span class="pre">conda-forge</span> <span class="pre">cftime</span> <span class="pre">geopandas</span> <span class="pre">rioxarray</span></code> (or, if <code class="docutils literal notranslate"><span class="pre">mamba</span></code> is not available, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">--channel</span> <span class="pre">conda-forge</span> <span class="pre">cftime</span> <span class="pre">geopandas</span> <span class="pre">rioxarray</span></code>). Answer yes to the questions.</p></li>
+<li><p>That’s it! you can start jupyter-lab as usual.</p></li>
+</ol>
+<p>After having completed the steps above, this should run without error:</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -462,14 +474,14 @@
 <li><p><a class="reference external" href="https://geopandas.org/en/stable/"><strong>GeoPandas</strong></a> extends Pandas to handle spatial data, making it easier to work with geographic  datasets such as river basins, and much, much more.</p></li>
 <li><p><a class="reference external" href="https://shapely.readthedocs.io/en/stable/"><strong>Shapely</strong></a> provides geometric objects and operations, which geopandas uses under the hood to manipulate spatial features. We’ll cross that bridge when it comes.</p></li>
 </ul>
-<section id="global-glacier-locations-and-other-statistics">
-<h2>Global glacier locations and other statistics<a class="headerlink" href="#global-glacier-locations-and-other-statistics" title="Link to this heading">#</a></h2>
-<p>Head to the <a class="reference internal" href="#"><span class="xref myst">data download page</span></a> and download the two files:</p>
+<section id="glacier-locations-and-other-global-statistics">
+<h2>Glacier locations and other global statistics<a class="headerlink" href="#glacier-locations-and-other-global-statistics" title="Link to this heading">#</a></h2>
+<p>Head to the <a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#glacier-data">data download page</a> and download the two files:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">glacier_basins.zip</span></code>: I put this file in a new <code class="docutils literal notranslate"><span class="pre">glaciers</span></code> folder I created in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder, and extracted it (the zip extraction is important!)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rgi60_stats.csv</span></code>: I also put this file in the <code class="docutils literal notranslate"><span class="pre">glaciers</span></code> folder</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">rgi60_stats.csv</span></code> is a csv file - we know how to deal with these files now:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rgi60_stats.csv</span></code> is a csv file - we know how to deal with these files now!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/glaciers/rgi60_stats.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -485,7 +497,7 @@
 </div>
 </div>
 </div>
-<p>This table was generated by me based on the <a class="reference external" href="https://www.glims.org/RGI/">Randolph Glacier Inventory</a> version 6.</p>
+<p>This table was generated based on the <a class="reference external" href="https://www.glims.org/RGI/">Randolph Glacier Inventory</a> version 6.</p>
 <p>Here are a few explanations for the most relevant columns:</p>
 <ul class="simple">
 <li><p><strong>RGIId</strong>: The unique identifier for each glacier in the Randolph Glacier Inventory (RGI).</p></li>
@@ -498,15 +510,15 @@
 <li><p><strong>Aspect</strong>: The dominant aspect (orientation) of the glacier, measured in degrees (0° = North, 90° = East, 180° = South, 270° = West).</p></li>
 <li><p><strong>Name</strong>: The given name of the glacier, if available. Many glaciers remain unnamed and are recorded as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p></li>
 </ul>
-<p>This dataset provides a static snapshot of glaciers at the time of their delineation, meaning it does not track their changes over time. The RGI’s primary goal is to provide glacier <strong>outlines</strong> - here I scrapped them out of the file and only provide some statistics.</p>
-<p>Here are a few questions to get you started:</p>
+<p>This dataset provides a static snapshot of glaciers at the time of their delineation, meaning it does not track their changes over time. The RGI’s primary goal is to provide glacier outlines - to reduce the dataset I scrapped the outlines out of the file and only provide the outlines attributes.</p>
+<p><strong>Q: Here are a few questions to get you started:</strong></p>
 <ul class="simple">
-<li><p>how many glaciers are there in the RGI?</p></li>
-<li><p>what is their total area?</p></li>
-<li><p>what is the maximum glacier elevation?</p></li>
-<li><p>can you plot a histogram of the <code class="docutils literal notranslate"><span class="pre">Aspect</span></code> of the glaciers? What is the dominant direction of glaciers? Was it predictable?</p></li>
-<li><p>optional: select all glaciers in the northern hemisphere, and repeat the histogram</p></li>
-<li><p>optional: now group the glaciers per <code class="docutils literal notranslate"><span class="pre">O1Region</span></code> (hint: <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>), and compute the total area per RGI region</p></li>
+<li><p><strong>how many glaciers are there in the RGI?</strong></p></li>
+<li><p><strong>what is their total area?</strong></p></li>
+<li><p><strong>what is the maximum glacier elevation?</strong></p></li>
+<li><p><strong>can you plot a histogram of the <code class="docutils literal notranslate"><span class="pre">Aspect</span></code> of the glaciers? What is the dominant direction of glaciers? Was it predictable?</strong></p></li>
+<li><p><strong>optional: select all glaciers in the northern hemisphere, and repeat the histogram</strong></p></li>
+<li><p><strong>optional: now group the glaciers per <code class="docutils literal notranslate"><span class="pre">O1Region</span></code> category (hint: <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>), and compute the total area per RGI region.</strong></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -515,9 +527,9 @@
 </div>
 </div>
 </div>
-<p>The RGI glaciers are organised in main regions as shown on this map:</p>
-<img src="https://raw.githubusercontent.com/GLIMS-RGI/rgi_user_guide/main/docs/img/global_stats/global_map.jpeg" alt="Global Glacier Map" width="700"><p>Good! There is a lot more we could explore with this dataset, but we have to get going with more pressing matters. We’d like to use this dataset to select glacier model projection data for the glaciers of our choice. In the next section, we’ll try to find out which of all these glaciers is located in the Rhone basin.</p>
-<p>For this the <code class="docutils literal notranslate"><span class="pre">CenLon</span></code> and <code class="docutils literal notranslate"><span class="pre">CenLat</span></code> columns might be useful, but there is so much we can do with a table. I can start by plotting the glacier locations on a scatter plot, but this is not really “geospatial” yet:</p>
+<p>The RGI glaciers are organised in main regions as shown on the map below. Many publications will refer to these regions, but you may notice that they are not very useful from an adaptation standpoint. Communities and water resource managers will be more likely to be interested in river basins. It’s the motivation behind this lesson.</p>
+<img src="https://raw.githubusercontent.com/GLIMS-RGI/rgi_user_guide/main/docs/img/global_stats/global_map.jpeg" alt="Global Glacier Map" width="700"><p>There is a lot more we could explore with this dataset, but we have to get going with more pressing matters.</p>
+<p>For our main goal (attributing glaciers to a given basin), the <code class="docutils literal notranslate"><span class="pre">CenLon</span></code> and <code class="docutils literal notranslate"><span class="pre">CenLat</span></code> columns might be useful. I can start by plotting the glacier locations on a scatter plot, but this is not really “geospatial” yet:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;CenLon&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;CenLat&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span>
@@ -528,14 +540,14 @@
 <img alt="../_images/80f631c0a6cfa0d6534f8af5ac9e901f86c971bc5d069f6a8a7331b4e94521ad.png" src="../_images/80f631c0a6cfa0d6534f8af5ac9e901f86c971bc5d069f6a8a7331b4e94521ad.png" />
 </div>
 </div>
+<p>We’ll get back to glacier locations once we are aquainted with the river basins file.</p>
 </section>
 <section id="river-basins-shapefile">
 <h2>River basins shapefile<a class="headerlink" href="#river-basins-shapefile" title="Link to this heading">#</a></h2>
 <p>Let’s open the second dataset you downloaded. You should have a <code class="docutils literal notranslate"><span class="pre">glacier_basins</span></code> folder containing five files. In a way, these are all parts of the same dataset, which is referenced by the main file: <strong><code class="docutils literal notranslate"><span class="pre">glacier_basins.shp</span></code></strong>.</p>
-<p>A <strong>Shapefile</strong> is a widely used format for storing vector data in Geographic Information Systems (GIS). Despite the name, a Shapefile is actually a collection of multiple files that work together.
-Shapefiles store <strong>vector data</strong>, which represents geographic features using <strong>Points</strong> (e.g., glacier centroids), <strong>Lines</strong> (e.g., river networks), <strong>Polygons</strong> (e.g., glacier outlines and basins).</p>
+<p>A <strong>shapefile</strong> is a widely used format for storing vector data in Geographic Information Systems (GIS). Shapefiles store <strong>vector data</strong>, which represents geographic features using <strong>Points</strong> (e.g., glacier centroids), <strong>Lines</strong> (e.g., river networks), <strong>Polygons</strong> (e.g., glacier outlines and basins).</p>
 <p>Unlike raster data (grids of pixels), vector data allows for precise geographic representation and rich attribute information, and it is structured very differently.</p>
-<p>We can now load the <code class="docutils literal notranslate"><span class="pre">glacier_basins.shp</span></code> file using GeoPandas to explore its content:</p>
+<p>You can now load the <code class="docutils literal notranslate"><span class="pre">glacier_basins.shp</span></code> file using GeoPandas to explore its content:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;../data/glaciers/glacier_basins/glacier_basins.shp&#39;</span><span class="p">)</span>  
@@ -543,7 +555,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">gdf</span></code> is called a “geodataframe”. You’ll find it very convenient, because it ressembles a very normal pandas dataframe in all but one column (<code class="docutils literal notranslate"><span class="pre">geometry</span></code>):</p>
+<p><code class="docutils literal notranslate"><span class="pre">gdf</span></code> is called a “geodataframe”. You’ll find it very convenient! It ressembles a very standard pandas dataframe, except for one column (<code class="docutils literal notranslate"><span class="pre">geometry</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span>
@@ -730,113 +742,6 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 <p>75 rows × 10 columns</p>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>MRBID</th>
-      <th>RIVER_BASI</th>
-      <th>CONTINENT</th>
-      <th>OCEAN</th>
-      <th>SEA</th>
-      <th>AREA_CALC</th>
-      <th>Shape_Leng</th>
-      <th>Shape_Area</th>
-      <th>RGI_AREA</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2103</td>
-      <td>INDIGIRKA</td>
-      <td>Asia</td>
-      <td>Arctic Ocean</td>
-      <td>East Siberian Sea</td>
-      <td>341234.0</td>
-      <td>85.604051</td>
-      <td>70.212499</td>
-      <td>171.941</td>
-      <td>POLYGON ((151.725 70.975, 151.725 70.97083, 15...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2108</td>
-      <td>OB</td>
-      <td>Asia</td>
-      <td>Arctic Ocean</td>
-      <td>Kara Sea</td>
-      <td>3040606.1</td>
-      <td>168.355250</td>
-      <td>448.342075</td>
-      <td>763.493</td>
-      <td>POLYGON ((91.75 57.70417, 91.74542 57.70299, 9...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2302</td>
-      <td>BRAHMAPUTRA</td>
-      <td>Asia</td>
-      <td>Indian Ocean</td>
-      <td>Bay of Bengal</td>
-      <td>540782.5</td>
-      <td>66.054440</td>
-      <td>49.686611</td>
-      <td>10528.496</td>
-      <td>POLYGON ((97.76667 28.77083, 97.76335 28.77168...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2306</td>
-      <td>GANGES</td>
-      <td>Asia</td>
-      <td>Indian Ocean</td>
-      <td>Bay of Bengal</td>
-      <td>1006558.6</td>
-      <td>122.349983</td>
-      <td>90.946880</td>
-      <td>7906.081</td>
-      <td>MULTIPOLYGON (((88.02555 21.5715, 88.02361 21....</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2309</td>
-      <td>INDUS</td>
-      <td>Asia</td>
-      <td>Indian Ocean</td>
-      <td>Arabian Sea</td>
-      <td>865012.6</td>
-      <td>81.286291</td>
-      <td>82.852275</td>
-      <td>27206.546</td>
-      <td>MULTIPOLYGON (((67.44167 23.97006, 67.44028 23...</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p>Operations that work on a dataframe also work on a geodataframe. For example, we can count the number of basins per continent:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -895,7 +800,20 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </table>
 </div></div></div>
 </div>
-<p><strong>Note that this is a subset of all of the word basins. These are all of the world’s large river basins (&gt; 3000 km²) with considerable glacier cover (&gt; 30 km²).</strong> The full dataset can be found at the <a class="reference external" href="https://grdc.bafg.de/products/basin_layers/major_rivers/">Global Runoff Data Centre - Major River Basins</a>.</p>
+<p><strong>Q: Here are a few questions to get you started:</strong></p>
+<ul class="simple">
+<li><p><strong>how many basins are there in the file?</strong></p></li>
+<li><p><strong>what is their total area?</strong> (<em>hint: <code class="docutils literal notranslate"><span class="pre">AREA_CALC</span></code>, in km2</em>)</p></li>
+<li><p><strong>can you print the list of all their names?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note that this dataset contains a subset of all of the word basins. These are all of the world’s large river basins (&gt; 3000 km²) with considerable glacier cover (&gt; 30 km²).</strong> The original dataset (not cropped for glaciers) can be found at the <a class="reference external" href="https://grdc.bafg.de/products/basin_layers/major_rivers/">Global Runoff Data Centre - Major River Basins</a>.</p>
 <p>Using standard pandas methods, we can also compute the total area of glaciers contained in these basins:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,7 +828,31 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </div>
 </div>
 <p><em>Note: This is much less than the total area of glaciers worldwide you compute above, because many glaciers in the polar regions do not have an assigned basin.</em></p>
-<p>However, Geopandas differs from pandas when plotting. When asked to plot a geodataframe, geopandas will plot the geometries:</p>
+<p>We can also compute a useful new statistic: the % of the basin which is covered by glaciers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;glacier_cover&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;RGI_AREA&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;AREA_CALC&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>E: plot a histogram of the <code class="docutils literal notranslate"><span class="pre">glacier_cover</span></code> data. What is the median glacier cover? And what is the basin with the highest percentage of glacier cover?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-with-geopandas">
+<h2>Plotting with geopandas<a class="headerlink" href="#plotting-with-geopandas" title="Link to this heading">#</a></h2>
+<p>So far, this all looked very similar to “standard” pandas. So, what’s the deal with Geopandas? It offers many services, but the main ones are:</p>
+<ol class="arabic simple">
+<li><p>Plotting vector data from the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column (this section)</p></li>
+<li><p>Geospatial operations on the <code class="docutils literal notranslate"><span class="pre">geometry</span></code> column (next section)</p></li>
+</ol>
+<p>Let’s ask for the simplest plot of all:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
@@ -919,6 +861,17 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/2783a323857641aaf81f536ff9e43a1ff131fcdccf137efcb4d1934d05d66da0.png" src="../_images/2783a323857641aaf81f536ff9e43a1ff131fcdccf137efcb4d1934d05d66da0.png" />
+</div>
+</div>
+<p>The basin shapes are provided in the WGS84 (standard lon-lat) projection. Geopandas also comes with handy tools to convert this to any other projection if needed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="s2">&quot;3857&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3d5ea6392e4c6b9167421c404d491bbb0a2044c91d719ae273c89ea5f0accad0.png" src="../_images/3d5ea6392e4c6b9167421c404d491bbb0a2044c91d719ae273c89ea5f0accad0.png" />
 </div>
 </div>
 <p>Geopandas also comes with a lot of handy ways to plot the data, but we’ll learn only one today: assigning colors to attributes of the geometries. Here coloring by basin area:</p>
@@ -934,7 +887,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 <img alt="../_images/a5bea69c99c239aca307864c68a119faf8db89e4b92995d38baade2aec3b6b42.png" src="../_images/a5bea69c99c239aca307864c68a119faf8db89e4b92995d38baade2aec3b6b42.png" />
 </div>
 </div>
-<p><strong>Exercise: now plot the basins again but the color indicating glacier area, not basin area.</strong></p>
+<p><strong>Exercise: now plot the basins again but the color indicating glacier area, not basin area. Then continue with the percentage glacier area per basin (<code class="docutils literal notranslate"><span class="pre">glacier_cover</span></code>).</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -942,7 +895,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </div>
 </div>
 </div>
-<p>Bonus: one can also plot categorical data! See by yourself:</p>
+<p>One can also plot categorical data! See by yourself:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -956,7 +909,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 <img alt="../_images/5746356050b19d2cb3413e8dc01324fe50dd145ae39a1022586082cc79d874ee.png" src="../_images/5746356050b19d2cb3413e8dc01324fe50dd145ae39a1022586082cc79d874ee.png" />
 </div>
 </div>
-<p>And, finally, one can plot on a map projection with cartopy, very much like the first workshops:</p>
+<p>And, finally, one can plot geopandas dataframe on any map projection with cartopy, very much like raster data in the first two workshops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure with custom figsize and projection</span>
@@ -965,12 +918,21 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
          <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;loc&quot;</span><span class="p">:</span> <span class="s2">&quot;lower right&quot;</span><span class="p">},</span>
          <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">());</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;In which ocean does each river flow?&#39;</span><span class="p">);</span> 
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">);</span>  <span class="c1"># Add coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">();</span>  <span class="c1"># Global plot</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/51f7e6b0519eb30562b69b0bbb5a7d6b6a951b1b336101b6b9ff40999781963b.png" src="../_images/51f7e6b0519eb30562b69b0bbb5a7d6b6a951b1b336101b6b9ff40999781963b.png" />
+</div>
+</div>
+<p><strong>In the plot above, what does the <code class="docutils literal notranslate"><span class="pre">---</span></code> basin represent? Is there a name for such basins?</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -979,7 +941,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 <p>So far, we have a dataset of <strong>glaciers</strong> (<code class="docutils literal notranslate"><span class="pre">rgi_df</span></code>) with their geographic coordinates (<code class="docutils literal notranslate"><span class="pre">CenLon</span></code>, <code class="docutils literal notranslate"><span class="pre">CenLat</span></code>), but no spatial information about which river basin they belong to. On the other hand, we have a <strong>GeoDataFrame</strong> (<code class="docutils literal notranslate"><span class="pre">gdf</span></code>) that contains the river basin boundaries as polygons.</p>
 <p>To assign each glacier to a basin, we will:</p>
 <ol class="arabic simple">
-<li><p><strong>Convert glacier locations into geometries</strong>: We will transform <code class="docutils literal notranslate"><span class="pre">CenLon</span></code> and <code class="docutils literal notranslate"><span class="pre">CenLat</span></code> into Shapely Point objects, creating a <strong>GeoDataFrame</strong> from <code class="docutils literal notranslate"><span class="pre">rgi_df</span></code>.</p></li>
+<li><p><strong>Convert glacier locations into geometries</strong>: We will transform <code class="docutils literal notranslate"><span class="pre">CenLon</span></code> and <code class="docutils literal notranslate"><span class="pre">CenLat</span></code> into Shapely Point objects, creating a GeoDataFrame from <code class="docutils literal notranslate"><span class="pre">rgi_df</span></code>.</p></li>
 <li><p><strong>Use a spatial join</strong>: We will use <code class="docutils literal notranslate"><span class="pre">geopandas.sjoin()</span></code> to determine which basin each glacier falls into.</p></li>
 <li><p><strong>Store the basin information</strong>: The result will be a new column in <code class="docutils literal notranslate"><span class="pre">rgi_df</span></code> that tells us which basin each glacier belongs to.</p></li>
 </ol>
@@ -1002,7 +964,7 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </div>
 </div>
 </div>
-<p>Let’s see what we’ve got:</p>
+<p>That’s it! Let’s see what we’ve got:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rgi_df</span>
@@ -1241,17 +1203,17 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 <p>215547 rows × 13 columns</p>
 </div></div></div>
 </div>
+<p>We’ve added a new column (<code class="docutils literal notranslate"><span class="pre">MRBID</span></code>) which assigns a glacier to each basin. Or does it?</p>
+<p><strong>Q: answer the following questions:</strong></p>
+<ul class="simple">
+<li><p><strong>how many glaciers are assigned to the basin 6243 (Rhone)? Does it match what you computed in lesson 01?</strong></p></li>
+<li><p><strong>what is the area of all glaciers in the Rhone?</strong></p></li>
+<li><p><strong>how many glaciers are not attributed to any basin? What is the area of all glaciers with and without a basin?</strong></p></li>
+<li><p><strong>grouping by basin id: what is the basin with the highest avereage median elevation? and the lowest?</strong></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">now</span> <span class="n">have</span> <span class="n">a</span> <span class="n">new</span> <span class="n">column</span> 
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-    <span class="n">We</span> <span class="n">now</span> <span class="n">have</span> <span class="n">a</span> <span class="n">new</span> <span class="n">column</span>
-       <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
 </pre></div>
 </div>
 </div>
@@ -1259,6 +1221,21 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">We</span> <span class="n">have</span><span class="o">...</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">We</span> <span class="n">have</span><span class="o">...</span>
+       <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -1301,6 +1278,15 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
         <p class="prev-next-title">Lesson 01: future glacier change</p>
       </div>
     </a>
+    <a class="right-next"
+       href="03-assignment-glacier-future.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assignment: future glacier change</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1318,8 +1304,9 @@ Shapefiles store <strong>vector data</strong>, which represents geographic featu
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-glacier-locations-and-other-statistics">Global glacier locations and other statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glacier-locations-and-other-global-statistics">Glacier locations and other global statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#river-basins-shapefile">River basins shapefile</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-with-geopandas">Plotting with geopandas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-out-in-which-basin-each-glacier-belongs">Finding out in which basin each glacier belongs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>

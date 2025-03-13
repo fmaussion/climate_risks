@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment: a more intense flood in the future &#8212; Quantifying Climate Risks</title>
+    <title>Assignment: a more intense future flood &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -61,12 +61,14 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ws08/02-assignment-flood';</script>
     <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Lesson: analysing vulnerability and exposure during Hurricane Katrina" href="01-lesson-flood.html" />
+    <link rel="prev" title="Lesson: hazard, vulnerability and exposure during Hurricane Katrina" href="01-lesson-flood.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -217,8 +219,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 08</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-lesson-flood.html">Lesson: analysing vulnerability and exposure during Hurricane Katrina</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: a more intense flood in the future</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01-lesson-flood.html">Lesson: hazard, vulnerability and exposure during Hurricane Katrina</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: a more intense future flood</a></li>
 </ul>
 
     </div>
@@ -418,7 +420,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment: a more intense flood in the future</h1>
+    <h1>Assignment: a more intense future flood</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -447,10 +449,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-a-more-intense-flood-in-the-future">
-<h1>Assignment: a more intense flood in the future<a class="headerlink" href="#assignment-a-more-intense-flood-in-the-future" title="Link to this heading">#</a></h1>
-<p>Having calculated flood risk in the past, lets consider the impacts of the same flood event, but in one of the SSP projected future scenarios. In the data folder you downloaded, you’ll find an additional SFINCS simulation of the flood event. This uses the same meterological forcing as the historic simulation, but it has had sea level uplifted to that indicated by the AR6 sea level projections.</p>
-<p>If you are feeling ambitious, you also have access to the ICLUS population projections, and the scalar field that was supplied with them.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-a-more-intense-future-flood">
+<h1>Assignment: a more intense future flood<a class="headerlink" href="#assignment-a-more-intense-future-flood" title="Link to this heading">#</a></h1>
+<p>Having calculated the cost of Hurricane Katrina in 2015, lets consider the impacts of the same flood event, but in one of the SSP projected future scenarios. In the data folder you downloaded, you’ll find two additional SFINCS simulations of the flood event. These use the same meterological forcing as the historic simulation, but they have had sea level uplifted to that indicated by the AR6 sea level projections. It’s a crude approximation, but allows to answer the question: “what would be the impact of Hurricane Katrina with higher sea levels?”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import packages - these are not new</span>
@@ -470,7 +471,7 @@
 </div>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
-<p>Let’s read the additional datasets together with the historical one:</p>
+<p>Let’s read the additional dataset (here SSP585) together with the historical one:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_hist</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/flood/sfincs_simulations/hindcast_sfincs_map.nc&#39;</span><span class="p">)</span>
@@ -479,19 +480,25 @@
 </div>
 </div>
 </div>
-<p>The data has exactly the same format as in the lesson, but this time I removed the time component to reduce data size. We can therefore extract the max flood extent and depth directly out of the dataset:</p>
+<p>Let’s retrieve historical max flood depth like we did in the lesson:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Historical</span>
 <span class="n">max_flood_depth_hist</span> <span class="o">=</span> <span class="n">ds_hist</span><span class="p">[</span><span class="s1">&#39;zsmax&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;timemax&#39;</span><span class="p">)</span>
-
-<span class="c1"># Projection</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The projection data has the same format as the historical file, but this time I removed the time component to reduce data size. We can therefore extract the max flood extent and depth directly out of the dataset without the use of <code class="docutils literal notranslate"><span class="pre">.max()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Projection</span>
 <span class="n">max_flood_depth_ssp585</span> <span class="o">=</span> <span class="n">ds_ssp585</span><span class="p">[</span><span class="s1">&#39;zsmax&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>Plot the historical max flood depth map. And now the projection scenario. Compare the two.</strong></p>
+<p><strong>Plot the historical flood depth map. And for the projection scenario. Compare the two maps.</strong> (<em>Hint: you can also plot the difference between the two</em>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -502,7 +509,7 @@
 </section>
 <section id="calculate-future-population-risk">
 <h2>Calculate future population risk<a class="headerlink" href="#calculate-future-population-risk" title="Link to this heading">#</a></h2>
-<p><strong>Compute the flood extent for each scenario (historical and future). Compute the flooded area in both cases, assuming that a grid point has an approximate area of 0.036 km2. Did the flood area change much? How about the average flood depth?</strong></p>
+<p><strong>Compute the flood extent for each scenario (historical and future). Compute the flooded area in both cases, assuming that a grid point has an approximate area of 0.036 km<span class="math notranslate nohighlight">\(^2\)</span>. Did the flood area change much? How about the average flood depth?</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -512,7 +519,7 @@
 </div>
 <section id="static-computation-of-the-affected-population">
 <h3>“Static” computation of the affected population<a class="headerlink" href="#static-computation-of-the-affected-population" title="Link to this heading">#</a></h3>
-<p><strong>Now use the WorldPop data from the lesson to compute the affected population in each scenario:</strong></p>
+<p><strong>Now use the WorldPop data from the lesson to compute the total population affected by the flood in each scenario:</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -524,7 +531,7 @@
 </section>
 <section id="projected-computation-of-the-affected-population">
 <h3>“Projected”  computation of the affected population<a class="headerlink" href="#projected-computation-of-the-affected-population" title="Link to this heading">#</a></h3>
-<p>Now attempt to combine the ICLUS population projections with WorldPop to get an estimate of future population exposure. Read in the data first:</p>
+<p>We will now attempt to combine the ICLUS population projections with WorldPop to get an estimate of future population exposure. Read in the data first:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pop_proj</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;../data/flood/population/cropped_ICLUS_v2_1_1_population_stripped.nc&quot;</span><span class="p">)</span>
@@ -548,7 +555,7 @@
 </div>
 </div>
 </div>
-<p><strong>Optional: consider ways for you to plot these differences.</strong></p>
+<p><strong>Optional: run the analysis for various flood depths, and examine wether affected population also changes by flood depth category.</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
@@ -559,9 +566,9 @@
 </section>
 <section id="future-economic-damage">
 <h3>Future economic damage<a class="headerlink" href="#future-economic-damage" title="Link to this heading">#</a></h3>
-<p>Now repeat the damage analysis done in the lesson, with the historical and future scenario.</p>
-<p>Similar to population example above, consider how you might scale future economic data (hint - link economic value to population). Use this scaled value to calculate future damages by extent of the flood.</p>
-<p>Optional: Construct a simple depth-damage realationship to calculate damages by depth. Now assume that some adaptation has taken place (i.e.: damage scales slower with flood depth in the future).</p>
+<p><strong>Now repeat the damage analysis done in the lesson, with the historical and future scenario.</strong></p>
+<p><strong>Similar to population example above, consider how you might scale future economic data (hint - link economic value to population). Use this scaled value to calculate future damages by extent of the flood.</strong></p>
+<p><strong>Optional: Construct a simple depth-damage realationship to calculate damages by depth. Now assume that some adaptation has taken place (i.e.: damage scales slower with flood depth in the future).</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here.</span>
@@ -626,7 +633,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lesson: analysing vulnerability and exposure during Hurricane Katrina</p>
+        <p class="prev-next-title">Lesson: hazard, vulnerability and exposure during Hurricane Katrina</p>
       </div>
     </a>
 </div>

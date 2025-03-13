@@ -123,3 +123,11 @@ All 75 river basins (see workshop 07, lesson 02) are available in a single folde
 - glacier projections for the Rhone basin (id 6243), a netCDF file: [6243.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/6243.tar.gz)
 - statistics for all glaciers in the world (a csv file): [rgi60_stats.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/rgi60_stats.csv)
 - the river basins outlines (a shapefile): [glacier_basins.zip](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/glacier_basins.zip)
+
+## Flood workshop data
+
+For the flood workshop, we prepared a set of dataset for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):
+
+[Zip file](https://uob-my.sharepoint.com/:u:/g/personal/uu23343_bristol_ac_uk/EWsR68oAPkJNleVNc-vhg1UBKoP608MyvvnzBnAe2pVhag?e=ah3ONe)
+
+Download the file and extract it in the `data` folder of your repository. The content of the zip file is explained in the assignment.

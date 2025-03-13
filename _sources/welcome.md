@@ -15,4 +15,5 @@ These materials are tailored for this 10 weeks-long class, but they might also b
 **Authors**
 
 - [Fabien Maussion](http://fabienmaussion.info/) wrote these notes (unless specified otherwise).
+- [Hamish Wilkinson](http://fabienmaussion.info/) wrote workshop 08.
 - Jeanne Milot-Weil and Hamish Wilkinson (teaching assistants in 2024-25) reviewed and proof read them.

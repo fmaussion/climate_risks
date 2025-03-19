@@ -4,8 +4,6 @@ All data files used in the lecture are available on [this webserver](https://clu
 
 I provide direct links to the most important files below.
 
-
-
 (era5-075)=
 ## ERA5 data (global)
 
@@ -48,9 +46,6 @@ Here are a few example scripts to get you started:
 - script I used to download all the data listed above: [download_era5.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb)
 - script I used to download the "ultra low res" data listed in the CMIP6 section - the only change is the grid resolution: [download_era5_lr.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb)
 - script I used to download the high resolution data (0.25°) over West Africa: [download_era5_hr_wa.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_hr_wa.ipynb)
-
-
-
 
 ## Monthly CMIP6 data (global)
 

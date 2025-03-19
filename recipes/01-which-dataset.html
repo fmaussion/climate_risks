@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Assignment: 1D and 2D data &#8212; Quantifying Climate Risks</title>
+    <title>Which dataset should I use for my project? &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -61,13 +61,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ws03/03-assignment-2d-data';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'recipes/01-which-dataset';</script>
     <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lesson: more tools for statistical and climatological analysis" href="../ws04/01-lesson-moredatacrunching.html" />
-    <link rel="prev" title="Lesson: working with netCDF data" href="02-lesson-netcdf-data.html" />
+    <link rel="prev" title="Assignment: a more intense future flood" href="../ws08/02-assignment-flood.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -190,10 +189,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="01-primer.html">Python and Jupyter: a primer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: 1D and 2D data</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
 <ul class="nav bd-sidenav">
@@ -222,8 +221,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../ws08/02-assignment-flood.html">Assignment: a more intense future flood</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Recipes</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../recipes/01-which-dataset.html">Which dataset should I use for my project?</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Which dataset should I use for my project?</a></li>
 </ul>
 
     </div>
@@ -300,7 +299,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws03/03-assignment-2d-data.ipynb" target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/recipes/01-which-dataset.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +316,7 @@
       
       
       
-      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws03/03-assignment-2d-data.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Frecipes/01-which-dataset.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -347,7 +346,7 @@
       
       
       
-      <li><a href="../_sources/ws03/03-assignment-2d-data.ipynb" target="_blank"
+      <li><a href="../_sources/recipes/01-which-dataset.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -357,7 +356,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -423,7 +422,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Assignment: 1D and 2D data</h1>
+    <h1>Which dataset should I use for my project?</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -433,17 +432,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-data">Invariant data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-data">Temperature data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries">Timeseries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-timeslices">2D timeslices</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w5e5-data">W5E5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isimip6-climate-projections">ISIMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-climate-projections">CMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-summary-of-the-day-gsod-data">Global Summary of the Day (GSOD) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-river-flow-archive-nrfa-data">National River Flow Archive (NRFA) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-recommendations">Summary of Recommendations</a></li>
 </ul>
             </nav>
         </div>
@@ -455,133 +450,139 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="assignment-1d-and-2d-data">
-<h1>Assignment: 1D and 2D data<a class="headerlink" href="#assignment-1d-and-2d-data" title="Link to this heading">#</a></h1>
-<p>With one exception, you should be able to copy and paste code from the previous notebook and make minimal code modifications (e.g. changing the name of a variable, add a small computation…) to solve the following exercises.</p>
-<p>Don’t think too “complicated”!</p>
-<section id="importing-the-modules">
-<h2>Importing the modules<a class="headerlink" href="#importing-the-modules" title="Link to this heading">#</a></h2>
-<p>This one is easy. I’ll do it for you:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the tools we are going to need today:</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># plotting library</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># numerical library</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>  <span class="c1"># netCDF library</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>  <span class="c1"># Map projections libary</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>  <span class="c1"># Projections list</span>
-<span class="c1"># Some defaults:</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Default plot size</span>
-</pre></div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="which-dataset-should-i-use-for-my-project">
+<h1>Which dataset should I use for my project?<a class="headerlink" href="#which-dataset-should-i-use-for-my-project" title="Link to this heading">#</a></h1>
+<p>Choosing the right dataset is crucial, as it determines the type of analysis you can perform. Some datasets are better suited for certain types of analyses than others. Below, I provide a guide to help you select the most appropriate dataset for your needs.</p>
+<section id="era5-data">
+<h2>ERA5 Data<a class="headerlink" href="#era5-data" title="Link to this heading">#</a></h2>
+<p>ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period <strong>1940 to present</strong> at <strong>0.25° spatial resolution</strong>, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the <strong>Copernicus Climate Data Store (CDS)</strong> and can be easily accessed using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> Python package. You can find examples of how to download ERA5 data in the <a class="reference internal" href="../ready/03-download.html"><span class="doc std std-doc">download section</span></a>. The QCR server has some data at 0.75° resolution for you to download directly.</p>
+<div class="note admonition">
+<p class="admonition-title">ERA5 is a good choice if …</p>
+<ul class="simple">
+<li><p>You need <strong>historical climate data</strong> (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).</p></li>
+<li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation).</p></li>
+<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25°).</p></li>
+<li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region</strong>.</p></li>
+<li><p>You want to download data for a specific <strong>region or variable</strong>, as accessing ERA5 through the CDS API is straightforward.</p></li>
+</ul>
 </div>
 </section>
-<section id="invariant-data">
-<h2>Invariant data<a class="headerlink" href="#invariant-data" title="Link to this heading">#</a></h2>
-<p>Download the <code class="docutils literal notranslate"><span class="pre">ERA5_LowRes_Invariant.nc</span></code> file, store it alongside the temperature one. Open it with xarray, and explore its content</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>How many variables does the file have? What are their names and units? What do they represent?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="topography-according-to-era5">
-<h3>Topography according to ERA5<a class="headerlink" href="#topography-according-to-era5" title="Link to this heading">#</a></h3>
-<p>Plot the model topography on a map in the Equal Earth projection. Interpret what you see.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Compute the highest and lowest point on Earth according to these ERA5 data. Compare with the actual values. Discuss.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Bonus question: we didn’t learn about how to find the location (in longitude and latitude) of the maximum value. Now use a web search or generative AI to find out how to do this. The task is to find out the longitude and latitude of the highest grid point in ERA5.</strong></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
+<section id="w5e5-data">
+<h2>W5E5 Data<a class="headerlink" href="#w5e5-data" title="Link to this heading">#</a></h2>
+<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for selected variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code>, <code class="docutils literal notranslate"><span class="pre">hurs</span></code>) and a selected climate model.</p>
+<div class="note admonition">
+<p class="admonition-title">W5E5 is a good choice if …</p>
+<ul class="simple">
+<li><p>You plan to use it alongside <strong>ISIMIP6 projections</strong> for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).</p></li>
+<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. While ERA5 also offers daily data, W5E5 is readily available on the QCR server and I can prepare timeseries or small regional subsets for you.</p></li>
+<li><p>You want quick access to <strong>temperature, precipitation, and humidity</strong> data from the QCR server.</p></li>
+</ul>
 </div>
 </section>
-<section id="water-covered-areas-on-earth-according-to-era5">
-<h3>Water covered areas on Earth according to ERA5<a class="headerlink" href="#water-covered-areas-on-earth-according-to-era5" title="Link to this heading">#</a></h3>
-<p>Plot the land-sea mask on a map in the Equal Earth projection. Interpret what you see.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Compute the percentage (%) of <em>ocean</em> cover accross latidudes (100% means there is only ocean at this specific latitude). Make a zonal plot showing your result. Interpret what you see.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now compute the % coverage of water over the planet. Hint: you will need to remember how to compute averages on a sphere! Compare your result with a google search.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
+<section id="isimip6-climate-projections">
+<h2>ISIMIP6 Climate Projections<a class="headerlink" href="#isimip6-climate-projections" title="Link to this heading">#</a></h2>
+<p>ISIMIP6 provides <strong>bias-corrected climate projections</strong> at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>, using the W5E5 dataset as the historical reference. These projections are freely available from the <strong>ISIMIP data portal</strong> and cover three <strong>future scenarios</strong> (SSP126, SSP370, SSP585) using <strong>five climate models</strong> (though only one model is available on the QCR server).</p>
+<div class="note admonition">
+<p class="admonition-title">ISIMIP6 is a good choice if …</p>
+<ul class="simple">
+<li><p>You are working with <strong>W5E5 data for historical periods</strong> and need consistent <strong>future climate projections</strong>.</p></li>
+<li><p>You require <strong>daily-resolution</strong> climate projections.</p></li>
+<li><p>You are okay with using <strong>only one climate model</strong> for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies).</p></li>
+<li><p>You need <strong>time-series data</strong> or data for a <strong>specific region</strong> (but not global-scale analyses at daily resolution).</p></li>
+</ul>
 </div>
 </section>
-</section>
-<section id="temperature-data">
-<h2>Temperature data<a class="headerlink" href="#temperature-data" title="Link to this heading">#</a></h2>
-<p>Read the temperature data from the lesson:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="timeseries">
-<h3>Timeseries<a class="headerlink" href="#timeseries" title="Link to this heading">#</a></h3>
-<p>Now select the temperature timeseries at two or three locations of your choice. Compute and compare their average temperature (in °C), and plot them on a single graph.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
+<section id="cmip6-climate-projections">
+<h2>CMIP6 Climate Projections<a class="headerlink" href="#cmip6-climate-projections" title="Link to this heading">#</a></h2>
+<p>CMIP6 represents the <strong>latest generation of climate model projections</strong>, with outputs at <strong>various spatial resolutions</strong> and <strong>multiple temporal scales</strong>. CMIP6 data is freely available from the <strong>Earth System Grid Federation (ESGF)</strong> and the <strong>Copernicus Climate Data Store (CDS)</strong>. On the QCR server, monthly precipitation and temperature data are provided at their original resolution and at <strong>0.75° and 2° regridded resolution</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">CMIP6 is a good choice if …</p>
+<ul class="simple">
+<li><p>You need <strong>monthly-resolution data</strong> rather than daily.</p></li>
+<li><p>You want to work with <strong>raw (uncorrected) climate model outputs</strong> rather than bias-corrected projections.</p></li>
+<li><p>You want to analyze the <strong>full range of climate models and emission scenarios</strong>.</p></li>
+<li><p>You are primarily working with <strong>temperature and precipitation</strong> (other variables must be downloaded separately from ESGF or CDS).</p></li>
+<li><p>You are conducting <strong>large-scale analyses</strong> (e.g., global, continental, or regional studies).</p></li>
+</ul>
 </div>
 </section>
-<section id="d-timeslices">
-<h3>2D timeslices<a class="headerlink" href="#d-timeslices" title="Link to this heading">#</a></h3>
-<p>Finally, select the decades 2015-2024 and 1979-1988 out of the 3D temperature data. Compute their time average. This should give you two 2D data arrays, yes? Each of them is a decadal average temperature. Now plot the difference between the last and the first decade of the ERA5 period. Interpret what you see!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
-</pre></div>
-</div>
-</div>
+<section id="global-summary-of-the-day-gsod-data">
+<h2>Global Summary of the Day (GSOD) Data<a class="headerlink" href="#global-summary-of-the-day-gsod-data" title="Link to this heading">#</a></h2>
+<p>GSOD is a <strong>station-based dataset</strong> compiled by the <strong>National Climatic Data Center (NCDC)</strong> of NOAA. It provides <strong>daily observational data</strong> from weather stations worldwide. GSOD data is freely available from <strong>NOAA servers</strong>, and a small selection of stations is accessible on the QCR server. I can help with downloading these data.</p>
+<div class="note admonition">
+<p class="admonition-title">GSOD is a good choice if …</p>
+<ul class="simple">
+<li><p>You are conducting a <strong>local-scale study</strong> and need observational data from a specific weather station.</p></li>
+<li><p>You need <strong>daily-resolution observations</strong> and prefer <strong>measured data</strong> over reanalysis or climate model outputs.</p></li>
+<li><p>You can <strong>handle data gaps</strong> and <strong>quality issues</strong>, as station data can be incomplete.</p></li>
+<li><p>You understand that while <strong>station data provides actual observations</strong>, it may have spatial limitations compared to gridded datasets.</p></li>
+</ul>
 </div>
 </section>
+<section id="national-river-flow-archive-nrfa-data">
+<h2>National River Flow Archive (NRFA) Data<a class="headerlink" href="#national-river-flow-archive-nrfa-data" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a valuable resource for <strong>hydrological applications in the UK</strong>. It provides <strong>daily streamflow</strong> data for many UK rivers, along with <strong>daily catchment rainfall totals</strong> from a network of rain gauges. The data is freely available and can be downloaded via the NRFA website (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/search">search tool</a>). I can assist with downloading and processing these data.</p>
+<div class="note admonition">
+<p class="admonition-title">NRFA is a good choice if …</p>
+<ul class="simple">
+<li><p>You are analyzing a <strong>past flood event in the UK</strong> and need streamflow data.</p></li>
+<li><p>You are interested in the <strong>relationship between rainfall and streamflow</strong> in the UK.</p></li>
+<li><p>You require <strong>daily-resolution data</strong> for a specific river or catchment.</p></li>
+<li><p>You plan to link past streamflow data with <strong>ISIMIP6 daily climate projections</strong>, but keep in mind that this may require <strong>bias correction</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="summary-of-recommendations">
+<h2>Summary of Recommendations<a class="headerlink" href="#summary-of-recommendations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Temporal Scale</p></th>
+<th class="head"><p>Best For</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ERA5</strong></p></td>
+<td><p>Reanalysis</p></td>
+<td><p>0.25°</p></td>
+<td><p>Hourly-daily-monthly</p></td>
+<td><p>Past climate risks, global studies, specialized variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>W5E5</strong></p></td>
+<td><p>Bias-corrected reanalysis</p></td>
+<td><p>0.5°</p></td>
+<td><p>Daily</p></td>
+<td><p>Historical data with bias correction, ISIMIP6 projections</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ISIMIP6</strong></p></td>
+<td><p>Bias-corrected projections</p></td>
+<td><p>0.5°</p></td>
+<td><p>Daily</p></td>
+<td><p>Future projections, time-series analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CMIP6</strong></p></td>
+<td><p>Climate projections</p></td>
+<td><p>Various (often 0.5°-2°)</p></td>
+<td><p>Monthly</p></td>
+<td><p>Multi-model comparisons, projections</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GSOD</strong></p></td>
+<td><p>Observational (station)</p></td>
+<td><p>Point data</p></td>
+<td><p>Daily</p></td>
+<td><p>Local-scale studies, observed climate data</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NRFA</strong></p></td>
+<td><p>Observational (streamflow)</p></td>
+<td><p>Point data (catchments)</p></td>
+<td><p>Daily</p></td>
+<td><p>UK hydrology, flood studies, streamflow-rainfall relationships</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 
@@ -598,7 +599,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./ws03"
+            path: "./recipes"
         },
         predefinedOutput: true
     }
@@ -616,22 +617,13 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="02-lesson-netcdf-data.html"
+       href="../ws08/02-assignment-flood.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lesson: working with netCDF data</p>
+        <p class="prev-next-title">Assignment: a more intense future flood</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../ws04/01-lesson-moredatacrunching.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lesson: more tools for statistical and climatological analysis</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -650,17 +642,13 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-modules">Importing the modules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-data">Invariant data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topography-according-to-era5">Topography according to ERA5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#water-covered-areas-on-earth-according-to-era5">Water covered areas on Earth according to ERA5</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-data">Temperature data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries">Timeseries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-timeslices">2D timeslices</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w5e5-data">W5E5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isimip6-climate-projections">ISIMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-climate-projections">CMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-summary-of-the-day-gsod-data">Global Summary of the Day (GSOD) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-river-flow-archive-nrfa-data">National River Flow Archive (NRFA) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-recommendations">Summary of Recommendations</a></li>
 </ul>
   </nav></div>
 

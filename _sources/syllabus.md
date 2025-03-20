@@ -39,9 +39,9 @@ Each week, I will ask one group to present the assignment from the week before. 
 
 ## Assessment
 
-The assessment for this class will be an individual **climate change risk assessment** project. You will prepare a technical report that quantifies a physical hazard (e.g., floods, extreme events, heatwaves) and discusses its impacts on populations or ecosystems in a region and context of your choice. Detailed instructions for the assessment will be released in Week 17, the week before consolidation week.
+The assessment for this class will be an individual **climate change risk assessment** project. You will prepare a technical report that quantifies a physical hazard (e.g., floods, extreme events, heatwaves) and discusses its impacts on populations or ecosystems in a region and context of your choice. Detailed instructions for the assessment will be released in due course.
 
-As a formative assessment (not marked), you will be asked to outline your project idea and plans to be submitted week 20, on which you will receive written feedback from the instructor.
+As a formative assessment (not marked), you will be asked to outline your project idea and plans, on which you will receive feedback from the instructor.
 
 ## Weekly lesson plan
 
@@ -54,6 +54,8 @@ It's the first time I'm teaching this class, so the lesson plan is subject to ch
 - Lecture 3: Statistical methods for risk assessments
 - Lecture 4: Attribution of climate risks
 - Lecture 5: Sea level rise and coastal risks
+- Lecture 6: Quantifying Exposure and Vulnerability
+- Lecture 7: Adaptation to Reduce Climate Risks
 
 The lecture slides are available on blackboard.
 
@@ -65,6 +67,5 @@ The lecture slides are available on blackboard.
 - Workshop 04: More advanced tools for gridded climate data (Assignment: CMIP6 data)
 - Workshop 05: Timeseries analysis and extreme values (Assignment: timeseries analysis)
 - Workshop 06: Extreme value distribution (Assignment: ISIMIP timeseries)
-- Workshop 07: Flood
-- Workshop 08: Glacier runoff
-- Workshop 09: Climada
+- Workshop 07: Glacier runoff
+- Workshop 08: Huricane Katrina risk assessment (Assignment: Hurricane Katrina analogue in 2100)

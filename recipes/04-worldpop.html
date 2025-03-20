@@ -70,7 +70,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Mar 19, 2025"/>
+    <meta name="docbuild:last-update" content="Mar 20, 2025"/>
   </head>
   
   
@@ -438,6 +438,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worldpop-data">WorldPop data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regridding">Regridding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-rush-coarsen-high-resolution-data">In a rush? Coarsen high-resolution data</a></li>
 </ul>
             </nav>
         </div>
@@ -600,7 +601,7 @@
 </div>
 </div>
 </div>
-<p>And replace nans with 0s:</p>
+<p>And replace nans with 0s (<strong>important! conservative regridding works best with no missing data, and missing data here equals no populations anyways</strong>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">worldpop_dens</span> <span class="o">=</span> <span class="n">worldpop_dens</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -613,7 +614,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">do_compute</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># I set it to false because I already computed it</span>
 <span class="k">if</span> <span class="n">do_compute</span><span class="p">:</span>
-    <span class="c1"># This may take several minutes - I can show some tricks to make it faster,</span>
+    <span class="c1"># This may take several minutes - I show a trick to make it faster below,</span>
     <span class="c1"># but this is the most accurate way</span>
     <span class="n">regridder</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">worldpop_dens</span><span class="p">,</span> <span class="n">annual_prcp</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;conservative&#39;</span><span class="p">)</span>
     <span class="n">worldpop_dens_on_era5</span> <span class="o">=</span> <span class="n">regridder</span><span class="p">(</span><span class="n">worldpop_dens</span><span class="p">)</span>
@@ -663,6 +664,67 @@
 </div>
 </div>
 <p>Now we have populations per ERA5 grid cell!</p>
+</section>
+<section id="in-a-rush-coarsen-high-resolution-data">
+<h2>In a rush? Coarsen high-resolution data<a class="headerlink" href="#in-a-rush-coarsen-high-resolution-data" title="Link to this heading">#</a></h2>
+<p>In the steps above, we are conservatively regridding 1km data onto a ~25km dataset (ERA5). The regridding takes time because the algorithm is careful in preserving the population density. To be honest, we could do a very similar job with a coarser resolution data. Let’s try that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">worldpop_5km</span> <span class="o">=</span> <span class="n">worldpop</span><span class="o">.</span><span class="n">coarsen</span><span class="p">(</span><span class="n">longitude</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">latitude</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="s1">&#39;trim&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># We are counting population here, so sum() it is</span>
+<span class="n">worldpop_5km</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(432, 840)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is much more manageable. Let’s regrid this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate pop density</span>
+<span class="n">dx_5km</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">worldpop_5km</span><span class="o">.</span><span class="n">longitude</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">worldpop_5km</span><span class="o">.</span><span class="n">longitude</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+<span class="n">area_5km</span> <span class="o">=</span> <span class="n">worldpop_5km</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">earth_radius_km</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dx_5km</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">worldpop_5km</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="n">density_5km</span> <span class="o">=</span> <span class="n">worldpop_5km</span> <span class="o">/</span> <span class="n">area_5km</span>
+
+<span class="c1"># Regrid (takes much less time)</span>
+<span class="n">regridder</span> <span class="o">=</span> <span class="n">xe</span><span class="o">.</span><span class="n">Regridder</span><span class="p">(</span><span class="n">density_5km</span><span class="p">,</span> <span class="n">annual_prcp</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;conservative&#39;</span><span class="p">)</span>
+<span class="n">density_5km_on_era</span> <span class="o">=</span> <span class="n">regridder</span><span class="p">(</span><span class="n">density_5km</span><span class="p">)</span>
+    
+<span class="c1"># And convert the population density back to population totals:</span>
+<span class="n">dx_era</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ds</span><span class="o">.</span><span class="n">longitude</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> 
+<span class="n">era_area_km</span> <span class="o">=</span> <span class="n">annual_prcp</span> <span class="o">*</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">earth_radius_km</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dx_era</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="n">worldpop_5km_on_era5</span> <span class="o">=</span> <span class="n">density_5km_on_era</span> <span class="o">*</span> <span class="n">era_area_km</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Check the difference to the “exact” solution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">worldpop_5km_on_era5</span> <span class="o">-</span> <span class="n">worldpop_on_era5</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1e4</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1e4</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9db3709380057e19ba9ec7f6f93c179861a544a81502674a11472917f96ca782.png" src="../_images/9db3709380057e19ba9ec7f6f93c179861a544a81502674a11472917f96ca782.png" />
+</div>
+</div>
+<p>There are some small differences but they are not really relevant in context:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">worldpop_5km_on_era5</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">worldpop_on_era5</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(445909206.78588235, 445909198.7850304)
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -725,6 +787,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worldpop-data">WorldPop data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regridding">Regridding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-rush-coarsen-high-resolution-data">In a rush? Coarsen high-resolution data</a></li>
 </ul>
   </nav></div>
 
@@ -751,7 +814,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Mar 19, 2025.
+  Last updated on Mar 20, 2025.
   <br/>
 </p>
   </div>

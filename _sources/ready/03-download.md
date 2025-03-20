@@ -1,8 +1,8 @@
 # Downloading the data
 
-All data files used in the lecture are available on [this webserver](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/).
+All data files used in the lecture are available on the [QCR webserver](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/).
 
-I provide direct links to the most important files below.
+I provide direct links to files used in the workshops below. There is a lot of information here! I wrote a guide to help you navigate this wealth of data:[](../recipes/01-which-dataset.md).
 
 (era5-075)=
 ## ERA5 data (global)

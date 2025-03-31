@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Mar 20, 2025"/>
+    <meta name="docbuild:last-update" content="Mar 31, 2025"/>
   </head>
   
   
@@ -439,7 +439,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-select-the-regional-data">Read and select the regional data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatively-download-regional-data">Alternatively - download regional data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data">Plot the data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-details">Change some details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#careful-computing-regional-averages-on-the-sphere">Careful - computing regional averages on the sphere</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-region">For a region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-masked-region">For a masked region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-solution-to-rule-them-all-xarray-s-weighted">One solution to rule them all: xarray’s .weighted()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-details-of-the-plot">Change some details of the plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tired-of-writing-so-many-lines">Tired of writing so many lines?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-to-save-the-plot-for-your-presentation">Need to save the plot for your presentation?</a></li>
 </ul>
@@ -538,8 +544,109 @@
 </div>
 </div>
 </section>
-<section id="change-some-details">
-<h2>Change some details<a class="headerlink" href="#change-some-details" title="Link to this heading">#</a></h2>
+<section id="careful-computing-regional-averages-on-the-sphere">
+<h2>Careful - computing regional averages on the sphere<a class="headerlink" href="#careful-computing-regional-averages-on-the-sphere" title="Link to this heading">#</a></h2>
+<p>Unfortunately, the Earth is still not flat and we also need to take this into account for any regional spatial average you want to compute. The weights computed globally (see workshop 3) need to be updated for any region you are looking at.</p>
+<p>The standard way to deal with weights at the regional scale is to compute a 2D map of weights, and make sure they sum up to 1 (if you are computing weighted averages).</p>
+<p>In the class I taught you to do it for global domains, but how about regional domains?</p>
+<p>Let’s dig into it below:</p>
+<section id="for-a-region">
+<h3>For a region<a class="headerlink" href="#for-a-region" title="Link to this heading">#</a></h3>
+<p>The weights need computed again. Let’s do it <a class="reference external" href="https://fabienmaussion.info/climate_risks/ws03/02-lesson-netcdf-data.html#more-data-manipulation-with-xarray">like we did in class</a> first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>  <span class="c1"># Note that this is computed using the select region</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">weight</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">avg_z</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">orography</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># Incorrect</span>
+
+<span class="n">weighted_avg_z</span> <span class="o">=</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">orography</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;longitude&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># Correct</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Incorrect average: </span><span class="si">{</span><span class="n">avg_z</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m. Correct average: </span><span class="si">{</span><span class="n">weighted_avg_z</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Incorrect average: 311.0 m. Correct average: 314.9 m
+</pre></div>
+</div>
+</div>
+</div>
+<p>For Africa, the difference is not large, but it could be larger in other regions.</p>
+</section>
+<section id="for-a-masked-region">
+<h3>For a masked region<a class="headerlink" href="#for-a-masked-region" title="Link to this heading">#</a></h3>
+<p>You may want to compute the averages for land areas only. For this, you usually mask out the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_land</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">orography</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">lsm</span> <span class="o">&gt;</span> <span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># Where not entirely ocean</span>
+<span class="n">z_land</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/56ad6b4618e2e48fc6bf119f80a47d0b79638eb99e2aac7f6d79d7569679b5b0.png" src="../_images/56ad6b4618e2e48fc6bf119f80a47d0b79638eb99e2aac7f6d79d7569679b5b0.png" />
+</div>
+</div>
+<p>But wait! What is happening to my weights, now that I have varying areas by latitudes where I want to compute the average from?</p>
+<p>The solution is a weight <em>map</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_map</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">latitude</span> <span class="o">+</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span> <span class="o">*</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># This is 2d now</span>
+<span class="n">weight_2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">latitude_map</span><span class="p">))</span>  <span class="c1"># Note that this is computed using the select region</span>
+<span class="n">weight_2d</span> <span class="o">=</span> <span class="n">weight_2d</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">lsm</span> <span class="o">&gt;</span> <span class="mf">0.25</span><span class="p">)</span>  <span class="c1"># Important! We mask out the weights before summing</span>
+
+<span class="n">weight_2d</span> <span class="o">=</span> <span class="n">weight_2d</span> <span class="o">/</span> <span class="n">weight_2d</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code is then slightly changed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avg_z_land</span> <span class="o">=</span> <span class="n">z_land</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># Incorrect</span>
+<span class="n">weighted_avg_z_land</span> <span class="o">=</span> <span class="p">(</span><span class="n">z_land</span> <span class="o">*</span> <span class="n">weight_2d</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># Correct</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Incorrect average over land: </span><span class="si">{</span><span class="n">avg_z_land</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m. Correct average over land: </span><span class="si">{</span><span class="n">weighted_avg_z_land</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Incorrect average over land: 636.6 m. Correct average over land: 636.3 m
+</pre></div>
+</div>
+</div>
+</div>
+<p>The difference is still there, but even smaller.</p>
+</section>
+<section id="one-solution-to-rule-them-all-xarray-s-weighted">
+<h3>One solution to rule them all: xarray’s .weighted()<a class="headerlink" href="#one-solution-to-rule-them-all-xarray-s-weighted" title="Link to this heading">#</a></h3>
+<p>I learned about it just today - xarray added support for <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.DataArray.weighted.html">weighted operations</a> a couple years ago. This makes our job much easier!</p>
+<p>A tutorial is available <a class="reference external" href="https://tutorial.xarray.dev/fundamentals/03.4_weighted.html">here</a>. Let’s see it in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>  <span class="c1"># In 1D, simple</span>
+
+<span class="c1"># Weight the data</span>
+<span class="n">land_weighted_masked</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">orography</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">lsm</span> <span class="o">&gt;</span> <span class="mf">0.25</span><span class="p">)</span><span class="o">.</span><span class="n">weighted</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+<span class="c1"># Correct average</span>
+<span class="n">easy_weighted_avg_z_land</span> <span class="o">=</span> <span class="n">land_weighted_masked</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>  <span class="c1"># Correct</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Easy correct average over land: </span><span class="si">{</span><span class="n">weighted_avg_z_land</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> m&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Easy correct average over land: 636.3 m
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="change-some-details-of-the-plot">
+<h2>Change some details of the plot<a class="headerlink" href="#change-some-details-of-the-plot" title="Link to this heading">#</a></h2>
 <p>The plot above looks fine for me. If you want you can change some details for it, for example its size:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,7 +823,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-select-the-regional-data">Read and select the regional data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternatively-download-regional-data">Alternatively - download regional data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data">Plot the data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-details">Change some details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#careful-computing-regional-averages-on-the-sphere">Careful - computing regional averages on the sphere</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-region">For a region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#for-a-masked-region">For a masked region</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-solution-to-rule-them-all-xarray-s-weighted">One solution to rule them all: xarray’s .weighted()</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#change-some-details-of-the-plot">Change some details of the plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tired-of-writing-so-many-lines">Tired of writing so many lines?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#need-to-save-the-plot-for-your-presentation">Need to save the plot for your presentation?</a></li>
 </ul>
@@ -745,7 +858,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Mar 20, 2025.
+  Last updated on Mar 31, 2025.
   <br/>
 </p>
   </div>

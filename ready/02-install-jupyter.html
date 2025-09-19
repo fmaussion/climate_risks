@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Mar 31, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 19, 2025"/>
   </head>
   
   
@@ -188,45 +188,6 @@
 <li class="toctree-l1"><a class="reference internal" href="01-installation.html">Installing Python (optional)</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Installing JupyterLab (all platforms)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-download.html">Downloading the data</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws03/01-primer.html">Python and Jupyter: a primer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws03/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws03/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-precip-cmip6.html">Assignment: CMIP6 temperature projections</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws06/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 07</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws07/01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws07/02-lesson-basins.html">Lesson 02: geospatial datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws07/03-assignment-glacier-future.html">Assignment: future glacier change</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 08</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ws08/01-lesson-flood.html">Lesson: hazard, vulnerability and exposure during Hurricane Katrina</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ws08/02-assignment-flood.html">Assignment: a more intense future flood</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recipes</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../recipes/01-which-dataset.html">Which dataset should I use for my project?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../recipes/02-regional-lonlat.html">Regional PlateCarree projection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../recipes/03-regional-lambert.html">Lambert conformal projection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../recipes/04-worldpop.html">Regridding WorldPop data to your region of choice</a></li>
 </ul>
 
     </div>
@@ -475,7 +436,7 @@
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="university" for="sd-tab-item-0">
 On university workstations / Anaconda</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.12</span> <span class="n">jupyterlab</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.12</span> <span class="n">jupyterlab</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span>
 </pre></div>
 </div>
 </div>
@@ -635,7 +596,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Mar 31, 2025.
+  Last updated on Sep 19, 2025.
   <br/>
 </p>
   </div>

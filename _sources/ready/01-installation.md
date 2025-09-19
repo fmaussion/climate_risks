@@ -28,7 +28,7 @@ You can keep your installation if it works for you. If you'd prefer to start fre
 Follow the instructions below.
 ```
 
-```{admonition} For Windows 7 or Chromebook users
+```{admonition} For Windows < or Chromebook users
 :class: warning, dropdown
 
 Do not attempt to install Python on a Windows 7 computer. This operating system is no longer supported. You can use the university's workstations for the exercises instead.

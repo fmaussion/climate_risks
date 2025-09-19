@@ -27,7 +27,7 @@ Open a miniforge prompt (or a terminal on Linux/macOS) and type:
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge python=3.12 jupyterlab numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
+conda create --name qcr --channel conda-forge python=3.12 jupyterlab jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
 ```
 
 ````

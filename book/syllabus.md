@@ -45,7 +45,7 @@ As a formative assessment (not marked), you will be asked to outline your projec
 
 ## Weekly lesson plan
 
-It's the first time I'm teaching this class, so the lesson plan is subject to change (I'll update this page regularly). Here is the current plan:
+It's the second time I'm teaching this class, and the lesson plan is subject to small changes (I'll update this page regularly). Here is the current plan:
 
 ### Lecture schedule
 
@@ -67,5 +67,6 @@ The lecture slides are available on blackboard.
 - Workshop 04: More advanced tools for gridded climate data (Assignment: CMIP6 data)
 - Workshop 05: Timeseries analysis and extreme values (Assignment: timeseries analysis)
 - Workshop 06: Extreme value distribution (Assignment: ISIMIP timeseries)
-- Workshop 07: Glacier runoff
+- Workshop 07: Glacier runoff (Assignment: regional differences)
 - Workshop 08: Huricane Katrina risk assessment (Assignment: Hurricane Katrina analogue in 2100)
+- Workshop 09: Climada

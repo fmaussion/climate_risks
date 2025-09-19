@@ -18,35 +18,35 @@ parts:
     - file: ready/01-installation
     - file: ready/02-install-jupyter
     - file: ready/03-download
-  - caption: Workshop 03
-    chapters:
-    - file: ws03/01-primer
-    - file: ws03/02-lesson-netcdf-data
-    - file: ws03/03-assignment-2d-data
-  - caption: Workshop 04
-    chapters:
-    - file: ws04/01-lesson-moredatacrunching
-    - file: ws04/02-assignment-precip-cmip6
-  - caption: Workshop 05
-    chapters:
-    - file: ws05/01-lesson-timeseries
-    - file: ws05/02-assignment-timeseries
-  - caption: Workshop 06
-    chapters:
-    - file: ws06/01-lesson-gev
-    - file: ws06/02-assignment-gev
-  - caption: Workshop 07
-    chapters:
-    - file: ws07/01-lesson-glaciers
-    - file: ws07/02-lesson-basins
-    - file: ws07/03-assignment-glacier-future
-  - caption: Workshop 08
-    chapters:
-    - file: ws08/01-lesson-flood
-    - file: ws08/02-assignment-flood
-  - caption: Recipes
-    chapters:
-    - file: recipes/01-which-dataset
-    - file: recipes/02-regional-lonlat
-    - file: recipes/03-regional-lambert
-    - file: recipes/04-worldpop
+  # - caption: Workshop 03
+  #   chapters:
+  #   - file: ws03/01-primer
+  #   - file: ws03/02-lesson-netcdf-data
+  #   - file: ws03/03-assignment-2d-data
+  # - caption: Workshop 04
+  #   chapters:
+  #   - file: ws04/01-lesson-moredatacrunching
+  #   - file: ws04/02-assignment-precip-cmip6
+  # - caption: Workshop 05
+  #   chapters:
+  #   - file: ws05/01-lesson-timeseries
+  #   - file: ws05/02-assignment-timeseries
+  # - caption: Workshop 06
+  #   chapters:
+  #   - file: ws06/01-lesson-gev
+  #   - file: ws06/02-assignment-gev
+  # - caption: Workshop 07
+  #   chapters:
+  #   - file: ws07/01-lesson-glaciers
+  #   - file: ws07/02-lesson-basins
+  #   - file: ws07/03-assignment-glacier-future
+  # - caption: Workshop 08
+  #   chapters:
+  #   - file: ws08/01-lesson-flood
+  #   - file: ws08/02-assignment-flood
+  # - caption: Recipes
+  #   chapters:
+  #   - file: recipes/01-which-dataset
+  #   - file: recipes/02-regional-lonlat
+  #   - file: recipes/03-regional-lambert
+  #   - file: recipes/04-worldpop

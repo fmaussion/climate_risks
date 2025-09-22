@@ -28,10 +28,12 @@ You can keep your installation if it works for you. If you'd prefer to start fre
 Follow the instructions below.
 ```
 
-```{admonition} For Windows < or Chromebook users
+```{admonition} For Windows 10 or below or Chromebook users
 :class: warning, dropdown
 
-Do not attempt to install Python on a Windows 7 computer. This operating system is no longer supported. You can use the university's workstations for the exercises instead.
+Do not attempt to install Python on a Windows 7 or 8 computer. This operating systems are no longer supported. You can use the university's workstations for the exercises instead.
+
+Windows 10 will no longer be supported after October 25. While it's possible that Python will continue to work on Win 10 for a while, I recommend to update your operating system as soon as possible still.
 
 Installing Python on a Chromebook is not straightforward, and I cannot provide support for this. You can still use the university's workstations to complete the exercises.
 ```

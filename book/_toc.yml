@@ -8,10 +8,10 @@ parts:
     chapters:
     - file: syllabus
     - file: references
-  - caption: Workshop 01 & 02
+  - caption: IPCC Workshops 01 & 02
     chapters:
-    - file: ws01/briefing
-    - file: ws02/briefing
+    - file: ipcc/briefing_ipcc1
+    - file: ipcc/briefing_ipcc2
   - caption: Getting ready for programming
     chapters:
     - file: ready/00-howto

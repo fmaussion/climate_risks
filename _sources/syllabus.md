@@ -24,14 +24,14 @@ To reach the learning goals listed above, you will need to develop practical ski
 
 ## Prerequisites
 
-This class is designed for master's level students with a background in climate science and some prior exposure to programming. While no formal training in programming or Python is required, it is assumed that you have used a programming language (e.g., Python, Matlab, R) and are familiar with basic programming structures such as loops, functions, and conditional statements.
+This class is designed for master's level students with a background in climate science (e.g. from the "Climate Change Science and Impacts" lecture) and some prior exposure to programming. While no formal training in programming or Python is required, it is assumed that you have used a programming language (e.g., Python, Matlab, R) in your BSc and are familiar with basic programming structures such as loops, functions, and conditional statements. If this is not the case, I provide links to additional resources you can use to bring you up to speed in the first weeks of the class.
 
 ## Organisation of the class
 
 The term is 10 weeks long, with a consolidation week half-term. Each week is organized as follows:
 
-- During the **lectures** (usually on Wednesdays), we will discuss the theoretical aspects of climate risks, and I will introduce you to the new concepts of this class.
-- During the **workshops** (usually on Thursdays), we will work together on practical exercises and coding problems. This is the time to ask questions and to get help with the exercises. You will always be informed one week in advance about the content of the next workshop. We will follow the [flipped classroom](https://en.wikipedia.org/wiki/Flipped_classroom) model: you will acquire new knowledge at home by reading online materials and coding where appropriate. We will then use the time together in class to discuss the materials and check your code, projects, and understanding.
+- During the **lectures** (1H session each week), we will discuss the theoretical aspects of climate risks, and I will introduce you to the new concepts of this class.
+- During the **workshops** (2H sesssion each week), we will work together on practical exercises and coding problems. This is the time to ask questions and to get help with the exercises. You will always be informed one week in advance about the content of the next workshop. We will follow the [flipped classroom](https://en.wikipedia.org/wiki/Flipped_classroom) model: you will acquire new knowledge at home by reading online materials and coding where appropriate. We will then use the time together in class to discuss the materials and check your code, projects, and understanding.
 
 For the practical exercises, you will need a computer with an internet connection. You can work either on your own computer (laptop) or on the working stations in the computer room.
 
@@ -57,7 +57,7 @@ It's the second time I'm teaching this class, and the lesson plan is subject to 
 - Lecture 6: Quantifying Exposure and Vulnerability
 - Lecture 7: Adaptation to Reduce Climate Risks
 
-The lecture slides are available on blackboard.
+The lecture slides are available on blackboard. The lectures do not necessarily fit the 1H slots and will be split as required.
 
 ### Workshop schedule
 

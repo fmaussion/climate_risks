@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>IPCC AR6 WG2 - Part 1 &#8212; Quantifying Climate Risks</title>
+    <title>IPCC AR6 WG2 – Part 1 &#8212; Quantifying Climate Risks</title>
   
   
   
@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 22, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 25, 2025"/>
   </head>
   
   
@@ -179,7 +179,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops 01 &amp; 02</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">IPCC AR6 WG2 - Part 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IPCC AR6 WG2 – Part 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="briefing_ipcc2.html">IPCC AR6 WG2 - Part 2</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
@@ -188,6 +188,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
 </ul>
 
     </div>
@@ -387,7 +393,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>IPCC AR6 WG2 - Part 1</h1>
+    <h1>IPCC AR6 WG2 – Part 1</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,92 +430,139 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ipcc-ar6-wg2-part-1">
-<h1>IPCC AR6 WG2 - Part 1<a class="headerlink" href="#ipcc-ar6-wg2-part-1" title="Link to this heading">#</a></h1>
+<h1>IPCC AR6 WG2 – Part 1<a class="headerlink" href="#ipcc-ar6-wg2-part-1" title="Link to this heading">#</a></h1>
 <section id="before-the-workshop">
 <h2>Before the workshop<a class="headerlink" href="#before-the-workshop" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Access the Summary for Policymakers (SPM) from the IPCC AR6 WG2 report <a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">here</a>.</p></li>
-<li><p>Have a skim through the SPM up until <em>“Section C: Adaptation Measures and Enabling Conditions”</em> (excluded) and identify the key messages and figures.</p></li>
+<li><p>Skim through the SPM up until <em>Section C: Adaptation Measures and Enabling Conditions</em> (excluded), and identify the key messages and figures.</p></li>
 </ol>
 </section>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p><em>(15 minutes)</em></p>
-<p>Fabien will briefly explain the role of the IPCC, WG2, and WG1. We form the thematic groups and introduce the breakout group activity.</p>
+<p>Fabien will briefly explain the role of the IPCC, Working Group 2 (Impacts, Adaptation, and Vulnerability), and Working Group 1 (Physical Science Basis). We’ll then form thematic groups and introduce the breakout group activity.</p>
+<div class="note admonition">
+<p class="admonition-title">Note on key terms</p>
+<p>In this workshop, we use the concept of <strong>climate risk</strong>, defined as arising from the interaction between:</p>
+<ul class="simple">
+<li><p><strong>Hazards</strong>: climate-related events or trends</p></li>
+<li><p><strong>Exposure</strong>: what is in harm’s way</p></li>
+<li><p><strong>Vulnerability</strong>: how susceptible that exposed system is to harm</p></li>
+</ul>
+<p>We’ll use the term <strong>impact</strong> to refer to the <em>realized or expected effects</em>, i.e. the actual or projected harm that results from that interaction.</p>
+</div>
 </section>
 <section id="breakout-groups">
 <h2>Breakout groups<a class="headerlink" href="#breakout-groups" title="Link to this heading">#</a></h2>
-<p>For the first two workshops on the IPCC WG2, you will be split into three groups. Each group will be assigned a broader theme (see below) and will discuss it in more depth. The goal is to identify the key impacts for each theme and to choose an impact in particular to work on for the next workshop. The timings below are indicative and can be adjusted as needed.</p>
+<p>For the first two workshops on IPCC WG2, you will be split into three groups. Each group will be assigned a broader theme (see below) and will discuss it in more depth. The goal is to identify the key <strong>impacts</strong> within your theme and to choose <strong>one specific impact</strong> to work on in more detail for the next workshop.</p>
+<p>The timings below are indicative and can be adjusted as needed.</p>
 <section id="quiet-reading-time">
 <h3>(Quiet) reading time<a class="headerlink" href="#quiet-reading-time" title="Link to this heading">#</a></h3>
-<p><em>(~ 30 minutes)</em></p>
-<p>Groups read relevant parts of the SPM (this now includes also the sections including and after <em>“C: Adaptation Measures and Enabling Conditions”</em>) and identify as many impacts as possible within their theme. Each group member should list these impacts for themselves and take personal notes. If you can, incorporate the time horizon as well: are these impacts already occurring? If not, when are these impacts expected to occur?</p>
-<p>If you have time, have a look at one of the <a class="reference internal" href="#inter-atlas"><span class="std std-ref">Interactive atlases</span></a> to see if you can find more impacts there. I recommend starting with the <a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a>!</p>
+<p><em>(~30 minutes)</em></p>
+<p>Each group reads the relevant parts of the SPM — <strong>this now includes Section C and beyond</strong> — and identifies as many impacts as possible related to their theme. Each member should list these impacts individually and take personal notes.</p>
+<p>Consider the <strong>time horizon</strong>:</p>
+<ul class="simple">
+<li><p>Are these impacts already occurring?</p></li>
+<li><p>If not, when are they expected to occur?</p></li>
+<li><p>How confident is the scientific community about them?</p></li>
+</ul>
+<p>If you have time, explore one of the <a class="reference internal" href="#interactive-atlases">interactive atlases</a> to find more regional or sector-specific impacts. We recommend starting with the <a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a>.</p>
 </section>
 <section id="group-discussion">
 <h3>Group discussion<a class="headerlink" href="#group-discussion" title="Link to this heading">#</a></h3>
-<p><em>(~ 30 minutes)</em></p>
-<p>As a group, try to obtain a comprehensive list of impacts within your theme. Discuss the most important impacts and for each one, identify the hazard, what creates exposure, and who or what might be vulnerable under certain conditions (present or future?). This is a wide-ranging discussion! Aim to cover as many impacts as possible, but no need to go too deep in the details here. The aim is to have a good overview and enough information to choose a specific impact to focus on for the next item.</p>
+<p><em>(~20 minutes)</em></p>
+<p>As a group, aim to create a comprehensive list of impacts within your theme. For each impact, discuss:</p>
+<ul class="simple">
+<li><p>What is the <strong>hazard</strong> driving it?</p></li>
+<li><p>What creates <strong>exposure</strong> to this hazard?</p></li>
+<li><p>Who or what is <strong>vulnerable</strong>, and under what conditions?</p></li>
+</ul>
+<p>This is meant to be a wide-ranging, exploratory discussion. Try to cover a range of examples, but don’t worry about getting all the details yet — the aim is to choose <strong>one impact</strong> to focus on next.</p>
 </section>
 </section>
 <section id="preparation-for-next-week">
 <h2>Preparation for next week<a class="headerlink" href="#preparation-for-next-week" title="Link to this heading">#</a></h2>
-<p><em>(~ 20 minutes)</em></p>
-<p>As a group, you will be expected to prepare a short presentation for the next workshop. The presentation should include all three components of climate risk: hazard, exposure, and vulnerability. At this stage you will need to:</p>
+<p><em>(~20 minutes)</em></p>
+<p>As a group, prepare a short presentation for next week’s workshop. It should analyse your chosen impact using all <strong>three components of risk</strong>: hazard, exposure, and vulnerability.</p>
+<p>At this stage, you should:</p>
 <ul class="simple">
-<li><p>focus on one specific impact within your theme to focus on. The impact should be relevant enough to have enough litterature to work with, but not too broad to be unmanageable. You may find it useful to choose an impact that is covered in the one of the <a class="reference internal" href="#inter-atlas"><span class="std std-ref">Interactive atlases</span></a>, but it is not mandatory.</p></li>
-<li><p>assign roles within the group: two to focus on hazard, two on exposure, and two on vulnerability. Each role will be responsible for gathering information on their respective component of the risk. For example, can you find examples of the impact you chose in the literature? What are the key drivers of the <em>hazard</em>? What are the key drivers of <em>exposure</em>? Who or what is <em>vulnerable</em> to this impact?</p></li>
-<li><p>it might be a good idea to find a case study to work with, e.g. a specific region or country that is particularly vulnerable to the impact you chose. Maybe this can be something based on recent events, or a region which will be particularly affected in the future.</p></li>
-<li><p>start gathering information on the impact you chose. You can use the SPM, the full report, and other sources you find relevant.</p></li>
+<li><p><strong>Choose one specific impact</strong> to focus on.</p>
+<ul>
+<li><p>Narrow enough to be manageable</p></li>
+<li><p>Broad enough to find literature and data</p></li>
+<li><p>Potentially linked to an <a class="reference internal" href="#interactive-atlases">interactive atlas</a>, though this is not required</p></li>
+</ul>
+</li>
+<li><p><strong>Assign roles</strong> within the group:</p>
+<ul>
+<li><p>Two students focus on <strong>hazard</strong></p></li>
+<li><p>Two on <strong>exposure</strong></p></li>
+<li><p>Two on <strong>vulnerability</strong></p></li>
+</ul>
+</li>
+</ul>
+<p>Each pair gathers information on their component:</p>
+<ul class="simple">
+<li><p>Can you find <strong>real-world examples</strong> of the impact in the literature?</p></li>
+<li><p>What are the <strong>key drivers</strong> of the hazard?</p></li>
+<li><p>What conditions create exposure?</p></li>
+<li><p>What systems or populations are vulnerable — and why?</p></li>
+<li><p><strong>Identify a possible case study</strong>:</p>
+<ul>
+<li><p>Choose a specific region or country where this impact is occurring or projected to occur.</p></li>
+<li><p>Consider recent events, long-term projections, or highly exposed regions.</p></li>
+</ul>
+</li>
+<li><p><strong>Start gathering background information</strong>:
+Use the SPM, the full report, and any other credible sources you find relevant.</p></li>
 </ul>
 </section>
 <section id="plenary-sharing">
 <h2>Plenary sharing<a class="headerlink" href="#plenary-sharing" title="Link to this heading">#</a></h2>
-<p><em>(15 minutes, 5 minutes per group)</em></p>
-<p>Each group summarize the list of impacts they identified, and present the impact they chose to focus on for the next workshop.</p>
+<p><em>(15 minutes – 5 minutes per group)</em></p>
+<p>Each group shares:</p>
+<ul class="simple">
+<li><p>A summary of the impacts they identified</p></li>
+<li><p>The specific impact chosen for next week’s deeper analysis</p></li>
+</ul>
 </section>
 <section id="themes">
 <h2>Themes<a class="headerlink" href="#themes" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><strong>Ecosystems and biodiversity</strong> <em>(natural systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on natural ecosystems and biodiversity, including non-human species and ecological processes.</p></li>
-<li><p>Example impacts include voral reef bleaching due to ocean warming, shifts in species distributions (e.g., alpine flora moving to higher altitudes), etc.</p></li>
-</ul>
-</li>
-<li><p><strong>Human systems (health, food, and water)</strong> <em>(societal systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on human well-being and livelihoods, emphasizing agriculture, water security, and public health. This theme applies across rural and urban contexts.</p></li>
-<li><p>Example impacts include reduced crop yields due to drought in agricultural regions, water scarcity for populations dependent on snow and ice melt, etc.</p></li>
-</ul>
-</li>
-<li><p><strong>Urban and infrastructure systems</strong> <em>(built systems)</em></p>
-<ul class="simple">
-<li><p>Climate impacts on cities and infrastructure, including transportation, energy systems, and housing. Emphasis is on infrastructure resilience and adaptation.</p></li>
-<li><p>Example impacts include flooding of urban areas from sea-level rise and heavy rainfall, energy grid failures, etc.</p></li>
-</ul>
-</li>
+<li><p><strong>Ecosystems and biodiversity</strong> <em>(natural systems)</em><br />
+Climate impacts on ecosystems and biodiversity, including non-human species and ecological processes.<br />
+<em>Example impacts</em>: coral reef bleaching due to ocean warming, species shifting their ranges (e.g. alpine plants moving upslope), increased wildfire risk in forests.</p></li>
+<li><p><strong>Human systems (health, food, and water)</strong> <em>(societal systems)</em><br />
+Climate impacts on human well-being and livelihoods, including agriculture, food security, water resources, and health — in both rural and urban contexts.<br />
+<em>Example impacts</em>: reduced crop yields from drought, increased malnutrition, water scarcity in snowmelt-dependent regions, spread of climate-sensitive diseases.</p></li>
+<li><p><strong>Urban and infrastructure systems</strong> <em>(built systems)</em><br />
+Climate impacts on cities and infrastructure (transport, energy, housing), with a focus on adaptation and resilience.<br />
+<em>Example impacts</em>: urban flooding from sea-level rise and heavy rain, energy system failures during heatwaves, damage to transport networks.</p></li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Like everything else in our climate system, the three themes are interlinked!</p>
+</div>
 </section>
 <section id="resources">
 <h2>Resources<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
 <section id="ipcc-ar6-wg2">
 <h3>IPCC AR6 WG2<a class="headerlink" href="#ipcc-ar6-wg2" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">Summary for Policymakers, IPCC AR WG2</a></p></li>
-<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/">Full report, IPCC AR WG2</a></p></li>
+<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">Summary for Policymakers, IPCC AR6 WG2</a></p></li>
+<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/">Full report, IPCC AR6 WG2</a></p></li>
 <li><p><a class="reference external" href="https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf">Uncertainty Guidance Note for IPCC Authors</a></p></li>
 </ul>
 </section>
 <section id="interactive-atlases">
-<span id="inter-atlas"></span><h3>Interactive atlases<a class="headerlink" href="#interactive-atlases" title="Link to this heading">#</a></h3>
+<span id="id1"></span><h3>Interactive atlases<a class="headerlink" href="#interactive-atlases" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://climateactiontracker.org/global/cat-thermometer/">Climate Action Tracker</a></p></li>
-<li><p><a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a> (also discussed in class)</p></li>
-<li><p><a class="reference external" href="https://climatedataportal.metoffice.gov.uk/">Met Office Climate Data Portal</a> (see local authority risk assessment)</p></li>
+<li><p><a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a> <em>(also discussed in class)</em></p></li>
+<li><p><a class="reference external" href="https://climateactiontracker.org/global/cat-thermometer/">Climate Action Tracker – CAT Thermometer</a></p></li>
+<li><p><a class="reference external" href="https://climatedataportal.metoffice.gov.uk/">Met Office Climate Data Portal</a></p></li>
 <li><p><a class="reference external" href="https://interactive-atlas.ipcc.ch">IPCC Interactive Atlas</a></p></li>
-<li><p><a class="reference external" href="https://climate-impact-explorer.climateanalytics.org">Climate Impact Explorer</a></p></li>
+<li><p><a class="reference external" href="https://climate-impact-explorer.climateanalytics.org">Climate Impact Explorer (Climate Analytics)</a></p></li>
 </ul>
 </section>
 </section>
@@ -621,7 +674,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 22, 2025.
+  Last updated on Sep 25, 2025.
   <br/>
 </p>
   </div>

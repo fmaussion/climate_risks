@@ -177,7 +177,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops 01 &amp; 02</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc1.html">IPCC AR6 WG2 – Part 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc2.html">IPCC AR6 WG2 - Part 2</a></li>
@@ -380,7 +380,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -396,6 +398,18 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data-global">ERA5 data (global)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-to-use-global-low-resolution-netcdf-files">Ready to use, global low resolution NetCDF files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -409,6 +423,48 @@
 <h1>Downloading the data<a class="headerlink" href="#downloading-the-data" title="Link to this heading">#</a></h1>
 <p>All data files used in the lecture are available on the <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/">QCR webserver</a>.</p>
 <p>Links and info to be added here as the course unfolds.</p>
+<section id="era5-data-global">
+<span id="era5-075"></span><h2>ERA5 data (global)<a class="headerlink" href="#era5-data-global" title="Link to this heading">#</a></h2>
+<section id="ready-to-use-global-low-resolution-netcdf-files">
+<h3>Ready to use, global low resolution NetCDF files<a class="headerlink" href="#ready-to-use-global-low-resolution-netcdf-files" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.ecmwf.int/en/forecasts/dataset/ecmwf-reanalysis-v5">ERA5</a> is an atmospheric reanalysis product. Note that you can download the data yourself (I provide some sample scripts below), but for a start you can download some files I prepared for you:</p>
+<p><strong>Invariant (2D) data:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Invariant.nc">ERA5_LowRes_Invariant.nc</a></p></li>
+</ul>
+<p><strong>Monthly surface (3D) data:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_t2m.nc">ERA5_LowRes_Monthly_t2m.nc</a>: 2m temperature</p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_tp.nc">ERA5_LowRes_Monthly_tp.nc</a>: total precipitation</p></li>
+</ul>
+<p><strong>File naming conventions</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LowRes</span></code> means that I asked for a lower spatial resolution than available (0.75° instead of the 0.25° default).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Monthly</span></code> means that I averaged the data to calendar months</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MonthlyAvg</span></code> means that I averaged the data to all months (annual cycle)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">4D</span></code> means that the data is also available on pressure levels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m</span></code> or <code class="docutils literal notranslate"><span class="pre">tp</span></code> are variable names</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Invariant</span></code> means that this file contains time invariant fields such as topography or land-sea mask.</p></li>
+</ul>
+</section>
+<section id="additional-era5-data-from-the-cds-servers-optional">
+<h3>Additional ERA5 data from the CDS servers (optional)<a class="headerlink" href="#additional-era5-data-from-the-cds-servers-optional" title="Link to this heading">#</a></h3>
+<p>You may want to download ERA5 data yourself if:</p>
+<ul class="simple">
+<li><p>you’d like additional variables not listed above</p></li>
+<li><p>you’d like to use high resolution data (0.25°) instead of the low resolution (0.75°) that I provided</p></li>
+<li><p>you’d like to download hourly or daily data instead of monthly data</p></li>
+</ul>
+<p>If you want to go this path (<strong>optional</strong>), you’ll need an account at the <a class="reference external" href="https://cds.climate.copernicus.eu">Copernicus Data Store</a></p>
+<p>You may want to use their online platform to analyze/download the data, or you can use a script.</p>
+<p>Here are a few example scripts to get you started:</p>
+<ul class="simple">
+<li><p>script I used to download all the data listed above: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5.ipynb</a></p></li>
+<li><p>script I used to download the “ultra low res” data listed in the CMIP6 section - the only change is the grid resolution: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5_lr.ipynb</a></p></li>
+<li><p>script I used to download the high resolution data (0.25°) over West Africa: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_hr_wa.ipynb">download_era5_hr_wa.ipynb</a></p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -465,6 +521,26 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data-global">ERA5 data (global)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-to-use-global-low-resolution-netcdf-files">Ready to use, global low resolution NetCDF files</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

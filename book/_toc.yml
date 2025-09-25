@@ -8,7 +8,7 @@ parts:
     chapters:
     - file: syllabus
     - file: references
-  - caption: IPCC Workshops 01 & 02
+  - caption: IPCC Workshops
     chapters:
     - file: ipcc/briefing_ipcc1
     - file: ipcc/briefing_ipcc2
@@ -18,11 +18,11 @@ parts:
     - file: ready/01-installation
     - file: ready/02-install-jupyter
     - file: ready/03-download
-  # - caption: Workshop 03
-  #   chapters:
-  #   - file: ws03/01-primer
-  #   - file: ws03/02-lesson-netcdf-data
-  #   - file: ws03/03-assignment-2d-data
+  - caption: Workshop 01
+    chapters:
+    - file: ws01/01-primer
+    - file: ws01/02-lesson-netcdf-data
+    - file: ws01/03-assignment-2d-data
   # - caption: Workshop 04
   #   chapters:
   #   - file: ws04/01-lesson-moredatacrunching

@@ -1,11 +1,7 @@
 # External resources
 
-Resources used (and linked) in these lecture notes:
 
-**Further lecture notes by Fabien:**
-- [💻 Introduction to Python Programming](http://fabienmaussion.info/intro_to_programming) (undergraduate level)
-- [🧑‍💻 Scientific Programming in Python](https://fabienmaussion.info/scientific_programming/html/index.html) (postgraduate level)
-- [🌍 Physics of the Climate System Practicals](https://fabienmaussion.info/climate_system)
+## General links / resources 
 
 **IPCC reports:**
 - [Summary for Policymakers, IPCC AR WG2: Impacts, Adaptation and Vulnerability](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
@@ -36,11 +32,38 @@ The excellent resources by Climatematch inspired some of my notes:
 - [Foundations](https://foundations.projectpythia.org)
 - [CookBooks](https://cookbooks.projectpythia.org)
 
-**Interactive:**
+**Interactive climate dashboards:**
 
 - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)
 - [Met Office Climate Data Portal](https://climatedataportal.metoffice.gov.uk/) (see local authority risk assessment)
 - [IPCC Interactive Atlas](https://interactive-atlas.ipcc.ch)
 - [Climate Impact Explorer](https://climate-impact-explorer.climateanalytics.org)
+
+**Further lecture notes by Fabien:**
+- [💻 Introduction to Python Programming](http://fabienmaussion.info/intro_to_programming) (undergraduate level)
+- [🧑‍💻 Scientific Programming in Python](https://fabienmaussion.info/scientific_programming/html/index.html) (postgraduate level)
+- [🌍 Physics of the Climate System Practicals](https://fabienmaussion.info/climate_system)
+
+**Miscellanea**
+- The excellent episode of "Cautionary Tales" about how risk mitigation measures can go wrong: [BBC iPlayer](https://www.bbc.co.uk/programmes/p0gy6fs6), [youtube](https://www.youtube.com/watch?v=vVv_y7vkQAw)
+
+
+## By Week
+
+**Lecture 1 (Introduction)**
+
+- [Summary for Policymakers, IPCC AR WG2: Impacts, Adaptation and Vulnerability](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
+- [Guidance note – The concept of risk in the IPCC Sixth Assessment Report: a summary of cross Working Group discussions — IPCC](https://www.ipcc.ch/event/guidance-note-concept-of-risk-in-the-6ar-cross-wg-discussions/)
+- [Guidance Note on Uncertainty for IPCC Authors](https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf)
+
+**Lecture 2 (Climate data)**
+
+- Videos
+  - "[Data Assimilation: The secret to better weather Forecasts](https://www.youtube.com/watch?v=YPAWYjPf_Pk)"
+  - "[Reanalysis - from local measurements to global weather reconstructions](https://www.youtube.com/watch?v=7Vcm7WSpPAg)"
+  - "[What is reanalysis? ECMWF](https://www.youtube.com/watch?v=FAGobvUGl24)"
+- Web resource about climate datasets, their strengths and limitations: [Cimate Data Guide](https://climatedataguide.ucar.edu/), in particular:
+  - [Reanalysis data](https://climatedataguide.ucar.edu/climate-data/atmospheric-reanalysis-overview-comparison-tables)
+  - Global temperature from stations datasets: [CRU](https://climatedataguide.ucar.edu/climate-data/cru-ts-gridded-precipitation-and-other-meteorological-variables-1901), [BEST](https://climatedataguide.ucar.edu/climate-data/global-surface-temperatures-best-berkeley-earth-surface-temperatures), [GISTEMP](https://climatedataguide.ucar.edu/climate-data/global-surface-temperature-data-gistemp-nasa-goddard-institute-space-studies-giss)
 
 *(this list will be updated when the notes get written further)*

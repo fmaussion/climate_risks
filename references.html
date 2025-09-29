@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 25, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 29, 2025"/>
   </head>
   
   
@@ -380,7 +380,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -396,6 +398,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-links-resources">General links / resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-week">By Week</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -407,13 +418,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="external-resources">
 <h1>External resources<a class="headerlink" href="#external-resources" title="Link to this heading">#</a></h1>
-<p>Resources used (and linked) in these lecture notes:</p>
-<p><strong>Further lecture notes by Fabien:</strong></p>
-<ul class="simple">
-<li><p><a class="reference external" href="http://fabienmaussion.info/intro_to_programming">💻 Introduction to Python Programming</a> (undergraduate level)</p></li>
-<li><p><a class="reference external" href="https://fabienmaussion.info/scientific_programming/html/index.html">🧑‍💻 Scientific Programming in Python</a> (postgraduate level)</p></li>
-<li><p><a class="reference external" href="https://fabienmaussion.info/climate_system">🌍 Physics of the Climate System Practicals</a></p></li>
-</ul>
+<section id="general-links-resources">
+<h2>General links / resources<a class="headerlink" href="#general-links-resources" title="Link to this heading">#</a></h2>
 <p><strong>IPCC reports:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">Summary for Policymakers, IPCC AR WG2: Impacts, Adaptation and Vulnerability</a></p></li>
@@ -446,14 +452,50 @@
 <li><p><a class="reference external" href="https://foundations.projectpythia.org">Foundations</a></p></li>
 <li><p><a class="reference external" href="https://cookbooks.projectpythia.org">CookBooks</a></p></li>
 </ul>
-<p><strong>Interactive:</strong></p>
+<p><strong>Interactive climate dashboards:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://climate-risk-dashboard.iiasa.ac.at">PROVIDE Climate Risk Dashboard</a></p></li>
 <li><p><a class="reference external" href="https://climatedataportal.metoffice.gov.uk/">Met Office Climate Data Portal</a> (see local authority risk assessment)</p></li>
 <li><p><a class="reference external" href="https://interactive-atlas.ipcc.ch">IPCC Interactive Atlas</a></p></li>
 <li><p><a class="reference external" href="https://climate-impact-explorer.climateanalytics.org">Climate Impact Explorer</a></p></li>
 </ul>
+<p><strong>Further lecture notes by Fabien:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://fabienmaussion.info/intro_to_programming">💻 Introduction to Python Programming</a> (undergraduate level)</p></li>
+<li><p><a class="reference external" href="https://fabienmaussion.info/scientific_programming/html/index.html">🧑‍💻 Scientific Programming in Python</a> (postgraduate level)</p></li>
+<li><p><a class="reference external" href="https://fabienmaussion.info/climate_system">🌍 Physics of the Climate System Practicals</a></p></li>
+</ul>
+<p><strong>Miscellanea</strong></p>
+<ul class="simple">
+<li><p>The excellent episode of “Cautionary Tales” about how risk mitigation measures can go wrong: <a class="reference external" href="https://www.bbc.co.uk/programmes/p0gy6fs6">BBC iPlayer</a>, <a class="reference external" href="https://www.youtube.com/watch?v=vVv_y7vkQAw">youtube</a></p></li>
+</ul>
+</section>
+<section id="by-week">
+<h2>By Week<a class="headerlink" href="#by-week" title="Link to this heading">#</a></h2>
+<p><strong>Lecture 1 (Introduction)</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/">Summary for Policymakers, IPCC AR WG2: Impacts, Adaptation and Vulnerability</a></p></li>
+<li><p><a class="reference external" href="https://www.ipcc.ch/event/guidance-note-concept-of-risk-in-the-6ar-cross-wg-discussions/">Guidance note – The concept of risk in the IPCC Sixth Assessment Report: a summary of cross Working Group discussions — IPCC</a></p></li>
+<li><p><a class="reference external" href="https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf">Guidance Note on Uncertainty for IPCC Authors</a></p></li>
+</ul>
+<p><strong>Lecture 2 (Climate data)</strong></p>
+<ul class="simple">
+<li><p>Videos</p>
+<ul>
+<li><p>“<a class="reference external" href="https://www.youtube.com/watch?v=YPAWYjPf_Pk">Data Assimilation: The secret to better weather Forecasts</a>”</p></li>
+<li><p>“<a class="reference external" href="https://www.youtube.com/watch?v=7Vcm7WSpPAg">Reanalysis - from local measurements to global weather reconstructions</a>”</p></li>
+<li><p>“<a class="reference external" href="https://www.youtube.com/watch?v=FAGobvUGl24">What is reanalysis? ECMWF</a>”</p></li>
+</ul>
+</li>
+<li><p>Web resource about climate datasets, their strengths and limitations: <a class="reference external" href="https://climatedataguide.ucar.edu/">Cimate Data Guide</a>, in particular:</p>
+<ul>
+<li><p><a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/atmospheric-reanalysis-overview-comparison-tables">Reanalysis data</a></p></li>
+<li><p>Global temperature from stations datasets: <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/cru-ts-gridded-precipitation-and-other-meteorological-variables-1901">CRU</a>, <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/global-surface-temperatures-best-berkeley-earth-surface-temperatures">BEST</a>, <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/global-surface-temperature-data-gistemp-nasa-goddard-institute-space-studies-giss">GISTEMP</a></p></li>
+</ul>
+</li>
+</ul>
 <p><em>(this list will be updated when the notes get written further)</em></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -511,6 +553,23 @@
             
             
               
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-links-resources">General links / resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-week">By Week</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -532,7 +591,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 25, 2025.
+  Last updated on Sep 29, 2025.
   <br/>
 </p>
   </div>

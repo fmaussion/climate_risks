@@ -15,17 +15,11 @@ There are multiple ways to install Python on your computer. While most methods w
 
 
 ```{admonition} What to do if you **already** have python installed on your laptop
-:class: warning, dropdown
+:class: warning
 
 **If you already have Anaconda, Conda, or Miniconda installed from a previous class:**
 
-You can keep your installation if it works for you. If you'd prefer to start fresh, uninstall Anaconda and follow the instructions below.
-
----
-
-**If you're unsure what this means:**
-
-Follow the instructions below.
+You can keep your installation if it works for you. If you'd prefer to start fresh, **uninstall Anaconda first** and follow the instructions below.
 ```
 
 ```{admonition} For Windows 10 or below or Chromebook users
@@ -111,7 +105,7 @@ For these platforms, the terminal is available by default. You can open it by se
 Now you should have a terminal window open. In the terminal, type:
 
 ```none
-mamba list
+conda list
 ```
 
 You should see a long list of package names.
@@ -137,7 +131,7 @@ You can type ``exit()`` to get out of the python interpreter.
 
 The steps above should work in nearly all situations and prepare you for the class. Here's a brief explanation in case you're curious or need to search for more information:
 
-We installed [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will need.
+We installed [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will ever need and is very heavy.
 
 **Additionally, we made some default configurations:**
 - We set [Conda-Forge](https://conda-forge.org/) as the default channel for downloading Python packages (instead of the default Anaconda channel).

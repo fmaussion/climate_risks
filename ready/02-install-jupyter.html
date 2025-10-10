@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 10, 2025"/>
   </head>
   
   
@@ -194,6 +194,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
 </ul>
 
     </div>
@@ -429,27 +434,27 @@
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>I’ll assume that the <a class="reference internal" href="01-installation.html"><span class="doc std std-doc">python installation instructions</span></a> have worked for you (or that you are using a university workstation), and that you:</p>
 <ul class="simple">
-<li><p>are able to start a miniforge prompt</p></li>
-<li><p>can type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">list</span></code> successfully (<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> on the university’s workstations)</p></li>
+<li><p>are able to start <strong>one of</strong> anaconda or miniforge prompt (depending on wether you are using anaconda or miniforge)</p></li>
+<li><p>can type <strong>one of</strong> <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> successfully</p></li>
 <li><p>can type <code class="docutils literal notranslate"><span class="pre">python</span></code> and open a python interpreter.</p></li>
 </ul>
 <p>For a primer on the different prompts and interpreters, see <a class="reference external" href="https://fabienmaussion.info/intro_to_programming/week_02/01-Install-jupyter.html#explanation-the-difference-between-the-command-prompt-the-miniforge-prompt-and-the-python-interpreter">my beginners’ programming class notes</a></p>
 </section>
 <section id="installation-instructions">
 <h2>Installation instructions<a class="headerlink" href="#installation-instructions" title="Link to this heading">#</a></h2>
-<p>Open a miniforge prompt (or a terminal on Linux/macOS) and type:</p>
+<p>Open a miniforge/anaconda prompt (or a terminal on Linux/macOS) and type:</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="university" for="sd-tab-item-0">
-On university workstations / Anaconda</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">python</span><span class="o">==</span><span class="mf">3.12</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span>
+On the Anaconda prompt (e.g., university workstations)</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="forge" for="sd-tab-item-1">
-On your personal computer / Miniforge</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span>
+On the Miniforge prompt</label><div class="sd-tab-content docutils">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
@@ -475,7 +480,7 @@ In [1]:
 <p class="admonition-title">Note</p>
 <p>This needs to be done every time you want to work on your notebooks!</p>
 </div>
-<p>From now on, and regardless of the computer you are using, you will have to activate the <code class="docutils literal notranslate"><span class="pre">qcr</span></code> environment before starting <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code>. I <strong>strongly</strong> recommend to start <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> from the folder where you want to work (i.e. where you have saved your notebooks and data).</p>
+<p>From now on, and regardless of the computer you are using, you will have to activate the <code class="docutils literal notranslate"><span class="pre">qcr</span></code> environment before starting <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code>. I strongly recommend to start <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> from the folder where you want to work (i.e. where you have saved your notebooks and data).</p>
 <p>The steps are as follows:</p>
 <ol class="arabic">
 <li><p>Open a miniforge prompt (or a terminal on Linux/macOS)</p></li>
@@ -602,7 +607,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2025.
+  Last updated on Oct 10, 2025.
   <br/>
 </p>
   </div>

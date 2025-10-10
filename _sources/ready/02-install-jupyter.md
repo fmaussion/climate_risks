@@ -8,35 +8,35 @@ Installing JupyterLab and the python packages need to be done **only once** on t
 
 ## Prerequisites
 
- I'll assume that the [python installation instructions](01-installation) have worked for you (or that you are using a university workstation), and that you:
+I'll assume that the [python installation instructions](01-installation) have worked for you (or that you are using a university workstation), and that you:
 
-- are able to start a miniforge prompt
-- can type `mamba list` successfully (`conda list` on the university's workstations)
+- are able to start **one of** anaconda or miniforge prompt (depending on wether you are using anaconda or miniforge)
+- can type **one of** `mamba list` or `conda list` successfully
 - can type `python` and open a python interpreter.
 
 For a primer on the different prompts and interpreters, see [my beginners' programming class notes](https://fabienmaussion.info/intro_to_programming/week_02/01-Install-jupyter.html#explanation-the-difference-between-the-command-prompt-the-miniforge-prompt-and-the-python-interpreter)
 
 ## Installation instructions
 
-Open a miniforge prompt (or a terminal on Linux/macOS) and type:
+Open a miniforge/anaconda prompt (or a terminal on Linux/macOS) and type:
 
 `````{tab-set}
 :sync-group: compcategory
 
-````{tab-item} On university workstations / Anaconda
+````{tab-item} On the Anaconda prompt (e.g., university workstations)
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge python==3.12 jupyterlab==4.0.13 jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
+conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray regionmask
 ```
 
 ````
 
-````{tab-item} On your personal computer / Miniforge
+````{tab-item} On the Miniforge prompt
 :sync: forge
 
 ```
-mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray
+mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray regionmask
 ```
 
 ````
@@ -68,7 +68,7 @@ The packages `cftime`, `geopandas` and `rioxarray` have been added as a requirem
 This needs to be done every time you want to work on your notebooks!
 ```
 
-From now on, and regardless of the computer you are using, you will have to activate the `qcr` environment before starting `jupyter-lab`. I **strongly** recommend to start `jupyter-lab` from the folder where you want to work (i.e. where you have saved your notebooks and data).
+From now on, and regardless of the computer you are using, you will have to activate the `qcr` environment before starting `jupyter-lab`. I strongly recommend to start `jupyter-lab` from the folder where you want to work (i.e. where you have saved your notebooks and data).
 
 The steps are as follows:
 

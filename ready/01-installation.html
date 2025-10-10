@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 29, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 10, 2025"/>
   </head>
   
   
@@ -194,6 +194,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
 </ul>
 
     </div>
@@ -427,13 +432,10 @@
 <p>This chapter provides instructions on how to install Python on your personal computer.</p>
 <p>Installing Python on your device is optional. All class exercises can be completed using the university’s workstations. However, installing Python on your own device allows you to work on exercises at home and can be a valuable learning experience.</p>
 <p>There are multiple ways to install Python on your computer. While most methods work, some are more practical than others. Unless you are experienced with Python installations (i.e., you have done this before), please follow these instructions carefully.</p>
-<div class="warning dropdown admonition">
+<div class="warning admonition">
 <p class="admonition-title">What to do if you <strong>already</strong> have python installed on your laptop</p>
 <p><strong>If you already have Anaconda, Conda, or Miniconda installed from a previous class:</strong></p>
-<p>You can keep your installation if it works for you. If you’d prefer to start fresh, uninstall Anaconda and follow the instructions below.</p>
-<hr class="docutils" />
-<p><strong>If you’re unsure what this means:</strong></p>
-<p>Follow the instructions below.</p>
+<p>You can keep your installation if it works for you. If you’d prefer to start fresh, <strong>uninstall Anaconda first</strong> and follow the instructions below.</p>
 </div>
 <div class="warning dropdown admonition">
 <p class="admonition-title">For Windows 10 or below or Chromebook users</p>
@@ -485,7 +487,7 @@ On Mac OS and Linux</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>Now you should have a terminal window open. In the terminal, type:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mamba list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda list
 </pre></div>
 </div>
 <p>You should see a long list of package names.</p>
@@ -503,7 +505,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <div class="note dropdown admonition">
 <p class="admonition-title">Optional: a brief explanation of what we’ve just done</p>
 <p>The steps above should work in nearly all situations and prepare you for the class. Here’s a brief explanation in case you’re curious or need to search for more information:</p>
-<p>We installed <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will need.</p>
+<p>We installed <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will ever need and is very heavy.</p>
 <p><strong>Additionally, we made some default configurations:</strong></p>
 <ul class="simple">
 <li><p>We set <a class="reference external" href="https://conda-forge.org/">Conda-Forge</a> as the default channel for downloading Python packages (instead of the default Anaconda channel).</p></li>
@@ -615,7 +617,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 29, 2025.
+  Last updated on Oct 10, 2025.
   <br/>
 </p>
   </div>

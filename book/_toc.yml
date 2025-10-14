@@ -27,10 +27,10 @@ parts:
     chapters:
     - file: ws02/01-lesson-moredatacrunching
     - file: ws02/02-assignment-variability
-  # - caption: Workshop 05
-  #   chapters:
-  #   - file: ws05/01-lesson-timeseries
-  #   - file: ws05/02-assignment-timeseries
+  - caption: Workshop 03
+    chapters:
+    - file: ws03/01-lesson-timeseries
+    - file: ws03/02-assignment-timeseries
   # - caption: Workshop 06
   #   chapters:
   #   - file: ws06/01-lesson-gev

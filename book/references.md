@@ -67,4 +67,18 @@ The excellent resources by Climatematch inspired some of my notes:
   - [Reanalysis data](https://climatedataguide.ucar.edu/climate-data/atmospheric-reanalysis-overview-comparison-tables)
   - Global temperature from stations datasets: [CRU](https://climatedataguide.ucar.edu/climate-data/cru-ts-gridded-precipitation-and-other-meteorological-variables-1901), [BEST](https://climatedataguide.ucar.edu/climate-data/global-surface-temperatures-best-berkeley-earth-surface-temperatures), [GISTEMP](https://climatedataguide.ucar.edu/climate-data/global-surface-temperature-data-gistemp-nasa-goddard-institute-space-studies-giss)
 
+**Lecture 3 (Statistical methods)**
+
+- **Book:** *Statistical Methods for Climate Scientists*, Cambridge University Press  
+  🔗 [https://doi.org/10.1017/9781108659055](https://doi.org/10.1017/9781108659055)  
+  *Recommended for their broad coverage, the code examples (need to be translated to Python – easy enough with AI), and the excellent introductions before the heavy statistics.*
+  📘 PDF available from Uni Bristol.
+- **Book:** *Statistical Methods in the Atmospheric Sciences*, Daniel S. Wilks  
+  🔗 [https://www.sciencedirect.com/book/9780128158234/statistical-methods-in-the-atmospheric-sciences](https://www.sciencedirect.com/book/9780128158234/statistical-methods-in-the-atmospheric-sciences)  
+  *Recommended as “the” reference textbook — more complete but also a bit more complex than the above.*
+  📘 PDF available from Uni Bristol.
+- **Report:** *Bristol Local Flood Risk Management Strategy*  
+  🔗 [https://democracy.bristol.gov.uk/documents/s82208/Bristol%20Local%20Flood%20Risk%20Management%20Strategy%202023.pdf](https://democracy.bristol.gov.uk/documents/s82208/Bristol%20Local%20Flood%20Risk%20Management%20Strategy%202023.pdf)  
+  *A real-world policy view on flood risk management.*
+
 *(this list will be updated when the notes get written further)*

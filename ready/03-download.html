@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 10, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 14, 2025"/>
   </head>
   
   
@@ -199,6 +199,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
 </ul>
 
     </div>
@@ -413,6 +418,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -467,6 +477,40 @@
 <li><p>script I used to download all the data listed above: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5.ipynb</a></p></li>
 <li><p>script I used to download the “ultra low res” data listed in the CMIP6 section - the only change is the grid resolution: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5_lr.ipynb</a></p></li>
 <li><p>script I used to download the high resolution data (0.25°) over West Africa: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_hr_wa.ipynb">download_era5_hr_wa.ipynb</a></p></li>
+</ul>
+</section>
+</section>
+<section id="timeseries-data">
+<h2>Timeseries data<a class="headerlink" href="#timeseries-data" title="Link to this heading">#</a></h2>
+<section id="weather-station-data">
+<h3>Weather station data<a class="headerlink" href="#weather-station-data" title="Link to this heading">#</a></h3>
+<p>The “<a class="reference external" href="https://www.ncei.noaa.gov/access/metadata/landing-page/bin/iso?id=gov.noaa.ncdc:C00516">Global Surface Summary of the Day</a>”
+database is managed by NOAA. It contains daily weather station data from all over the world.
+These data are open access by the way! You can download them yourself from the page linked above.</p>
+<p>I downloaded the data for the Heathrow weather station near London and provide it here:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-heathrow.csv">gsod-heathrow.csv</a></p></li>
+</ul>
+<p>I also downloaded Bristol and Cardiff data if you are interested:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv">gsod-bristol.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv">gsod-cardiff.csv</a></p></li>
+</ul>
+<p>Since we can’t trust the current US adminstration to keep this infrastructure
+running for the duration of the class, I mirred the GSOD readme on our server -
+you’ll find it <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">here</a>.</p>
+</section>
+<section id="daily-precipitation-and-streamflow-from-the-national-river-flow-archive">
+<h3>Daily precipitation and streamflow from the national river flow archive<a class="headerlink" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive" title="Link to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a great resource for hydrologist. I downloaded the daily streamflow and precipitation data (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/search">search tool</a>) for the Chew river near Bristol (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">station 53004</a>) and provide it here:</p>
+<ul class="simple">
+<li><p>Chew at Compton Dando - Gauged Daily Flow (gdf): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv">53004_gdf.csv</a></p></li>
+<li><p>Chew at Compton Dando - Catchment daily rainfall (cdr): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_cdr.csv">53004_cdr.csv</a></p></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/gauged-daily-flow-data">Gauged Daily Flow</a></p></li>
+<li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/catchment-rainfall">Catchment daily rainfall</a></p></li>
 </ul>
 </section>
 </section>
@@ -542,6 +586,11 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-era5-data-from-the-cds-servers-optional">Additional ERA5 data from the CDS servers (optional)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
@@ -568,7 +617,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 10, 2025.
+  Last updated on Oct 14, 2025.
   <br/>
 </p>
   </div>

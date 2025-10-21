@@ -31,10 +31,10 @@ parts:
     chapters:
     - file: ws03/01-lesson-timeseries
     - file: ws03/02-assignment-timeseries
-  # - caption: Workshop 06
-  #   chapters:
-  #   - file: ws06/01-lesson-gev
-  #   - file: ws06/02-assignment-gev
+  - caption: Workshop 04
+    chapters:
+    - file: ws04/01-lesson-gev
+    - file: ws04/02-assignment-gev
   # - caption: Workshop 07
   #   chapters:
   #   - file: ws07/01-lesson-glaciers

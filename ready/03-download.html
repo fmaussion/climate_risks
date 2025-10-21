@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 14, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 21, 2025"/>
   </head>
   
   
@@ -204,6 +204,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws03/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws03/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
 </ul>
 
     </div>
@@ -421,6 +426,8 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-workshop-04-s-assignment-future-climate-at-heathrow">Data for Workshop 04’s assignment (future climate at Heathrow)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-timeseries-from-isimip">Daily timeseries from ISIMIP</a></li>
 </ul>
 </li>
 </ul>
@@ -513,6 +520,26 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <li><p><a class="reference external" href="https://nrfa.ceh.ac.uk/catchment-rainfall">Catchment daily rainfall</a></p></li>
 </ul>
 </section>
+<section id="data-for-workshop-04-s-assignment-future-climate-at-heathrow">
+<h3>Data for Workshop 04’s assignment (future climate at Heathrow)<a class="headerlink" href="#data-for-workshop-04-s-assignment-future-climate-at-heathrow" title="Link to this heading">#</a></h3>
+<p>For this workshop, we will use the following timeseries at Heathrow airport:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/W5E5v2.0_tas_lhr_daily.csv">W5E5v2.0_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_historical_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp126_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp370_tas_lhr_daily.csv</a></p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/lhr/csv/tas/gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv">gfdl-esm4_r1i1p1f1_w5e5_ssp585_tas_lhr_daily.csv</a></p></li>
+</ul>
+<p>The content of these files is explained in the assignment.</p>
+</section>
+<section id="daily-timeseries-from-isimip">
+<h3>Daily timeseries from ISIMIP<a class="headerlink" href="#daily-timeseries-from-isimip" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://www.isimip.org/">ISIMIP</a> stands for the “Inter-Sectoral Impact Model Intercomparison Project”. I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4) for the variables <code class="docutils literal notranslate"><span class="pre">tas</span></code> (2m temperature), <code class="docutils literal notranslate"><span class="pre">pr</span></code> (precipitation), <code class="docutils literal notranslate"><span class="pre">tasmax</span></code> (max temperature), <code class="docutils literal notranslate"><span class="pre">tasmin</span></code> (min temperature), and <code class="docutils literal notranslate"><span class="pre">hurs</span></code> (relative humidity). This alltogether represents a bit more than 0.5TB of data. Therefore, I extracted a number of timeseries for you to download. <strong>Let me know if you need more locations, or perhaps a specific region!</strong>.</p>
+<p>The timeseries are available for a number of locations. Visit the following webpage to explore them all:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/">ISIMIP Timeseries</a></p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -589,6 +616,8 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#timeseries-data">Timeseries data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weather-station-data">Weather station data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive">Daily precipitation and streamflow from the national river flow archive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-for-workshop-04-s-assignment-future-climate-at-heathrow">Data for Workshop 04’s assignment (future climate at Heathrow)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-timeseries-from-isimip">Daily timeseries from ISIMIP</a></li>
 </ul>
 </li>
 </ul>
@@ -617,7 +646,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 14, 2025.
+  Last updated on Oct 21, 2025.
   <br/>
 </p>
   </div>

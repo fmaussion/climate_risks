@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -66,11 +66,12 @@
     <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lesson: extreme value distributions" href="../ws04/01-lesson-gev.html" />
     <link rel="prev" title="Lesson: timeseries analysis and extreme values" href="01-lesson-timeseries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 14, 2025"/>
+    <meta name="docbuild:last-update" content="Oct 21, 2025"/>
   </head>
   
   
@@ -203,6 +204,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: timeseries analysis and extreme values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
 </ul>
 
     </div>
@@ -430,10 +436,10 @@
 <p>Import the packages. I’ll do this for you:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># This is new</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># This is new</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
 </pre></div>
 </div>
 </div>
@@ -562,7 +568,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6431665dccb5ce45c15c69e87b26817769784338009870ec486e21f94ded30c4.png" src="../_images/6431665dccb5ce45c15c69e87b26817769784338009870ec486e21f94ded30c4.png" />
+<img alt="../_images/0d7b7fd639607e4ee030161d4ab1e113dcf1395103c4f079da6a58c19d3acdc2.png" src="../_images/0d7b7fd639607e4ee030161d4ab1e113dcf1395103c4f079da6a58c19d3acdc2.png" />
 </div>
 </div>
 <p>By chance, the two variables have a similar range of values. It is however cleaner to plot them on separate axes:</p>
@@ -573,7 +579,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6dacaa10e1cddbf30ce54b8c87cc9e2f962ba33eb878fedda913279c459bb97a.png" src="../_images/6dacaa10e1cddbf30ce54b8c87cc9e2f962ba33eb878fedda913279c459bb97a.png" />
+<img alt="../_images/eba28fc2083dbf73cf2a8a0f13cd6156e023d5b1c5051382fa5916a95c5a774a.png" src="../_images/eba28fc2083dbf73cf2a8a0f13cd6156e023d5b1c5051382fa5916a95c5a774a.png" />
 </div>
 </div>
 <p>Or, with more control:</p>
@@ -596,7 +602,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/45a95a24e3487dc5e24b904512c7aa2bbdb8caa0cabe57f290be92dffcd4aea1.png" src="../_images/45a95a24e3487dc5e24b904512c7aa2bbdb8caa0cabe57f290be92dffcd4aea1.png" />
+<img alt="../_images/0423e222b4a8739caf748b15829ac81bd5bfcc066bab69bcc78a1cf62c02ece4.png" src="../_images/0423e222b4a8739caf748b15829ac81bd5bfcc066bab69bcc78a1cf62c02ece4.png" />
 </div>
 </div>
 <p><strong>Now, instead of plotting the daily rainfall, plot the 5-day rolling mean of the rainfall. Repeat for the year 2012.</strong></p>
@@ -683,6 +689,15 @@
         <p class="prev-next-title">Lesson: timeseries analysis and extreme values</p>
       </div>
     </a>
+    <a class="right-next"
+       href="../ws04/01-lesson-gev.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lesson: extreme value distributions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -728,7 +743,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 14, 2025.
+  Last updated on Oct 21, 2025.
   <br/>
 </p>
   </div>

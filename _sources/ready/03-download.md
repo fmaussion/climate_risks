@@ -97,3 +97,65 @@ The content of these files is explained in the assignment.
 The timeseries are available for a number of locations. Visit the following webpage to explore them all:
 
 - [ISIMIP Timeseries](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/)
+
+## Monthly CMIP6 data (global)
+
+CMIP6 stands for the [Coupled Model Intercomparison Project Phase 6](https://pcmdi.llnl.gov/CMIP6/). It is a large collection of climate model simulations from many different models and institutions that formed the basis of IPCC AR6. The data is stored on the [ESGF](https://esgf-node.llnl.gov/projects/cmip6/) (Earth System Grid Federation) servers. Here I provide a subset of the data on my webserver for you to download.
+
+The data below is regridded to a common grid (2° and 0.75°) and averaged to monthly values.
+
+### Regridded to 2° resolution
+
+At 2° resolution, all CMIP6 temperature and precipitation files represent **9.2GB** of data.
+
+#### Projected temperature and precipitation
+
+This is the list of Earth System Models (ESMs), sometimes still called Global Circulation Models (GCMs) and scenarios for which I provide temperature data. The data is regridded to a common 2° grid and averaged to monthly values:
+
+```{include} cmip6-list-2deg.md
+```
+
+**If you want to avoid having to click on all files and want to download all files at once**, you can use [wget](https://en.wikipedia.org/wiki/Wget). After downloading the list of files provided below, you can use the following command to download all files at once:
+
+```bash
+wget -i cmip6-tas-list-2deg.txt
+```
+
+- list of temperature files: [cmip6-tas-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-2deg.txt)
+- list of precipitation files: [cmip6-pr-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-2deg.txt)
+
+#### 2° resolution ERA5 data
+
+This is the same ERA5 data as you've used so far, but at an even lower resolution of 2°. I've coarsened the data even more to match the CMIP6 data available above:
+
+- [ERA5_UltraLowRes_Invariant.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Invariant.nc): invariant data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_t2m.nc): 2m temperature data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_tp.nc): precipitation data at 2° resolution
+
+### Regridded to 0.75° resolution
+
+At 0.75° resolution, all CMIP6 temperature and precipitation files represent **65GB** of data.
+
+#### Projected temperature and precipitation
+
+The data is regridded to a common 0.75° grid and averaged to monthly values:
+
+```{include} cmip6-list-075deg.md
+```
+
+**If you want to avoid having to click on all files and want to download all files at once**, you can use [wget](https://en.wikipedia.org/wiki/Wget). After downloading the list of files provided below, you can use the following command to download all files at once:
+
+```bash
+wget -i cmip6-tas-list-075deg.txt
+```
+
+- list of temperature files: [cmip6-tas-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-075deg.txt)
+- list of precipitation files: [cmip6-pr-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-075deg.txt)
+
+#### 0.75° resolution ERA5 data
+
+See [](era5-075).
+
+### CMIP6 data at their original resolution
+
+See this server for the original resolution files: [OGGM server](https://cluster.klima.uni-bremen.de/~oggm/cmip6/).

@@ -41,13 +41,14 @@ The excellent resources by Climatematch inspired some of my notes:
 
 **Further lecture notes by Fabien:**
 - [💻 Introduction to Python Programming](http://fabienmaussion.info/intro_to_programming) (undergraduate level)
-- [🧑‍💻 Scientific Programming in Python](https://fabienmaussion.info/scientific_programming/html/index.html) (postgraduate level)
+- [🧑‍💻 Scientific Programming in Python](https://fabienmaussion.info/scientific_programming) (postgraduate level)
 - [🌍 Physics of the Climate System Practicals](https://fabienmaussion.info/climate_system)
 
 **Miscellanea**
 - The excellent episode of "Cautionary Tales" about how risk mitigation measures can go wrong: [BBC iPlayer](https://www.bbc.co.uk/programmes/p0gy6fs6), [youtube](https://www.youtube.com/watch?v=vVv_y7vkQAw)
 - Art: [Landscape Of Change](https://www.jillpelto.com/landscape-of-change) by Jill Pelto
 
+---
 
 ## By Week
 
@@ -66,6 +67,7 @@ The excellent resources by Climatematch inspired some of my notes:
 - Web resource about climate datasets, their strengths and limitations: [Cimate Data Guide](https://climatedataguide.ucar.edu/), in particular:
   - [Reanalysis data](https://climatedataguide.ucar.edu/climate-data/atmospheric-reanalysis-overview-comparison-tables)
   - Global temperature from stations datasets: [CRU](https://climatedataguide.ucar.edu/climate-data/cru-ts-gridded-precipitation-and-other-meteorological-variables-1901), [BEST](https://climatedataguide.ucar.edu/climate-data/global-surface-temperatures-best-berkeley-earth-surface-temperatures), [GISTEMP](https://climatedataguide.ucar.edu/climate-data/global-surface-temperature-data-gistemp-nasa-goddard-institute-space-studies-giss)
+ 
 
 **Lecture 3 (Statistical methods)**
 
@@ -80,5 +82,27 @@ The excellent resources by Climatematch inspired some of my notes:
 - **Report:** *Bristol Local Flood Risk Management Strategy*  
   🔗 [https://democracy.bristol.gov.uk/documents/s82208/Bristol%20Local%20Flood%20Risk%20Management%20Strategy%202023.pdf](https://democracy.bristol.gov.uk/documents/s82208/Bristol%20Local%20Flood%20Risk%20Management%20Strategy%202023.pdf)  
   *A real-world policy view on flood risk management.*
+
+
+**Lecture 4 (Attribution)**
+
+- **Explainer:** *Why scientists think 100% of global warming is due to humans*  
+  🔗 [https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans/](https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans/)  
+  *A clear and accessible summary of how scientists know that essentially all observed global warming since the mid-20th century is due to human influence.*
+- **Q&A:** *The evolving science of ‘extreme weather attribution’*  
+  🔗 [https://www.carbonbrief.org/qa-the-evolving-science-of-extreme-weather-attribution/](https://www.carbonbrief.org/qa-the-evolving-science-of-extreme-weather-attribution/)  
+  *An excellent introduction to how scientists determine whether extreme events like floods or heatwaves were influenced by climate change.*
+- **Paper:** *Attributing Extreme Events to Climate Change: A New Frontier in a Warming World*  
+  📄 Swain, D. L., Singh, D., Touma, D., & Diffenbaugh, N. S. (2020), *One Earth*, 2(6), 522–527  
+  🔗 [https://doi.org/10.1016/j.oneear.2020.05.011](https://doi.org/10.1016/j.oneear.2020.05.011)  
+  *A short but impactful peer-reviewed paper summarising advances in the science and communication of event attribution.*
+- **Report Chapter:** *IPCC AR6 WG1 – Chapter 12: Climate Change Information for Regional Impact and for Risk Assessment*  
+  🔗 [https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-12/](https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-12/)  
+  *Essential reading for understanding how global climate projections are used in regional risk assessments and adaptation planning.*
+- **Case Study:** *Pakistan 2022 Floods – Attribution Report*  
+  🔗 [https://www.worldweatherattribution.org/wp-content/uploads/Pakistan-floods-scientific-report.pdf](https://www.worldweatherattribution.org/wp-content/uploads/Pakistan-floods-scientific-report.pdf)  
+  *A real-world application of attribution science, assessing the role of climate change in one of the most devastating flood events in recent history.*
+
+---
 
 *(this list will be updated when the notes get written further)*

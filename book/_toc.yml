@@ -35,6 +35,11 @@ parts:
     chapters:
     - file: ws04/01-lesson-gev
     - file: ws04/02-assignment-gev
+  - caption: Workshop 05
+    chapters:
+    - file: ws05/01-lesson-droughts
+    - file: ws05/02-assignment-droughts-cmip6
+    
   # - caption: Workshop 07
   #   chapters:
   #   - file: ws07/01-lesson-glaciers

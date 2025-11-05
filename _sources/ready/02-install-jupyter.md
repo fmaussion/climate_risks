@@ -27,7 +27,7 @@ Open a miniforge/anaconda prompt (or a terminal on Linux/macOS) and type:
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray regionmask
+conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray cf_xarray regionmask
 ```
 
 ````
@@ -36,7 +36,7 @@ conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst
 :sync: forge
 
 ```
-mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray regionmask
+mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray cf_xarray regionmask
 ```
 
 ````
@@ -58,9 +58,6 @@ The only *visual* difference between the `ipython` and `python` interpreters is 
 
 Exit `ipython` (remember how? Use `exit()`) and move on to the next step.
 
-```{note}
-The packages `cftime`, `geopandas` and `rioxarray` have been added as a requirement for Workshop 7. To install them *in an existing `qcr` environment*, start by activating the environment with `conda activate qcr` and then type `mamba install --channel conda-forge cftime geopandas rioxarray` or, if `mamba` is not available, `conda install --channel conda-forge cftime geopandas rioxarray`.
-```
 
 ## Opening JupyterLab in the qcr environment and folder
 

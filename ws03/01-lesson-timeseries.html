@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
   </head>
   
   
@@ -211,6 +211,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
 </ul>
 
     </div>
@@ -465,10 +470,10 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># This is new</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>  <span class="c1"># This is new</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>  <span class="c1"># This also</span>
 </pre></div>
 </div>
 </div>
@@ -816,7 +821,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9ef142a68d037d9237439b533f362016a02f44e332c171c9b5b3dda9b95f65ff.png" src="../_images/9ef142a68d037d9237439b533f362016a02f44e332c171c9b5b3dda9b95f65ff.png" />
+<img alt="../_images/de966a8a0c886b3dd9a5b52996ddfeb347d63032eb2964ebaa59f3c5b5baa72e.png" src="../_images/de966a8a0c886b3dd9a5b52996ddfeb347d63032eb2964ebaa59f3c5b5baa72e.png" />
 </div>
 </div>
 <p><strong>Q: spend some time exploring the dataset. Plot one or two variables, including <code class="docutils literal notranslate"><span class="pre">MAX</span></code> and <code class="docutils literal notranslate"><span class="pre">PRCP</span></code>. What can you notice?</strong></p>
@@ -858,7 +863,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7566624163e69dac3f2943e2ba8eda6594665bac6e4989f8b21afdc92ad0249a.png" src="../_images/7566624163e69dac3f2943e2ba8eda6594665bac6e4989f8b21afdc92ad0249a.png" />
+<img alt="../_images/cacc35bf57505061e9540717c988288a1a51c873907234c19b0781c91d004a5c.png" src="../_images/cacc35bf57505061e9540717c988288a1a51c873907234c19b0781c91d004a5c.png" />
 </div>
 </div>
 <p>OK - let’s take a step back and see what we’ve done.</p>
@@ -878,7 +883,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3333333333333333
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.3333333333333333)
 </pre></div>
 </div>
 </div>
@@ -922,7 +927,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4884d736cba9cde8c15c851c65869c65dab536cf1fa91491021d43111c39789f.png" src="../_images/4884d736cba9cde8c15c851c65869c65dab536cf1fa91491021d43111c39789f.png" />
+<img alt="../_images/7d8f69f1c7f62cf265218c039256953c4b54e19326a5e18055f5f8f457b8144a.png" src="../_images/7d8f69f1c7f62cf265218c039256953c4b54e19326a5e18055f5f8f457b8144a.png" />
 </div>
 </div>
 <p>That’s more like it. For over a decade, 100% of the data is missing. This makes the record a bit useless before 1973. Also, since 2025 is not complete yet, we might as well get rid of it!</p>
@@ -945,7 +950,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/122f3f2911dc5f41725c37cee66571df467a1b3bd230b74569bdb8a97fcaee5e.png" src="../_images/122f3f2911dc5f41725c37cee66571df467a1b3bd230b74569bdb8a97fcaee5e.png" />
+<img alt="../_images/d5548791860fde73817c7953489aefd676383c88e25b2425819a87cd13e19e21.png" src="../_images/d5548791860fde73817c7953489aefd676383c88e25b2425819a87cd13e19e21.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -955,7 +960,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(4)
 </pre></div>
 </div>
 </div>
@@ -971,7 +976,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/47aa97123e39e7110849b1f9794fe4a7e716c86e95bd742ef3e93abf87cc6104.png" src="../_images/47aa97123e39e7110849b1f9794fe4a7e716c86e95bd742ef3e93abf87cc6104.png" />
+<img alt="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" src="../_images/0767fd0e4e54b86468926f539f778d86b13f9da410d758f282f40e5b36b8c877.png" />
 </div>
 </div>
 <p>This just looks more plausible now. The remaining most visible extreme value (4 inches, i.e. ~ 100 mm in a day) is still very high but more plausible. It happened on 1994-02-24, and might or might not be correct:</p>
@@ -982,7 +987,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.02, Timestamp(&#39;1994-02-24 00:00:00&#39;))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(4.02), Timestamp(&#39;1994-02-24 00:00:00&#39;))
 </pre></div>
 </div>
 </div>
@@ -999,7 +1004,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dfdd8c95936e2d8be1e2b10686a01c3ca97daf2b4b9fbde9f1e801bbdb2e1c18.png" src="../_images/dfdd8c95936e2d8be1e2b10686a01c3ca97daf2b4b9fbde9f1e801bbdb2e1c18.png" />
+<img alt="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" src="../_images/642a470f0767906c4c900fb5246ecb5cc94df6afac9f7dbf1c58436a4981197d.png" />
 </div>
 </div>
 <p>Good job! Now we’re ready to move forward with the analysis. 🚀</p>
@@ -1221,7 +1226,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d6f5d20053dc7a51a7c586c51ad511b68e4c2261b2f0e54bd9cf62a05fa80dff.png" src="../_images/d6f5d20053dc7a51a7c586c51ad511b68e4c2261b2f0e54bd9cf62a05fa80dff.png" />
+<img alt="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" src="../_images/f84a70c63df48a9354fe93b1ae03bafd06b30c0ddb36c47fb0f7ca4197834954.png" />
 </div>
 </div>
 <p><strong>E: Now repeat the plot with the year 2022 (the hottest day on record), and zoom in the months of June to September 2022.</strong> <em>Hint: to select a time period, you will need to use <code class="docutils literal notranslate"><span class="pre">.loc[date1:date2]</span></code></em></p>
@@ -1243,7 +1248,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5d22796a7a60629fe5a7bf87fe95804ae84c66ddc6ce802de2362c9ac77f51b0.png" src="../_images/5d22796a7a60629fe5a7bf87fe95804ae84c66ddc6ce802de2362c9ac77f51b0.png" />
+<img alt="../_images/3711a44ddf36838f143592f2ee2901ea7616fca3107dcf23475eecd203532c46.png" src="../_images/3711a44ddf36838f143592f2ee2901ea7616fca3107dcf23475eecd203532c46.png" />
 </div>
 </div>
 <p>Or annual:</p>
@@ -1254,7 +1259,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/166d8460f74c6ba5e1ab74264c9d6d7e4eff0e4c63ac9ff9acefc0c1d9b11068.png" src="../_images/166d8460f74c6ba5e1ab74264c9d6d7e4eff0e4c63ac9ff9acefc0c1d9b11068.png" />
+<img alt="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" src="../_images/25baf7b5d3bb4c7f0f9e216790acf77b48c10727863c9a1705490d785a05c56c.png" />
 </div>
 </div>
 <p><strong>E: compute the difference between the average temperature over the last decade (2015-2024) and the first decade in the record (1973-1982). Repeat with maximum, minimum temperature and precipitation.</strong> (<em>Hint: you can avoid repetition by noticing that one can do statistics on entire dataframes.</em></p>
@@ -1283,7 +1288,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c63dcc513c64f5512501f62dcbfe14fb21f238007a80a350d6a86a042d260268.png" src="../_images/c63dcc513c64f5512501f62dcbfe14fb21f238007a80a350d6a86a042d260268.png" />
+<img alt="../_images/8d741e2cbda6ab98d7fffaecbe33a1a82239f770ff76d5d981d3f68e07829f8c.png" src="../_images/8d741e2cbda6ab98d7fffaecbe33a1a82239f770ff76d5d981d3f68e07829f8c.png" />
 </div>
 </div>
 <p><strong>Q: interpret the plot. Why do you think the rolling timeseries are not covering the full period? Now repet the plot without the <code class="docutils literal notranslate"><span class="pre">center=True</span></code> argument.</strong></p>
@@ -1367,7 +1372,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ba6b7a50fe493edc95d1387fdd790b394b5da4a6ef8bdc29085a12533d37e3e7.png" src="../_images/ba6b7a50fe493edc95d1387fdd790b394b5da4a6ef8bdc29085a12533d37e3e7.png" />
+<img alt="../_images/77da40bb36ac24f53557e06c95b06f7106edec24505d91110919206567a0250a.png" src="../_images/77da40bb36ac24f53557e06c95b06f7106edec24505d91110919206567a0250a.png" />
 </div>
 </div>
 <p><strong>Q: do you understand what <code class="docutils literal notranslate"><span class="pre">dfh.groupby(dfh.index.month)</span></code> is doing? Perhaps it’s worth exploring it step by step, for example by printing the output of <code class="docutils literal notranslate"><span class="pre">dfh.index.month</span></code>, then remember what <code class="docutils literal notranslate"><span class="pre">groupby</span></code> does, and what <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> does.</strong></p>
@@ -1399,7 +1404,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2b217d7f3f7d7be837ab334384cd064eb0128ed30da670bedcb042b90a194d28.png" src="../_images/2b217d7f3f7d7be837ab334384cd064eb0128ed30da670bedcb042b90a194d28.png" />
+<img alt="../_images/a813fda8a1cb26c988e8a273543efc7a4ad66c7e46ad1e0cee56ce7c0d7f70ef.png" src="../_images/a813fda8a1cb26c988e8a273543efc7a4ad66c7e46ad1e0cee56ce7c0d7f70ef.png" />
 </div>
 </div>
 <p><strong>E: Add proper labels to the curves above. Do you understand what’s plotted there? Now also add the equivalent for the MIN temperatures.</strong> <em>Hint: the goal is to reproduce a plot similar to the <a class="reference external" href="https://www.meteoblue.com/en/weather/historyclimate/climateobserved/bristol_united-kingdom_2654675">Meteoblue climate diagrams</a>.</em></p>
@@ -1432,7 +1437,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8a0fc673d82bc1133bbeb134c865acb0f51fb899f993f1210c48135baf36e4d3.png" src="../_images/8a0fc673d82bc1133bbeb134c865acb0f51fb899f993f1210c48135baf36e4d3.png" />
+<img alt="../_images/a793dc2f128946d2570c6c38feeee3113021f259bf2ef57a9bd24a04124df3c8.png" src="../_images/a793dc2f128946d2570c6c38feeee3113021f259bf2ef57a9bd24a04124df3c8.png" />
 </div>
 </div>
 <p>The Y axis represents the number of events by bins in the sample (“frequency” is a bit misleading). Usually we like to work in density (percentages).</p>
@@ -1445,7 +1450,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/099bb56afe8452402744390f646687d5cc41dc6b6920f4fc36c8c24368cba786.png" src="../_images/099bb56afe8452402744390f646687d5cc41dc6b6920f4fc36c8c24368cba786.png" />
+<img alt="../_images/3f5c46c8ed86cc60b3c3a418b274e190d6506020241257c3b21cc389702346f1.png" src="../_images/3f5c46c8ed86cc60b3c3a418b274e190d6506020241257c3b21cc389702346f1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1457,7 +1462,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a53aa3de87bb7427bc91768500997b1cf4e7a4a48d6ec327f143759d802d6239.png" src="../_images/a53aa3de87bb7427bc91768500997b1cf4e7a4a48d6ec327f143759d802d6239.png" />
+<img alt="../_images/431568d7b171afd5db998ad63c7a28405e630d5d6a9698d13f1b97f9d547a2c5.png" src="../_images/431568d7b171afd5db998ad63c7a28405e630d5d6a9698d13f1b97f9d547a2c5.png" />
 </div>
 </div>
 <p>The histogram values can also be computed for further analysis instead of plotting:</p>
@@ -1511,7 +1516,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6a3de236451bbcd3776046b2d551d8768a97591ae83f7449027e31c727f818f1.png" src="../_images/6a3de236451bbcd3776046b2d551d8768a97591ae83f7449027e31c727f818f1.png" />
+<img alt="../_images/9736eb8f9941b2ca76f7394e120f9d92ec5ddf022253914014dd8cd6277dd308.png" src="../_images/9736eb8f9941b2ca76f7394e120f9d92ec5ddf022253914014dd8cd6277dd308.png" />
 </div>
 </div>
 <p>The gaussian PDF approximate the data quite well, but there are also quite some deviations from the Gaussian. Can you spot them?</p>
@@ -1542,7 +1547,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54e66178991f63c87c934da915c8853c0f78ca00d29e647137cee737ca5cdce3.png" src="../_images/54e66178991f63c87c934da915c8853c0f78ca00d29e647137cee737ca5cdce3.png" />
+<img alt="../_images/37e76726d3baaa913376caf3ca725c2708ea7afe092391f709b3df6df3f2ef72.png" src="../_images/37e76726d3baaa913376caf3ca725c2708ea7afe092391f709b3df6df3f2ef72.png" />
 </div>
 </div>
 <p>The probability of exceedance is 1 - the value of the cumulative PDF at 25°C. Can you try to see it from the plot? It’s quite hard for small probabilities isn’t it? Therefore, scipy gives us a way to compute it with cenrtainty:</p>
@@ -1581,7 +1586,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dcae15c261173224b939c664b7d79b448a8abf831917fd639dbe685e6b951f63.png" src="../_images/dcae15c261173224b939c664b7d79b448a8abf831917fd639dbe685e6b951f63.png" />
+<img alt="../_images/f825041e3574a89d36cfb9f69a700bc1e5273150cf895e7681e8ab23f0ed55b2.png" src="../_images/f825041e3574a89d36cfb9f69a700bc1e5273150cf895e7681e8ab23f0ed55b2.png" />
 </div>
 </div>
 <p>The sample size is now much smaller! Just the number of years in the time series. It becomes trickier to do stats on this sample:</p>
@@ -1592,7 +1597,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c50db0a49e3c8baf87d3a2b81a24da3740be83a85b2f2a630f32895a73867c11.png" src="../_images/c50db0a49e3c8baf87d3a2b81a24da3740be83a85b2f2a630f32895a73867c11.png" />
+<img alt="../_images/afe9daa9c4b4e5809664b40ccec5a893c85e93f725a72c9017cd6f9b2310572d.png" src="../_images/afe9daa9c4b4e5809664b40ccec5a893c85e93f725a72c9017cd6f9b2310572d.png" />
 </div>
 </div>
 <p>The shape of the ditribution is far from Gaussian. This is a problem we will tackle at another time.</p>
@@ -1727,7 +1732,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/875c636f872d7af79c38b787010505cdfa5afca3db1e5d4676d4dc43e677a681.png" src="../_images/875c636f872d7af79c38b787010505cdfa5afca3db1e5d4676d4dc43e677a681.png" />
+<img alt="../_images/97c62aa1db0d00a01e7d568865eb81fd840022c5712c149ccb7f5bac519388cb.png" src="../_images/97c62aa1db0d00a01e7d568865eb81fd840022c5712c149ccb7f5bac519388cb.png" />
 </div>
 </div>
 <p>For readability and ease of use, we often discuss return periods using a logarithmic scale, referring to events with return periods of 1 year, 10 years, and 100 years. Let’s modify the plot above by changing the x-axis to a logarithmic scale.</p>
@@ -1744,7 +1749,7 @@ Name: TEMP, Length: 22697, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11bc298350da11e3369bed6837a0218a47b2ce5506b2a2197c34c109149442e1.png" src="../_images/11bc298350da11e3369bed6837a0218a47b2ce5506b2a2197c34c109149442e1.png" />
+<img alt="../_images/27cee0d993bc8a42e5a6052f4b0080c39785de7ef94b1eda91ee0c62af725e56.png" src="../_images/27cee0d993bc8a42e5a6052f4b0080c39785de7ef94b1eda91ee0c62af725e56.png" />
 </div>
 </div>
 <p><strong>What is the approximative empirical return period of a 34°C max temperature? And of a 38°C max temperature?</strong></p>
@@ -1876,7 +1881,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 22, 2025.
+  Last updated on Nov 05, 2025.
   <br/>
 </p>
   </div>

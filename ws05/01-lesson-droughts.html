@@ -1,0 +1,1910 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Lesson: organise your datasets, select data by country, droughts &#8212; Quantifying Climate Risks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws05/01-lesson-droughts';</script>
+    <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Assignment: Droughts, CMIP6 projections" href="02-assignment-droughts-cmip6.html" />
+    <link rel="prev" title="Assignment: scenario dependence of climate risks" href="../ws04/02-assignment-gev.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc1.html">IPCC AR6 WG2 – Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc2.html">IPCC AR6 WG2 - Part 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ready/00-howto.html">How to use this website and prepare for each week</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws05/01-lesson-droughts.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws05/01-lesson-droughts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ws05/01-lesson-droughts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson: organise your datasets, select data by country, droughts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#organise-data-in-datasets">Organise data in datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data-by-country">Select data by country</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#droughts-and-spei">Droughts and SPEI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-balance">Water balance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-standardised-precipitationevapotranspiration-index-spei">Introducing the Standardised Precipitation–Evapotranspiration Index (SPEI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-spei-does">What SPEI does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-spei-in-python">Computing SPEI in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s next?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-organise-your-datasets-select-data-by-country-droughts">
+<h1>Lesson: organise your datasets, select data by country, droughts<a class="headerlink" href="#lesson-organise-your-datasets-select-data-by-country-droughts" title="Link to this heading">#</a></h1>
+<p>In this lesson, we will now go back to NetCDF files and gridded data analysis. We will mix up xarray and pandas to get to our new goal today: studying droughts.</p>
+<section id="era5-data">
+<h2>ERA5 data<a class="headerlink" href="#era5-data" title="Link to this heading">#</a></h2>
+<p>Let’s start by opening (and downloading if necessary) our now familiar ERA5 temperature dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the tools we are going to need today:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># plotting library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># numerical library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>  <span class="c1"># netCDF library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>  <span class="c1"># Map projections libary</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>  <span class="c1"># Projections list</span>
+<span class="c1"># Some defaults:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Default plot size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_LowRes_Monthly_t2m.nc&#39;</span><span class="p">)</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 255MB
+Dimensions:    (time: 552, latitude: 241, longitude: 480)
+Coordinates:
+  * time       (time) datetime64[ns] 4kB 1979-01-01 1979-02-01 ... 2024-12-01
+  * latitude   (latitude) float64 2kB 90.0 89.25 88.5 ... -88.5 -89.25 -90.0
+  * longitude  (longitude) float64 4kB -179.6 -178.9 -178.1 ... 178.9 179.6
+Data variables:
+    t2m        (time, latitude, longitude) float32 255MB ...
+Attributes:
+    Conventions:  CF-1.7
+    institution:  European Centre for Medium-Range Weather Forecasts</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-fc965de6-6ec8-42a5-8890-2d692a096121' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fc965de6-6ec8-42a5-8890-2d692a096121' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 552</li><li><span class='xr-has-index'>latitude</span>: 241</li><li><span class='xr-has-index'>longitude</span>: 480</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f06ed9db-98c6-482d-8935-58d1c85b7b95' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f06ed9db-98c6-482d-8935-58d1c85b7b95' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2024-12-01</div><input id='attrs-c947a6a4-d64b-415c-9809-687a497e12b1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c947a6a4-d64b-415c-9809-687a497e12b1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-84df5b04-1330-43ac-b94a-ec21cfc3dc69' class='xr-var-data-in' type='checkbox'><label for='data-84df5b04-1330-43ac-b94a-ec21cfc3dc69' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-02-01T00:00:00.000000000&#x27;,
+       &#x27;1979-03-01T00:00:00.000000000&#x27;, ..., &#x27;2024-10-01T00:00:00.000000000&#x27;,
+       &#x27;2024-11-01T00:00:00.000000000&#x27;, &#x27;2024-12-01T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.25 88.5 ... -89.25 -90.0</div><input id='attrs-aa77c0b3-9499-4de3-835c-75a7f86c5abd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa77c0b3-9499-4de3-835c-75a7f86c5abd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1b6bd789-09a2-4036-ac2d-0214cfae40e4' class='xr-var-data-in' type='checkbox'><label for='data-1b6bd789-09a2-4036-ac2d-0214cfae40e4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.25,  88.5 , ..., -88.5 , -89.25, -90.  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.6 -178.9 ... 178.9 179.6</div><input id='attrs-4459c4d0-973d-419d-9dfd-e1d591bea65b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4459c4d0-973d-419d-9dfd-e1d591bea65b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3696225c-74d7-43f3-8490-de28ee0d1c66' class='xr-var-data-in' type='checkbox'><label for='data-3696225c-74d7-43f3-8490-de28ee0d1c66' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([-179.625, -178.875, -178.125, ...,  178.125,  178.875,  179.625])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9d0a2626-c1ef-46c3-8872-3a2946059737' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9d0a2626-c1ef-46c3-8872-3a2946059737' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-6aa6162a-9678-4084-b51a-1b5e41c927c0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6aa6162a-9678-4084-b51a-1b5e41c927c0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9b594dd5-f8f8-42c5-ae61-7bfc18c10062' class='xr-var-data-in' type='checkbox'><label for='data-9b594dd5-f8f8-42c5-ae61-7bfc18c10062' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div><div class='xr-var-data'><pre>[63855360 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-30a67b72-39e6-419a-8cd0-fd641b27770f' class='xr-section-summary-in' type='checkbox'  ><label for='section-30a67b72-39e6-419a-8cd0-fd641b27770f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-50197681-cef0-48cf-9dc8-dfb720a6b223' class='xr-index-data-in' type='checkbox'/><label for='index-50197681-cef0-48cf-9dc8-dfb720a6b223' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01&#x27;, &#x27;1979-02-01&#x27;, &#x27;1979-03-01&#x27;, &#x27;1979-04-01&#x27;,
+               &#x27;1979-05-01&#x27;, &#x27;1979-06-01&#x27;, &#x27;1979-07-01&#x27;, &#x27;1979-08-01&#x27;,
+               &#x27;1979-09-01&#x27;, &#x27;1979-10-01&#x27;,
+               ...
+               &#x27;2024-03-01&#x27;, &#x27;2024-04-01&#x27;, &#x27;2024-05-01&#x27;, &#x27;2024-06-01&#x27;,
+               &#x27;2024-07-01&#x27;, &#x27;2024-08-01&#x27;, &#x27;2024-09-01&#x27;, &#x27;2024-10-01&#x27;,
+               &#x27;2024-11-01&#x27;, &#x27;2024-12-01&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=552, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-eb599c73-139f-4186-8bff-7b23f8a93283' class='xr-index-data-in' type='checkbox'/><label for='index-eb599c73-139f-4186-8bff-7b23f8a93283' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  90.0,  89.25,   88.5,  87.75,   87.0,  86.25,   85.5,  84.75,   84.0,
+        83.25,
+       ...
+       -83.25,  -84.0, -84.75,  -85.5, -86.25,  -87.0, -87.75,  -88.5, -89.25,
+        -90.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=241))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-8ec98b45-91b8-4d56-aa83-5a4cf0d50e34' class='xr-index-data-in' type='checkbox'/><label for='index-8ec98b45-91b8-4d56-aa83-5a4cf0d50e34' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.625, -178.875, -178.125, -177.375, -176.625, -175.875, -175.125,
+       -174.375, -173.625, -172.875,
+       ...
+        172.875,  173.625,  174.375,  175.125,  175.875,  176.625,  177.375,
+        178.125,  178.875,  179.625],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=480))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1a375095-ee6e-408c-87e0-0cf2601f6818' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1a375095-ee6e-408c-87e0-0cf2601f6818' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>institution :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>So far, we have mostly worked with NetCDF datasets containing a single data variable.
+In practice, climate datasets often include several variables within the same file.
+This has some advantages, as we’ll see shortly.</p>
+<p>Let’s now open two additional datasets: precipitation (which you already know) and PET (potential evapotranspiration), which is new and needs to be downloaded first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_tp</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_LowRes_Monthly_tp.nc&#39;</span><span class="p">)</span>
+<span class="n">ds_pet</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_LowRes_Monthly_pet.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explore the <code class="docutils literal notranslate"><span class="pre">ds_pet</span></code> dataset.</strong></p>
+<ul class="simple">
+<li><p>What are the <strong>units</strong> and <strong>long_name</strong> of the variable <code class="docutils literal notranslate"><span class="pre">pet_thornthwaite</span></code>?</p></li>
+<li><p>What does <strong>PET</strong> stand for?</p></li>
+<li><p>Look up how the <strong>Thornthwaite method</strong> works and what input data it uses.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The units of PET are not given correctly: they should read <strong>mm/month</strong>.<br />
+This is a very common issue in climate datasets. Fluxes such as precipitation or PET should be expressed <strong>per unit time</strong> (e.g. mm/day or mm/month), but metadata often omit the “per time” part.</p>
+<p>Our ERA5 precipitation data are in <strong>m/day</strong> (but described as “m”).</p>
+<p>Let’s convert them all to <strong>mm/month</strong> so PET and TP are comparable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert and update units of tp</span>
+<span class="n">days_in_month</span> <span class="o">=</span> <span class="n">ds_tp</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">days_in_month</span>
+<span class="n">tp</span> <span class="o">=</span> <span class="n">ds_tp</span><span class="p">[</span><span class="s1">&#39;tp&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">days_in_month</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">tp</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mm/month&#39;</span>
+
+<span class="c1"># Also correct tp&#39;s time - for some reason it shows up as 6am</span>
+<span class="n">tp</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ds</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span>
+
+<span class="c1"># Let&#39;s also read PET and update units</span>
+<span class="n">pet</span> <span class="o">=</span> <span class="n">ds_pet</span><span class="p">[</span><span class="s1">&#39;pet_thornthwaite&#39;</span><span class="p">]</span>
+<span class="n">pet</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;units&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;mm/month&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="organise-data-in-datasets">
+<h2>Organise data in datasets<a class="headerlink" href="#organise-data-in-datasets" title="Link to this heading">#</a></h2>
+<p>Now we have three variables: <strong>t2m</strong>, <strong>pet</strong>, and <strong>tp</strong>. It is possible (and not necessarily wrong) to keep these variables in separate datasets and run your analysis workflows on each of them individually.<br />
+However, you will quickly notice that this leads to a lot of repeated code — often changing only the variable name between lines.</p>
+<p>To avoid this (and to reduce the risk of copy-paste errors), it is often more convenient to organise all variables into a single dataset.</p>
+<p>Let’s do that:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;tp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tp</span>
+<span class="n">ds</span><span class="p">[</span><span class="s1">&#39;pet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pet</span>
+<span class="n">ds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 1GB
+Dimensions:    (time: 552, latitude: 241, longitude: 480)
+Coordinates:
+  * time       (time) datetime64[ns] 4kB 1979-01-01 1979-02-01 ... 2024-12-01
+  * latitude   (latitude) float64 2kB 90.0 89.25 88.5 ... -88.5 -89.25 -90.0
+  * longitude  (longitude) float64 4kB -179.6 -178.9 -178.1 ... 178.9 179.6
+Data variables:
+    t2m        (time, latitude, longitude) float32 255MB ...
+    tp         (time, latitude, longitude) float64 511MB 9.106 9.106 ... 2.01
+    pet        (time, latitude, longitude) float32 255MB ...
+Attributes:
+    Conventions:  CF-1.7
+    institution:  European Centre for Medium-Range Weather Forecasts</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-42e99f2a-7f37-43cd-b7ac-e0d564dabd84' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-42e99f2a-7f37-43cd-b7ac-e0d564dabd84' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 552</li><li><span class='xr-has-index'>latitude</span>: 241</li><li><span class='xr-has-index'>longitude</span>: 480</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-745ab589-77f4-417f-9c6e-2bf3ff4be079' class='xr-section-summary-in' type='checkbox'  checked><label for='section-745ab589-77f4-417f-9c6e-2bf3ff4be079' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2024-12-01</div><input id='attrs-d26089d1-c88b-4649-8672-2f23506d1ea5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d26089d1-c88b-4649-8672-2f23506d1ea5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9e4f45ef-54b1-4b74-a44f-772f2537a2be' class='xr-var-data-in' type='checkbox'><label for='data-9e4f45ef-54b1-4b74-a44f-772f2537a2be' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-02-01T00:00:00.000000000&#x27;,
+       &#x27;1979-03-01T00:00:00.000000000&#x27;, ..., &#x27;2024-10-01T00:00:00.000000000&#x27;,
+       &#x27;2024-11-01T00:00:00.000000000&#x27;, &#x27;2024-12-01T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.25 88.5 ... -89.25 -90.0</div><input id='attrs-43cb5b7a-c292-4c14-8409-42849364ce20' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-43cb5b7a-c292-4c14-8409-42849364ce20' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-97c2c70e-7e02-4c74-99b7-e8ff565a3dc8' class='xr-var-data-in' type='checkbox'><label for='data-97c2c70e-7e02-4c74-99b7-e8ff565a3dc8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([ 90.  ,  89.25,  88.5 , ..., -88.5 , -89.25, -90.  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.6 -178.9 ... 178.9 179.6</div><input id='attrs-cae5b699-2d9a-4309-b7f8-cbbb849d4500' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cae5b699-2d9a-4309-b7f8-cbbb849d4500' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-691e6e8e-7d56-46ad-b86c-5b6cd3b30fc0' class='xr-var-data-in' type='checkbox'><label for='data-691e6e8e-7d56-46ad-b86c-5b6cd3b30fc0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([-179.625, -178.875, -178.125, ...,  178.125,  178.875,  179.625])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-6e183801-6d5d-46b2-a12a-e7dd048cfb16' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6e183801-6d5d-46b2-a12a-e7dd048cfb16' class='xr-section-summary' >Data variables: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>t2m</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5fa5d338-d154-4518-8902-8c26485fd718' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5fa5d338-d154-4518-8902-8c26485fd718' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2ea81ce1-c169-4536-86cf-5bac88b8a568' class='xr-var-data-in' type='checkbox'><label for='data-2ea81ce1-c169-4536-86cf-5bac88b8a568' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>2 metre temperature</dd><dt><span>units :</span></dt><dd>K</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div><div class='xr-var-data'><pre>[63855360 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>tp</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>9.106 9.106 9.106 ... 2.01 2.01</div><input id='attrs-aa3fb86e-5081-4a98-a700-3bb7058b786b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aa3fb86e-5081-4a98-a700-3bb7058b786b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fa6e4627-7712-42db-9d3e-19a0cd0c7055' class='xr-var-data-in' type='checkbox'><label for='data-fa6e4627-7712-42db-9d3e-19a0cd0c7055' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>mm/month</dd></dl></div><div class='xr-var-data'><pre>array([[[ 9.10568237,  9.10568237,  9.10568237, ...,  9.10568237,
+          9.10568237,  9.10568237],
+        [ 8.81004333,  8.75091553,  8.75091553, ...,  8.86917114,
+          8.86917114,  8.81004333],
+        [ 8.66222382,  8.5735321 ,  8.5144043 , ...,  8.86917114,
+          8.81004333,  8.72135162],
+        ...,
+        [ 0.53215027,  0.53215027,  0.59127808, ...,  0.47302246,
+          0.47302246,  0.50258636],
+        [ 1.09386444,  1.12342834,  1.12342834, ...,  1.06430054,
+          1.06430054,  1.06430054],
+        [ 1.18255615,  1.18255615,  1.18255615, ...,  1.18255615,
+          1.18255615,  1.18255615]],
+
+       [[ 4.48608398,  4.48608398,  4.48608398, ...,  4.48608398,
+          4.48608398,  4.48608398],
+        [ 4.16564941,  4.11224365,  4.11224365, ...,  4.19235229,
+          4.16564941,  4.16564941],
+        [ 4.69970703,  4.69970703,  4.67300415, ...,  4.80651855,
+          4.75311279,  4.75311279],
+...
+        [ 6.58035278,  6.83784485,  7.06672668, ...,  5.9223175 ,
+          6.09397888,  6.35147095],
+        [ 9.84191895,  9.8991394 ,  9.95635986, ...,  9.55581665,
+          9.67025757,  9.81330872],
+        [ 7.41004944,  7.41004944,  7.41004944, ...,  7.41004944,
+          7.41004944,  7.41004944]],
+
+       [[18.50700378, 18.50700378, 18.50700378, ..., 18.50700378,
+         18.50700378, 18.50700378],
+        [16.43753052, 16.37840271, 16.34883881, ..., 16.55578613,
+         16.49665833, 16.46709442],
+        [14.36805725, 14.36805725, 14.33849335, ..., 14.42718506,
+         14.39762115, 14.36805725],
+        ...,
+        [ 4.46414948,  4.55284119,  4.6415329 , ...,  4.16851044,
+          4.22763824,  4.34589386],
+        [ 3.37028503,  3.42941284,  3.42941284, ...,  3.31115723,
+          3.37028503,  3.37028503],
+        [ 2.01034546,  2.01034546,  2.01034546, ...,  2.01034546,
+          2.01034546,  2.01034546]]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pet</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-f6fc9a91-b383-4ce9-8a85-871fe77a8f64' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f6fc9a91-b383-4ce9-8a85-871fe77a8f64' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a96e11ef-58f4-4d6e-95e8-e0845e3d6d3b' class='xr-var-data-in' type='checkbox'><label for='data-a96e11ef-58f4-4d6e-95e8-e0845e3d6d3b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Potential Evapotranspiration (Thornthwaite)</dd><dt><span>valid_min :</span></dt><dd>0.0</dd><dt><span>valid_max :</span></dt><dd>10000.0</dd><dt><span>units :</span></dt><dd>mm/month</dd></dl></div><div class='xr-var-data'><pre>[63855360 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-85bfc987-0e87-479a-8be3-9bd9128cf2fb' class='xr-section-summary-in' type='checkbox'  ><label for='section-85bfc987-0e87-479a-8be3-9bd9128cf2fb' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-9deb2f56-e1c4-4221-88bf-c23ecf2d8e8a' class='xr-index-data-in' type='checkbox'/><label for='index-9deb2f56-e1c4-4221-88bf-c23ecf2d8e8a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01&#x27;, &#x27;1979-02-01&#x27;, &#x27;1979-03-01&#x27;, &#x27;1979-04-01&#x27;,
+               &#x27;1979-05-01&#x27;, &#x27;1979-06-01&#x27;, &#x27;1979-07-01&#x27;, &#x27;1979-08-01&#x27;,
+               &#x27;1979-09-01&#x27;, &#x27;1979-10-01&#x27;,
+               ...
+               &#x27;2024-03-01&#x27;, &#x27;2024-04-01&#x27;, &#x27;2024-05-01&#x27;, &#x27;2024-06-01&#x27;,
+               &#x27;2024-07-01&#x27;, &#x27;2024-08-01&#x27;, &#x27;2024-09-01&#x27;, &#x27;2024-10-01&#x27;,
+               &#x27;2024-11-01&#x27;, &#x27;2024-12-01&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=552, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-186e4161-85d7-4f64-b9bf-71628b1bcce6' class='xr-index-data-in' type='checkbox'/><label for='index-186e4161-85d7-4f64-b9bf-71628b1bcce6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([  90.0,  89.25,   88.5,  87.75,   87.0,  86.25,   85.5,  84.75,   84.0,
+        83.25,
+       ...
+       -83.25,  -84.0, -84.75,  -85.5, -86.25,  -87.0, -87.75,  -88.5, -89.25,
+        -90.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=241))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-f414e9b9-9d7f-4dff-8a32-c5797089306a' class='xr-index-data-in' type='checkbox'/><label for='index-f414e9b9-9d7f-4dff-8a32-c5797089306a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.625, -178.875, -178.125, -177.375, -176.625, -175.875, -175.125,
+       -174.375, -173.625, -172.875,
+       ...
+        172.875,  173.625,  174.375,  175.125,  175.875,  176.625,  177.375,
+        178.125,  178.875,  179.625],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=480))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1f7b6fef-df34-4121-8e73-92c07e8fe11a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1f7b6fef-df34-4121-8e73-92c07e8fe11a' class='xr-section-summary' >Attributes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>institution :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">ds</span></code> now has three variables. The advantage is that methods that work on variables often work on datasets as well. See for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;as&quot; stands for &quot;annual sums&quot;</span>
+<span class="n">as_ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>What operation have we just performed?</strong> Consider each step one by one to make sure you understand what’s going on.  This operation makes sense for <strong>tp</strong> and <strong>pet</strong> — but does it also make sense for <strong>t2m</strong>?</p>
+<p><strong>Now plot the annual sums of tp and pet, as well as the diffence tp - pet on a map. Interpret what you see.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="select-data-by-country">
+<h2>Select data by country<a class="headerlink" href="#select-data-by-country" title="Link to this heading">#</a></h2>
+<p>To select data by country, we’ll use the <a class="reference external" href="https://regionmask.readthedocs.io">regionmask</a> package.</p>
+<p>If you don’t already have it installed (sorry I forgot to add it to the list this year), you can add it to your environment using either <strong>conda</strong> or <strong>mamba</strong>. In a terminal, do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>qcr
+</pre></div>
+</div>
+<p>And then (depending on wether you use conda or mamba):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>regionmask
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mamba<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>regionmask
+</pre></div>
+</div>
+<p>Once installed, you can import it as usual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">regionmask</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Regionmask helps to create masks by countries (or any other vector boundary). We’ll stick to countries here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load built-in country polygons</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="n">regionmask</span><span class="o">.</span><span class="n">defined_regions</span><span class="o">.</span><span class="n">natural_earth_v5_0_0</span><span class="o">.</span><span class="n">countries_110</span>
+
+<span class="c1"># Print all available names</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">countries</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Fiji&#39;, &#39;Tanzania&#39;, &#39;W. Sahara&#39;, &#39;Canada&#39;, &#39;United States of America&#39;, &#39;Kazakhstan&#39;, &#39;Uzbekistan&#39;, &#39;Papua New Guinea&#39;, &#39;Indonesia&#39;, &#39;Argentina&#39;, &#39;Chile&#39;, &#39;Dem. Rep. Congo&#39;, &#39;Somalia&#39;, &#39;Kenya&#39;, &#39;Sudan&#39;, &#39;Chad&#39;, &#39;Haiti&#39;, &#39;Dominican Rep.&#39;, &#39;Russia&#39;, &#39;Bahamas&#39;, &#39;Falkland Is.&#39;, &#39;Norway&#39;, &#39;Greenland&#39;, &#39;Fr. S. Antarctic Lands&#39;, &#39;Timor-Leste&#39;, &#39;South Africa&#39;, &#39;Lesotho&#39;, &#39;Mexico&#39;, &#39;Uruguay&#39;, &#39;Brazil&#39;, &#39;Bolivia&#39;, &#39;Peru&#39;, &#39;Colombia&#39;, &#39;Panama&#39;, &#39;Costa Rica&#39;, &#39;Nicaragua&#39;, &#39;Honduras&#39;, &#39;El Salvador&#39;, &#39;Guatemala&#39;, &#39;Belize&#39;, &#39;Venezuela&#39;, &#39;Guyana&#39;, &#39;Suriname&#39;, &#39;France&#39;, &#39;Ecuador&#39;, &#39;Puerto Rico&#39;, &#39;Jamaica&#39;, &#39;Cuba&#39;, &#39;Zimbabwe&#39;, &#39;Botswana&#39;, &#39;Namibia&#39;, &#39;Senegal&#39;, &#39;Mali&#39;, &#39;Mauritania&#39;, &#39;Benin&#39;, &#39;Niger&#39;, &#39;Nigeria&#39;, &#39;Cameroon&#39;, &#39;Togo&#39;, &#39;Ghana&#39;, &quot;Côte d&#39;Ivoire&quot;, &#39;Guinea&#39;, &#39;Guinea-Bissau&#39;, &#39;Liberia&#39;, &#39;Sierra Leone&#39;, &#39;Burkina Faso&#39;, &#39;Central African Rep.&#39;, &#39;Congo&#39;, &#39;Gabon&#39;, &#39;Eq. Guinea&#39;, &#39;Zambia&#39;, &#39;Malawi&#39;, &#39;Mozambique&#39;, &#39;eSwatini&#39;, &#39;Angola&#39;, &#39;Burundi&#39;, &#39;Israel&#39;, &#39;Lebanon&#39;, &#39;Madagascar&#39;, &#39;Palestine&#39;, &#39;Gambia&#39;, &#39;Tunisia&#39;, &#39;Algeria&#39;, &#39;Jordan&#39;, &#39;United Arab Emirates&#39;, &#39;Qatar&#39;, &#39;Kuwait&#39;, &#39;Iraq&#39;, &#39;Oman&#39;, &#39;Vanuatu&#39;, &#39;Cambodia&#39;, &#39;Thailand&#39;, &#39;Laos&#39;, &#39;Myanmar&#39;, &#39;Vietnam&#39;, &#39;North Korea&#39;, &#39;South Korea&#39;, &#39;Mongolia&#39;, &#39;India&#39;, &#39;Bangladesh&#39;, &#39;Bhutan&#39;, &#39;Nepal&#39;, &#39;Pakistan&#39;, &#39;Afghanistan&#39;, &#39;Tajikistan&#39;, &#39;Kyrgyzstan&#39;, &#39;Turkmenistan&#39;, &#39;Iran&#39;, &#39;Syria&#39;, &#39;Armenia&#39;, &#39;Sweden&#39;, &#39;Belarus&#39;, &#39;Ukraine&#39;, &#39;Poland&#39;, &#39;Austria&#39;, &#39;Hungary&#39;, &#39;Moldova&#39;, &#39;Romania&#39;, &#39;Lithuania&#39;, &#39;Latvia&#39;, &#39;Estonia&#39;, &#39;Germany&#39;, &#39;Bulgaria&#39;, &#39;Greece&#39;, &#39;Turkey&#39;, &#39;Albania&#39;, &#39;Croatia&#39;, &#39;Switzerland&#39;, &#39;Luxembourg&#39;, &#39;Belgium&#39;, &#39;Netherlands&#39;, &#39;Portugal&#39;, &#39;Spain&#39;, &#39;Ireland&#39;, &#39;New Caledonia&#39;, &#39;Solomon Is.&#39;, &#39;New Zealand&#39;, &#39;Australia&#39;, &#39;Sri Lanka&#39;, &#39;China&#39;, &#39;Taiwan&#39;, &#39;Italy&#39;, &#39;Denmark&#39;, &#39;United Kingdom&#39;, &#39;Iceland&#39;, &#39;Azerbaijan&#39;, &#39;Georgia&#39;, &#39;Philippines&#39;, &#39;Malaysia&#39;, &#39;Brunei&#39;, &#39;Slovenia&#39;, &#39;Finland&#39;, &#39;Slovakia&#39;, &#39;Czechia&#39;, &#39;Eritrea&#39;, &#39;Japan&#39;, &#39;Paraguay&#39;, &#39;Yemen&#39;, &#39;Saudi Arabia&#39;, &#39;Antarctica&#39;, &#39;N. Cyprus&#39;, &#39;Cyprus&#39;, &#39;Morocco&#39;, &#39;Egypt&#39;, &#39;Libya&#39;, &#39;Ethiopia&#39;, &#39;Djibouti&#39;, &#39;Somaliland&#39;, &#39;Uganda&#39;, &#39;Rwanda&#39;, &#39;Bosnia and Herz.&#39;, &#39;North Macedonia&#39;, &#39;Serbia&#39;, &#39;Montenegro&#39;, &#39;Kosovo&#39;, &#39;Trinidad and Tobago&#39;, &#39;S. Sudan&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s build a mask for all countries, same shape as our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a mask for all countries</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/199bebbcf7b0cf62eb56ea633dd167a587896fb67a97b66f218efd89f576be54.png" src="../_images/199bebbcf7b0cf62eb56ea633dd167a587896fb67a97b66f218efd89f576be54.png" />
+</div>
+</div>
+<p>And look-up what ID the UK has:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look up the UK’s region number</span>
+<span class="n">uk_id</span> <span class="o">=</span> <span class="n">countries</span><span class="o">.</span><span class="n">map_keys</span><span class="p">(</span><span class="s1">&#39;United Kingdom&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uk_id</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143
+</pre></div>
+</div>
+</div>
+</div>
+<p>With this information, we are now able to select the data we are interested in, which in xarray means relplacing all pixels outside of it with NaNs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_sel</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">uk_id</span><span class="p">)</span>
+<span class="n">ds_sel</span><span class="p">[</span><span class="s1">&#39;t2m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/91ce42138107d979d02e57155c468c5674d928de8d9c88a3bce35df7c1266148.png" src="../_images/91ce42138107d979d02e57155c468c5674d928de8d9c88a3bce35df7c1266148.png" />
+</div>
+</div>
+<p>It is sometimes better to also remove all the unnecessary NaNs around our selection:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_uk</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">uk_id</span><span class="p">,</span> <span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ds_uk</span><span class="p">[</span><span class="s1">&#39;t2m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c62f34cbf2a5bdd3cfec77b0ebbbbf6d2e3e2d6c8b1f6f1977ddbca61523c429.png" src="../_images/c62f34cbf2a5bdd3cfec77b0ebbbbf6d2e3e2d6c8b1f6f1977ddbca61523c429.png" />
+</div>
+</div>
+<p>And finally, let’s learn how to make a nicer map from this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">LambertConformal</span><span class="p">(</span><span class="n">central_longitude</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span> <span class="n">central_latitude</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">();</span> <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cartopy</span><span class="o">.</span><span class="n">feature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">);</span>
+<span class="n">ds_uk</span><span class="p">[</span><span class="s1">&#39;t2m&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6cd870102852290f584c654cbf3f82aec886a0c1ef06406adb615c42e62e8629.png" src="../_images/6cd870102852290f584c654cbf3f82aec886a0c1ef06406adb615c42e62e8629.png" />
+</div>
+</div>
+<p>You’ll be given more inputs on maps with a “recipe” soon.</p>
+</section>
+<section id="droughts-and-spei">
+<h2>Droughts and SPEI<a class="headerlink" href="#droughts-and-spei" title="Link to this heading">#</a></h2>
+<p>In this final section, we’ll take the data we’ve prepared — temperature, precipitation, and PET — and use it to analyse drought variability. This section is mostly about the code and explaining the SPEI - we’ll focus on interpretations in the assignment.</p>
+<p>Let’s select our time series of <strong>temperature</strong>, <strong>precipitation</strong>, and <strong>PET</strong> close to London:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dsl</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="mf">51.5072</span><span class="p">,</span> <span class="n">longitude</span><span class="o">=</span><span class="mf">0.1276</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that I could also have averaged the data over the entire UK — and if I did so, I should <strong>not forget to use weighted averages</strong>, right?</p>
+<p>Because we now have time series data for a single grid cell, it’s convenient to convert it to a pandas DataFrame.<br />
+We don’t need the latitude and longitude columns for a single-point series, so we’ll drop them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">dsl</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t2m&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;t2m&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">273.15</span>  <span class="c1"># To Celsius</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>t2m</th>
+      <th>tp</th>
+      <th>pet</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1979-01-01</th>
+      <td>0.474518</td>
+      <td>62.971115</td>
+      <td>1.011671</td>
+    </tr>
+    <tr>
+      <th>1979-02-01</th>
+      <td>1.430878</td>
+      <td>67.050934</td>
+      <td>3.770684</td>
+    </tr>
+    <tr>
+      <th>1979-03-01</th>
+      <td>5.016632</td>
+      <td>93.008041</td>
+      <td>20.652092</td>
+    </tr>
+    <tr>
+      <th>1979-04-01</th>
+      <td>7.825409</td>
+      <td>83.656311</td>
+      <td>38.842426</td>
+    </tr>
+    <tr>
+      <th>1979-05-01</th>
+      <td>10.742035</td>
+      <td>117.191315</td>
+      <td>64.859535</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2024-08-01</th>
+      <td>18.661682</td>
+      <td>29.859543</td>
+      <td>111.808380</td>
+    </tr>
+    <tr>
+      <th>2024-09-01</th>
+      <td>15.060547</td>
+      <td>98.590851</td>
+      <td>72.991951</td>
+    </tr>
+    <tr>
+      <th>2024-10-01</th>
+      <td>12.001129</td>
+      <td>52.623749</td>
+      <td>48.645039</td>
+    </tr>
+    <tr>
+      <th>2024-11-01</th>
+      <td>7.781097</td>
+      <td>58.050156</td>
+      <td>23.933279</td>
+    </tr>
+    <tr>
+      <th>2024-12-01</th>
+      <td>7.230377</td>
+      <td>48.780441</td>
+      <td>20.503212</td>
+    </tr>
+  </tbody>
+</table>
+<p>552 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p><strong>Do you remember what <code class="docutils literal notranslate"><span class="pre">t2m</span></code>, <code class="docutils literal notranslate"><span class="pre">tp</span></code> and <code class="docutils literal notranslate"><span class="pre">pet</span></code> represent, and what their units are?</strong> If not, go back to the top of this notebook.</p>
+<p><strong>Now plot a scatter plot of <code class="docutils literal notranslate"><span class="pre">t2m</span></code> vs <code class="docutils literal notranslate"><span class="pre">pet</span></code>, and interpret what you see.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="water-balance">
+<h2>Water balance<a class="headerlink" href="#water-balance" title="Link to this heading">#</a></h2>
+<p>Now let’s compute the monthly water balance (mm/month), defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+WB = P - PET 
+\]</div>
+<p>where positive values indicate a water surplus (precipitation exceeds PET), and negative values indicate a deficit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wb</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;tp&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pet&#39;</span><span class="p">]</span>  <span class="c1"># Water balance</span>
+
+<span class="n">wb</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Monthly water balance&#39;</span><span class="p">);</span>
+<span class="n">wb</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;12-months averages&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;mm/month&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monthly water balance from ERA5 near London, UK&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/50546ef30e6541a21e5c9eab7829ec938f655a0996a1d96f19bc29de334d963c.png" src="../_images/50546ef30e6541a21e5c9eab7829ec938f655a0996a1d96f19bc29de334d963c.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Can you already identify periods of drought (sustained negative water balance) in the monthly data?</p></li>
+<li><p>How do these appear when looking at the <strong>12-month moving average</strong> (orange line)?</p></li>
+<li><p>Which series (monthly or 12-month) would you trust more to identify long-term droughts, and why?</p></li>
+</ul>
+</section>
+<section id="introducing-the-standardised-precipitationevapotranspiration-index-spei">
+<h2>Introducing the Standardised Precipitation–Evapotranspiration Index (SPEI)<a class="headerlink" href="#introducing-the-standardised-precipitationevapotranspiration-index-spei" title="Link to this heading">#</a></h2>
+<p>So far, we’ve looked at the <strong>monthly water balance</strong> (<code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">−</span> <span class="pre">PET</span></code>) — the difference between water supply and loss by evaporation. This gives us a first impression of when and where water deficits (droughts) or surpluses (wet periods) occur.</p>
+<p>However, the raw water balance has some limitations:</p>
+<ul class="simple">
+<li><p>Its <strong>mean and variance depend on the local climate</strong> — a value of −50 mm/month may mean something very different in Spain than in Scotland.</p></li>
+<li><p>It’s not easy to compare <strong>anomalies</strong> across regions or between seasons.</p></li>
+<li><p>We don’t have a clear threshold for when conditions become “dry enough” to be considered a drought.</p></li>
+</ul>
+<p>To overcome these issues, scientists developed the <strong>Standardised Precipitation–Evapotranspiration Index (SPEI, <a class="reference external" href="https://doi.org/10.1175/2009JCLI2909.1">Vicente-Serrano et al., 2010</a>)</strong>.</p>
+<section id="what-spei-does">
+<h3>What SPEI does<a class="headerlink" href="#what-spei-does" title="Link to this heading">#</a></h3>
+<p>SPEI transforms the raw water balance into a dimensionless index that tells us <em>how unusual</em> a given month’s conditions are compared to the long-term record at that location.</p>
+<p>It does this in three main steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Accumulate the water balance</strong> over a given time window (e.g. 1, 3, 6, or 12 months).</p>
+<ul class="simple">
+<li><p>Short timescales capture short, intense dry spells.</p></li>
+<li><p>Long timescales capture multi-season or hydrological droughts.</p></li>
+</ul>
+</li>
+<li><p><strong>Fit a probability distribution</strong> to the long-term series of accumulated water balance values<br />
+(typically a <em>log-logistic</em> or <em>Pearson type III</em> distribution).</p></li>
+<li><p><strong>Standardise</strong> the values (transform them into <em>z-scores</em>), so that:</p>
+<ul class="simple">
+<li><p>0 → average conditions</p></li>
+<li><p>−1 → moderate drought (about the 15th percentile)</p></li>
+<li><p>−2 → severe drought</p></li>
+<li><p>+1 → unusually wet period</p></li>
+<li><p>etc</p></li>
+</ul>
+</li>
+</ol>
+<p>The result is comparable across regions and climates — an SPEI = −2 means an equally rare dry event anywhere on Earth.</p>
+<p>SPEI is now one of the most widely used indices for analysing and monitoring climatic droughts,<br />
+because it captures both precipitation deficits and the increasing evaporative demand due to warming.</p>
+</section>
+<section id="computing-spei-in-python">
+<h3>Computing SPEI in Python<a class="headerlink" href="#computing-spei-in-python" title="Link to this heading">#</a></h3>
+<p>We’ll use the open-source <a class="reference external" href="https://martinvonk.github.io/SPEI/"><code class="docutils literal notranslate"><span class="pre">spei</span></code></a> Python package, which implements the methods described above.</p>
+<p>We can simply feed our water balance time series into the function and compute SPEI for different accumulation timescales (e.g. 3, 12, 24 months) — just as it is done in published drought datasets such as <a class="reference external" href="https://spei.csic.es/">SPEIbase</a>.</p>
+<p>Let’s try it out!</p>
+<p>Here again we need to install the packag (sorry I forgot to add it to the list this year), you can add it to your environment using a slightly different method than usual. In a terminal, do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>qcr
+</pre></div>
+</div>
+<p>And then (<strong>regardless on wether you use conda or mamba</strong>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>spei
+</pre></div>
+</div>
+<p>Once installed, you can import it as usual:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">spei</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The spei package allows us to compute the SPEI from the water balance at our chosen timescales:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spei3</span> <span class="o">=</span> <span class="n">spei</span><span class="o">.</span><span class="n">spei</span><span class="p">(</span><span class="n">wb</span><span class="p">,</span> <span class="n">timescale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">spei12</span> <span class="o">=</span> <span class="n">spei</span><span class="o">.</span><span class="n">spei</span><span class="p">(</span><span class="n">wb</span><span class="p">,</span> <span class="n">timescale</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">spei24</span> <span class="o">=</span> <span class="n">spei</span><span class="o">.</span><span class="n">spei</span><span class="p">(</span><span class="n">wb</span><span class="p">,</span> <span class="n">timescale</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And it also comes with <a class="reference external" href="https://martinvonk.github.io/SPEI/examples/example01_indices.html#Visualize-indices">plotting functions</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># choose a colormap to your liking:</span>
+<span class="n">spei</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">si</span><span class="p">(</span><span class="n">spei3</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;vik_r&quot;</span><span class="p">)</span>
+<span class="n">spei</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">si</span><span class="p">(</span><span class="n">spei12</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;roma&quot;</span><span class="p">)</span>
+<span class="n">spei</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">si</span><span class="p">(</span><span class="n">spei24</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;seismic_r&quot;</span><span class="p">)</span>
+<span class="c1"># ax[0].set_xlim(pd.to_datetime([&quot;1994&quot;, &quot;1998&quot;]))</span>
+<span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">]</span>
+<span class="p">[</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s2">&quot;SPEI3&quot;</span><span class="p">,</span> <span class="s2">&quot;SPEI12&quot;</span><span class="p">,</span> <span class="s2">&quot;SPEI24&quot;</span><span class="p">])];</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;SPEI from ERA5 near London&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/12ef6cdd4721cc938d3c2a8f3ef4a02d27ca4724ce528ce2e2a2a57a1489d5e6.png" src="../_images/12ef6cdd4721cc938d3c2a8f3ef4a02d27ca4724ce528ce2e2a2a57a1489d5e6.png" />
+</div>
+</div>
+<p>Quite pretty! We will revisit these time series and what they mean in the weekly assignment.</p>
+</section>
+</section>
+<section id="what-s-next">
+<h2>What’s next?<a class="headerlink" href="#what-s-next" title="Link to this heading">#</a></h2>
+<p>You are now ready for this week’s assignment!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ws05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ws04/02-assignment-gev.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Assignment: scenario dependence of climate risks</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-assignment-droughts-cmip6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Assignment: Droughts, CMIP6 projections</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#organise-data-in-datasets">Organise data in datasets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#select-data-by-country">Select data by country</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#droughts-and-spei">Droughts and SPEI</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#water-balance">Water balance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-standardised-precipitationevapotranspiration-index-spei">Introducing the Standardised Precipitation–Evapotranspiration Index (SPEI)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-spei-does">What SPEI does</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-spei-in-python">Computing SPEI in Python</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-next">What’s next?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Maussion
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Nov 05, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+<br>
+&copy; Copyright 2024-2025.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

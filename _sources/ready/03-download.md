@@ -19,6 +19,7 @@ Links and info to be added here as the course unfolds.
 
 - [ERA5_LowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_t2m.nc): 2m temperature
 - [ERA5_LowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_tp.nc): total precipitation
+- [ERA5_LowRes_Monthly_pet.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_pet.nc): potential evapotranspiration
 
 **File naming conventions**:
 
@@ -131,6 +132,7 @@ This is the same ERA5 data as you've used so far, but at an even lower resolutio
 - [ERA5_UltraLowRes_Invariant.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Invariant.nc): invariant data at 2° resolution
 - [ERA5_UltraLowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_t2m.nc): 2m temperature data at 2° resolution
 - [ERA5_UltraLowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_tp.nc): precipitation data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_pet.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_pet.nc): potential evapotranspiration data at 2° resolution
 
 ### Regridded to 0.75° resolution
 

@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
   </head>
   
   
@@ -211,6 +211,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
 </ul>
 
     </div>
@@ -615,7 +620,7 @@ Now I&#39;m there
 <p>If you feel like it, you can even define your own functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># Be carefull: the indentation!!!</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
@@ -663,7 +668,7 @@ Now I&#39;m there
 <p>Python has a particular mechanism to give access to other functions. This is the <strong>import</strong> mechanism and is one of the great strengths of the Python language.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
 </pre></div>
 </div>
 </div>
@@ -686,7 +691,7 @@ Now I&#39;m there
 <p>Because writing “<code class="docutils literal notranslate"><span class="pre">numpy.function()</span></code>” can be time consuming (especially if one uses numpy often), there is the possibility to give an <strong>alias</strong> to the imported module. The convention for numpy is following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -918,7 +923,7 @@ Blue
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(3)
 </pre></div>
 </div>
 </div>
@@ -1103,7 +1108,7 @@ class int(object)
  |  int(x, base=10) -&gt; integer
  |
  |  Convert a number or string to an integer, or return 0 if no arguments
- |  are given.  If x is a number, return x.__int__().  For floating point
+ |  are given.  If x is a number, return x.__int__().  For floating-point
  |  numbers, this truncates towards zero.
  |
  |  If x is not a number or if base is given, then x must be a string,
@@ -1398,7 +1403,7 @@ class int(object)
 <p>The most widely used plotting tool for Python is <a class="reference external" href="http://matplotlib.org/">Matplotlib</a>. First, import it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -1416,7 +1421,7 @@ class int(object)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ba016dc8df320f95b58618d8b1a774cad45ee0a25f338eeb803edda7ade5fa5a.png" src="../_images/ba016dc8df320f95b58618d8b1a774cad45ee0a25f338eeb803edda7ade5fa5a.png" />
+<img alt="../_images/e75bb3bb3554c979ff03e973e0f0e3ae50c7ce3cc9d0494df398697dd3b29f67.png" src="../_images/e75bb3bb3554c979ff03e973e0f0e3ae50c7ce3cc9d0494df398697dd3b29f67.png" />
 </div>
 </div>
 <p>It is possible to save the figure to a file by adding for example <code class="docutils literal notranslate"><span class="pre">plt.savefig('test.png')</span></code> <em>at the end of the cell</em>. This will create an image file in the same directory as the notebook.</p>
@@ -1433,7 +1438,7 @@ class int(object)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9ef963ba7537aa1ff719f8ad1cb45459ad8eba11e87730c146134f8716d854c1.png" src="../_images/9ef963ba7537aa1ff719f8ad1cb45459ad8eba11e87730c146134f8716d854c1.png" />
+<img alt="../_images/dbfca2a83a161abbc6897611eb358a4560dd5582ea49a5d896c00ce3f32e1b16.png" src="../_images/dbfca2a83a161abbc6897611eb358a4560dd5582ea49a5d896c00ce3f32e1b16.png" />
 </div>
 </div>
 <p><strong>Practice: add a third curve to the plot above (e.g. x<span class="math notranslate nohighlight">\(^3\)</span>) and save the plot to a png on your computer.</strong></p>
@@ -1626,7 +1631,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 22, 2025.
+  Last updated on Nov 05, 2025.
   <br/>
 </p>
   </div>

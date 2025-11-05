@@ -1,0 +1,919 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Assignment: Droughts, CMIP6 projections &#8212; Quantifying Climate Risks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ws05/02-assignment-droughts-cmip6';</script>
+    <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lesson: organise your datasets, select data by country, droughts" href="01-lesson-droughts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc1.html">IPCC AR6 WG2 – Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc2.html">IPCC AR6 WG2 - Part 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ready/00-howto.html">How to use this website and prepare for each week</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Assignment: Droughts, CMIP6 projections</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/ws05/02-assignment-droughts-cmip6.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Fws05/02-assignment-droughts-cmip6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ws05/02-assignment-droughts-cmip6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Assignment: Droughts, CMIP6 projections</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#droughts-and-spei">Droughts and SPEI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-london">In London</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-another-location">Optional: another location</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-cmip6-data">Global CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-reference-data-era5">Historical reference data: ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-cmip6-data">Historical CMIP6 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-and-local-and-global-esm-bias">Averages and local and global ESM bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interannual-variability">Interannual variability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-projections">CMIP6 projections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-more-analyses">Optional : more analyses</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="assignment-droughts-cmip6-projections">
+<h1>Assignment: Droughts, CMIP6 projections<a class="headerlink" href="#assignment-droughts-cmip6-projections" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the tools we are going to need today:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># plotting library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>  <span class="c1"># numerical library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>  <span class="c1"># netCDF library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy</span>  <span class="c1"># Map projections libary</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>  <span class="c1"># Projections list</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">spei</span>  <span class="c1"># spei computations</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">regionmask</span>  <span class="c1"># you may or may not need this</span>
+<span class="c1"># Some defaults:</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># Default plot size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="droughts-and-spei">
+<h2>Droughts and SPEI<a class="headerlink" href="#droughts-and-spei" title="Link to this heading">#</a></h2>
+<section id="in-london">
+<h3>In London<a class="headerlink" href="#in-london" title="Link to this heading">#</a></h3>
+<p>Let’s start by repeating the two plots we did last in the lesson:</p>
+<ul class="simple">
+<li><p>the water balance plot (including 12 months rolling mean)</p></li>
+<li><p>the SPEI plot with the 3, 12, and 24 months timescales</p></li>
+</ul>
+<p>Exactly as we did in the lesson! No new code needed.</p>
+<p><strong>Let’s start by looking at the water balance plot. Questions:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Characterise the annual cycle:</strong></p>
+<ul class="simple">
+<li><p>Do you notice a seasonal pattern in the water balance?</p></li>
+<li><p>During which months is the balance typically positive (surplus) or negative (deficit)?</p></li>
+<li><p>What does this tell us about the local climate?</p></li>
+</ul>
+</li>
+<li><p><strong>Discuss the mean balance:</strong></p>
+<ul class="simple">
+<li><p>On average, is the long-term water balance close to zero, or does it tend to be positive or negative?</p></li>
+<li><p>What would a persistent positive or negative mean imply about the region’s hydrology?</p></li>
+<li><p>Think about uncertainties as well - both in P and PET</p></li>
+</ul>
+</li>
+<li><p><strong>Units and interpretation:</strong></p>
+<ul class="simple">
+<li><p>What are the units of the water balance, and how do they arise from the units of precipitation and PET?</p></li>
+<li><p>Why is the water balance expressed as <em>mm/month</em> rather than <em>m³/s</em>?</p></li>
+<li><p>I chose to call <em>P − PET</em> the “water balance.” Is this a good name for the variable?  What would the <em>true</em> water balance of a catchment actually include?</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Now let’s have a look at the SPEI3, SPEI12, SPEI24 plots. Questions and discussion</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Compare the timescales</strong></p>
+<ul class="simple">
+<li><p>How do the patterns change from <strong>SPEI-3</strong> to <strong>SPEI-24</strong>?</p></li>
+<li><p>Which index fluctuates more rapidly, and which one captures the long, persistent events?</p></li>
+<li><p>What kinds of impacts might each timescale represent (e.g. soil moisture, agriculture, groundwater)?</p></li>
+</ul>
+</li>
+<li><p><strong>Link to the water-balance plot</strong></p>
+<ul class="simple">
+<li><p>How does the SPEI differ from the raw water-balance series you plotted earlier?</p></li>
+<li><p>What advantages does standardising the data bring when identifying droughts and comparing periods?</p></li>
+</ul>
+</li>
+<li><p><strong>Identify and contextualise drought events</strong></p>
+<ul class="simple">
+<li><p>Can you spot the major droughts visible in the figure?<br />
+(Look for long periods with SPEI &lt; −1, especially below −2.)</p></li>
+<li><p>Search online (Wikipedia, news archives, or scientific sources) for historical UK droughts.</p>
+<ul>
+<li><p>When did they occur?</p></li>
+<li><p>Do they correspond to the low-SPEI periods in your plot?</p></li>
+</ul>
+</li>
+<li><p>Are there notable wet periods too? What caused them?</p></li>
+</ul>
+</li>
+<li><p><strong>Reflection</strong></p>
+<ul class="simple">
+<li><p>Which timescale do you find most informative for assessing climate risks?</p></li>
+<li><p>How might different sectors (e.g. water management, agriculture, ecosystems) use different SPEI timescales?</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answers here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-another-location">
+<h3>Optional: another location<a class="headerlink" href="#optional-another-location" title="Link to this heading">#</a></h3>
+<p>If you want, repeat the analysis for another location of your choice.</p>
+</section>
+</section>
+<section id="global-cmip6-data">
+<h2>Global CMIP6 data<a class="headerlink" href="#global-cmip6-data" title="Link to this heading">#</a></h2>
+<p><strong>Start by looking up what CMIP6 is. Briefly answer the following questions:</strong></p>
+<ol class="arabic simple">
+<li><p>What does CMIP stand for?</p></li>
+<li><p>What is the main goal of the CMIP project?</p></li>
+<li><p>How are the different CMIP6 models produced (who makes them, what do they simulate)?</p></li>
+<li><p>What are SSPs (Shared Socioeconomic Pathways), and how do they relate to CMIP6 scenarios?</p></li>
+<li><p>Why do we often look at ensembles of CMIP6 models rather than just one model?</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now visit the <a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#cmip6-data">data download page for CMIP6 data</a>.</p>
+<p>Download the “ultra low resolution” ERA5 temperature data from the link. This is the same data as you’ve used so far, but at an even lower resolution of 2°. I’ve coarsened the data even more to reduce the volume of climate projection data you’ll have to manipulate for this assignment.</p>
+<p>Now download <strong>temperature</strong> data from the climate model of your choice (it doesn’t matter which one) and for the scenarios <strong>ssp126</strong> and <strong>ssp585</strong>. I have prepared these data to make your life a bit easier. Most notably, I have resampled the data to be on the same grid as the ultra low resolution (2°) ERA5 data, which makes working with the data considerably easier. Normally, <a class="reference external" href="https://cluster.klima.uni-bremen.de/~oggm/cmip6/all_gcm_table.html">each ESM has their own resolution</a>, ranging from 0.7° (for EC-Earth3) to 2.50° (for IPSL-CM6A-LR).</p>
+<section id="historical-reference-data-era5">
+<h3>Historical reference data: ERA5<a class="headerlink" href="#historical-reference-data-era5" title="Link to this heading">#</a></h3>
+<p><strong>Let me open the 2° ERA5 data for you and extract the 2m temperature data in °C. I’ll also select the 1979, 2015 period, and compute the annual averages as well as the time period average of this data. This should be familiar to you:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the file</span>
+<span class="n">ds_era</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/ERA5_UltraLowRes_Monthly_t2m.nc&#39;</span><span class="p">)</span>
+
+<span class="c1"># Select temperature for the given time period and convert to °C</span>
+<span class="n">t2m_era</span> <span class="o">=</span> <span class="n">ds_era</span><span class="o">.</span><span class="n">t2m</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979&#39;</span><span class="p">,</span> <span class="s1">&#39;2015&#39;</span><span class="p">))</span> <span class="o">-</span> <span class="mf">273.15</span>
+
+<span class="c1"># Compute the annual average</span>
+<span class="n">t2m_era_annual_avg</span> <span class="o">=</span> <span class="n">t2m_era</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="c1"># Compute the period average</span>
+<span class="n">t2m_era_avg</span> <span class="o">=</span> <span class="n">t2m_era</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now let me also compute the globally averaged, annual mean temperature time series for you. Here again, this should hopefully be familiar to you as well:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Meridional weights</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">t2m_era</span><span class="o">.</span><span class="n">latitude</span><span class="p">))</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">weight</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Meridionally weighted zonal mean - we did this before, but here I&#39;m squeezing it into one single line</span>
+<span class="n">t2m_era_ats</span> <span class="o">=</span> <span class="n">t2m_era_annual_avg</span><span class="o">.</span><span class="n">weighted</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now make sure you understand what each of the variable above represents. This should be a repetition of what we’ve learned in the lessons so far, but it’s always good to make sure we are on the same page. In the markdown cell below, explain in your own words:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_annual_avg</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_avg</span></code> is … Its dimensions are …</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> is … Its dimensions are …</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Explore the variables here to be sure</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="historical-cmip6-data">
+<h3>Historical CMIP6 data<a class="headerlink" href="#historical-cmip6-data" title="Link to this heading">#</a></h3>
+<p>If any of what we’ve done above is too complex for you, you may pause, and go back to the previous lessons. You may also use the time in class to ask your questions!</p>
+<p>Now, if your comfortable going forward, let’s go!</p>
+</section>
+<section id="averages-and-local-and-global-esm-bias">
+<h3>Averages and local and global ESM bias<a class="headerlink" href="#averages-and-local-and-global-esm-bias" title="Link to this heading">#</a></h3>
+<p><strong>Now open the ssp126 ESM file you downloaded. Give it a recognizable name. Explore the file’s content.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open the file</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Note that the temperature variable name has changed. Other than that, the file content should be familiar to you?</strong></p>
+<p><strong>Now repeat the steps above, but with this ESM file, and renaming the variables accordingly. I suggest replacing <code class="docutils literal notranslate"><span class="pre">era</span></code> with <code class="docutils literal notranslate"><span class="pre">ssp126</span></code> for simplicity. Your goal should be to compute the following variables in a similar fashion as you did for ERA5:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_annual_avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Great!</p>
+<p><strong>Now let’s get started with the interesting stuff. Start by computing the period average of the global average temperature for each dataset. This should be one single, scalar value: the global temperature according to ERA5, and according to the ESM you downloaded. Compare the two values.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now plot a world map of the period average temperature (<code class="docutils literal notranslate"><span class="pre">t2m_era_avg</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg</span></code>) using the same colorscale values. Plot a third map: the difference between the two.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The map “ESM minus ERA5” is called the “average temperature bias” of the ESM you chose. Look it up online if you don’t know what I am talking about when I mention “bias”.</p>
+<p><strong>Now write down your answer to the following questions</strong>:</p>
+<ul class="simple">
+<li><p><strong>If the climate model would be perfect, would we expect any difference between ERA5 and the climate model? Why?</strong></p></li>
+<li><p><strong>Are the differences always positive, or always negative? Why?</strong></p></li>
+<li><p><strong>Where are the largest differences to be seen, i.e. in which regions. Can you detect a pattern, or at least formulate hypotheses as to why these regions show such differences?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="interannual-variability">
+<h4>Interannual variability<a class="headerlink" href="#interannual-variability" title="Link to this heading">#</a></h4>
+<p><strong>Now plot the two annual timeseries together on the same line plot (<code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code>). Make the plot nice: add a legend, a y-axis label, and a title.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Interpret what you see, and try to answer the following questions:</strong></p>
+<ul class="simple">
+<li><p><strong>If the ESM you downloaded has a bias. Is this bias “systematic” (i.e. similar over the same time period), or random?</strong></p></li>
+<li><p><strong>Do the ESM and ERA5 display similar trends (qualitatively)?</strong></p></li>
+<li><p><strong>If any given year is warmer/colder than usual in the ERA5 timeseries, is it also the case in the ESM? Or, in other worlds, are the two timeseries correlated?</strong></p></li>
+<li><p><strong>Do we expect the two timeseries to correlate, or not? Why?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The (likely) bias between a given ESM realisation and “observations” (here, ERA5) is a very well documented problem in climate science. The existence of this bias means that scientist have developped specific strategies to deal with this problem. One strategy is called <em>bias correction</em>, and there exists entire textbooks on the subject. We will get to this later.</p>
+<p>Another strategy is to assume that despite having a bias, the ESM can still be considered skilfull at representing <em>slow</em> changes in the climate system. I.e., even if the average climate is a bit off at any given time, the difference between two periods (i.e. the climate change signal) might still be skilfull and provide useful information.</p>
+<p><strong>Now let’s test this hypothesis. For each timeseries, (<code class="docutils literal notranslate"><span class="pre">t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_ats</span></code>), compute the average of the first decade, and subtract it from the timeseries. Create two new timeseries from this operation, called <code class="docutils literal notranslate"><span class="pre">delta_t2m_era_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code>. Plot them.</strong></p>
+<p><em>Tip: a good way to check if you’ve done this correctly is to check your plot: the first years should vary around the 0°C line.</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Now (qualitatively) test the hypothesis that your ESM is skillful at representing the global warming trend (or not). Discuss.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="cmip6-projections">
+<h3>CMIP6 projections<a class="headerlink" href="#cmip6-projections" title="Link to this heading">#</a></h3>
+<p>Now that we’ve tested the past, let’s have a first look at the global projections. We can put ERA5 aside, and focus on the two scenarios we’ve downloaded: ssp126 and ssp585. The exercises below are independant from the above, but you’ll find it much easier if you have done the above first!</p>
+<p><em>Tip: the commands you’ll have to run below are extremely similar to the above: they only differ by the time periods considered!</em></p>
+<p>Open the two ESM files (I suggest to name each dataset <code class="docutils literal notranslate"><span class="pre">ds_ssp126</span></code> and <code class="docutils literal notranslate"><span class="pre">ds_ssp585</span></code>). Compute the following variables for each SSP:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_annual_avg</span></code> : the annual averages of the ESM temperatures in °C</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_historical</span></code> : the time average of t2m_ssp126_annual_avg for 1985-2014</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_2100</span></code> : the time average of t2m_ssp126_annual_avg for 2070-2099</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> : the annual global average timeseries of temperature change with respect to 1985-20154</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plot <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> and <code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp585_ats</span></code> on the same plot. Answer the following questions:</strong></p>
+<ul class="simple">
+<li><p><strong>When are the two timeseries identical, and when do they start to vary from another? Can you figure out why?</strong></p></li>
+<li><p><strong>What is the (approximate) temperature change at the end of the century for each scenario?</strong></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Is there any difference between <code class="docutils literal notranslate"><span class="pre">t2m_ssp585_avg_historical</span></code> and <code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_historical</span></code>?</strong> <em>hint: there should be none</em>. <strong>Again: can you figure out why?</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Finally, now plot the climate change map (2100 minus historical) for both scenarios, with the same colorbars. Interpret what you see.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your answer here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="optional-more-analyses">
+<h2>Optional : more analyses<a class="headerlink" href="#optional-more-analyses" title="Link to this heading">#</a></h2>
+<p>From there, I’m sure you can envision for yourself the number of (in my opinion) interesting analyses you could do with very little modifications to the code above! On the top of my mind:</p>
+<ul class="simple">
+<li><p>download another ESM, and see if the results are similar</p></li>
+<li><p>repeat the timeseries analysis for a specific region, or a city or place. You know how to select a specific location already! What is the expected warming in Bristol, for example?</p></li>
+<li><p>download more SSPs, and check the differences.</p></li>
+</ul>
+<p>Doing any of the above will help you to train all the skills you’ve learned recently. They are a very good way to spend some time exercising!</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ws05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-lesson-droughts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lesson: organise your datasets, select data by country, droughts</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#droughts-and-spei">Droughts and SPEI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-london">In London</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-another-location">Optional: another location</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-cmip6-data">Global CMIP6 data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-reference-data-era5">Historical reference data: ERA5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-cmip6-data">Historical CMIP6 data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#averages-and-local-and-global-esm-bias">Averages and local and global ESM bias</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interannual-variability">Interannual variability</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-projections">CMIP6 projections</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-more-analyses">Optional : more analyses</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Maussion
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Nov 05, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+<br>
+&copy; Copyright 2024-2025.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

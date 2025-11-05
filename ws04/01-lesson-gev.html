@@ -30,7 +30,7 @@
   <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 <link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -73,7 +73,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Oct 22, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
   </head>
   
   
@@ -211,6 +211,11 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson: extreme value distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
 </ul>
 
     </div>
@@ -463,10 +468,10 @@
 <p>Let’s start by importing the packages as usual. We’ll continue to use Pandas today.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span> 
 </pre></div>
 </div>
 </div>
@@ -501,7 +506,7 @@
 <p>These probabilities and ranks can be computed on data of any size and type, making it possible to generalize the process into a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the empirical return periods of a sample of extreme events.</span>
 
 <span class="sd">    Parameters</span>
@@ -557,7 +562,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e12987aaa707bab4b69c912c7d30c3c4215be2097751a21124d35e8bb2e0ed7b.png" src="../_images/e12987aaa707bab4b69c912c7d30c3c4215be2097751a21124d35e8bb2e0ed7b.png" />
+<img alt="../_images/0c5499464a3fc0a94382089731db200479579227b6d6da392737c94032190437.png" src="../_images/0c5499464a3fc0a94382089731db200479579227b6d6da392737c94032190437.png" />
 </div>
 </div>
 <p>Now let’s make an experiment. How would the return levels change if the most extreme event didn’t happen and was replaced, say, with a “normal” annual precipitation maxima? Let’s test this scenario:</p>
@@ -600,7 +605,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aab7dc5d41b5db5d657aff9d5796afbdd3a7858071f49f456aa4ed658a68563b.png" src="../_images/aab7dc5d41b5db5d657aff9d5796afbdd3a7858071f49f456aa4ed658a68563b.png" />
+<img alt="../_images/538e0a0cf657c0cdd05858bc78dedb3e0e946eec984ab8ca9f507f0c0294e4fb.png" src="../_images/538e0a0cf657c0cdd05858bc78dedb3e0e946eec984ab8ca9f507f0c0294e4fb.png" />
 </div>
 </div>
 <p><strong>E: either by looking at the plot (with or without logarithmic scales) or by looking at the <code class="docutils literal notranslate"><span class="pre">edf</span></code> and <code class="docutils literal notranslate"><span class="pre">edf_fake</span></code> variables, answer the following questions:</strong></p>
@@ -666,7 +671,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6ecd55f86a6ad9c432a1f7ceef76f691fe664312a9a9bb7256d41578c4c4f21a.png" src="../_images/6ecd55f86a6ad9c432a1f7ceef76f691fe664312a9a9bb7256d41578c4c4f21a.png" />
+<img alt="../_images/3f0df6eb84f1dfe61a754140c64bd65d17f0453d2a655f8f0bf44d6d8b3d503f.png" src="../_images/3f0df6eb84f1dfe61a754140c64bd65d17f0453d2a655f8f0bf44d6d8b3d503f.png" />
 </div>
 </div>
 <p>The plot above (Fig. 3) is a generalisation of “Fig. 2” further up. While the previous attempt was only one example, in the above we explored many other possible sequences of 60 years, where certain extreme events happened more, or less often than they happened in reality.</p>
@@ -710,7 +715,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/af5683bc4f8ceeeaba6cdd3bc6cb24bb93e9707bb2363dc95bbeebe56e472164.png" src="../_images/af5683bc4f8ceeeaba6cdd3bc6cb24bb93e9707bb2363dc95bbeebe56e472164.png" />
+<img alt="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" src="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" />
 </div>
 </div>
 <p><strong>Q: describe qualitatively how well (or how poorly) the Gaussian distribution fits the data. Is there a tendency to underestimate the occurence of some values? Or overestimate others?</strong></p>
@@ -736,7 +741,9 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.23225674247576752, 33.027555097979146, 7.581093532587792)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(-0.23225674247576752),
+ np.float64(33.027555097979146),
+ np.float64(7.581093532587792))
 </pre></div>
 </div>
 </div>
@@ -765,7 +772,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ec32667a9bf1e36a03b51174e9c4a94f01bde96feab3dfb8eb821e109b64c70b.png" src="../_images/ec32667a9bf1e36a03b51174e9c4a94f01bde96feab3dfb8eb821e109b64c70b.png" />
+<img alt="../_images/3b22a6594b1d06bbe3082837a6e81ceb69fb36fb195450613131f555329e3925.png" src="../_images/3b22a6594b1d06bbe3082837a6e81ceb69fb36fb195450613131f555329e3925.png" />
 </div>
 </div>
 <p><strong>Q: Describe (qualitatively) how the GEV matches the data. Now look closely at the more extreme values in the range - do you see an improvement here as well?</strong></p>
@@ -936,7 +943,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b287634335af7b5bd75e00e2c42bcb4c1a6f3ae62c10398fb8d55718ab2eda86.png" src="../_images/b287634335af7b5bd75e00e2c42bcb4c1a6f3ae62c10398fb8d55718ab2eda86.png" />
+<img alt="../_images/c93a5ad3125e2170b447a1e20d62e8786096a8484bff5d17f76d19fa71d56876.png" src="../_images/c93a5ad3125e2170b447a1e20d62e8786096a8484bff5d17f76d19fa71d56876.png" />
 </div>
 </div>
 </section>
@@ -988,7 +995,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d1ae1c9d9ed9583b5345db761fd0c03ab21fba76d6d3275bb80283bd658fad36.png" src="../_images/d1ae1c9d9ed9583b5345db761fd0c03ab21fba76d6d3275bb80283bd658fad36.png" />
+<img alt="../_images/72d27ef4517953fe9205cb9af86f1d2173a0947decfefc55fcfb7464daf71689.png" src="../_images/72d27ef4517953fe9205cb9af86f1d2173a0947decfefc55fcfb7464daf71689.png" />
 </div>
 </div>
 </section>
@@ -1021,7 +1028,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/78db33b67c57b1a25b9601def72638e44a21e0e7caf46397203f97b11d1a558e.png" src="../_images/78db33b67c57b1a25b9601def72638e44a21e0e7caf46397203f97b11d1a558e.png" />
+<img alt="../_images/3b8d58fc47d0cc55c06b1ae75b1044fc2866b4c9810e3184cdfe706a5ae27b22.png" src="../_images/3b8d58fc47d0cc55c06b1ae75b1044fc2866b4c9810e3184cdfe706a5ae27b22.png" />
 </div>
 </div>
 <section id="empirical-return-level-plots">
@@ -1046,7 +1053,7 @@ T = \frac{1}{\lambda \cdot P}
 <p>This adjustment is now implemented in the <code class="docutils literal notranslate"><span class="pre">return_period()</span></code> function via the optional <code class="docutils literal notranslate"><span class="pre">rate_per_year</span></code> argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the empirical return periods of a sample of extreme events.</span>
 
@@ -1112,7 +1119,7 @@ T = \frac{1}{\lambda \cdot P}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c8f7990ff30f5c9f7d390289a4f7134558f9144e55919873975eafe41d9703ce.png" src="../_images/c8f7990ff30f5c9f7d390289a4f7134558f9144e55919873975eafe41d9703ce.png" />
+<img alt="../_images/5a6629450e4742a5bf67a0f7abbe92845f4e6087a11857e2548858723f6206d8.png" src="../_images/5a6629450e4742a5bf67a0f7abbe92845f4e6087a11857e2548858723f6206d8.png" />
 </div>
 </div>
 <p>What we observe here is that using the POT method gives us more data points, which allows us to compute empirical return levels for return periods below one year. These are not our main interest, which is why we cut the plot on the left.</p>
@@ -1167,7 +1174,7 @@ T = \frac{1}{\lambda \cdot P}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ee07dbab2138214c2d0cab0f71c6fcc69f14133dc281e861bab7ece656d01a39.png" src="../_images/ee07dbab2138214c2d0cab0f71c6fcc69f14133dc281e861bab7ece656d01a39.png" />
+<img alt="../_images/b3ca8584a208ac552d5394000ebd760e0bada1d45427b6c6a289030286d17b55.png" src="../_images/b3ca8584a208ac552d5394000ebd760e0bada1d45427b6c6a289030286d17b55.png" />
 </div>
 </div>
 <p>As you can see the two methods and distributions yield slightly different results. Both are quite sensitive to the tail of the distributions, but one is less sensitive than the other! That’s for you to discover if you are interested ;-).</p>
@@ -1294,7 +1301,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Oct 22, 2025.
+  Last updated on Nov 05, 2025.
   <br/>
 </p>
   </div>

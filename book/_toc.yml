@@ -39,12 +39,11 @@ parts:
     chapters:
     - file: ws05/01-lesson-droughts
     - file: ws05/02-assignment-droughts-cmip6
-    
-  # - caption: Workshop 07
-  #   chapters:
-  #   - file: ws07/01-lesson-glaciers
-  #   - file: ws07/02-lesson-basins
-  #   - file: ws07/03-assignment-glacier-future
+  - caption: Workshop 06
+    chapters:
+    - file: ws06/01-lesson-glaciers
+    - file: ws06/02-lesson-basins
+    - file: ws06/03-assignment-glacier-future
   # - caption: Workshop 08
   #   chapters:
   #   - file: ws08/01-lesson-flood

@@ -161,3 +161,22 @@ See [](era5-075).
 ### CMIP6 data at their original resolution
 
 See this server for the original resolution files: [OGGM server](https://cluster.klima.uni-bremen.de/~oggm/cmip6/).
+
+(glacier-data)=
+## Glacier data
+
+For Workshop 06, we will use data from the [OGGM standard projections](https://github.com/OGGM/oggm-standard-projections-csv-files). We will use the data organised in river basins, which is a bit more hidden than the globally aggregated files.
+
+All 75 river basins (see workshop 06, lesson 02) are available in a single folder: [https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/). Basins are numbered, and I recommend to download the tar file for the basin you are interested in. These folders contain projection data for the scenarios ssp126 and ssp585.
+
+**For workshop 06 Lesson 01, you will need**:
+
+- glacier projections for the Rhone basin (id 6243), a netCDF file: [6243.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/6243.tar.gz)
+
+**For workshop 06 Lesson 02, you will need**:
+- statistics for all glaciers in the world (a csv file): [rgi60_stats.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/rgi60_stats.csv)
+- the river basins outlines (a shapefile): [glacier_basins.zip](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/glacier_basins.zip)
+
+**For workshop 06's Assignment, you will also need**:
+
+- glacier projections for the Aral Sea catchment (id 2902), a netCDF file: [2902.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2309.tar.gz)

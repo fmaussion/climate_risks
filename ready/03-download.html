@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 11, 2025"/>
   </head>
   
   
@@ -214,6 +214,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/02-lesson-basins.html">Lesson 02: geospatial datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/03-assignment-glacier-future.html">Assignment: future glacier change</a></li>
 </ul>
 
     </div>
@@ -449,6 +455,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data-at-their-original-resolution">CMIP6 data at their original resolution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glacier-data">Glacier data</a></li>
 </ul>
             </nav>
         </div>
@@ -1152,6 +1159,24 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <p>See this server for the original resolution files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~oggm/cmip6/">OGGM server</a>.</p>
 </section>
 </section>
+<section id="glacier-data">
+<h2>Glacier data<a class="headerlink" href="#glacier-data" title="Link to this heading">#</a></h2>
+<p>For Workshop 06, we will use data from the <a class="reference external" href="https://github.com/OGGM/oggm-standard-projections-csv-files">OGGM standard projections</a>. We will use the data organised in river basins, which is a bit more hidden than the globally aggregated files.</p>
+<p>All 75 river basins (see workshop 06, lesson 02) are available in a single folder: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/">https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/</a>. Basins are numbered, and I recommend to download the tar file for the basin you are interested in. These folders contain projection data for the scenarios ssp126 and ssp585.</p>
+<p><strong>For workshop 06 Lesson 01, you will need</strong>:</p>
+<ul class="simple">
+<li><p>glacier projections for the Rhone basin (id 6243), a netCDF file: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/6243.tar.gz">6243.tar.gz</a></p></li>
+</ul>
+<p><strong>For workshop 06 Lesson 02, you will need</strong>:</p>
+<ul class="simple">
+<li><p>statistics for all glaciers in the world (a csv file): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/rgi60_stats.csv">rgi60_stats.csv</a></p></li>
+<li><p>the river basins outlines (a shapefile): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/glacier_basins.zip">glacier_basins.zip</a></p></li>
+</ul>
+<p><strong>For workshop 06’s Assignment, you will also need</strong>:</p>
+<ul class="simple">
+<li><p>glacier projections for the Aral Sea catchment (id 2902), a netCDF file: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2309.tar.gz">2902.tar.gz</a></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1245,6 +1270,7 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-data-at-their-original-resolution">CMIP6 data at their original resolution</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#glacier-data">Glacier data</a></li>
 </ul>
   </nav></div>
 
@@ -1271,7 +1297,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 05, 2025.
+  Last updated on Nov 11, 2025.
   <br/>
 </p>
   </div>

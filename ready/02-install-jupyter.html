@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Nov 05, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 11, 2025"/>
   </head>
   
   
@@ -214,6 +214,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/02-lesson-basins.html">Lesson 02: geospatial datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/03-assignment-glacier-future.html">Assignment: future glacier change</a></li>
 </ul>
 
     </div>
@@ -462,14 +468,14 @@
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="university" for="sd-tab-item-0">
 On the Anaconda prompt (e.g., university workstations)</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">regionmask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="forge" for="sd-tab-item-1">
 On the Miniforge prompt</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">regionmask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
@@ -618,7 +624,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 05, 2025.
+  Last updated on Nov 11, 2025.
   <br/>
 </p>
   </div>

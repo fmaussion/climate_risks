@@ -162,6 +162,7 @@ See [](era5-075).
 
 See this server for the original resolution files: [OGGM server](https://cluster.klima.uni-bremen.de/~oggm/cmip6/).
 
+(glacier-data)=
 ## Glacier data
 
 For Workshop 06, we will use data from the [OGGM standard projections](https://github.com/OGGM/oggm-standard-projections-csv-files). We will use the data organised in river basins, which is a bit more hidden than the globally aggregated files.

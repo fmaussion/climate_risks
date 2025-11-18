@@ -180,3 +180,11 @@ All 75 river basins (see workshop 06, lesson 02) are available in a single folde
 **For workshop 06's Assignment, you will also need**:
 
 - glacier projections for the Aral Sea catchment (id 2902), a netCDF file: [2902.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2309.tar.gz)
+
+## Flood workshop data
+
+For the flood workshop, we prepared a set of dataset for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):
+
+[Zip file](https://uob-my.sharepoint.com/:u:/g/personal/uu23343_bristol_ac_uk/EWsR68oAPkJNleVNc-vhg1UBKoP608MyvvnzBnAe2pVhag?e=z0noy2)
+
+Download the file and extract it in the `data` folder of your repository. The content of the zip file is explained in the assignment.

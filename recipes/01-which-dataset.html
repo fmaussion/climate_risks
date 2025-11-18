@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Which dataset should I use for my project? &#8212; Quantifying Climate Risks</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'recipes/01-which-dataset';</script>
+    <script data-domain="fabienmaussion.info" defer="defer" src="https://plausible.oggm.org/js/script.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regional PlateCarree projection" href="02-regional-lonlat.html" />
+    <link rel="prev" title="Assignment: a more intense future flood" href="../ws07/02-assignment-flood.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Nov 18, 2025"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../welcome.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../syllabus.html">Syllabus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">External resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">IPCC Workshops</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc1.html">IPCC AR6 WG2 – Part 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ipcc/briefing_ipcc2.html">IPCC AR6 WG2 - Part 2</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting ready for programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ready/00-howto.html">How to use this website and prepare for each week</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/01-installation.html">Installing Python (optional)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/02-install-jupyter.html">Installing JupyterLab (all platforms)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ready/03-download.html">Downloading the data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws01/01-primer.html">Python and Jupyter: a primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/02-lesson-netcdf-data.html">Lesson: working with netCDF data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws01/03-assignment-2d-data.html">Assignment: 1D and 2D data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 02</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws02/01-lesson-moredatacrunching.html">Lesson: more tools for statistical and climatological analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws02/02-assignment-variability.html">Assignment: Characterising climate variability</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws03/01-lesson-timeseries.html">Lesson: timeseries analysis and extreme values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws03/02-assignment-timeseries.html">Assignment: timeseries analysis and extreme values</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 04</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws04/01-lesson-gev.html">Lesson: extreme value distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws04/02-assignment-gev.html">Assignment: scenario dependence of climate risks</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 05</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws05/01-lesson-droughts.html">Lesson: organise your datasets, select data by country, droughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws05/02-assignment-droughts-cmip6.html">Assignment: Droughts, CMIP6 projections</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 06</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws06/01-lesson-glaciers.html">Lesson 01: future glacier change</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/02-lesson-basins.html">Lesson 02: geospatial datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws06/03-assignment-glacier-future.html">Assignment: future glacier change</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Workshop 07</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ws07/01-lesson-flood.html">Lesson: hazard, vulnerability and exposure during Hurricane Katrina</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ws07/02-assignment-flood.html">Assignment: a more intense future flood</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Recipes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Which dataset should I use for my project?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-regional-lonlat.html">Regional PlateCarree projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-regional-lambert.html">Lambert conformal projection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-worldpop.html">Regridding WorldPop data to your region of choice</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/edit/main/book/recipes/01-which-dataset.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/fmaussion/climate_risks/issues/new?title=Issue%20on%20page%20%2Frecipes/01-which-dataset.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/recipes/01-which-dataset.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Which dataset should I use for my project?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w5e5-data">W5E5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isimip6-climate-projections">ISIMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-climate-projections">CMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-summary-of-the-day-gsod-data">Global Summary of the Day (GSOD) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-river-flow-archive-nrfa-data">National River Flow Archive (NRFA) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-recommendations">Summary of Recommendations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="which-dataset-should-i-use-for-my-project">
+<h1>Which dataset should I use for my project?<a class="headerlink" href="#which-dataset-should-i-use-for-my-project" title="Link to this heading">#</a></h1>
+<p>Choosing the right dataset is crucial, as it determines the type of analysis you can perform. Some datasets are better suited for certain types of analyses than others. Below, I provide a guide to help you select the most appropriate dataset for your needs.</p>
+<section id="era5-data">
+<h2>ERA5 Data<a class="headerlink" href="#era5-data" title="Link to this heading">#</a></h2>
+<p>ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period <strong>1940 to present</strong> at <strong>0.25° spatial resolution</strong>, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the <strong>Copernicus Climate Data Store (CDS)</strong> and can be easily accessed using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> Python package. You can find examples of how to download ERA5 data in the <a class="reference internal" href="../ready/03-download.html"><span class="doc std std-doc">download section</span></a>. The QCR server has some data at 0.75° resolution for you to download directly.</p>
+<div class="note admonition">
+<p class="admonition-title">ERA5 is a good choice if …</p>
+<ul class="simple">
+<li><p>You need <strong>historical climate data</strong> (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).</p></li>
+<li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation).</p></li>
+<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25°).</p></li>
+<li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region</strong>.</p></li>
+<li><p>You want to download data for a specific <strong>region or variable</strong>, as accessing ERA5 through the CDS API is straightforward.</p></li>
+</ul>
+</div>
+</section>
+<section id="w5e5-data">
+<h2>W5E5 Data<a class="headerlink" href="#w5e5-data" title="Link to this heading">#</a></h2>
+<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for selected variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code>, <code class="docutils literal notranslate"><span class="pre">hurs</span></code>) and a selected climate model.</p>
+<div class="note admonition">
+<p class="admonition-title">W5E5 is a good choice if …</p>
+<ul class="simple">
+<li><p>You plan to use it alongside <strong>ISIMIP6 projections</strong> for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).</p></li>
+<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. While ERA5 also offers daily data, W5E5 is readily available on the QCR server and I can prepare timeseries or small regional subsets for you.</p></li>
+<li><p>You want quick access to <strong>temperature, precipitation, and humidity</strong> data from the QCR server.</p></li>
+</ul>
+</div>
+</section>
+<section id="isimip6-climate-projections">
+<h2>ISIMIP6 Climate Projections<a class="headerlink" href="#isimip6-climate-projections" title="Link to this heading">#</a></h2>
+<p>ISIMIP6 provides <strong>bias-corrected climate projections</strong> at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>, using the W5E5 dataset as the historical reference. These projections are freely available from the <strong>ISIMIP data portal</strong> and cover three <strong>future scenarios</strong> (SSP126, SSP370, SSP585) using <strong>five climate models</strong> (though only one model is available on the QCR server).</p>
+<div class="note admonition">
+<p class="admonition-title">ISIMIP6 is a good choice if …</p>
+<ul class="simple">
+<li><p>You are working with <strong>W5E5 data for historical periods</strong> and need consistent <strong>future climate projections</strong>.</p></li>
+<li><p>You require <strong>daily-resolution</strong> climate projections.</p></li>
+<li><p>You are okay with using <strong>only one climate model</strong> for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies). Note: I am in the process of downloading a few more model data - ask me if you want them.</p></li>
+<li><p>You need <strong>time-series data</strong> or data for a <strong>specific region</strong> (but not global-scale analyses at daily resolution).</p></li>
+</ul>
+</div>
+</section>
+<section id="cmip6-climate-projections">
+<h2>CMIP6 Climate Projections<a class="headerlink" href="#cmip6-climate-projections" title="Link to this heading">#</a></h2>
+<p>CMIP6 represents the <strong>latest generation of climate model projections</strong>, with outputs at <strong>various spatial resolutions</strong> and <strong>multiple temporal scales</strong>. CMIP6 data is freely available from the <strong>Earth System Grid Federation (ESGF)</strong> and the <strong>Copernicus Climate Data Store (CDS)</strong>. On the QCR server, monthly precipitation and temperature data are provided at their original resolution and at <strong>0.75° and 2° regridded resolution</strong>.</p>
+<div class="note admonition">
+<p class="admonition-title">CMIP6 is a good choice if …</p>
+<ul class="simple">
+<li><p>You need <strong>monthly-resolution data</strong> rather than daily.</p></li>
+<li><p>You want to work with <strong>raw (uncorrected) climate model outputs</strong> rather than bias-corrected projections.</p></li>
+<li><p>You want to analyze the <strong>full range of climate models and emission scenarios</strong>.</p></li>
+<li><p>You are primarily working with <strong>temperature and precipitation</strong> (other variables must be downloaded separately from ESGF or CDS).</p></li>
+<li><p>You are conducting <strong>large-scale analyses</strong> (e.g., global, continental, or regional studies).</p></li>
+</ul>
+</div>
+</section>
+<section id="global-summary-of-the-day-gsod-data">
+<h2>Global Summary of the Day (GSOD) Data<a class="headerlink" href="#global-summary-of-the-day-gsod-data" title="Link to this heading">#</a></h2>
+<p>GSOD is a <strong>station-based dataset</strong> compiled by the <strong>National Climatic Data Center (NCDC)</strong> of NOAA. It provides <strong>daily observational data</strong> from weather stations worldwide. GSOD data is freely available from <strong>NOAA servers</strong>, and a small selection of stations is accessible on the QCR server. I can help with downloading these data.</p>
+<div class="note admonition">
+<p class="admonition-title">GSOD is a good choice if …</p>
+<ul class="simple">
+<li><p>You are conducting a <strong>local-scale study</strong> and need observational data from a specific weather station.</p></li>
+<li><p>You need <strong>daily-resolution observations</strong> and prefer <strong>measured data</strong> over reanalysis or climate model outputs.</p></li>
+<li><p>You can <strong>handle data gaps</strong> and <strong>quality issues</strong>, as station data can be incomplete.</p></li>
+<li><p>You understand that while <strong>station data provides actual observations</strong>, it may have spatial limitations compared to gridded datasets.</p></li>
+</ul>
+</div>
+</section>
+<section id="national-river-flow-archive-nrfa-data">
+<h2>National River Flow Archive (NRFA) Data<a class="headerlink" href="#national-river-flow-archive-nrfa-data" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a valuable resource for <strong>hydrological applications in the UK</strong>. It provides <strong>daily streamflow</strong> data for many UK rivers, along with <strong>daily catchment rainfall totals</strong> from a network of rain gauges. The data is freely available and can be downloaded via the NRFA website (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/search">search tool</a>). I can assist with downloading and processing these data.</p>
+<div class="note admonition">
+<p class="admonition-title">NRFA is a good choice if …</p>
+<ul class="simple">
+<li><p>You are analyzing a <strong>past flood event in the UK</strong> and need streamflow data.</p></li>
+<li><p>You are interested in the <strong>relationship between rainfall and streamflow</strong> in the UK.</p></li>
+<li><p>You require <strong>daily-resolution data</strong> for a specific river or catchment.</p></li>
+<li><p>You plan to link past streamflow data with <strong>ISIMIP6 daily climate projections</strong>, but keep in mind that this may require <strong>bias correction</strong>.</p></li>
+</ul>
+</div>
+</section>
+<section id="summary-of-recommendations">
+<h2>Summary of Recommendations<a class="headerlink" href="#summary-of-recommendations" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dataset</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Temporal Scale</p></th>
+<th class="head"><p>Best For</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ERA5</strong></p></td>
+<td><p>Reanalysis</p></td>
+<td><p>0.25°</p></td>
+<td><p>Hourly-daily-monthly</p></td>
+<td><p>Past climate risks, global studies, specialized variables</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>W5E5</strong></p></td>
+<td><p>Bias-corrected reanalysis</p></td>
+<td><p>0.5°</p></td>
+<td><p>Daily</p></td>
+<td><p>Historical data with bias correction, ISIMIP6 projections</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ISIMIP6</strong></p></td>
+<td><p>Bias-corrected projections</p></td>
+<td><p>0.5°</p></td>
+<td><p>Daily</p></td>
+<td><p>Future projections, time-series analysis</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CMIP6</strong></p></td>
+<td><p>Climate projections</p></td>
+<td><p>Various (often 0.5°-2°)</p></td>
+<td><p>Monthly</p></td>
+<td><p>Multi-model comparisons, projections</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>GSOD</strong></p></td>
+<td><p>Observational (station)</p></td>
+<td><p>Point data</p></td>
+<td><p>Daily</p></td>
+<td><p>Local-scale studies, observed climate data</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NRFA</strong></p></td>
+<td><p>Observational (streamflow)</p></td>
+<td><p>Point data (catchments)</p></td>
+<td><p>Daily</p></td>
+<td><p>UK hydrology, flood studies, streamflow-rainfall relationships</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./recipes"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../ws07/02-assignment-flood.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Assignment: a more intense future flood</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-regional-lonlat.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regional PlateCarree projection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#era5-data">ERA5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#w5e5-data">W5E5 Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isimip6-climate-projections">ISIMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cmip6-climate-projections">CMIP6 Climate Projections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-summary-of-the-day-gsod-data">Global Summary of the Day (GSOD) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#national-river-flow-archive-nrfa-data">National River Flow Archive (NRFA) Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-recommendations">Summary of Recommendations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Fabien Maussion
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on Nov 18, 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <p>
+<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+  <img align="right" class="margin" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" width="88px">
+</a>
+These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
+<br>
+&copy; Copyright 2024-2025.
+</p>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

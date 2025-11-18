@@ -37,7 +37,7 @@ ISIMIP6 provides **bias-corrected climate projections** at **daily resolution** 
 
 - You are working with **W5E5 data for historical periods** and need consistent **future climate projections**.
 - You require **daily-resolution** climate projections.
-- You are okay with using **only one climate model** for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies).
+- You are okay with using **only one climate model** for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies). Note: I am in the process of downloading a few more model data - ask me if you want them.
 - You need **time-series data** or data for a **specific region** (but not global-scale analyses at daily resolution).
 ```
 

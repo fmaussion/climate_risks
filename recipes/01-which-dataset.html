@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Nov 18, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 22, 2025"/>
   </head>
   
   
@@ -464,21 +464,21 @@
 <p>Choosing the right dataset is crucial, as it determines the type of analysis you can perform. Some datasets are better suited for certain types of analyses than others. Below, I provide a guide to help you select the most appropriate dataset for your needs.</p>
 <section id="era5-data">
 <h2>ERA5 Data<a class="headerlink" href="#era5-data" title="Link to this heading">#</a></h2>
-<p>ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period <strong>1940 to present</strong> at <strong>0.25° spatial resolution</strong>, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the <strong>Copernicus Climate Data Store (CDS)</strong> and can be easily accessed using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> Python package. You can find examples of how to download ERA5 data in the <a class="reference internal" href="../ready/03-download.html"><span class="doc std std-doc">download section</span></a>. The QCR server has some data at 0.75° resolution for you to download directly.</p>
+<p>ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period <strong>1940 to present</strong> up to <strong>0.25° spatial resolution</strong>, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the <strong>Copernicus Climate Data Store (CDS)</strong> and can be easily accessed using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> Python package. You can find examples of how to download ERA5 data in the <a class="reference internal" href="../ready/03-download.html"><span class="doc std std-doc">download section</span></a>. The QCR server has some data at 0.75° resolution for you to download directly.</p>
 <div class="note admonition">
 <p class="admonition-title">ERA5 is a good choice if …</p>
 <ul class="simple">
 <li><p>You need <strong>historical climate data</strong> (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).</p></li>
-<li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation).</p></li>
-<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25°).</p></li>
-<li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region</strong>.</p></li>
+<li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).</p></li>
+<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25° of 0.75°).</p></li>
+<li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region or country</strong>.</p></li>
 <li><p>You want to download data for a specific <strong>region or variable</strong>, as accessing ERA5 through the CDS API is straightforward.</p></li>
 </ul>
 </div>
 </section>
 <section id="w5e5-data">
 <h2>W5E5 Data<a class="headerlink" href="#w5e5-data" title="Link to this heading">#</a></h2>
-<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for selected variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code>, <code class="docutils literal notranslate"><span class="pre">hurs</span></code>) and a selected climate model.</p>
+<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for selected variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code>, <code class="docutils literal notranslate"><span class="pre">hurs</span></code> – relative humidity–, and although more are available on their server).</p>
 <div class="note admonition">
 <p class="admonition-title">W5E5 is a good choice if …</p>
 <ul class="simple">
@@ -490,14 +490,14 @@
 </section>
 <section id="isimip6-climate-projections">
 <h2>ISIMIP6 Climate Projections<a class="headerlink" href="#isimip6-climate-projections" title="Link to this heading">#</a></h2>
-<p>ISIMIP6 provides <strong>bias-corrected climate projections</strong> at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>, using the W5E5 dataset as the historical reference. These projections are freely available from the <strong>ISIMIP data portal</strong> and cover three <strong>future scenarios</strong> (SSP126, SSP370, SSP585) using <strong>five climate models</strong> (though only one model is available on the QCR server).</p>
+<p>ISIMIP6 provides <strong>bias-corrected climate projections</strong> at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>, using the W5E5 dataset as the historical reference. These projections are freely available from the <strong>ISIMIP data portal</strong> and cover three <strong>future scenarios</strong> (SSP126, SSP370, SSP585) using <strong>five climate models</strong> (though only three models are available on the QCR server, which is more than enough).</p>
 <div class="note admonition">
 <p class="admonition-title">ISIMIP6 is a good choice if …</p>
 <ul class="simple">
 <li><p>You are working with <strong>W5E5 data for historical periods</strong> and need consistent <strong>future climate projections</strong>.</p></li>
 <li><p>You require <strong>daily-resolution</strong> climate projections.</p></li>
-<li><p>You are okay with using <strong>only one climate model</strong> for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies). Note: I am in the process of downloading a few more model data - ask me if you want them.</p></li>
-<li><p>You need <strong>time-series data</strong> or data for a <strong>specific region</strong> (but not global-scale analyses at daily resolution).</p></li>
+<li><p>You are okay with using <strong>one to three climate models</strong> for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies).</p></li>
+<li><p>You need <strong>time-series data</strong> or data for a <strong>specific region</strong> (global-scale or large-scale analyses at daily resolution are possible but out of scope for this assigment – keep it for your dissertation!).</p></li>
 </ul>
 </div>
 </section>
@@ -693,7 +693,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 18, 2025.
+  Last updated on Nov 22, 2025.
   <br/>
 </p>
   </div>

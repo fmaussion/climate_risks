@@ -93,11 +93,17 @@ The content of these files is explained in the assignment.
 
 ### Daily timeseries from ISIMIP
 
-[ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project". I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4) for the variables `tas` (2m temperature), `pr` (precipitation), `tasmax` (max temperature), `tasmin` (min temperature), and `hurs` (relative humidity). This alltogether represents a bit more than 0.5TB of data. Therefore, I extracted a number of timeseries for you to download. **Let me know if you need more locations, or perhaps a specific region!**.
+[ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project". I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables `tas` (2m temperature), `pr` (precipitation), `tasmax` (max temperature), `tasmin` (min temperature), and `hurs` (relative humidity). This alltogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. **Let me know if you need more locations, or perhaps a specific region!**.
 
 The timeseries are available for a number of locations. Visit the following webpage to explore them all:
 
 - [ISIMIP Timeseries](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/)
+
+If you feel ambitious and want to download global datasets, they are available here:
+
+- [ISIMIP Global Dataset on WCR server](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/raw_dl/).
+
+**Note also that the ISIMIP data download portal is very good and relatively intuitive to use: [data.isimip.org](https://data.isimip.org/).**
 
 ## Monthly CMIP6 data (global)
 

@@ -4,21 +4,21 @@ Choosing the right dataset is crucial, as it determines the type of analysis you
 
 ## ERA5 Data
 
-ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period **1940 to present** at **0.25° spatial resolution**, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the **Copernicus Climate Data Store (CDS)** and can be easily accessed using the `cdsapi` Python package. You can find examples of how to download ERA5 data in the [download section](../ready/03-download). The QCR server has some data at 0.75° resolution for you to download directly.
+ERA5 is the most widely used reanalysis dataset, making it a convenient choice for analyzing past climate risks. It covers the period **1940 to present** up to **0.25° spatial resolution**, with multiple temporal resolutions (hourly, daily, and monthly). ERA5 data is freely available from the **Copernicus Climate Data Store (CDS)** and can be easily accessed using the `cdsapi` Python package. You can find examples of how to download ERA5 data in the [download section](../ready/03-download). The QCR server has some data at 0.75° resolution for you to download directly.
 
 ```{admonition} ERA5 is a good choice if ...
 :class: note
 
 - You need **historical climate data** (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).
-- You need **upper-level atmospheric data** (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation).
-- You require **relatively high spatial resolution** data (0.25°).
-- You are conducting a **global study** or working over a **larger region**.
+- You need **upper-level atmospheric data** (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).
+- You require **relatively high spatial resolution** data (0.25° of 0.75°).
+- You are conducting a **global study** or working over a **larger region or country**.
 - You want to download data for a specific **region or variable**, as accessing ERA5 through the CDS API is straightforward.
 ```
 
 ## W5E5 Data
 
-W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** and **0.5° spatial resolution**. Developed by the **ISIMIP project**, it contains only **surface variables** (temperature, precipitation, etc.). W5E5 data is freely available from the **ISIMIP data portal** and is also preloaded on the QCR server for selected variables (`tas`, `pr`, `tasmax`, `tasmin`, `hurs`) and a selected climate model.
+W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** and **0.5° spatial resolution**. Developed by the **ISIMIP project**, it contains only **surface variables** (temperature, precipitation, etc.). W5E5 data is freely available from the **ISIMIP data portal** and is also preloaded on the QCR server for selected variables (`tas`, `pr`, `tasmax`, `tasmin`, `hurs` -- relative humidity--, and although more are available on their server).
 
 ```{admonition} W5E5 is a good choice if ...
 :class: note
@@ -30,15 +30,15 @@ W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** 
 
 ## ISIMIP6 Climate Projections
 
-ISIMIP6 provides **bias-corrected climate projections** at **daily resolution** and **0.5° spatial resolution**, using the W5E5 dataset as the historical reference. These projections are freely available from the **ISIMIP data portal** and cover three **future scenarios** (SSP126, SSP370, SSP585) using **five climate models** (though only one model is available on the QCR server).
+ISIMIP6 provides **bias-corrected climate projections** at **daily resolution** and **0.5° spatial resolution**, using the W5E5 dataset as the historical reference. These projections are freely available from the **ISIMIP data portal** and cover three **future scenarios** (SSP126, SSP370, SSP585) using **five climate models** (though only three models are available on the QCR server, which is more than enough).
 
 ```{admonition} ISIMIP6 is a good choice if ...
 :class: note
 
 - You are working with **W5E5 data for historical periods** and need consistent **future climate projections**.
 - You require **daily-resolution** climate projections.
-- You are okay with using **only one climate model** for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies). Note: I am in the process of downloading a few more model data - ask me if you want them.
-- You need **time-series data** or data for a **specific region** (but not global-scale analyses at daily resolution).
+- You are okay with using **one to three climate models** for future projections (while multiple models are recommended for robust climate studies, using a single model is acceptable for daily-resolution studies).
+- You need **time-series data** or data for a **specific region** (global-scale or large-scale analyses at daily resolution are possible but out of scope for this assigment -- keep it for your dissertation!).
 ```
 
 ## CMIP6 Climate Projections

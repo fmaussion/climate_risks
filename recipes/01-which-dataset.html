@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Nov 22, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 27, 2025"/>
   </head>
   
   
@@ -232,6 +232,7 @@
 <li class="toctree-l1"><a class="reference internal" href="02-regional-lonlat.html">Regional PlateCarree projection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="03-regional-lambert.html">Lambert conformal projection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="04-worldpop.html">Regridding WorldPop data to your region of choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-spei.html">Pre-computed PET and SPEI for ERA5 and CMIP6</a></li>
 </ul>
 
     </div>
@@ -472,6 +473,7 @@
 <li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).</p></li>
 <li><p>You require <strong>relatively high spatial resolution</strong> data (0.25° of 0.75°).</p></li>
 <li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region or country</strong>.</p></li>
+<li><p>You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, I can provide daily ERA5 data the same way as I do for W5E5 and ISIMIP6 data.</p></li>
 <li><p>You want to download data for a specific <strong>region or variable</strong>, as accessing ERA5 through the CDS API is straightforward.</p></li>
 </ul>
 </div>
@@ -483,7 +485,8 @@
 <p class="admonition-title">W5E5 is a good choice if …</p>
 <ul class="simple">
 <li><p>You plan to use it alongside <strong>ISIMIP6 projections</strong> for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).</p></li>
-<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. While ERA5 also offers daily data, W5E5 is readily available on the QCR server and I can prepare timeseries or small regional subsets for you.</p></li>
+<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. I can prepare timeseries or small regional subsets for you.</p></li>
+<li><p>You don’t need data post 2020. If you do need daily data post 2020, as well as I recommend to use a combination of ERA5, W5E5 and ISIMIP data. When doing so, make sure to check the differences between ERA5 and W5E5!</p></li>
 <li><p>You want quick access to <strong>temperature, precipitation, and humidity</strong> data from the QCR server.</p></li>
 </ul>
 </div>
@@ -693,7 +696,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 22, 2025.
+  Last updated on Nov 27, 2025.
   <br/>
 </p>
   </div>

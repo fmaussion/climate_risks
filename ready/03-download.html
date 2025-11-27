@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Nov 22, 2025"/>
+    <meta name="docbuild:last-update" content="Nov 27, 2025"/>
   </head>
   
   
@@ -232,6 +232,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../recipes/02-regional-lonlat.html">Regional PlateCarree projection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recipes/03-regional-lambert.html">Lambert conformal projection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../recipes/04-worldpop.html">Regridding WorldPop data to your region of choice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../recipes/05-spei.html">Pre-computed PET and SPEI for ERA5 and CMIP6</a></li>
 </ul>
 
     </div>
@@ -455,12 +456,12 @@
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-cmip6-data-global">Monthly CMIP6 data (global)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regridded-to-2-resolution">Regridded to 2° resolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-temperature-and-precipitation">Projected temperature and precipitation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">Projections</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-era5-data">2° resolution ERA5 data</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regridded-to-0-75-resolution">Regridded to 0.75° resolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Projected temperature and precipitation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Projections</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0.75° resolution ERA5 data</a></li>
 </ul>
 </li>
@@ -498,6 +499,7 @@
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_t2m.nc">ERA5_LowRes_Monthly_t2m.nc</a>: 2m temperature</p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_tp.nc">ERA5_LowRes_Monthly_tp.nc</a>: total precipitation</p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_pet.nc">ERA5_LowRes_Monthly_pet.nc</a>: potential evapotranspiration</p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_spei.nc">ERA5_LowRes_Monthly_spei.nc</a>: SPEI</p></li>
 </ul>
 <p><strong>File naming conventions</strong>:</p>
 <ul class="simple">
@@ -575,7 +577,7 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <section id="daily-timeseries-from-isimip">
 <h3>Daily timeseries from ISIMIP<a class="headerlink" href="#daily-timeseries-from-isimip" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://www.isimip.org/">ISIMIP</a> stands for the “Inter-Sectoral Impact Model Intercomparison Project”. I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables <code class="docutils literal notranslate"><span class="pre">tas</span></code> (2m temperature), <code class="docutils literal notranslate"><span class="pre">pr</span></code> (precipitation), <code class="docutils literal notranslate"><span class="pre">tasmax</span></code> (max temperature), <code class="docutils literal notranslate"><span class="pre">tasmin</span></code> (min temperature), and <code class="docutils literal notranslate"><span class="pre">hurs</span></code> (relative humidity). This alltogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. <strong>Let me know if you need more locations, or perhaps a specific region!</strong>.</p>
-<p>The timeseries are available for a number of locations. Visit the following webpage to explore them all:</p>
+<p>The timeseries are available for a number of locations, <strong>together with ERA5 daily data for precipitation and temperature</strong>. Visit the following webpage to explore them all:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/">ISIMIP Timeseries</a></p></li>
 </ul>
@@ -592,9 +594,9 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <p>The data below is regridded to a common grid (2° and 0.75°) and averaged to monthly values.</p>
 <section id="regridded-to-2-resolution">
 <h3>Regridded to 2° resolution<a class="headerlink" href="#regridded-to-2-resolution" title="Link to this heading">#</a></h3>
-<p>At 2° resolution, all CMIP6 temperature and precipitation files represent <strong>9.2GB</strong> of data.</p>
-<section id="projected-temperature-and-precipitation">
-<h4>Projected temperature and precipitation<a class="headerlink" href="#projected-temperature-and-precipitation" title="Link to this heading">#</a></h4>
+<p>At 2° resolution, all CMIP6 temperature and precipitation files represent <strong>9.2GB</strong> of data. With the addition of PET and SPEI, the total is 28GB.</p>
+<section id="projections">
+<h4>Projections<a class="headerlink" href="#projections" title="Link to this heading">#</a></h4>
 <p>This is the list of Earth System Models (ESMs), sometimes still called Global Circulation Models (GCMs) and scenarios for which I provide temperature data. The data is regridded to a common 2° grid and averaged to monthly values:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -864,6 +866,274 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </ul>
 </div>
 </details></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Monthly PET at 2° resolution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">BCC-CSM2-MR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_pet.nc">BCC-CSM2-MR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_pet.nc">BCC-CSM2-MR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp370_regridded_pet.nc">BCC-CSM2-MR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp585_regridded_pet.nc">BCC-CSM2-MR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CAMS-CSM1-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_pet.nc">CAMS-CSM1-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_pet.nc">CAMS-CSM1-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp370_regridded_pet.nc">CAMS-CSM1-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp585_regridded_pet.nc">CAMS-CSM1-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp126_regridded_pet.nc">CESM2_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp245_regridded_pet.nc">CESM2_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp370_regridded_pet.nc">CESM2_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp585_regridded_pet.nc">CESM2_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2-WACCM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_pet.nc">CESM2-WACCM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_pet.nc">CESM2-WACCM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp370_regridded_pet.nc">CESM2-WACCM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp585_regridded_pet.nc">CESM2-WACCM_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp126_regridded_pet.nc">EC-Earth3_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp245_regridded_pet.nc">EC-Earth3_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp370_regridded_pet.nc">EC-Earth3_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp585_regridded_pet.nc">EC-Earth3_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3-Veg</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_pet.nc">EC-Earth3-Veg_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_pet.nc">EC-Earth3-Veg_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp370_regridded_pet.nc">EC-Earth3-Veg_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp585_regridded_pet.nc">EC-Earth3-Veg_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">FGOALS-f3-L</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_pet.nc">FGOALS-f3-L_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_pet.nc">FGOALS-f3-L_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp370_regridded_pet.nc">FGOALS-f3-L_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp585_regridded_pet.nc">FGOALS-f3-L_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">GFDL-ESM4</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_pet.nc">GFDL-ESM4_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_pet.nc">GFDL-ESM4_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp370_regridded_pet.nc">GFDL-ESM4_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp585_regridded_pet.nc">GFDL-ESM4_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM4-8</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp126_regridded_pet.nc">INM-CM4-8_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp245_regridded_pet.nc">INM-CM4-8_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp370_regridded_pet.nc">INM-CM4-8_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp585_regridded_pet.nc">INM-CM4-8_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM5-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp126_regridded_pet.nc">INM-CM5-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp245_regridded_pet.nc">INM-CM5-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp370_regridded_pet.nc">INM-CM5-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp585_regridded_pet.nc">INM-CM5-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MPI-ESM1-2-HR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_pet.nc">MPI-ESM1-2-HR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_pet.nc">MPI-ESM1-2-HR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp370_regridded_pet.nc">MPI-ESM1-2-HR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp585_regridded_pet.nc">MPI-ESM1-2-HR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MRI-ESM2-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_pet.nc">MRI-ESM2-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_pet.nc">MRI-ESM2-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp370_regridded_pet.nc">MRI-ESM2-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp585_regridded_pet.nc">MRI-ESM2-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NorESM2-MM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp126_regridded_pet.nc">NorESM2-MM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp245_regridded_pet.nc">NorESM2-MM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp370_regridded_pet.nc">NorESM2-MM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp585_regridded_pet.nc">NorESM2-MM_ssp585</a></p></li>
+</ul>
+</div>
+</details></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Monthly SPEI at 2° resolution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">BCC-CSM2-MR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_spei.nc">BCC-CSM2-MR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_spei.nc">BCC-CSM2-MR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp370_regridded_spei.nc">BCC-CSM2-MR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp585_regridded_spei.nc">BCC-CSM2-MR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CAMS-CSM1-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_spei.nc">CAMS-CSM1-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_spei.nc">CAMS-CSM1-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp370_regridded_spei.nc">CAMS-CSM1-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp585_regridded_spei.nc">CAMS-CSM1-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp126_regridded_spei.nc">CESM2_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp245_regridded_spei.nc">CESM2_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp370_regridded_spei.nc">CESM2_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2/CESM2_ssp585_regridded_spei.nc">CESM2_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2-WACCM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_spei.nc">CESM2-WACCM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_spei.nc">CESM2-WACCM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp370_regridded_spei.nc">CESM2-WACCM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/CESM2-WACCM/CESM2-WACCM_ssp585_regridded_spei.nc">CESM2-WACCM_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp126_regridded_spei.nc">EC-Earth3_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp245_regridded_spei.nc">EC-Earth3_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp370_regridded_spei.nc">EC-Earth3_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3/EC-Earth3_ssp585_regridded_spei.nc">EC-Earth3_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3-Veg</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_spei.nc">EC-Earth3-Veg_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_spei.nc">EC-Earth3-Veg_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp370_regridded_spei.nc">EC-Earth3-Veg_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp585_regridded_spei.nc">EC-Earth3-Veg_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">FGOALS-f3-L</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_spei.nc">FGOALS-f3-L_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_spei.nc">FGOALS-f3-L_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp370_regridded_spei.nc">FGOALS-f3-L_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/FGOALS-f3-L/FGOALS-f3-L_ssp585_regridded_spei.nc">FGOALS-f3-L_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">GFDL-ESM4</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_spei.nc">GFDL-ESM4_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_spei.nc">GFDL-ESM4_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp370_regridded_spei.nc">GFDL-ESM4_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/GFDL-ESM4/GFDL-ESM4_ssp585_regridded_spei.nc">GFDL-ESM4_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM4-8</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp126_regridded_spei.nc">INM-CM4-8_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp245_regridded_spei.nc">INM-CM4-8_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp370_regridded_spei.nc">INM-CM4-8_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM4-8/INM-CM4-8_ssp585_regridded_spei.nc">INM-CM4-8_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM5-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp126_regridded_spei.nc">INM-CM5-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp245_regridded_spei.nc">INM-CM5-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp370_regridded_spei.nc">INM-CM5-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/INM-CM5-0/INM-CM5-0_ssp585_regridded_spei.nc">INM-CM5-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MPI-ESM1-2-HR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_spei.nc">MPI-ESM1-2-HR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_spei.nc">MPI-ESM1-2-HR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp370_regridded_spei.nc">MPI-ESM1-2-HR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp585_regridded_spei.nc">MPI-ESM1-2-HR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MRI-ESM2-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_spei.nc">MRI-ESM2-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_spei.nc">MRI-ESM2-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp370_regridded_spei.nc">MRI-ESM2-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/MRI-ESM2-0/MRI-ESM2-0_ssp585_regridded_spei.nc">MRI-ESM2-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NorESM2-MM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp126_regridded_spei.nc">NorESM2-MM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp245_regridded_spei.nc">NorESM2-MM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp370_regridded_spei.nc">NorESM2-MM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/2deg/NorESM2-MM/NorESM2-MM_ssp585_regridded_spei.nc">NorESM2-MM_ssp585</a></p></li>
+</ul>
+</div>
+</details></div>
 </details><p><strong>If you want to avoid having to click on all files and want to download all files at once</strong>, you can use <a class="reference external" href="https://en.wikipedia.org/wiki/Wget">wget</a>. After downloading the list of files provided below, you can use the following command to download all files at once:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-i<span class="w"> </span>cmip6-tas-list-2deg.txt
 </pre></div>
@@ -871,6 +1141,8 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <ul class="simple">
 <li><p>list of temperature files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-2deg.txt">cmip6-tas-list-2deg.txt</a></p></li>
 <li><p>list of precipitation files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-2deg.txt">cmip6-pr-list-2deg.txt</a></p></li>
+<li><p>list of PET files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pet-list-2deg.txt">cmip6-pet-list-2deg.txt</a></p></li>
+<li><p>list of SPEI files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-spei-list-2deg.txt">cmip6-spei-list-2deg.txt</a></p></li>
 </ul>
 </section>
 <section id="resolution-era5-data">
@@ -881,14 +1153,15 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_t2m.nc">ERA5_UltraLowRes_Monthly_t2m.nc</a>: 2m temperature data at 2° resolution</p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_tp.nc">ERA5_UltraLowRes_Monthly_tp.nc</a>: precipitation data at 2° resolution</p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_pet.nc">ERA5_UltraLowRes_Monthly_pet.nc</a>: potential evapotranspiration data at 2° resolution</p></li>
+<li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_spei.nc">ERA5_UltraLowRes_Monthly_spei.nc</a>: SPEI data at 2° resolution</p></li>
 </ul>
 </section>
 </section>
 <section id="regridded-to-0-75-resolution">
 <h3>Regridded to 0.75° resolution<a class="headerlink" href="#regridded-to-0-75-resolution" title="Link to this heading">#</a></h3>
-<p>At 0.75° resolution, all CMIP6 temperature and precipitation files represent <strong>65GB</strong> of data.</p>
+<p>At 0.75° resolution, all CMIP6 temperature and precipitation files represent <strong>65GB</strong> of data. With the addition of PET and SPEI, the total is 193GB.</p>
 <section id="id1">
-<h4>Projected temperature and precipitation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<h4>Projections<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>The data is regridded to a common 0.75° grid and averaged to monthly values:</p>
 <details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
 <summary class="sd-summary-title sd-card-header">
@@ -1158,6 +1431,274 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </ul>
 </div>
 </details></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Monthly PET at 0.75° resolution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">BCC-CSM2-MR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_pet.nc">BCC-CSM2-MR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_pet.nc">BCC-CSM2-MR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp370_regridded_pet.nc">BCC-CSM2-MR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp585_regridded_pet.nc">BCC-CSM2-MR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CAMS-CSM1-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_pet.nc">CAMS-CSM1-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_pet.nc">CAMS-CSM1-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp370_regridded_pet.nc">CAMS-CSM1-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp585_regridded_pet.nc">CAMS-CSM1-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp126_regridded_pet.nc">CESM2_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp245_regridded_pet.nc">CESM2_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp370_regridded_pet.nc">CESM2_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp585_regridded_pet.nc">CESM2_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2-WACCM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_pet.nc">CESM2-WACCM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_pet.nc">CESM2-WACCM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp370_regridded_pet.nc">CESM2-WACCM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp585_regridded_pet.nc">CESM2-WACCM_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp126_regridded_pet.nc">EC-Earth3_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp245_regridded_pet.nc">EC-Earth3_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp370_regridded_pet.nc">EC-Earth3_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp585_regridded_pet.nc">EC-Earth3_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3-Veg</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_pet.nc">EC-Earth3-Veg_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_pet.nc">EC-Earth3-Veg_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp370_regridded_pet.nc">EC-Earth3-Veg_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp585_regridded_pet.nc">EC-Earth3-Veg_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">FGOALS-f3-L</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_pet.nc">FGOALS-f3-L_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_pet.nc">FGOALS-f3-L_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp370_regridded_pet.nc">FGOALS-f3-L_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp585_regridded_pet.nc">FGOALS-f3-L_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">GFDL-ESM4</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_pet.nc">GFDL-ESM4_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_pet.nc">GFDL-ESM4_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp370_regridded_pet.nc">GFDL-ESM4_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp585_regridded_pet.nc">GFDL-ESM4_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM4-8</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp126_regridded_pet.nc">INM-CM4-8_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp245_regridded_pet.nc">INM-CM4-8_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp370_regridded_pet.nc">INM-CM4-8_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp585_regridded_pet.nc">INM-CM4-8_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM5-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp126_regridded_pet.nc">INM-CM5-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp245_regridded_pet.nc">INM-CM5-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp370_regridded_pet.nc">INM-CM5-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp585_regridded_pet.nc">INM-CM5-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MPI-ESM1-2-HR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_pet.nc">MPI-ESM1-2-HR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_pet.nc">MPI-ESM1-2-HR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp370_regridded_pet.nc">MPI-ESM1-2-HR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp585_regridded_pet.nc">MPI-ESM1-2-HR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MRI-ESM2-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_pet.nc">MRI-ESM2-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_pet.nc">MRI-ESM2-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp370_regridded_pet.nc">MRI-ESM2-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp585_regridded_pet.nc">MRI-ESM2-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NorESM2-MM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp126_regridded_pet.nc">NorESM2-MM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp245_regridded_pet.nc">NorESM2-MM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp370_regridded_pet.nc">NorESM2-MM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp585_regridded_pet.nc">NorESM2-MM_ssp585</a></p></li>
+</ul>
+</div>
+</details></div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">Monthly SPEI at 0.75° resolution</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">BCC-CSM2-MR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp126_regridded_spei.nc">BCC-CSM2-MR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp245_regridded_spei.nc">BCC-CSM2-MR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp370_regridded_spei.nc">BCC-CSM2-MR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/BCC-CSM2-MR/BCC-CSM2-MR_ssp585_regridded_spei.nc">BCC-CSM2-MR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CAMS-CSM1-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp126_regridded_spei.nc">CAMS-CSM1-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp245_regridded_spei.nc">CAMS-CSM1-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp370_regridded_spei.nc">CAMS-CSM1-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CAMS-CSM1-0/CAMS-CSM1-0_ssp585_regridded_spei.nc">CAMS-CSM1-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp126_regridded_spei.nc">CESM2_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp245_regridded_spei.nc">CESM2_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp370_regridded_spei.nc">CESM2_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2/CESM2_ssp585_regridded_spei.nc">CESM2_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">CESM2-WACCM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp126_regridded_spei.nc">CESM2-WACCM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp245_regridded_spei.nc">CESM2-WACCM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp370_regridded_spei.nc">CESM2-WACCM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/CESM2-WACCM/CESM2-WACCM_ssp585_regridded_spei.nc">CESM2-WACCM_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp126_regridded_spei.nc">EC-Earth3_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp245_regridded_spei.nc">EC-Earth3_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp370_regridded_spei.nc">EC-Earth3_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3/EC-Earth3_ssp585_regridded_spei.nc">EC-Earth3_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">EC-Earth3-Veg</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp126_regridded_spei.nc">EC-Earth3-Veg_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp245_regridded_spei.nc">EC-Earth3-Veg_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp370_regridded_spei.nc">EC-Earth3-Veg_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/EC-Earth3-Veg/EC-Earth3-Veg_ssp585_regridded_spei.nc">EC-Earth3-Veg_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">FGOALS-f3-L</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp126_regridded_spei.nc">FGOALS-f3-L_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp245_regridded_spei.nc">FGOALS-f3-L_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp370_regridded_spei.nc">FGOALS-f3-L_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/FGOALS-f3-L/FGOALS-f3-L_ssp585_regridded_spei.nc">FGOALS-f3-L_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">GFDL-ESM4</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp126_regridded_spei.nc">GFDL-ESM4_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp245_regridded_spei.nc">GFDL-ESM4_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp370_regridded_spei.nc">GFDL-ESM4_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/GFDL-ESM4/GFDL-ESM4_ssp585_regridded_spei.nc">GFDL-ESM4_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM4-8</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp126_regridded_spei.nc">INM-CM4-8_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp245_regridded_spei.nc">INM-CM4-8_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp370_regridded_spei.nc">INM-CM4-8_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM4-8/INM-CM4-8_ssp585_regridded_spei.nc">INM-CM4-8_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">INM-CM5-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp126_regridded_spei.nc">INM-CM5-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp245_regridded_spei.nc">INM-CM5-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp370_regridded_spei.nc">INM-CM5-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/INM-CM5-0/INM-CM5-0_ssp585_regridded_spei.nc">INM-CM5-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MPI-ESM1-2-HR</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp126_regridded_spei.nc">MPI-ESM1-2-HR_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp245_regridded_spei.nc">MPI-ESM1-2-HR_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp370_regridded_spei.nc">MPI-ESM1-2-HR_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MPI-ESM1-2-HR/MPI-ESM1-2-HR_ssp585_regridded_spei.nc">MPI-ESM1-2-HR_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">MRI-ESM2-0</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp126_regridded_spei.nc">MRI-ESM2-0_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp245_regridded_spei.nc">MRI-ESM2-0_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp370_regridded_spei.nc">MRI-ESM2-0_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/MRI-ESM2-0/MRI-ESM2-0_ssp585_regridded_spei.nc">MRI-ESM2-0_ssp585</a></p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">NorESM2-MM</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp126_regridded_spei.nc">NorESM2-MM_ssp126</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp245_regridded_spei.nc">NorESM2-MM_ssp245</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp370_regridded_spei.nc">NorESM2-MM_ssp370</a></p></li>
+<li><p class="sd-card-text"><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/CMIP6/075deg/NorESM2-MM/NorESM2-MM_ssp585_regridded_spei.nc">NorESM2-MM_ssp585</a></p></li>
+</ul>
+</div>
+</details></div>
 </details><p><strong>If you want to avoid having to click on all files and want to download all files at once</strong>, you can use <a class="reference external" href="https://en.wikipedia.org/wiki/Wget">wget</a>. After downloading the list of files provided below, you can use the following command to download all files at once:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>-i<span class="w"> </span>cmip6-tas-list-075deg.txt
 </pre></div>
@@ -1165,6 +1706,8 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 <ul class="simple">
 <li><p>list of temperature files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-075deg.txt">cmip6-tas-list-075deg.txt</a></p></li>
 <li><p>list of precipitation files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-075deg.txt">cmip6-pr-list-075deg.txt</a></p></li>
+<li><p>list of PET files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pet-list-075deg.txt">cmip6-pet-list-075deg.txt</a></p></li>
+<li><p>list of SPEI files: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-spei-list-075deg.txt">cmip6-spei-list-075deg.txt</a></p></li>
 </ul>
 </section>
 <section id="id2">
@@ -1282,12 +1825,12 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monthly-cmip6-data-global">Monthly CMIP6 data (global)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regridded-to-2-resolution">Regridded to 2° resolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projected-temperature-and-precipitation">Projected temperature and precipitation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#projections">Projections</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#resolution-era5-data">2° resolution ERA5 data</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regridded-to-0-75-resolution">Regridded to 0.75° resolution</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Projected temperature and precipitation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Projections</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0.75° resolution ERA5 data</a></li>
 </ul>
 </li>
@@ -1322,7 +1865,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Nov 22, 2025.
+  Last updated on Nov 27, 2025.
   <br/>
 </p>
   </div>

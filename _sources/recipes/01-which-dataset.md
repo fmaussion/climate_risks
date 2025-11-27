@@ -13,6 +13,7 @@ ERA5 is the most widely used reanalysis dataset, making it a convenient choice f
 - You need **upper-level atmospheric data** (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).
 - You require **relatively high spatial resolution** data (0.25° of 0.75°).
 - You are conducting a **global study** or working over a **larger region or country**.
+- You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, I can provide daily ERA5 data the same way as I do for W5E5 and ISIMIP6 data.
 - You want to download data for a specific **region or variable**, as accessing ERA5 through the CDS API is straightforward.
 ```
 
@@ -24,7 +25,8 @@ W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** 
 :class: note
 
 - You plan to use it alongside **ISIMIP6 projections** for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).
-- You need **daily resolution** surface climate data at select locations. While ERA5 also offers daily data, W5E5 is readily available on the QCR server and I can prepare timeseries or small regional subsets for you.
+- You need **daily resolution** surface climate data at select locations. I can prepare timeseries or small regional subsets for you.
+- You don't need data post 2020. If you do need daily data post 2020, as well as I recommend to use a combination of ERA5, W5E5 and ISIMIP data. When doing so, make sure to check the differences between ERA5 and W5E5!
 - You want quick access to **temperature, precipitation, and humidity** data from the QCR server.
 ```
 

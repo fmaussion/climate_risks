@@ -54,3 +54,4 @@ parts:
     - file: recipes/02-regional-lonlat
     - file: recipes/03-regional-lambert
     - file: recipes/04-worldpop
+    - file: recipes/05-spei

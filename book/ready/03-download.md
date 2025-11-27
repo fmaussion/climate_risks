@@ -20,6 +20,7 @@ Links and info to be added here as the course unfolds.
 - [ERA5_LowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_t2m.nc): 2m temperature
 - [ERA5_LowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_tp.nc): total precipitation
 - [ERA5_LowRes_Monthly_pet.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_pet.nc): potential evapotranspiration
+- [ERA5_LowRes_Monthly_spei.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_LowRes/ERA5_LowRes_Monthly_spei.nc): SPEI
 
 **File naming conventions**:
 
@@ -95,7 +96,7 @@ The content of these files is explained in the assignment.
 
 [ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project". I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables `tas` (2m temperature), `pr` (precipitation), `tasmax` (max temperature), `tasmin` (min temperature), and `hurs` (relative humidity). This alltogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. **Let me know if you need more locations, or perhaps a specific region!**.
 
-The timeseries are available for a number of locations. Visit the following webpage to explore them all:
+The timeseries are available for a number of locations, **together with ERA5 daily data for precipitation and temperature**. Visit the following webpage to explore them all:
 
 - [ISIMIP Timeseries](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/)
 
@@ -113,9 +114,9 @@ The data below is regridded to a common grid (2° and 0.75°) and averaged to mo
 
 ### Regridded to 2° resolution
 
-At 2° resolution, all CMIP6 temperature and precipitation files represent **9.2GB** of data.
+At 2° resolution, all CMIP6 temperature and precipitation files represent **9.2GB** of data. With the addition of PET and SPEI, the total is 28GB.
 
-#### Projected temperature and precipitation
+#### Projections
 
 This is the list of Earth System Models (ESMs), sometimes still called Global Circulation Models (GCMs) and scenarios for which I provide temperature data. The data is regridded to a common 2° grid and averaged to monthly values:
 
@@ -130,6 +131,8 @@ wget -i cmip6-tas-list-2deg.txt
 
 - list of temperature files: [cmip6-tas-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-2deg.txt)
 - list of precipitation files: [cmip6-pr-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-2deg.txt)
+- list of PET files: [cmip6-pet-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pet-list-2deg.txt)
+- list of SPEI files: [cmip6-spei-list-2deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-spei-list-2deg.txt)
 
 #### 2° resolution ERA5 data
 
@@ -139,12 +142,13 @@ This is the same ERA5 data as you've used so far, but at an even lower resolutio
 - [ERA5_UltraLowRes_Monthly_t2m.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_t2m.nc): 2m temperature data at 2° resolution
 - [ERA5_UltraLowRes_Monthly_tp.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_tp.nc): precipitation data at 2° resolution
 - [ERA5_UltraLowRes_Monthly_pet.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_pet.nc): potential evapotranspiration data at 2° resolution
+- [ERA5_UltraLowRes_Monthly_spei.nc](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ERA5_UltraLowRes/ERA5_UltraLowRes_Monthly_spei.nc): SPEI data at 2° resolution
 
 ### Regridded to 0.75° resolution
 
-At 0.75° resolution, all CMIP6 temperature and precipitation files represent **65GB** of data.
+At 0.75° resolution, all CMIP6 temperature and precipitation files represent **65GB** of data. With the addition of PET and SPEI, the total is 193GB.
 
-#### Projected temperature and precipitation
+#### Projections
 
 The data is regridded to a common 0.75° grid and averaged to monthly values:
 
@@ -159,6 +163,8 @@ wget -i cmip6-tas-list-075deg.txt
 
 - list of temperature files: [cmip6-tas-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-tas-list-075deg.txt)
 - list of precipitation files: [cmip6-pr-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pr-list-075deg.txt)
+- list of PET files: [cmip6-pet-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-pet-list-075deg.txt)
+- list of SPEI files: [cmip6-spei-list-075deg.txt](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/cmip6-spei-list-075deg.txt)
 
 #### 0.75° resolution ERA5 data
 

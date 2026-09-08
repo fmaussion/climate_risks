@@ -25,14 +25,14 @@ You can keep your installation if it works for you. If you'd prefer to start fre
 ```{admonition} For Windows 10 or below or Chromebook users
 :class: warning, dropdown
 
-Do not attempt to install Python on a Windows 7 or 8 computer. This operating systems are no longer supported. You can use the university's workstations for the exercises instead.
+Do not attempt to install Python on a Windows 7 or 8 computer. These operating systems are no longer supported. You can use the university's workstations for the exercises instead.
 
-Windows 10 will no longer be supported after October 25. While it's possible that Python will continue to work on Win 10 for a while, I recommend to update your operating system as soon as possible still.
+Microsoft ended free security support for Windows 10 in October 2025. Python will most likely keep working on Windows 10 for a while, but we recommend updating your operating system as soon as you can.
 
-Installing Python on a Chromebook is not straightforward, and I cannot provide support for this. You can still use the university's workstations to complete the exercises.
+Installing Python on a Chromebook is not straightforward, and we cannot provide support for this. You can still use the university's workstations to complete the exercises.
 ```
 
-## Install Miniconda
+## Install Miniforge
 
 We will use an installation option with a minimal footprint on your computer: [Miniforge](https://github.com/conda-forge/miniforge)
 
@@ -42,7 +42,7 @@ We will use an installation option with a minimal footprint on your computer: [M
 ````{tab-item} On Windows
 :sync: win
 
-Download [the Windows installer](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe) amd double-click the `.exe` file to execute it.
+Download [the Windows installer](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe) and double-click the `.exe` file to execute it.
 
 Follow the prompts, taking note of the options to "Create start menu shortcuts" and "Add Miniforge3 to my PATH environment variable".
 I'd recommend you to **not** add Miniforge3 to the PATH environment variable, as it can cause conflicts with other software (it is ticked off per default).
@@ -51,7 +51,7 @@ Without Miniforge3 on the path, the most convenient way to use the installed sof
 ```{admonition} Important! About the installation location
 :class: warning
 
-Choose a folder located in where there is enough space available, for example in your user directory (e.g. `C:\Users\yourname\Miniforge3`). Do not install in a folder with special characters in the name (e.g. french accents), as this can cause issues with conda.
+Choose a folder where there is enough space available, for example in your user directory (e.g. `C:\Users\yourname\Miniforge3`). Do not install in a folder with special characters in the name (e.g. French accents), as this can cause issues with conda.
 ```
 
 ````
@@ -131,14 +131,14 @@ You can type ``exit()`` to get out of the python interpreter.
 
 The steps above should work in nearly all situations and prepare you for the class. Here's a brief explanation in case you're curious or need to search for more information:
 
-We installed [Miniconda](https://docs.conda.io/en/latest/miniconda.html), a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will ever need and is very heavy.
+We installed [Miniforge](https://github.com/conda-forge/miniforge), a minimal installer for the conda package manager. It plays the same role as the much larger Anaconda distribution, which ships more tools than you will ever need and is very heavy.
 
-**Additionally, we made some default configurations:**
-- We set [Conda-Forge](https://conda-forge.org/) as the default channel for downloading Python packages (instead of the default Anaconda channel).
-- We replaced `conda` with [Mamba](https://mamba.readthedocs.io) as the default package manager. `mamba install` works the same way as `conda install` but is significantly faster.
+**Miniforge also comes with two useful defaults:**
+- [Conda-Forge](https://conda-forge.org/) is the default channel for downloading Python packages (instead of the Anaconda channel).
+- [Mamba](https://mamba.readthedocs.io) is available alongside `conda` as a package manager. `mamba install` works the same way as `conda install` but is significantly faster.
 ```
 
 ## Learning checklist
 
-<label><input type="checkbox" id="week05_01" class="box"> I learned how to install Python on my computer.</input></label>
-<label><input type="checkbox" id="week05_02" class="box"> I know how to open a Python interpreter from the Miniforge Prompt (or the terminal on Linux/macOS) and close it using exit().</input></label>
+<label><input type="checkbox" id="install_01" class="box"> I learned how to install Python on my computer.</input></label>
+<label><input type="checkbox" id="install_02" class="box"> I know how to open a Python interpreter from the Miniforge Prompt (or the terminal on Linux/macOS) and close it using exit().</input></label>

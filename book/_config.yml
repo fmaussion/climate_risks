@@ -7,7 +7,7 @@
 # Book settings
 title: Quantifying Climate Risks  # The title of the book. Will be placed in the left navbar.
 author: Fabien Maussion  # The author of the book
-copyright: "2024-2025"  # Copyright year to be placed in the footer
+copyright: "2024-2026"  # Placed in the footer
 logo: img/logo.png  # A path to the book logo
 repository:
   url: https://github.com/fmaussion/climate_risks
@@ -40,7 +40,7 @@ html:
     </a>
     These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
     <br>
-    &copy; Copyright 2024-2025.
+    &copy; Copyright 2024-2026.
     </p>
 sphinx:
   config:
@@ -51,4 +51,5 @@ sphinx:
 execute:
   execute_notebooks: auto  # auto or cache or force
   allow_errors: true
+  timeout: -1
 only_build_toc_files: true

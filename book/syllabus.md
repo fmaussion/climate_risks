@@ -11,9 +11,9 @@ Upon successful completion of this unit, you will be able to:
 - Analyse the interplay between hazard, exposure and vulnerability in the context of climate change risk assessment.
 - Appraise the significance of climate change adaptation planning and the broader societal implications of climate change across various regions and populations.
 
-While quantifying climate risks includes quantifiying exposure, vulnerability, and hazard, the focus of this class will be on the physical impacts of climate change (hazards). We will not cover the social aspects of climate risks in great detail, but we will discuss them e.g. in the context of adaptation planning.
+While quantifying climate risks includes quantifying exposure, vulnerability, and hazard, the focus of this class is on the physical impacts of climate change (hazards). We will not cover the social aspects of climate risks in great detail, but we will discuss them e.g. in the context of adaptation planning.
 
-## Parctical skills
+## Practical skills
 
 To reach the learning goals listed above, you will need to develop practical skills in climate science and programming. Specifically, this class will help you to:
 
@@ -24,18 +24,18 @@ To reach the learning goals listed above, you will need to develop practical ski
 
 ## Prerequisites
 
-This class is designed for master's level students with a background in climate science (e.g. from the "Climate Change Science and Impacts" lecture) and some prior exposure to programming. While no formal training in programming or Python is required, it is assumed that you have used a programming language (e.g., Python, Matlab, R) in your BSc and are familiar with basic programming structures such as loops, functions, and conditional statements. If this is not the case, I provide links to additional resources you can use to bring you up to speed in the first weeks of the class.
+This class is designed for master's level students with a background in climate science (e.g. from the "Climate Change Science and Impacts" lecture) and some prior exposure to programming. While no formal training in programming or Python is required, it is assumed that you have used a programming language (e.g., Python, Matlab, R) in your BSc and are familiar with basic programming structures such as loops, functions, and conditional statements. If this is not the case, links to additional resources are provided to help you get up to speed in the first weeks of the class.
 
 ## Organisation of the class
 
 The term is 10 weeks long, with a consolidation week half-term. Each week is organized as follows:
 
-- During the **lectures** (1H session each week), we will discuss the theoretical aspects of climate risks, and I will introduce you to the new concepts of this class.
-- During the **workshops** (2H sesssion each week), we will work together on practical exercises and coding problems. This is the time to ask questions and to get help with the exercises. You will always be informed one week in advance about the content of the next workshop. We will follow the [flipped classroom](https://en.wikipedia.org/wiki/Flipped_classroom) model: you will acquire new knowledge at home by reading online materials and coding where appropriate. We will then use the time together in class to discuss the materials and check your code, projects, and understanding.
+- During the **lectures** (1H session each week), we will discuss the theoretical aspects of climate risks and introduce the new concepts of this class.
+- During the **workshops** (2H session each week), we will work together on practical exercises and coding problems. This is the time to ask questions and to get help with the exercises. You will always be informed one week in advance about the content of the next workshop. We will follow the [flipped classroom](https://en.wikipedia.org/wiki/Flipped_classroom) model: you will acquire new knowledge at home by reading online materials and coding where appropriate. We will then use the time together in class to discuss the materials and check your code, projects, and understanding.
 
 For the practical exercises, you will need a computer with an internet connection. You can work either on your own computer (laptop) or on the working stations in the computer room.
 
-Each week, I will ask one group to present the assignment from the week before. Each of you will therefore have to present once. This is not marked, and is purely for me to check if the class is following, and if I need to adapt the pace of the lecture.
+Each week, one group is asked to present the assignment from the week before. Each of you will therefore have to present once. This is not marked: it is purely a way for the instructor to check whether the class is following, and whether the pace of the lecture needs to be adapted.
 
 ## Assessment
 
@@ -45,7 +45,7 @@ As a formative assessment (not marked), you will be asked to outline your projec
 
 ## Weekly lesson plan
 
-It's the second time I'm teaching this class, and the lesson plan is subject to small changes (I'll update this page regularly). Here is the current plan:
+The lesson plan is subject to small changes (check Blackboard for updates). Here is the current plan:
 
 ### Lecture schedule
 
@@ -57,16 +57,37 @@ It's the second time I'm teaching this class, and the lesson plan is subject to 
 - Lecture 6: Quantifying Exposure and Vulnerability
 - Lecture 7: Adaptation to Reduce Climate Risks
 
-The lecture slides are available on blackboard. The lectures do not necessarily fit the 1H slots and will be split as required.
+The lecture slides are available on Blackboard. The lectures do not necessarily fit the 1H slots and will be split as required.
 
 ### Workshop schedule
 
-- Workshop 01: IPCC AR6 WG2 - Part 1
-- Workshop 02: IPCC AR6 WG2 - Part 2
-- Workshop 03: Getting started with Python and climate data analysis (Assignment: ERA5 data)
-- Workshop 04: More advanced tools for gridded climate data (Assignment: CMIP6 data)
-- Workshop 05: Timeseries analysis and extreme values (Assignment: timeseries analysis)
-- Workshop 06: Extreme value distribution (Assignment: ISIMIP timeseries)
-- Workshop 07: Glacier runoff (Assignment: regional differences)
-- Workshop 08: Huricane Katrina risk assessment (Assignment: Hurricane Katrina analogue in 2100)
-- Workshop 09: Climada
+#### IPCC workshops
+
+- [](ipcc/briefing_ipcc1.md)
+- [](ipcc/briefing_ipcc2.md)
+
+#### Python workshops
+
+- Workshop 01:
+  - [](ws01/01-primer.ipynb)
+  - [](ws01/02-lesson-netcdf-data.ipynb)
+  - [](ws01/03-assignment-2d-data.ipynb)
+- Workshop 02:
+  - [](ws02/01-lesson-moredatacrunching.ipynb)
+  - [](ws02/02-assignment-variability.ipynb)
+- Workshop 03:
+  - [](ws03/01-lesson-timeseries.ipynb)
+  - [](ws03/02-assignment-timeseries.ipynb)
+- Workshop 04:
+  - [](ws04/01-lesson-gev.ipynb)
+  - [](ws04/02-assignment-gev.ipynb)
+- Workshop 05:
+  - [](ws05/01-lesson-droughts.ipynb)
+  - [](ws05/02-assignment-droughts-cmip6.ipynb)
+- Workshop 06:
+  - [](ws06/01-lesson-glaciers.ipynb)
+  - [](ws06/02-lesson-basins.ipynb)
+  - [](ws06/03-assignment-glacier-future.ipynb)
+- Workshop 07:
+  - [](ws07/01-lesson-flood.ipynb)
+  - [](ws07/02-assignment-flood.ipynb)

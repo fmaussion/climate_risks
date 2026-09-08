@@ -115,5 +115,7 @@ book/data
 topo.png
 topo.pdf
 *-solution*.ipynb
+book/solutions/
+book/solutions.zip
 .virtual_documents
 

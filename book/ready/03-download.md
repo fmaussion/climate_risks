@@ -2,7 +2,7 @@
 
 All data files used in the lecture are available on the [QCR webserver](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/).
 
-Links and info to be added here as the course unfolds.
+Direct links to the files used in the workshops are given below. There is a lot of information on this page! To help you navigate this wealth of data, see [](../recipes/01-which-dataset.md).
 
 (era5-075)=
 ## ERA5 data (global)
@@ -46,7 +46,7 @@ You may want to use their online platform to analyze/download the data, or you c
 Here are a few example scripts to get you started:
 
 - script I used to download all the data listed above: [download_era5.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb)
-- script I used to download the "ultra low res" data listed in the CMIP6 section - the only change is the grid resolution: [download_era5_lr.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb)
+- script I used to download the "ultra low res" data listed in the CMIP6 section - the only change is the grid resolution: [download_era5_lr.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_lr.ipynb)
 - script I used to download the high resolution data (0.25°) over West Africa: [download_era5_hr_wa.ipynb](https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_hr_wa.ipynb)
 
 ## Timeseries data
@@ -65,13 +65,13 @@ I also downloaded Bristol and Cardiff data if you are interested:
 - [gsod-bristol.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv)
 - [gsod-cardiff.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv)
 
-Since we can't trust the current US adminstration to keep this infrastructure
-running for the duration of the class, I mirred the GSOD readme on our server -
+The long-term availability of this NOAA infrastructure is not guaranteed, so a
+copy of the GSOD readme is mirrored on our server -
 you'll find it [here](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt).
 
 ### Daily precipitation and streamflow from the national river flow archive
 
-The [national river flow archive](https://nrfa.ceh.ac.uk) is a great resource for hydrologist. I downloaded the daily streamflow and precipitation data ([search tool](https://nrfa.ceh.ac.uk/data/search)) for the Chew river near Bristol ([station 53004](https://nrfa.ceh.ac.uk/data/station/meanflow/53004)) and provide it here:
+The [national river flow archive](https://nrfa.ceh.ac.uk) is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data ([search tool](https://nrfa.ceh.ac.uk/data/search)) for the Chew river near Bristol ([station 53004](https://nrfa.ceh.ac.uk/data/station/meanflow/53004)) and provide it here:
 
 - Chew at Compton Dando - Gauged Daily Flow (gdf): [53004_gdf.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv)
 - Chew at Compton Dando - Catchment daily rainfall (cdr): [53004_cdr.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_cdr.csv)
@@ -94,7 +94,7 @@ The content of these files is explained in the assignment.
 
 ### Daily timeseries from ISIMIP
 
-[ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project". I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables `tas` (2m temperature), `pr` (precipitation), `tasmax` (max temperature), `tasmin` (min temperature), and `hurs` (relative humidity). This alltogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. **Let me know if you need more locations, or perhaps a specific region!**.
+[ISIMIP](https://www.isimip.org/) stands for the "Inter-Sectoral Impact Model Intercomparison Project". I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables `tas` (2m temperature), `pr` (precipitation), `tasmax` (max temperature), `tasmin` (min temperature), and `hurs` (relative humidity). This altogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. **Let me know if you need more locations, or perhaps a specific region!**.
 
 The timeseries are available for a number of locations, **together with ERA5 daily data for precipitation and temperature**. Visit the following webpage to explore them all:
 
@@ -186,16 +186,17 @@ All 75 river basins (see workshop 06, lesson 02) are available in a single folde
 - glacier projections for the Rhone basin (id 6243), a netCDF file: [6243.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/6243.tar.gz)
 
 **For workshop 06 Lesson 02, you will need**:
+
 - statistics for all glaciers in the world (a csv file): [rgi60_stats.csv](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/rgi60_stats.csv)
 - the river basins outlines (a shapefile): [glacier_basins.zip](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/glacier_basins.zip)
 
 **For workshop 06's Assignment, you will also need**:
 
-- glacier projections for the Aral Sea catchment (id 2902), a netCDF file: [2902.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2309.tar.gz)
+- glacier projections for the Aral Sea catchment (id 2902), a netCDF file: [2902.tar.gz](https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2902.tar.gz)
 
 ## Flood workshop data
 
-For the flood workshop, we prepared a set of dataset for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):
+For the flood workshop (Workshop 07), we prepared a set of datasets for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):
 
 [Zip file](https://uob-my.sharepoint.com/:u:/g/personal/uu23343_bristol_ac_uk/EWsR68oAPkJNleVNc-vhg1UBKoP608MyvvnzBnAe2pVhag?e=z0noy2)
 

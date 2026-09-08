@@ -9,7 +9,7 @@
 
 *(15 minutes)*
 
-Fabien will briefly explain the role of the IPCC, Working Group 2 (Impacts, Adaptation, and Vulnerability), and Working Group 1 (Physical Science Basis). We’ll then form thematic groups and introduce the breakout group activity.
+We will briefly explain the role of the IPCC, Working Group 2 (Impacts, Adaptation, and Vulnerability), and Working Group 1 (Physical Science Basis). We’ll then form thematic groups and introduce the breakout group activity.
 
 ```{admonition} Note on key terms
 :class: note

@@ -9,24 +9,24 @@ ERA5 is the most widely used reanalysis dataset, making it a convenient choice f
 ```{admonition} ERA5 is a good choice if ...
 :class: note
 
-- You need **historical climate data** (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).
+- You need **historical climate data** (1940 to present) and do not require bias-corrected projections (or can perform bias correction yourself).
 - You need **upper-level atmospheric data** (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).
-- You require **relatively high spatial resolution** data (0.25° of 0.75°).
+- You require **relatively high spatial resolution** data (0.25° or 0.75°).
 - You are conducting a **global study** or working over a **larger region or country**.
-- You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, I can provide daily ERA5 data the same way as I do for W5E5 and ISIMIP6 data.
+- You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, daily ERA5 data can be provided the same way as W5E5 and ISIMIP6 data.
 - You want to download data for a specific **region or variable**, as accessing ERA5 through the CDS API is straightforward.
 ```
 
 ## W5E5 Data
 
-W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** and **0.5° spatial resolution**. Developed by the **ISIMIP project**, it contains only **surface variables** (temperature, precipitation, etc.). W5E5 data is freely available from the **ISIMIP data portal** and is also preloaded on the QCR server for selected variables (`tas`, `pr`, `tasmax`, `tasmin`, `hurs` -- relative humidity--, and although more are available on their server).
+W5E5 is a **bias-corrected version of ERA5**, available at **daily resolution** and **0.5° spatial resolution**. Developed by the **ISIMIP project**, it contains only **surface variables** (temperature, precipitation, etc.). W5E5 data is freely available from the **ISIMIP data portal** and is also preloaded on the QCR server for a selection of variables (`tas`, `pr`, `tasmax`, `tasmin` and `hurs` -- relative humidity). More variables are available from the ISIMIP portal itself.
 
 ```{admonition} W5E5 is a good choice if ...
 :class: note
 
 - You plan to use it alongside **ISIMIP6 projections** for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).
-- You need **daily resolution** surface climate data at select locations. I can prepare timeseries or small regional subsets for you.
-- You don't need data post 2020. If you do need daily data post 2020, as well as I recommend to use a combination of ERA5, W5E5 and ISIMIP data. When doing so, make sure to check the differences between ERA5 and W5E5!
+- You need **daily resolution** surface climate data at select locations. Timeseries or small regional subsets can be prepared on request.
+- You don't need data after 2020. If you do, we recommend combining ERA5, W5E5 and ISIMIP data -- and when doing so, make sure to check the differences between ERA5 and W5E5!
 - You want quick access to **temperature, precipitation, and humidity** data from the QCR server.
 ```
 
@@ -90,6 +90,6 @@ The [national river flow archive](https://nrfa.ceh.ac.uk) is a valuable resource
 | **ERA5**          | Reanalysis               | 0.25°       | Hourly-daily-monthly | Past climate risks, global studies, specialized variables |
 | **W5E5**          | Bias-corrected reanalysis | 0.5°       | Daily          | Historical data with bias correction, ISIMIP6 projections |
 | **ISIMIP6**       | Bias-corrected projections | 0.5°       | Daily          | Future projections, time-series analysis |
-| **CMIP6**         | Climate projections      | Various (often 0.5°-2°) | Monthly        | Multi-model comparisons, projections |
+| **CMIP6**         | Climate projections      | 0.75° and 2° on the QCR server | Monthly        | Multi-model comparisons, projections |
 | **GSOD**          | Observational (station)  | Point data  | Daily          | Local-scale studies, observed climate data |
 | **NRFA**          | Observational (streamflow) | Point data (catchments) | Daily | UK hydrology, flood studies, streamflow-rainfall relationships |

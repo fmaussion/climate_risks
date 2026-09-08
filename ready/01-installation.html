@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -442,7 +442,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">Install Miniconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniforge">Install Miniforge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-your-installation">Testing your installation</a></li>
 </ul>
 </li>
@@ -473,24 +473,24 @@
 </div>
 <div class="warning dropdown admonition">
 <p class="admonition-title">For Windows 10 or below or Chromebook users</p>
-<p>Do not attempt to install Python on a Windows 7 or 8 computer. This operating systems are no longer supported. You can use the university’s workstations for the exercises instead.</p>
-<p>Windows 10 will no longer be supported after October 25. While it’s possible that Python will continue to work on Win 10 for a while, I recommend to update your operating system as soon as possible still.</p>
-<p>Installing Python on a Chromebook is not straightforward, and I cannot provide support for this. You can still use the university’s workstations to complete the exercises.</p>
+<p>Do not attempt to install Python on a Windows 7 or 8 computer. These operating systems are no longer supported. You can use the university’s workstations for the exercises instead.</p>
+<p>Microsoft ended free security support for Windows 10 in October 2025. Python will most likely keep working on Windows 10 for a while, but we recommend updating your operating system as soon as you can.</p>
+<p>Installing Python on a Chromebook is not straightforward, and we cannot provide support for this. You can still use the university’s workstations to complete the exercises.</p>
 </div>
-<section id="install-miniconda">
-<h2>Install Miniconda<a class="headerlink" href="#install-miniconda" title="Link to this heading">#</a></h2>
+<section id="install-miniforge">
+<h2>Install Miniforge<a class="headerlink" href="#install-miniforge" title="Link to this heading">#</a></h2>
 <p>We will use an installation option with a minimal footprint on your computer: <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="oscategory" data-sync-id="win" for="sd-tab-item-0">
 On Windows</label><div class="sd-tab-content docutils">
-<p>Download <a class="reference external" href="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe">the Windows installer</a> amd double-click the <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file to execute it.</p>
+<p>Download <a class="reference external" href="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe">the Windows installer</a> and double-click the <code class="docutils literal notranslate"><span class="pre">.exe</span></code> file to execute it.</p>
 <p>Follow the prompts, taking note of the options to “Create start menu shortcuts” and “Add Miniforge3 to my PATH environment variable”.
 I’d recommend you to <strong>not</strong> add Miniforge3 to the PATH environment variable, as it can cause conflicts with other software (it is ticked off per default).
 Without Miniforge3 on the path, the most convenient way to use the installed software (such as commands conda and mamba) will be via the “Miniforge Prompt” installed to the start menu (see <a class="reference internal" href="#test-install"><span class="std std-ref">Testing your installation</span></a> below).</p>
 <div class="warning admonition">
 <p class="admonition-title">Important! About the installation location</p>
-<p>Choose a folder located in where there is enough space available, for example in your user directory (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\yourname\Miniforge3</span></code>). Do not install in a folder with special characters in the name (e.g. french accents), as this can cause issues with conda.</p>
+<p>Choose a folder where there is enough space available, for example in your user directory (e.g. <code class="docutils literal notranslate"><span class="pre">C:\Users\yourname\Miniforge3</span></code>). Do not install in a folder with special characters in the name (e.g. French accents), as this can cause issues with conda.</p>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
@@ -539,19 +539,19 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <div class="note dropdown admonition">
 <p class="admonition-title">Optional: a brief explanation of what we’ve just done</p>
 <p>The steps above should work in nearly all situations and prepare you for the class. Here’s a brief explanation in case you’re curious or need to search for more information:</p>
-<p>We installed <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>, a minimal installer for the larger Anaconda project. Anaconda is a scientific Python distribution, but it includes more tools than you will ever need and is very heavy.</p>
-<p><strong>Additionally, we made some default configurations:</strong></p>
+<p>We installed <a class="reference external" href="https://github.com/conda-forge/miniforge">Miniforge</a>, a minimal installer for the conda package manager. It plays the same role as the much larger Anaconda distribution, which ships more tools than you will ever need and is very heavy.</p>
+<p><strong>Miniforge also comes with two useful defaults:</strong></p>
 <ul class="simple">
-<li><p>We set <a class="reference external" href="https://conda-forge.org/">Conda-Forge</a> as the default channel for downloading Python packages (instead of the default Anaconda channel).</p></li>
-<li><p>We replaced <code class="docutils literal notranslate"><span class="pre">conda</span></code> with <a class="reference external" href="https://mamba.readthedocs.io">Mamba</a> as the default package manager. <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span></code> works the same way as <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> but is significantly faster.</p></li>
+<li><p><a class="reference external" href="https://conda-forge.org/">Conda-Forge</a> is the default channel for downloading Python packages (instead of the Anaconda channel).</p></li>
+<li><p><a class="reference external" href="https://mamba.readthedocs.io">Mamba</a> is available alongside <code class="docutils literal notranslate"><span class="pre">conda</span></code> as a package manager. <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span></code> works the same way as <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> but is significantly faster.</p></li>
 </ul>
 </div>
 </section>
 </section>
 <section id="learning-checklist">
 <h2>Learning checklist<a class="headerlink" href="#learning-checklist" title="Link to this heading">#</a></h2>
-<p><label><input type="checkbox" id="week05_01" class="box"> I learned how to install Python on my computer.</input></label>
-<label><input type="checkbox" id="week05_02" class="box"> I know how to open a Python interpreter from the Miniforge Prompt (or the terminal on Linux/macOS) and close it using exit().</input></label></p>
+<p><label><input type="checkbox" id="install_01" class="box"> I learned how to install Python on my computer.</input></label>
+<label><input type="checkbox" id="install_02" class="box"> I know how to open a Python interpreter from the Miniforge Prompt (or the terminal on Linux/macOS) and close it using exit().</input></label></p>
 </section>
 </section>
 
@@ -620,7 +620,7 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniconda">Install Miniconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-miniforge">Install Miniforge</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-your-installation">Testing your installation</a></li>
 </ul>
 </li>
@@ -651,7 +651,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -665,7 +665,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

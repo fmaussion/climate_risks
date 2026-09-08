@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -484,7 +484,7 @@
   <section class="tex2jax_ignore mathjax_ignore" id="downloading-the-data">
 <h1>Downloading the data<a class="headerlink" href="#downloading-the-data" title="Link to this heading">#</a></h1>
 <p>All data files used in the lecture are available on the <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/">QCR webserver</a>.</p>
-<p>Links and info to be added here as the course unfolds.</p>
+<p>Direct links to the files used in the workshops are given below. There is a lot of information on this page! To help you navigate this wealth of data, see <a class="reference internal" href="../recipes/01-which-dataset.html"><span class="std std-doc">Which dataset should I use for my project?</span></a>.</p>
 <section id="era5-data-global">
 <span id="era5-075"></span><h2>ERA5 data (global)<a class="headerlink" href="#era5-data-global" title="Link to this heading">#</a></h2>
 <section id="ready-to-use-global-low-resolution-netcdf-files">
@@ -524,7 +524,7 @@
 <p>Here are a few example scripts to get you started:</p>
 <ul class="simple">
 <li><p>script I used to download all the data listed above: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5.ipynb</a></p></li>
-<li><p>script I used to download the “ultra low res” data listed in the CMIP6 section - the only change is the grid resolution: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5.ipynb">download_era5_lr.ipynb</a></p></li>
+<li><p>script I used to download the “ultra low res” data listed in the CMIP6 section - the only change is the grid resolution: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_lr.ipynb">download_era5_lr.ipynb</a></p></li>
 <li><p>script I used to download the high resolution data (0.25°) over West Africa: <a class="reference external" href="https://nbviewer.org/urls/cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/notebooks/download_era5_hr_wa.ipynb">download_era5_hr_wa.ipynb</a></p></li>
 </ul>
 </section>
@@ -545,13 +545,13 @@ These data are open access by the way! You can download them yourself from the p
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-bristol.csv">gsod-bristol.csv</a></p></li>
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/gsod-cardiff.csv">gsod-cardiff.csv</a></p></li>
 </ul>
-<p>Since we can’t trust the current US adminstration to keep this infrastructure
-running for the duration of the class, I mirred the GSOD readme on our server -
+<p>The long-term availability of this NOAA infrastructure is not guaranteed, so a
+copy of the GSOD readme is mirrored on our server -
 you’ll find it <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/readme.txt">here</a>.</p>
 </section>
 <section id="daily-precipitation-and-streamflow-from-the-national-river-flow-archive">
 <h3>Daily precipitation and streamflow from the national river flow archive<a class="headerlink" href="#daily-precipitation-and-streamflow-from-the-national-river-flow-archive" title="Link to this heading">#</a></h3>
-<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a great resource for hydrologist. I downloaded the daily streamflow and precipitation data (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/search">search tool</a>) for the Chew river near Bristol (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">station 53004</a>) and provide it here:</p>
+<p>The <a class="reference external" href="https://nrfa.ceh.ac.uk">national river flow archive</a> is a great resource for hydrologists. I downloaded the daily streamflow and precipitation data (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/search">search tool</a>) for the Chew river near Bristol (<a class="reference external" href="https://nrfa.ceh.ac.uk/data/station/meanflow/53004">station 53004</a>) and provide it here:</p>
 <ul class="simple">
 <li><p>Chew at Compton Dando - Gauged Daily Flow (gdf): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_gdf.csv">53004_gdf.csv</a></p></li>
 <li><p>Chew at Compton Dando - Catchment daily rainfall (cdr): <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/csv/53004_cdr.csv">53004_cdr.csv</a></p></li>
@@ -576,7 +576,7 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </section>
 <section id="daily-timeseries-from-isimip">
 <h3>Daily timeseries from ISIMIP<a class="headerlink" href="#daily-timeseries-from-isimip" title="Link to this heading">#</a></h3>
-<p><a class="reference external" href="https://www.isimip.org/">ISIMIP</a> stands for the “Inter-Sectoral Impact Model Intercomparison Project”. I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables <code class="docutils literal notranslate"><span class="pre">tas</span></code> (2m temperature), <code class="docutils literal notranslate"><span class="pre">pr</span></code> (precipitation), <code class="docutils literal notranslate"><span class="pre">tasmax</span></code> (max temperature), <code class="docutils literal notranslate"><span class="pre">tasmin</span></code> (min temperature), and <code class="docutils literal notranslate"><span class="pre">hurs</span></code> (relative humidity). This alltogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. <strong>Let me know if you need more locations, or perhaps a specific region!</strong>.</p>
+<p><a class="reference external" href="https://www.isimip.org/">ISIMIP</a> stands for the “Inter-Sectoral Impact Model Intercomparison Project”. I downloaded global daily data for the years 1979-2019 (W5E5) and for 1850-2100 (GFDL-ESM4, MRI-ESM2, UKESM1-0LL) for the variables <code class="docutils literal notranslate"><span class="pre">tas</span></code> (2m temperature), <code class="docutils literal notranslate"><span class="pre">pr</span></code> (precipitation), <code class="docutils literal notranslate"><span class="pre">tasmax</span></code> (max temperature), <code class="docutils literal notranslate"><span class="pre">tasmin</span></code> (min temperature), and <code class="docutils literal notranslate"><span class="pre">hurs</span></code> (relative humidity). This altogether represents a bit more than 1.6TB of data globally. Therefore, I extracted a number of timeseries for you to download. <strong>Let me know if you need more locations, or perhaps a specific region!</strong>.</p>
 <p>The timeseries are available for a number of locations, <strong>together with ERA5 daily data for precipitation and temperature</strong>. Visit the following webpage to explore them all:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/ISIMIP/timeseries/">ISIMIP Timeseries</a></p></li>
@@ -1735,12 +1735,12 @@ you’ll find it <a class="reference external" href="https://cluster.klima.uni-b
 </ul>
 <p><strong>For workshop 06’s Assignment, you will also need</strong>:</p>
 <ul class="simple">
-<li><p>glacier projections for the Aral Sea catchment (id 2902), a netCDF file: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2309.tar.gz">2902.tar.gz</a></p></li>
+<li><p>glacier projections for the Aral Sea catchment (id 2902), a netCDF file: <a class="reference external" href="https://cluster.klima.uni-bremen.de/~fmaussion/teaching/qcr/glaciers/projections_per_basin/2902.tar.gz">2902.tar.gz</a></p></li>
 </ul>
 </section>
 <section id="flood-workshop-data">
 <h2>Flood workshop data<a class="headerlink" href="#flood-workshop-data" title="Link to this heading">#</a></h2>
-<p>For the flood workshop, we prepared a set of dataset for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):</p>
+<p>For the flood workshop (Workshop 07), we prepared a set of datasets for you to download. The data is available in a single zip file, on Sharepoint (access for UoB students only):</p>
 <p><a class="reference external" href="https://uob-my.sharepoint.com/:u:/g/personal/uu23343_bristol_ac_uk/EWsR68oAPkJNleVNc-vhg1UBKoP608MyvvnzBnAe2pVhag?e=z0noy2">Zip file</a></p>
 <p>Download the file and extract it in the <code class="docutils literal notranslate"><span class="pre">data</span></code> folder of your repository. The content of the zip file is explained in the assignment.</p>
 </section>
@@ -1865,7 +1865,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -1879,7 +1879,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

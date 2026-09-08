@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -469,24 +469,24 @@
 <div class="note admonition">
 <p class="admonition-title">ERA5 is a good choice if …</p>
 <ul class="simple">
-<li><p>You need <strong>historical climate data</strong> (1919400 to present) and do not require bias-corrected projections (or can perform bias correction yourself).</p></li>
+<li><p>You need <strong>historical climate data</strong> (1940 to present) and do not require bias-corrected projections (or can perform bias correction yourself).</p></li>
 <li><p>You need <strong>upper-level atmospheric data</strong> (e.g., 500 hPa winds) or other specialized variables (e.g., snowfall, evaporation, wind).</p></li>
-<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25° of 0.75°).</p></li>
+<li><p>You require <strong>relatively high spatial resolution</strong> data (0.25° or 0.75°).</p></li>
 <li><p>You are conducting a <strong>global study</strong> or working over a <strong>larger region or country</strong>.</p></li>
-<li><p>You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, I can provide daily ERA5 data the same way as I do for W5E5 and ISIMIP6 data.</p></li>
+<li><p>You need to study events after 2020, when W5E5 reanalysis data is not available. For timeseries analysis, daily ERA5 data can be provided the same way as W5E5 and ISIMIP6 data.</p></li>
 <li><p>You want to download data for a specific <strong>region or variable</strong>, as accessing ERA5 through the CDS API is straightforward.</p></li>
 </ul>
 </div>
 </section>
 <section id="w5e5-data">
 <h2>W5E5 Data<a class="headerlink" href="#w5e5-data" title="Link to this heading">#</a></h2>
-<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for selected variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code>, <code class="docutils literal notranslate"><span class="pre">hurs</span></code> – relative humidity–, and although more are available on their server).</p>
+<p>W5E5 is a <strong>bias-corrected version of ERA5</strong>, available at <strong>daily resolution</strong> and <strong>0.5° spatial resolution</strong>. Developed by the <strong>ISIMIP project</strong>, it contains only <strong>surface variables</strong> (temperature, precipitation, etc.). W5E5 data is freely available from the <strong>ISIMIP data portal</strong> and is also preloaded on the QCR server for a selection of variables (<code class="docutils literal notranslate"><span class="pre">tas</span></code>, <code class="docutils literal notranslate"><span class="pre">pr</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmax</span></code>, <code class="docutils literal notranslate"><span class="pre">tasmin</span></code> and <code class="docutils literal notranslate"><span class="pre">hurs</span></code> – relative humidity). More variables are available from the ISIMIP portal itself.</p>
 <div class="note admonition">
 <p class="admonition-title">W5E5 is a good choice if …</p>
 <ul class="simple">
 <li><p>You plan to use it alongside <strong>ISIMIP6 projections</strong> for future climate analysis (as ISIMIP6 projections are bias-corrected to W5E5).</p></li>
-<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. I can prepare timeseries or small regional subsets for you.</p></li>
-<li><p>You don’t need data post 2020. If you do need daily data post 2020, as well as I recommend to use a combination of ERA5, W5E5 and ISIMIP data. When doing so, make sure to check the differences between ERA5 and W5E5!</p></li>
+<li><p>You need <strong>daily resolution</strong> surface climate data at select locations. Timeseries or small regional subsets can be prepared on request.</p></li>
+<li><p>You don’t need data after 2020. If you do, we recommend combining ERA5, W5E5 and ISIMIP data – and when doing so, make sure to check the differences between ERA5 and W5E5!</p></li>
 <li><p>You want quick access to <strong>temperature, precipitation, and humidity</strong> data from the QCR server.</p></li>
 </ul>
 </div>
@@ -576,7 +576,7 @@
 </tr>
 <tr class="row-odd"><td><p><strong>CMIP6</strong></p></td>
 <td><p>Climate projections</p></td>
-<td><p>Various (often 0.5°-2°)</p></td>
+<td><p>0.75° and 2° on the QCR server</p></td>
 <td><p>Monthly</p></td>
 <td><p>Multi-model comparisons, projections</p></td>
 </tr>
@@ -696,7 +696,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -710,7 +710,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

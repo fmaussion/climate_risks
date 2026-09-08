@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -476,7 +476,7 @@
 </div>
 </div>
 <p>The key package here is <a class="reference external" href="https://xesmf.readthedocs.io/">xesmf</a>.</p>
-<p><strong>Installing additional packages in an existing environmnent is easy, but only do it if you need a given package!</strong></p>
+<p><strong>Installing additional packages in an existing environment is easy, but only do it if you need a given package!</strong></p>
 <ol class="arabic simple">
 <li><p>Start by opening a prompt and activating the <code class="docutils literal notranslate"><span class="pre">qcr</span></code> environment as usual: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">qcr</span></code></p></li>
 <li><p>Now, install the requested packages. Let’s install a few at a time: type <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">install</span> <span class="pre">--channel</span> <span class="pre">conda-forge</span> <span class="pre">xesmf</span></code> (or, if <code class="docutils literal notranslate"><span class="pre">mamba</span></code> is not available, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">--channel</span> <span class="pre">conda-forge</span> <span class="pre">xesmf</span></code>). Answer yes to the questions.</p></li>
@@ -484,7 +484,7 @@
 </ol>
 <section id="worldpop-data">
 <h2>WorldPop data<a class="headerlink" href="#worldpop-data" title="Link to this heading">#</a></h2>
-<p>Open the data with rasterio, as explained in Workshop 8:</p>
+<p>Open the data with rasterio, as explained in the flood workshop (Workshop 07):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">worldpop</span> <span class="o">=</span> <span class="n">rioxr</span><span class="o">.</span><span class="n">open_rasterio</span><span class="p">(</span><span class="s2">&quot;../data/worldpop/ppp_2020_1km_Aggregated.tif&quot;</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
@@ -830,7 +830,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -844,7 +844,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

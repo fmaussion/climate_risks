@@ -8,9 +8,9 @@ Installing JupyterLab and the python packages need to be done **only once** on t
 
 ## Prerequisites
 
-I'll assume that the [python installation instructions](01-installation) have worked for you (or that you are using a university workstation), and that you:
+We assume that the [python installation instructions](01-installation) have worked for you (or that you are using a university workstation), and that you:
 
-- are able to start **one of** anaconda or miniforge prompt (depending on wether you are using anaconda or miniforge)
+- are able to start **one of** anaconda or miniforge prompt (depending on whether you are using anaconda or miniforge)
 - can type **one of** `mamba list` or `conda list` successfully
 - can type `python` and open a python interpreter.
 
@@ -27,7 +27,7 @@ Open a miniforge/anaconda prompt (or a terminal on Linux/macOS) and type:
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray cf_xarray dask regionmask
+conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy pandas matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray rasterio cf_xarray dask regionmask
 ```
 
 ````
@@ -36,15 +36,26 @@ conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst
 :sync: forge
 
 ```
-mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 numpy scipy matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray cf_xarray dask regionmask
+mamba create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy pandas matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray rasterio cf_xarray dask regionmask
 ```
 
 ````
 
 `````
 
-This will install jupyter-lab and all the packages at the same time. Say "yes" to the install question. To check if it worked, type `ipython
-` in the terminal, which should display something like:
+This will install jupyter-lab and all the packages at the same time. Say "yes" to the install question.
+
+````{note}
+One package used later in the class, [spei](https://github.com/martinvonk/SPEI) (Workshop 05, droughts), is not available on conda-forge. Install it with `pip` once the environment above is created and activated:
+
+```none
+pip install spei
+```
+
+The drought lesson reminds you about this when the package is first needed.
+````
+
+To check if it worked, type `ipython` in the terminal, which should display something like:
 
 ```none
 Python 3.9.7 | packaged by conda-forge | (default, Sep 29 2021, 19:15:42) [MSC v.1916 64 bit (AMD64)]
@@ -93,9 +104,9 @@ This is best explained with a simple video:
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1048667583?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Open the prompt, navigate to a folder and start JupyterLab"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
-If you are new to JupyterLab, ou can [watch this video on my beginners class](https://fabienmaussion.info/intro_to_programming/week_03/01-Intro-notebooks.html).
+If you are new to JupyterLab, you can [watch this video on my beginners class](https://fabienmaussion.info/intro_to_programming/week_03/01-Intro-notebooks.html).
 
 ## Learning checklist
 
-<label><input type="checkbox" id="week05_01" class="box"> I know how to install jupyter on any computer and start jupyter-lab from a specific folder.</input></label>
-<label><input type="checkbox" id="week05_02" class="box"> I know how to activate an environment and start `jupyter-lab` from the prompt.</input></label>
+<label><input type="checkbox" id="jupyter_01" class="box"> I know how to install jupyter on any computer and start jupyter-lab from a specific folder.</input></label>
+<label><input type="checkbox" id="jupyter_02" class="box"> I know how to activate an environment and start `jupyter-lab` from the prompt.</input></label>

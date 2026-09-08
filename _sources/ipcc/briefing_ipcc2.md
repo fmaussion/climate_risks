@@ -2,7 +2,7 @@
 
 ## Before the workshop
 
-At this stage, each group should have identified a hazard they want to focus on, and each group member should already be assigned one of three roles:
+At this stage, each group should have identified the impact they want to focus on, and each group member should already be assigned one of three roles:
 
 - Hazard specialist: Investigate the physical hazard (e.g., its drivers, trends, and intensity).
 - Exposure specialist: Explore what is exposed and why (e.g., populations, assets, or ecosystems).
@@ -10,7 +10,7 @@ At this stage, each group should have identified a hazard they want to focus on,
 
 In the week leading to the workshop:
 
-1. Review the impact your group selected in Week 1, focusing on its hazard, exposure, and vulnerability components.
+1. Review the impact your group selected in Part 1, focusing on its hazard, exposure, and vulnerability components.
 2. Explore the interactive tools provided below (they may not contain information for your chosen impact!):
    - [PROVIDE Climate Risk Dashboard](https://climate-risk-dashboard.iiasa.ac.at)
    - [Met Office Climate Data Portal](https://climatedataportal.metoffice.gov.uk/)
@@ -61,8 +61,8 @@ In the week leading to the workshop:
 
 ### IPCC AR6 WG2
 
-- [Summary for Policymakers, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
-- [Full report, IPCC AR WG2](https://www.ipcc.ch/report/ar6/wg2/)
+- [Summary for Policymakers, IPCC AR6 WG2](https://www.ipcc.ch/report/ar6/wg2/chapter/summary-for-policymakers/)
+- [Full report, IPCC AR6 WG2](https://www.ipcc.ch/report/ar6/wg2/)
 - [Uncertainty Guidance Note for IPCC Authors](https://www.ipcc.ch/site/assets/uploads/2017/08/AR5_Uncertainty_Guidance_Note.pdf)
 
 ### Interactive Tools

@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -588,7 +588,7 @@
 </div>
 <p>Now visit the <a class="reference external" href="https://fabienmaussion.info/climate_risks/ready/03-download.html#cmip6-data">data download page for CMIP6 data</a>.</p>
 <p>Download the “ultra low resolution” ERA5 temperature data from the link. This is the same data as you’ve used so far, but at an even lower resolution of 2°. I’ve coarsened the data even more to reduce the volume of climate projection data you’ll have to manipulate for this assignment.</p>
-<p>Now download <strong>temperature</strong> data from the climate model of your choice (it doesn’t matter which one) and for the scenarios <strong>ssp126</strong> and <strong>ssp585</strong>. I have prepared these data to make your life a bit easier. Most notably, I have resampled the data to be on the same grid as the ultra low resolution (2°) ERA5 data, which makes working with the data considerably easier. Normally, <a class="reference external" href="https://cluster.klima.uni-bremen.de/~oggm/cmip6/all_gcm_table.html">each ESM has their own resolution</a>, ranging from 0.7° (for EC-Earth3) to 2.50° (for IPSL-CM6A-LR).</p>
+<p>Now download <strong>temperature</strong> data from the climate model of your choice (it doesn’t matter which one) and for the scenarios <strong>ssp126</strong> and <strong>ssp585</strong>. I have prepared these data to make your life a bit easier. Most notably, I have resampled the data to be on the same grid as the ultra low resolution (2°) ERA5 data, which makes working with the data considerably easier. Normally, <a class="reference external" href="https://cluster.klima.uni-bremen.de/~oggm/cmip6/all_gcm_table.html">each ESM has their own resolution</a>, ranging from 0.7° (for EC-Earth3) to 2.50° (for IPSL-CM6A-LR). <strong>When downloading the GCM data, make sure to download the 2° one!</strong></p>
 <section id="historical-reference-data-era5">
 <h3>Historical reference data: ERA5<a class="headerlink" href="#historical-reference-data-era5" title="Link to this heading">#</a></h3>
 <p><strong>Let me open the 2° ERA5 data for you and extract the 2m temperature data in °C. I’ll also select the 1979, 2015 period, and compute the annual averages as well as the time period average of this data. This should be familiar to you:</strong></p>
@@ -745,14 +745,14 @@
 </section>
 <section id="cmip6-projections">
 <h3>CMIP6 projections<a class="headerlink" href="#cmip6-projections" title="Link to this heading">#</a></h3>
-<p>Now that we’ve tested the past, let’s have a first look at the global projections. We can put ERA5 aside, and focus on the two scenarios we’ve downloaded: ssp126 and ssp585. The exercises below are independant from the above, but you’ll find it much easier if you have done the above first!</p>
+<p>Now that we’ve tested the past, let’s have a first look at the global projections. We can put ERA5 aside, and focus on the two scenarios we’ve downloaded: ssp126 and ssp585. The exercises below are independent from the above, but you’ll find it much easier if you have done the above first!</p>
 <p><em>Tip: the commands you’ll have to run below are extremely similar to the above: they only differ by the time periods considered!</em></p>
 <p>Open the two ESM files (I suggest to name each dataset <code class="docutils literal notranslate"><span class="pre">ds_ssp126</span></code> and <code class="docutils literal notranslate"><span class="pre">ds_ssp585</span></code>). Compute the following variables for each SSP:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_annual_avg</span></code> : the annual averages of the ESM temperatures in °C</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_historical</span></code> : the time average of t2m_ssp126_annual_avg for 1985-2014</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">t2m_ssp126_avg_2100</span></code> : the time average of t2m_ssp126_annual_avg for 2070-2099</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> : the annual global average timeseries of temperature change with respect to 1985-20154</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delta_t2m_ssp126_ats</span></code> : the annual global average timeseries of temperature change with respect to 1985-2014</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -910,7 +910,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -924,7 +924,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

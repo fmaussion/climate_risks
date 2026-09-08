@@ -71,7 +71,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Dec 09, 2025"/>
+    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
   </head>
   
   
@@ -466,9 +466,9 @@
 </div>
 <section id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<p>I’ll assume that the <a class="reference internal" href="01-installation.html"><span class="doc std std-doc">python installation instructions</span></a> have worked for you (or that you are using a university workstation), and that you:</p>
+<p>We assume that the <a class="reference internal" href="01-installation.html"><span class="doc std std-doc">python installation instructions</span></a> have worked for you (or that you are using a university workstation), and that you:</p>
 <ul class="simple">
-<li><p>are able to start <strong>one of</strong> anaconda or miniforge prompt (depending on wether you are using anaconda or miniforge)</p></li>
+<li><p>are able to start <strong>one of</strong> anaconda or miniforge prompt (depending on whether you are using anaconda or miniforge)</p></li>
 <li><p>can type <strong>one of</strong> <code class="docutils literal notranslate"><span class="pre">mamba</span> <span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> successfully</p></li>
 <li><p>can type <code class="docutils literal notranslate"><span class="pre">python</span></code> and open a python interpreter.</p></li>
 </ul>
@@ -481,19 +481,28 @@
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="university" for="sd-tab-item-0">
 On the Anaconda prompt (e.g., university workstations)</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">rasterio</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 <label class="sd-tab-label" data-sync-group="compcategory" data-sync-id="forge" for="sd-tab-item-1">
 On the Miniforge prompt</label><div class="sd-tab-content docutils">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mamba</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">qcr</span> <span class="o">--</span><span class="n">channel</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">4.0.13</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">myst</span> <span class="n">numpy</span> <span class="n">scipy</span> <span class="n">pandas</span> <span class="n">matplotlib</span> <span class="n">xarray</span> <span class="n">netcdf4</span> <span class="n">cartopy</span> <span class="n">cftime</span> <span class="n">geopandas</span> <span class="n">seaborn</span> <span class="n">rioxarray</span> <span class="n">rasterio</span> <span class="n">cf_xarray</span> <span class="n">dask</span> <span class="n">regionmask</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>This will install jupyter-lab and all the packages at the same time. Say “yes” to the install question. To check if it worked, type <code class="docutils literal notranslate"><span class="pre">ipython</span> </code> in the terminal, which should display something like:</p>
+<p>This will install jupyter-lab and all the packages at the same time. Say “yes” to the install question.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>One package used later in the class, <a class="reference external" href="https://github.com/martinvonk/SPEI">spei</a> (Workshop 05, droughts), is not available on conda-forge. Install it with <code class="docutils literal notranslate"><span class="pre">pip</span></code> once the environment above is created and activated:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install spei
+</pre></div>
+</div>
+<p>The drought lesson reminds you about this when the package is first needed.</p>
+</div>
+<p>To check if it worked, type <code class="docutils literal notranslate"><span class="pre">ipython</span></code> in the terminal, which should display something like:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.9.7 | packaged by conda-forge | (default, Sep 29 2021, 19:15:42) [MSC v.1916 64 bit (AMD64)]
 Type &#39;copyright&#39;, &#39;credits&#39; or &#39;license&#39; for more information
 IPython 8.1.1 -- An enhanced Interactive Python. Type &#39;?&#39; for help.
@@ -533,12 +542,12 @@ In [1]:
 </ol>
 <p>This is best explained with a simple video:</p>
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1048667583?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Open the prompt, navigate to a folder and start JupyterLab"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-<p>If you are new to JupyterLab, ou can <a class="reference external" href="https://fabienmaussion.info/intro_to_programming/week_03/01-Intro-notebooks.html">watch this video on my beginners class</a>.</p>
+<p>If you are new to JupyterLab, you can <a class="reference external" href="https://fabienmaussion.info/intro_to_programming/week_03/01-Intro-notebooks.html">watch this video on my beginners class</a>.</p>
 </section>
 <section id="learning-checklist">
 <h2>Learning checklist<a class="headerlink" href="#learning-checklist" title="Link to this heading">#</a></h2>
-<p><label><input type="checkbox" id="week05_01" class="box"> I know how to install jupyter on any computer and start jupyter-lab from a specific folder.</input></label>
-<label><input type="checkbox" id="week05_02" class="box"> I know how to activate an environment and start <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> from the prompt.</input></label></p>
+<p><label><input type="checkbox" id="jupyter_01" class="box"> I know how to install jupyter on any computer and start jupyter-lab from a specific folder.</input></label>
+<label><input type="checkbox" id="jupyter_02" class="box"> I know how to activate an environment and start <code class="docutils literal notranslate"><span class="pre">jupyter-lab</span></code> from the prompt.</input></label></p>
 </section>
 </section>
 
@@ -637,7 +646,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Dec 09, 2025.
+  Last updated on Sep 08, 2026.
   <br/>
 </p>
   </div>
@@ -651,7 +660,7 @@ By Fabien Maussion
 </a>
 These lecture notes and exercises are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International (CC BY 4.0) license</a>.
 <br>
-&copy; Copyright 2024-2025.
+&copy; Copyright 2024-2026.
 </p>
 
 </div>

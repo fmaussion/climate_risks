@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -72,8 +69,7 @@
     <link rel="prev" title="Assignment: timeseries analysis and extreme values" href="../ws03/02-assignment-timeseries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 11, 2026"/>
   </head>
   
   
@@ -89,8 +85,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -98,6 +105,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -105,8 +113,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -122,8 +130,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,17 +160,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Quantifying Climate Risks - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -243,14 +254,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -411,16 +417,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -487,10 +501,10 @@
 <p>Let’s start by importing the packages as usual. We’ll continue to use Pandas today.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
 </pre></div>
 </div>
 </div>
@@ -525,7 +539,7 @@
 <p>These probabilities and ranks can be computed on data of any size and type, making it possible to generalize the process into a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the empirical return periods of a sample of extreme events.</span>
 
 <span class="sd">    Parameters</span>
@@ -581,7 +595,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0c5499464a3fc0a94382089731db200479579227b6d6da392737c94032190437.png" src="../_images/0c5499464a3fc0a94382089731db200479579227b6d6da392737c94032190437.png" />
+<img alt="../_images/9e4490cdd3a39698e7179a3315ffaaa05a8afe08e414e674f0a111b7e3be2dd7.png" src="../_images/9e4490cdd3a39698e7179a3315ffaaa05a8afe08e414e674f0a111b7e3be2dd7.png" />
 </div>
 </div>
 <p>Now let’s make an experiment. How would the return levels change if the most extreme event didn’t happen and was replaced, say, with a “normal” annual precipitation maxima? Let’s test this scenario:</p>
@@ -624,7 +638,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/538e0a0cf657c0cdd05858bc78dedb3e0e946eec984ab8ca9f507f0c0294e4fb.png" src="../_images/538e0a0cf657c0cdd05858bc78dedb3e0e946eec984ab8ca9f507f0c0294e4fb.png" />
+<img alt="../_images/0de4fd7d08b97740b8d335b1d94077b666024d317320a7e51ffdea4b9cb44042.png" src="../_images/0de4fd7d08b97740b8d335b1d94077b666024d317320a7e51ffdea4b9cb44042.png" />
 </div>
 </div>
 <p><strong>E: either by looking at the plot (with or without logarithmic scales) or by looking at the <code class="docutils literal notranslate"><span class="pre">edf</span></code> and <code class="docutils literal notranslate"><span class="pre">edf_fake</span></code> variables, answer the following questions:</strong></p>
@@ -690,7 +704,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/07586300f24531167eaaddb27c640d129e671e2b337d2497395a765e8f139eda.png" src="../_images/07586300f24531167eaaddb27c640d129e671e2b337d2497395a765e8f139eda.png" />
+<img alt="../_images/1412878715eb886d005a82716257c2cb7e7dceecb6a066d4aa4d6e34c6a44da0.png" src="../_images/1412878715eb886d005a82716257c2cb7e7dceecb6a066d4aa4d6e34c6a44da0.png" />
 </div>
 </div>
 <p>The plot above (Fig. 3) is a generalisation of “Fig. 2” further up. While the previous attempt was only one example, in the above we explored many other possible sequences of 60 years, where certain extreme events happened more, or less often than they happened in reality.</p>
@@ -734,7 +748,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" src="../_images/2cb7f127e45d6aaee97a728784484fdce134db6de7ba8966fbd2beb84e441e2d.png" />
+<img alt="../_images/bbabe70a4c3792cb660cd0edb4d8cb4b9978718e11b0032ed70a7040063fe6d1.png" src="../_images/bbabe70a4c3792cb660cd0edb4d8cb4b9978718e11b0032ed70a7040063fe6d1.png" />
 </div>
 </div>
 <p><strong>Q: describe qualitatively how well (or how poorly) the Gaussian distribution fits the data. Is there a tendency to underestimate the occurence of some values? Or overestimate others?</strong></p>
@@ -791,7 +805,7 @@ Remember, this only works under the assumption that our data is representative o
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3b22a6594b1d06bbe3082837a6e81ceb69fb36fb195450613131f555329e3925.png" src="../_images/3b22a6594b1d06bbe3082837a6e81ceb69fb36fb195450613131f555329e3925.png" />
+<img alt="../_images/114b8972275ef6638c08db16dcaa117dd7ba39cf1c22d23235671fab84d330f1.png" src="../_images/114b8972275ef6638c08db16dcaa117dd7ba39cf1c22d23235671fab84d330f1.png" />
 </div>
 </div>
 <p><strong>Q: Describe (qualitatively) how the GEV matches the data. Now look closely at the more extreme values in the range - do you see an improvement here as well?</strong></p>
@@ -962,7 +976,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c93a5ad3125e2170b447a1e20d62e8786096a8484bff5d17f76d19fa71d56876.png" src="../_images/c93a5ad3125e2170b447a1e20d62e8786096a8484bff5d17f76d19fa71d56876.png" />
+<img alt="../_images/5ba4b0b1efc35962f04b6e824d2fe94b60cb55261f2335c2d155e68a6539228a.png" src="../_images/5ba4b0b1efc35962f04b6e824d2fe94b60cb55261f2335c2d155e68a6539228a.png" />
 </div>
 </div>
 </section>
@@ -1014,7 +1028,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e1fcf279edbff4cc5343a7c54f5fcca920c431cdfb059091f7423dbd9224ef3c.png" src="../_images/e1fcf279edbff4cc5343a7c54f5fcca920c431cdfb059091f7423dbd9224ef3c.png" />
+<img alt="../_images/e124151468544a6dfdf492075ef3aa4e73974601b3c39bd3309f06fe548b1722.png" src="../_images/e124151468544a6dfdf492075ef3aa4e73974601b3c39bd3309f06fe548b1722.png" />
 </div>
 </div>
 </section>
@@ -1047,7 +1061,7 @@ x = F^{-1}(1 - \frac{1}{T})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3b8d58fc47d0cc55c06b1ae75b1044fc2866b4c9810e3184cdfe706a5ae27b22.png" src="../_images/3b8d58fc47d0cc55c06b1ae75b1044fc2866b4c9810e3184cdfe706a5ae27b22.png" />
+<img alt="../_images/d5ee159386f7044daa766e537dc103bce3231dba489257fd8e4cc37ef1590835.png" src="../_images/d5ee159386f7044daa766e537dc103bce3231dba489257fd8e4cc37ef1590835.png" />
 </div>
 </div>
 <section id="empirical-return-level-plots">
@@ -1072,7 +1086,7 @@ T = \frac{1}{\lambda \cdot P}
 <p>This adjustment is now implemented in the <code class="docutils literal notranslate"><span class="pre">return_period()</span></code> function via the optional <code class="docutils literal notranslate"><span class="pre">rate_per_year</span></code> argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute the empirical return periods of a sample of extreme events.</span>
 
@@ -1138,7 +1152,7 @@ T = \frac{1}{\lambda \cdot P}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5a6629450e4742a5bf67a0f7abbe92845f4e6087a11857e2548858723f6206d8.png" src="../_images/5a6629450e4742a5bf67a0f7abbe92845f4e6087a11857e2548858723f6206d8.png" />
+<img alt="../_images/54f8089fadc835e0ab38a0699b1b4766b3923b61af496dffbe807151d2cb96d2.png" src="../_images/54f8089fadc835e0ab38a0699b1b4766b3923b61af496dffbe807151d2cb96d2.png" />
 </div>
 </div>
 <p>What we observe here is that using the POT method gives us more data points, which allows us to compute empirical return levels for return periods below one year. These are not our main interest, which is why we cut the plot on the left.</p>
@@ -1193,7 +1207,7 @@ T = \frac{1}{\lambda \cdot P}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b3ca8584a208ac552d5394000ebd760e0bada1d45427b6c6a289030286d17b55.png" src="../_images/b3ca8584a208ac552d5394000ebd760e0bada1d45427b6c6a289030286d17b55.png" />
+<img alt="../_images/69d70a71928857140beb321d16debf09653bfc1b97ca1508467472e9c02001b0.png" src="../_images/69d70a71928857140beb321d16debf09653bfc1b97ca1508467472e9c02001b0.png" />
 </div>
 </div>
 <p>As you can see the two methods and distributions yield slightly different results. Both are quite sensitive to the tail of the distributions, but one is less sensitive than the other! That’s for you to discover if you are interested ;-).</p>
@@ -1266,8 +1280,7 @@ T = \frac{1}{\lambda \cdot P}
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1320,7 +1333,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 08, 2026.
+  Last updated on Sep 11, 2026.
   <br/>
 </p>
   </div>
@@ -1349,8 +1362,8 @@ These lecture notes and exercises are licensed under a <a href="https://creative
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

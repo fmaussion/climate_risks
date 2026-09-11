@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -70,8 +67,7 @@
     <link rel="prev" title="Assignment: Droughts, CMIP6 projections" href="../ws05/02-assignment-droughts-cmip6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
-    <meta name="docbuild:last-update" content="Sep 08, 2026"/>
+    <meta name="docbuild:last-update" content="Sep 11, 2026"/>
   </head>
   
   
@@ -87,8 +83,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -96,6 +103,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -103,8 +111,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -120,8 +128,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -151,17 +158,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Quantifying Climate Risks - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -241,14 +252,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -409,16 +415,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -498,10 +512,10 @@
 <h2>Import the packages<a class="headerlink" href="#import-the-packages" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -547,28 +561,76 @@
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
 html[theme="dark"],
 html[data-theme="dark"],
 body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1f1f1f;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
@@ -624,6 +686,7 @@ body.vscode-dark {
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
@@ -632,7 +695,7 @@ body.vscode-dark {
 }
 
 .xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0);
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -764,7 +827,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -775,6 +840,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -824,8 +890,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -836,6 +909,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -897,6 +976,14 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 7MB
 Dimensions:            (scenario: 1, gcm: 1, time: 101, rgi_id: 1169,
                         month_2d: 12)
@@ -921,7 +1008,7 @@ Attributes:
     description:    OGGM model output
     oggm_version:   1.6.1.dev26+gf8a1745
     calendar:       365-day no leap
-    creation_date:  2023-06-05 05:37:08</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5d057d55-e7d7-4c16-8a51-6b26a146fe3b' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-5d057d55-e7d7-4c16-8a51-6b26a146fe3b' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>scenario</span>: 1</li><li><span class='xr-has-index'>gcm</span>: 1</li><li><span class='xr-has-index'>time</span>: 101</li><li><span class='xr-has-index'>rgi_id</span>: 1169</li><li><span class='xr-has-index'>month_2d</span>: 12</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-0f851ef0-00ce-491c-9399-eea3e1e20392' class='xr-section-summary-in' type='checkbox'  checked><label for='section-0f851ef0-00ce-491c-9399-eea3e1e20392' class='xr-section-summary' >Coordinates: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2e+03 2.001e+03 ... 2.1e+03</div><input id='attrs-e3492d72-4384-44a9-98fd-f628a74becde' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e3492d72-4384-44a9-98fd-f628a74becde' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-85c73bb8-7d36-4eb1-b8d5-764e6541c363' class='xr-var-data-in' type='checkbox'><label for='data-85c73bb8-7d36-4eb1-b8d5-764e6541c363' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Floating year</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2001., 2002., 2003., 2004., 2005., 2006., 2007., 2008., 2009.,
+    creation_date:  2023-06-05 05:37:08</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-aff3dfb0-bdbd-49ef-bb0d-bbb4de9d77a3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-aff3dfb0-bdbd-49ef-bb0d-bbb4de9d77a3' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>scenario</span>: 1</li><li><span class='xr-has-index'>gcm</span>: 1</li><li><span class='xr-has-index'>time</span>: 101</li><li><span class='xr-has-index'>rgi_id</span>: 1169</li><li><span class='xr-has-index'>month_2d</span>: 12</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-75325403-0eb5-4817-879c-9f323dbe036c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-75325403-0eb5-4817-879c-9f323dbe036c' class='xr-section-summary' >Coordinates: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2e+03 2.001e+03 ... 2.1e+03</div><input id='attrs-32b6e6ac-e6da-4a1c-85c5-05bf03506364' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-32b6e6ac-e6da-4a1c-85c5-05bf03506364' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7cabc51-f381-4dfa-87a6-46c43a39980e' class='xr-var-data-in' type='checkbox'><label for='data-f7cabc51-f381-4dfa-87a6-46c43a39980e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Floating year</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2001., 2002., 2003., 2004., 2005., 2006., 2007., 2008., 2009.,
        2010., 2011., 2012., 2013., 2014., 2015., 2016., 2017., 2018., 2019.,
        2020., 2021., 2022., 2023., 2024., 2025., 2026., 2027., 2028., 2029.,
        2030., 2031., 2032., 2033., 2034., 2035., 2036., 2037., 2038., 2039.,
@@ -931,8 +1018,9 @@ Attributes:
        2070., 2071., 2072., 2073., 2074., 2075., 2076., 2077., 2078., 2079.,
        2080., 2081., 2082., 2083., 2084., 2085., 2086., 2087., 2088., 2089.,
        2090., 2091., 2092., 2093., 2094., 2095., 2096., 2097., 2098., 2099.,
-       2100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-42f9151f-2434-4104-aa2d-ec261b2a0def' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-42f9151f-2434-4104-aa2d-ec261b2a0def' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e6a329a6-0d66-404f-b44f-620ad7744d5a' class='xr-var-data-in' type='checkbox'><label for='data-e6a329a6-0d66-404f-b44f-620ad7744d5a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
-       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-fb856ac5-2885-4373-9561-5597d538dc10' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fb856ac5-2885-4373-9561-5597d538dc10' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d160adbc-0edc-4536-ba0a-dfef3e1fd22b' class='xr-var-data-in' type='checkbox'><label for='data-d160adbc-0edc-4536-ba0a-dfef3e1fd22b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+       2100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-c01d5355-18b0-4e15-be19-e51184649bff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c01d5355-18b0-4e15-be19-e51184649bff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ebda0b6c-9015-48f4-ae8a-e8ff68c256a3' class='xr-var-data-in' type='checkbox'><label for='data-ebda0b6c-9015-48f4-ae8a-e8ff68c256a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-4cd4113d-ed6b-4d85-8c40-242d6416eb25' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4cd4113d-ed6b-4d85-8c40-242d6416eb25' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8fe04d92-9e85-4428-b8b0-351450afa651' class='xr-var-data-in' type='checkbox'><label for='data-8fe04d92-9e85-4428-b8b0-351450afa651' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
        2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
        2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
        2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
@@ -941,11 +1029,11 @@ Attributes:
        2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
        2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
        2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
-       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>4 4 4 4 4 4 4 4 ... 4 4 4 4 4 4 4 4</div><input id='attrs-a6791c8e-97b1-4fa1-9b44-6d85f2a5986d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a6791c8e-97b1-4fa1-9b44-6d85f2a5986d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ecd195ac-2ebd-4f49-b4b4-c404c8a21936' class='xr-var-data-in' type='checkbox'><label for='data-ecd195ac-2ebd-4f49-b4b4-c404c8a21936' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological month</dd></dl></div><div class='xr-var-data'><pre>array([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>4 4 4 4 4 4 4 4 ... 4 4 4 4 4 4 4 4</div><input id='attrs-ffc9d14e-2b99-4679-9f0a-6477145f1f51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ffc9d14e-2b99-4679-9f0a-6477145f1f51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da856e1e-1a16-496c-b03f-f2793ad50f77' class='xr-var-data-in' type='checkbox'><label for='data-da856e1e-1a16-496c-b03f-f2793ad50f77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological month</dd></dl></div><div class='xr-var-data'><pre>array([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
        4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
        4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
        4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-5eb299ca-d3bb-40a8-8682-79518bc5c770' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5eb299ca-d3bb-40a8-8682-79518bc5c770' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-01295d94-97ca-4817-99c5-96675844427c' class='xr-var-data-in' type='checkbox'><label for='data-01295d94-97ca-4817-99c5-96675844427c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-1cf6554f-fd5a-4694-9e28-589024c9c13c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1cf6554f-fd5a-4694-9e28-589024c9c13c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-db166b5a-4c90-4cc0-9840-09eda4d90d67' class='xr-var-data-in' type='checkbox'><label for='data-db166b5a-4c90-4cc0-9840-09eda4d90d67' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
        2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
        2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
        2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
@@ -954,11 +1042,11 @@ Attributes:
        2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
        2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
        2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
-       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1</div><input id='attrs-d502358f-cf21-46b1-b663-f7775f0f4351' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d502358f-cf21-46b1-b663-f7775f0f4351' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6cdf51dd-052b-4529-bd29-d976ee47e138' class='xr-var-data-in' type='checkbox'><label for='data-6cdf51dd-052b-4529-bd29-d976ee47e138' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar month</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1</div><input id='attrs-2c6d3028-1fcd-4329-9bbe-2edbb25fcfdb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2c6d3028-1fcd-4329-9bbe-2edbb25fcfdb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbc949c7-7e2f-4885-a011-fc121466a75d' class='xr-var-data-in' type='checkbox'><label for='data-cbc949c7-7e2f-4885-a011-fc121466a75d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar month</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-aad44044-c980-4b94-816a-c2ddf2f3d9e6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-aad44044-c980-4b94-816a-c2ddf2f3d9e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e495487b-91e5-4c1b-9753-32ed112b8940' class='xr-var-data-in' type='checkbox'><label for='data-e495487b-91e5-4c1b-9753-32ed112b8940' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-decd0914-53ff-4848-bbfc-e15793beb767' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-decd0914-53ff-4848-bbfc-e15793beb767' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-64479d22-2663-40e9-9379-3cac65b3b500' class='xr-var-data-in' type='checkbox'><label for='data-64479d22-2663-40e9-9379-3cac65b3b500' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-b5d59ed2-3b92-40f2-88bb-a1b069b18baa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b5d59ed2-3b92-40f2-88bb-a1b069b18baa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-62bcf095-47fb-4994-9fe4-270d455bf333' class='xr-var-data-in' type='checkbox'><label for='data-62bcf095-47fb-4994-9fe4-270d455bf333' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>scenario</span></div><div class='xr-var-dims'>(scenario)</div><div class='xr-var-dtype'>&lt;U6</div><div class='xr-var-preview xr-preview'>&#x27;ssp126&#x27;</div><input id='attrs-dd0622f8-6570-4639-93f3-d44f10d5dc41' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dd0622f8-6570-4639-93f3-d44f10d5dc41' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-826d9055-b115-41cb-aa51-b26cdad5e4ac' class='xr-var-data-in' type='checkbox'><label for='data-826d9055-b115-41cb-aa51-b26cdad5e4ac' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used scenario (here SSPs)</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;ssp126&#x27;], dtype=&#x27;&lt;U6&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-59f32552-a9b4-4d5e-ac9a-ebf641f8ffd8' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-59f32552-a9b4-4d5e-ac9a-ebf641f8ffd8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-18e6abab-009b-4e67-a9db-af47427c521f' class='xr-var-data-in' type='checkbox'><label for='data-18e6abab-009b-4e67-a9db-af47427c521f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d52174ea-3145-4ff9-9aef-cf05f64b7152' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d52174ea-3145-4ff9-9aef-cf05f64b7152' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>6.94e+10 1.193e+08 ... nan nan</div><input id='attrs-282f4b3c-be58-46cc-bcdf-55e18eebbf2f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-282f4b3c-be58-46cc-bcdf-55e18eebbf2f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7644962-f063-403b-99b6-28fea7bb99a3' class='xr-var-data-in' type='checkbox'><label for='data-f7644962-f063-403b-99b6-28fea7bb99a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg yr-1</dd><dt><span>description :</span></dt><dd>Annual glacier runoff: sum of annual melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[6.9402599e+10, 1.1929375e+08, 1.2085760e+08, ...,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-499b04fc-ee8e-476f-9650-c08d57ef8878' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-499b04fc-ee8e-476f-9650-c08d57ef8878' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b278fecb-ae43-470a-8628-818b84823377' class='xr-var-data-in' type='checkbox'><label for='data-b278fecb-ae43-470a-8628-818b84823377' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-1eecb8f5-fc18-426c-b710-98b6c278247f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1eecb8f5-fc18-426c-b710-98b6c278247f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b643e777-68d0-4b6d-bedf-382830dafa21' class='xr-var-data-in' type='checkbox'><label for='data-b643e777-68d0-4b6d-bedf-382830dafa21' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-28e4f5cc-190b-4a87-b2bd-4cb039b18e7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-28e4f5cc-190b-4a87-b2bd-4cb039b18e7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7208cd79-44f6-44da-a56c-dcd8e3e25cb6' class='xr-var-data-in' type='checkbox'><label for='data-7208cd79-44f6-44da-a56c-dcd8e3e25cb6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>scenario</span></div><div class='xr-var-dims'>(scenario)</div><div class='xr-var-dtype'>&lt;U6</div><div class='xr-var-preview xr-preview'>&#x27;ssp126&#x27;</div><input id='attrs-c6ef7e68-5209-498c-b0ab-3a14f6a446c1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c6ef7e68-5209-498c-b0ab-3a14f6a446c1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7250efa-94a7-4905-a154-4b8e7a636193' class='xr-var-data-in' type='checkbox'><label for='data-f7250efa-94a7-4905-a154-4b8e7a636193' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used scenario (here SSPs)</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;ssp126&#x27;], dtype=&#x27;&lt;U6&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-216b7c60-1d44-4b51-8ac2-85f4c6aaf2ae' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-216b7c60-1d44-4b51-8ac2-85f4c6aaf2ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5e490840-9035-457e-8aed-6b1f5fdeff25' class='xr-var-data-in' type='checkbox'><label for='data-5e490840-9035-457e-8aed-6b1f5fdeff25' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-16280888-3f78-44e6-8f27-ac78056a4c03' class='xr-section-summary-in' type='checkbox'  checked><label for='section-16280888-3f78-44e6-8f27-ac78056a4c03' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>6.94e+10 1.193e+08 ... nan nan</div><input id='attrs-57efb160-9e49-4cbb-86a6-39a72f235a8f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-57efb160-9e49-4cbb-86a6-39a72f235a8f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-41f1fa1a-43d6-44e2-820a-1645d34833d6' class='xr-var-data-in' type='checkbox'><label for='data-41f1fa1a-43d6-44e2-820a-1645d34833d6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg yr-1</dd><dt><span>description :</span></dt><dd>Annual glacier runoff: sum of annual melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[6.9402599e+10, 1.1929375e+08, 1.2085760e+08, ...,
           1.6118181e+08, 1.7959005e+08, 3.9047944e+07],
          [6.6753536e+10, 1.0778564e+08, 1.1742621e+08, ...,
           1.3125256e+08, 1.5233630e+08, 3.1809086e+07],
@@ -970,7 +1058,8 @@ Attributes:
          [5.2754235e+10, 1.0164494e+08, 1.0473393e+08, ...,
           1.3276478e+08, 1.2910605e+08, 2.8052664e+07],
          [          nan,           nan,           nan, ...,
-                    nan,           nan,           nan]]]], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff_monthly</span></div><div class='xr-var-dims'>(scenario, gcm, time, month_2d, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... nan nan nan nan</div><input id='attrs-0d61b719-31e7-49e9-8307-d22767ccab77' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0d61b719-31e7-49e9-8307-d22767ccab77' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a2f9c241-c070-4917-b98e-27d85698084c' class='xr-var-data-in' type='checkbox'><label for='data-a2f9c241-c070-4917-b98e-27d85698084c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg month-1</dd><dt><span>description :</span></dt><dd>Monthly glacier runoff from sum of monthly melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[[0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
+                    nan,           nan,           nan]]]],
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff_monthly</span></div><div class='xr-var-dims'>(scenario, gcm, time, month_2d, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... nan nan nan nan</div><input id='attrs-52f384c7-f4f4-4928-9a12-6afd58e0a52c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52f384c7-f4f4-4928-9a12-6afd58e0a52c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-becfd6ba-bd1d-4a22-886f-db43d6211878' class='xr-var-data-in' type='checkbox'><label for='data-becfd6ba-bd1d-4a22-886f-db43d6211878' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg month-1</dd><dt><span>description :</span></dt><dd>Monthly glacier runoff from sum of monthly melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[[0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
            0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
           [0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
            0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
@@ -991,7 +1080,6 @@ Attributes:
           [1.7965815e-06, 3.8903054e-09, 4.1160875e-09, ...,
            6.0576295e-09, 0.0000000e+00, 1.7146656e-09],
 ...
-          [1.0732236e+09, 2.2713385e+06, 1.1591395e+06, ...,
            5.0034800e+06, 5.6121000e+06, 3.0451834e+05],
           [1.8513523e+08, 0.0000000e+00, 0.0000000e+00, ...,
            7.2729661e-10, 0.0000000e+00, 2.1316282e-10],
@@ -1010,7 +1098,8 @@ Attributes:
           [          nan,           nan,           nan, ...,
                      nan,           nan,           nan],
           [          nan,           nan,           nan, ...,
-                     nan,           nan,           nan]]]]], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>volume</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.624e+09 1.867e+05 ... 0.0 0.0</div><input id='attrs-759860a8-1248-4062-9787-95b9de54c6cc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-759860a8-1248-4062-9787-95b9de54c6cc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a530982c-7a81-42b7-8ef3-ebe03f3e4e5d' class='xr-var-data-in' type='checkbox'><label for='data-a530982c-7a81-42b7-8ef3-ebe03f3e4e5d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier volume</dd><dt><span>unit :</span></dt><dd>m 3</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.6241650e+09, 1.8667317e+05, 4.3289291e+05, ...,
+                     nan,           nan,           nan]]]]],
+      shape=(1, 1, 101, 12, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>volume</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.624e+09 1.867e+05 ... 0.0 0.0</div><input id='attrs-7760f1b3-a2bd-4dcb-a48e-25a3dccf54fb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7760f1b3-a2bd-4dcb-a48e-25a3dccf54fb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0dc9514e-e154-4b63-81a5-dc39c95c2133' class='xr-var-data-in' type='checkbox'><label for='data-0dc9514e-e154-4b63-81a5-dc39c95c2133' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier volume</dd><dt><span>unit :</span></dt><dd>m 3</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.6241650e+09, 1.8667317e+05, 4.3289291e+05, ...,
           3.2804781e+05, 1.7269730e+05, 1.3363569e+05],
          [1.6113715e+09, 1.9350661e+05, 4.4557959e+05, ...,
           3.6561031e+05, 1.8256978e+05, 1.3730347e+05],
@@ -1022,7 +1111,8 @@ Attributes:
          [1.7237818e+08, 0.0000000e+00, 0.0000000e+00, ...,
           0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
          [1.6358560e+08, 0.0000000e+00, 0.0000000e+00, ...,
-          0.0000000e+00, 0.0000000e+00, 0.0000000e+00]]]], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>area</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.575e+07 3.414e+04 ... 0.0 0.0</div><input id='attrs-3bb9c267-7ac0-4a57-b569-26d83028ae11' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3bb9c267-7ac0-4a57-b569-26d83028ae11' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-017feb2e-f1f7-4aa6-b455-3ee579583997' class='xr-var-data-in' type='checkbox'><label for='data-017feb2e-f1f7-4aa6-b455-3ee579583997' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier area</dd><dt><span>unit :</span></dt><dd>m 2</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.57548590e+07, 3.41406797e+04, 3.60000000e+04, ...,
+          0.0000000e+00, 0.0000000e+00, 0.0000000e+00]]]],
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>area</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.575e+07 3.414e+04 ... 0.0 0.0</div><input id='attrs-6c41ddd0-3615-4980-93ab-2fb3de57e947' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c41ddd0-3615-4980-93ab-2fb3de57e947' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-81e2f575-b15a-415e-be12-612ccd23115b' class='xr-var-data-in' type='checkbox'><label for='data-81e2f575-b15a-415e-be12-612ccd23115b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier area</dd><dt><span>unit :</span></dt><dd>m 2</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.57548590e+07, 3.41406797e+04, 3.60000000e+04, ...,
           5.11789492e+04, 5.26232617e+04, 1.50000000e+04],
          [1.57379990e+07, 2.62278691e+04, 3.61035273e+04, ...,
           5.34598711e+04, 5.68840586e+04, 1.50826865e+04],
@@ -1035,19 +1125,19 @@ Attributes:
           0.00000000e+00, 0.00000000e+00, 0.00000000e+00],
          [4.58239750e+06, 0.00000000e+00, 0.00000000e+00, ...,
           0.00000000e+00, 0.00000000e+00, 0.00000000e+00]]]],
-      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cbaa0aa0-f456-40be-a86d-b12f7b4aa829' class='xr-section-summary-in' type='checkbox'  ><label for='section-cbaa0aa0-f456-40be-a86d-b12f7b4aa829' class='xr-section-summary' >Indexes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-13ce17ee-058f-42af-a7b4-bed964baf368' class='xr-index-data-in' type='checkbox'/><label for='index-13ce17ee-058f-42af-a7b4-bed964baf368' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2001.0, 2002.0, 2003.0, 2004.0, 2005.0, 2006.0, 2007.0, 2008.0,
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b8a37e59-aaa8-465c-9ade-d41a55199d49' class='xr-section-summary-in' type='checkbox'  ><label for='section-b8a37e59-aaa8-465c-9ade-d41a55199d49' class='xr-section-summary' >Indexes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-0bc5d309-e4de-4b6a-8b73-1734924ee4bc' class='xr-index-data-in' type='checkbox'/><label for='index-0bc5d309-e4de-4b6a-8b73-1734924ee4bc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2001.0, 2002.0, 2003.0, 2004.0, 2005.0, 2006.0, 2007.0, 2008.0,
        2009.0,
        ...
        2091.0, 2092.0, 2093.0, 2094.0, 2095.0, 2096.0, 2097.0, 2098.0, 2099.0,
        2100.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;time&#x27;, length=101))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-2fa1b9fd-55cd-4a7b-b0f3-ca63a31e9fdf' class='xr-index-data-in' type='checkbox'/><label for='index-2fa1b9fd-55cd-4a7b-b0f3-ca63a31e9fdf' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
+      dtype=&#x27;float64&#x27;, name=&#x27;time&#x27;, length=101))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c3ee4a5a-f96c-47e3-b202-a36d28a94c55' class='xr-index-data-in' type='checkbox'/><label for='index-c3ee4a5a-f96c-47e3-b202-a36d28a94c55' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
        &#x27;RGI60-11.01326&#x27;, &#x27;RGI60-11.01336&#x27;, &#x27;RGI60-11.01348&#x27;, &#x27;RGI60-11.01368&#x27;,
        &#x27;RGI60-11.01372&#x27;, &#x27;RGI60-11.01450&#x27;,
        ...
        &#x27;RGI60-11.03811&#x27;, &#x27;RGI60-11.03812&#x27;, &#x27;RGI60-11.03813&#x27;, &#x27;RGI60-11.03814&#x27;,
        &#x27;RGI60-11.03815&#x27;, &#x27;RGI60-11.03816&#x27;, &#x27;RGI60-11.03817&#x27;, &#x27;RGI60-11.03818&#x27;,
        &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>month_2d</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-a7e31efe-eaea-41c2-93aa-b72c491be8c5' class='xr-index-data-in' type='checkbox'/><label for='index-a7e31efe-eaea-41c2-93aa-b72c491be8c5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], dtype=&#x27;int64&#x27;, name=&#x27;month_2d&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-1b6656f0-253b-4a55-8a6e-61a5a493054f' class='xr-index-data-in' type='checkbox'/><label for='index-1b6656f0-253b-4a55-8a6e-61a5a493054f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>scenario</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-6235284f-7514-4065-ba01-9a4edc97bd20' class='xr-index-data-in' type='checkbox'/><label for='index-6235284f-7514-4065-ba01-9a4edc97bd20' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;ssp126&#x27;], dtype=&#x27;object&#x27;, name=&#x27;scenario&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-12c5e497-caa9-4f4a-87a6-4b8789c43a89' class='xr-section-summary-in' type='checkbox'  checked><label for='section-12c5e497-caa9-4f4a-87a6-4b8789c43a89' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>OGGM model output</dd><dt><span>oggm_version :</span></dt><dd>1.6.1.dev26+gf8a1745</dd><dt><span>calendar :</span></dt><dd>365-day no leap</dd><dt><span>creation_date :</span></dt><dd>2023-06-05 05:37:08</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>month_2d</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-9429f1b7-92de-4776-9125-f161b23aa790' class='xr-index-data-in' type='checkbox'/><label for='index-9429f1b7-92de-4776-9125-f161b23aa790' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], dtype=&#x27;int64&#x27;, name=&#x27;month_2d&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-44836daa-d0a6-4861-8189-1eec520e6890' class='xr-index-data-in' type='checkbox'/><label for='index-44836daa-d0a6-4861-8189-1eec520e6890' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>scenario</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-019e913b-038f-4f29-babb-d548041e06fa' class='xr-index-data-in' type='checkbox'/><label for='index-019e913b-038f-4f29-babb-d548041e06fa' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;ssp126&#x27;], dtype=&#x27;object&#x27;, name=&#x27;scenario&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-09e7d18b-9e89-4a70-9017-f01bec3c886a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-09e7d18b-9e89-4a70-9017-f01bec3c886a' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>OGGM model output</dd><dt><span>oggm_version :</span></dt><dd>1.6.1.dev26+gf8a1745</dd><dt><span>calendar :</span></dt><dd>365-day no leap</dd><dt><span>creation_date :</span></dt><dd>2023-06-05 05:37:08</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1076,28 +1166,76 @@ Attributes:
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
 html[theme="dark"],
 html[data-theme="dark"],
 body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1f1f1f;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
@@ -1153,6 +1291,7 @@ body.vscode-dark {
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
@@ -1161,7 +1300,7 @@ body.vscode-dark {
 }
 
 .xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0);
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -1293,7 +1432,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -1304,6 +1445,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -1353,8 +1495,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -1365,6 +1514,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -1426,13 +1581,21 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;gcm&#x27; (gcm: 1)&gt; Size: 44B
 array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)
 Coordinates:
   * gcm              (gcm) &lt;U11 44B &#x27;BCC-CSM2-MR&#x27;
     bias_correction  &lt;U12 48B &#x27;bc_2000_2019&#x27;
 Attributes:
-    description:  used global circulation model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'gcm'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>gcm</span>: 1</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-3e916708-a044-4bda-b0c0-2d5b7b0eb648' class='xr-array-in' type='checkbox' checked><label for='section-3e916708-a044-4bda-b0c0-2d5b7b0eb648' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;BCC-CSM2-MR&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-3a31101f-95ea-482a-a47b-03711f2bfb4d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3a31101f-95ea-482a-a47b-03711f2bfb4d' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-c8e3212e-f5d7-4c0d-a92d-d10c01f05caa' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c8e3212e-f5d7-4c0d-a92d-d10c01f05caa' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5b4ada57-59c5-4a1d-9f8c-35d0f1a0adbc' class='xr-var-data-in' type='checkbox'><label for='data-5b4ada57-59c5-4a1d-9f8c-35d0f1a0adbc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-3dbd9899-7ee0-4fe9-9a5d-c61b771a5965' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3dbd9899-7ee0-4fe9-9a5d-c61b771a5965' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d9b2c50c-8a9e-46c2-a512-b867d7860561' class='xr-var-data-in' type='checkbox'><label for='data-d9b2c50c-8a9e-46c2-a512-b867d7860561' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c82674b1-4502-4482-83d8-8890854dd0cf' class='xr-section-summary-in' type='checkbox'  ><label for='section-c82674b1-4502-4482-83d8-8890854dd0cf' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-7f72231d-8349-41f8-a5f4-de2fccc6e899' class='xr-index-data-in' type='checkbox'/><label for='index-7f72231d-8349-41f8-a5f4-de2fccc6e899' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-54ba9957-765e-4672-a7c3-51987afd1f47' class='xr-section-summary-in' type='checkbox'  checked><label for='section-54ba9957-765e-4672-a7c3-51987afd1f47' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div></li></ul></div></div></div></div>
+    description:  used global circulation model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'gcm'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>gcm</span>: 1</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ff82e43d-2a7d-4a6e-aef2-9a2fca679348' class='xr-array-in' type='checkbox' checked><label for='section-ff82e43d-2a7d-4a6e-aef2-9a2fca679348' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;BCC-CSM2-MR&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-ecc3a584-fc75-4217-91cb-b3f92cc5f6fd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ecc3a584-fc75-4217-91cb-b3f92cc5f6fd' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-37309be2-55a2-4b15-9001-54f2a0fdac51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-37309be2-55a2-4b15-9001-54f2a0fdac51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-edd110fa-026c-4b71-8168-f675d14e636f' class='xr-var-data-in' type='checkbox'><label for='data-edd110fa-026c-4b71-8168-f675d14e636f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-fa1010d9-89be-47e1-a8a6-c5860bd9053f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fa1010d9-89be-47e1-a8a6-c5860bd9053f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c028014-ffa5-4ea1-a153-061303a563df' class='xr-var-data-in' type='checkbox'><label for='data-1c028014-ffa5-4ea1-a153-061303a563df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-023e2e35-8cee-4808-9f42-b283aff1e3dd' class='xr-section-summary-in' type='checkbox'  ><label for='section-023e2e35-8cee-4808-9f42-b283aff1e3dd' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d1842f6a-a7a3-4fad-a51d-1aed35da696a' class='xr-index-data-in' type='checkbox'/><label for='index-d1842f6a-a7a3-4fad-a51d-1aed35da696a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7c6bd861-530f-48bc-a5b9-b0b01d612635' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7c6bd861-530f-48bc-a5b9-b0b01d612635' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The structure is quite different from what we’ve seen so far. First of all, there are more coordinates than we are used to. And no lats and lons! At least there is a time coordinate - this at least we are familiar with.</p>
 <p><strong>Q: There are four variables - can you name them? And give their dimensions and units?</strong></p>
@@ -1481,28 +1644,76 @@ Attributes:
  */
 
 :root {
-  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
-  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
-  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
-  --xr-border-color: var(--jp-border-color2, #e0e0e0);
-  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
-  --xr-background-color: var(--jp-layout-color0, white);
-  --xr-background-color-row-even: var(--jp-layout-color1, white);
-  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base rgba(0, 0, 0, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(0, 0, 0, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, white)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, white) h s calc(l - 15))
+  );
 }
 
 html[theme="dark"],
 html[data-theme="dark"],
 body[data-theme="dark"],
 body.vscode-dark {
-  --xr-font-color0: rgba(255, 255, 255, 1);
-  --xr-font-color2: rgba(255, 255, 255, 0.54);
-  --xr-font-color3: rgba(255, 255, 255, 0.38);
-  --xr-border-color: #1f1f1f;
-  --xr-disabled-color: #515151;
-  --xr-background-color: #111111;
-  --xr-background-color-row-even: #111111;
-  --xr-background-color-row-odd: #313131;
+  --xr-font-color0: var(
+    --jp-content-font-color0,
+    var(--pst-color-text-base, rgba(255, 255, 255, 1))
+  );
+  --xr-font-color2: var(
+    --jp-content-font-color2,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.54))
+  );
+  --xr-font-color3: var(
+    --jp-content-font-color3,
+    var(--pst-color-text-base, rgba(255, 255, 255, 0.38))
+  );
+  --xr-border-color: var(
+    --jp-border-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 10))
+  );
+  --xr-disabled-color: var(
+    --jp-layout-color3,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 40))
+  );
+  --xr-background-color: var(
+    --jp-layout-color0,
+    var(--pst-color-on-background, #111111)
+  );
+  --xr-background-color-row-even: var(
+    --jp-layout-color1,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 5))
+  );
+  --xr-background-color-row-odd: var(
+    --jp-layout-color2,
+    hsl(from var(--pst-color-on-background, #111111) h s calc(l + 15))
+  );
 }
 
 .xr-wrap {
@@ -1558,6 +1769,7 @@ body.vscode-dark {
 
 .xr-section-item input + label {
   color: var(--xr-disabled-color);
+  border: 2px solid transparent !important;
 }
 
 .xr-section-item input:enabled + label {
@@ -1566,7 +1778,7 @@ body.vscode-dark {
 }
 
 .xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0);
+  border: 2px solid var(--xr-font-color0) !important;
 }
 
 .xr-section-item input:enabled + label:hover {
@@ -1698,7 +1910,9 @@ body.vscode-dark {
 .xr-var-item label,
 .xr-var-item > .xr-var-name span {
   background-color: var(--xr-background-color-row-even);
+  border-color: var(--xr-background-color-row-odd);
   margin-bottom: 0;
+  padding-top: 2px;
 }
 
 .xr-var-item > .xr-var-name:hover span {
@@ -1709,6 +1923,7 @@ body.vscode-dark {
 .xr-var-list > li:nth-child(odd) > label,
 .xr-var-list > li:nth-child(odd) > .xr-var-name span {
   background-color: var(--xr-background-color-row-odd);
+  border-color: var(--xr-background-color-row-even);
 }
 
 .xr-var-name {
@@ -1758,8 +1973,15 @@ body.vscode-dark {
 .xr-var-data,
 .xr-index-data {
   display: none;
-  background-color: var(--xr-background-color) !important;
-  padding-bottom: 5px !important;
+  border-top: 2px dotted var(--xr-background-color);
+  padding-bottom: 20px !important;
+  padding-top: 10px !important;
+}
+
+.xr-var-attrs-in + label,
+.xr-var-data-in + label,
+.xr-index-data-in + label {
+  padding: 0 1px;
 }
 
 .xr-var-attrs-in:checked ~ .xr-var-attrs,
@@ -1770,6 +1992,12 @@ body.vscode-dark {
 
 .xr-var-data > table {
   float: right;
+}
+
+.xr-var-data > pre,
+.xr-index-data > pre,
+.xr-var-data > table > tbody > tr {
+  background-color: transparent !important;
 }
 
 .xr-var-name span,
@@ -1831,23 +2059,34 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
+
+.xr-var-attrs-in:checked + label > .xr-icon-file-text2,
+.xr-var-data-in:checked + label > .xr-icon-database,
+.xr-index-data-in:checked + label > .xr-icon-database {
+  color: var(--xr-font-color0);
+  filter: drop-shadow(1px 1px 5px var(--xr-font-color2));
+  stroke-width: 0.8px;
+}
 </style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;rgi_id&#x27; (rgi_id: 1169)&gt; Size: 65kB
 array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
-       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;], dtype=&#x27;&lt;U14&#x27;)
+       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)
 Coordinates:
   * rgi_id           (rgi_id) &lt;U14 65kB &#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.03820&#x27;
     bias_correction  &lt;U12 48B &#x27;bc_2000_2019&#x27;
 Attributes:
-    description:  RGI glacier identifier</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'rgi_id'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rgi_id</span>: 1169</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0384d1e0-c366-43e0-ac75-8c92ec8c88e9' class='xr-array-in' type='checkbox' checked><label for='section-0384d1e0-c366-43e0-ac75-8c92ec8c88e9' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;RGI60-11.01238&#x27; &#x27;RGI60-11.01299&#x27; ... &#x27;RGI60-11.03820&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
-       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-d2226ff6-181a-4d94-896c-dcd06abbcfd3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d2226ff6-181a-4d94-896c-dcd06abbcfd3' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-85cfe3f4-beff-4b21-808e-87d00b328740' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-85cfe3f4-beff-4b21-808e-87d00b328740' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1dc03bff-9f92-46ff-bca8-a0459b62003d' class='xr-var-data-in' type='checkbox'><label for='data-1dc03bff-9f92-46ff-bca8-a0459b62003d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
-       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;], dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-bdaa5780-205d-45a1-b451-ab53d4f28551' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-bdaa5780-205d-45a1-b451-ab53d4f28551' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7e726d67-6776-4137-ac20-0348ccf3c7ba' class='xr-var-data-in' type='checkbox'><label for='data-7e726d67-6776-4137-ac20-0348ccf3c7ba' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9fe66e41-d485-4993-ac88-b6fcb3f7e1d0' class='xr-section-summary-in' type='checkbox'  ><label for='section-9fe66e41-d485-4993-ac88-b6fcb3f7e1d0' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-20e1f14b-c72d-4ef0-b45c-a34bbecdb4dc' class='xr-index-data-in' type='checkbox'/><label for='index-20e1f14b-c72d-4ef0-b45c-a34bbecdb4dc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
+    description:  RGI glacier identifier</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'rgi_id'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rgi_id</span>: 1169</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ebf511a8-eff5-4759-a3d8-3b5159ca2797' class='xr-array-in' type='checkbox' checked><label for='section-ebf511a8-eff5-4759-a3d8-3b5159ca2797' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;RGI60-11.01238&#x27; &#x27;RGI60-11.01299&#x27; ... &#x27;RGI60-11.03820&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-dd6bf46a-1951-4ea1-9f66-96a8aa1fb884' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dd6bf46a-1951-4ea1-9f66-96a8aa1fb884' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-5f284c77-c4b8-407d-a4a4-b8011b5d10ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5f284c77-c4b8-407d-a4a4-b8011b5d10ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86df747c-996c-429d-afa6-d285e3cf691a' class='xr-var-data-in' type='checkbox'><label for='data-86df747c-996c-429d-afa6-d285e3cf691a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+       &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-3b07e2c7-9f0d-494a-aea4-e3605861126e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3b07e2c7-9f0d-494a-aea4-e3605861126e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-383848f9-3d1c-4cab-be5a-c02d9082a5f5' class='xr-var-data-in' type='checkbox'><label for='data-383848f9-3d1c-4cab-be5a-c02d9082a5f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-56919520-6b9c-42db-968c-7900f74ff8f0' class='xr-section-summary-in' type='checkbox'  ><label for='section-56919520-6b9c-42db-968c-7900f74ff8f0' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-1b40678d-1204-457a-a97f-d68e72c4ab92' class='xr-index-data-in' type='checkbox'/><label for='index-1b40678d-1204-457a-a97f-d68e72c4ab92' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
        &#x27;RGI60-11.01326&#x27;, &#x27;RGI60-11.01336&#x27;, &#x27;RGI60-11.01348&#x27;, &#x27;RGI60-11.01368&#x27;,
        &#x27;RGI60-11.01372&#x27;, &#x27;RGI60-11.01450&#x27;,
        ...
        &#x27;RGI60-11.03811&#x27;, &#x27;RGI60-11.03812&#x27;, &#x27;RGI60-11.03813&#x27;, &#x27;RGI60-11.03814&#x27;,
        &#x27;RGI60-11.03815&#x27;, &#x27;RGI60-11.03816&#x27;, &#x27;RGI60-11.03817&#x27;, &#x27;RGI60-11.03818&#x27;,
        &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3872975e-49f1-4891-b1b9-36b42e67d47e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3872975e-49f1-4891-b1b9-36b42e67d47e' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div></li></ul></div></div></div></div>
+      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-10c97a75-7387-4ee5-8eae-a895f397568e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-10c97a75-7387-4ee5-8eae-a895f397568e' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>These are just a list of strings. Should we be interested in plotting the volume evolution of one glacier in particular, we could select it like this:</p>
 <div class="cell docutils container">
@@ -1857,7 +2096,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b0e98be9559ab1ed59be6e51ad47bc4fb58792f5241450a5da13a6e55cb20491.png" src="../_images/b0e98be9559ab1ed59be6e51ad47bc4fb58792f5241450a5da13a6e55cb20491.png" />
+<img alt="../_images/3204498b66da9eefba3e6153daa8f2bef075152a8fed5c0bbdb200fe63be9285.png" src="../_images/3204498b66da9eefba3e6153daa8f2bef075152a8fed5c0bbdb200fe63be9285.png" />
 </div>
 </div>
 <p><strong>E: now add a new line to the plot for the Argentière glacier nearby (RGI60-11.03638). Then repeat but for the area and runoff variables.</strong></p>
@@ -1878,7 +2117,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e65728736172b7e554e402bf1036efd0fd70cd1113188c5abc7ff9627f849ddc.png" src="../_images/e65728736172b7e554e402bf1036efd0fd70cd1113188c5abc7ff9627f849ddc.png" />
+<img alt="../_images/d3a2acec54926c71bdf9199e72dd9a7e2aca23a7cfce85163724bcd8a06a2e7e.png" src="../_images/d3a2acec54926c71bdf9199e72dd9a7e2aca23a7cfce85163724bcd8a06a2e7e.png" />
 </div>
 </div>
 <p><strong>E: repeat the basin-wide plot for area and runoff.</strong></p>
@@ -1915,7 +2154,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a9e3bb192b1f854c0e3b5e4d60db2a5f0cc234aa34a0fe746161c9c30293d826.png" src="../_images/a9e3bb192b1f854c0e3b5e4d60db2a5f0cc234aa34a0fe746161c9c30293d826.png" />
+<img alt="../_images/07b7c2bdc89bc9a421bb3de121ac77afd00b8608f6eb427158e1ee0dee61f986.png" src="../_images/07b7c2bdc89bc9a421bb3de121ac77afd00b8608f6eb427158e1ee0dee61f986.png" />
 </div>
 </div>
 <p><strong>Q: how much volume (in %) did the Rhone basin loose betwen 2000 and 2020? for this GCM and scenario, what is the remaining volume (in %) at the end of the century?</strong></p>
@@ -1940,7 +2179,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7e20e7c74b94b530dc04252e208faa7b4a80c20a6da75a11cd73ed6a3f312495.png" src="../_images/7e20e7c74b94b530dc04252e208faa7b4a80c20a6da75a11cd73ed6a3f312495.png" />
+<img alt="../_images/22dd853ac1d8925438843e3cc19049c73a5de287b46ddf0af91d78c8b624acc1.png" src="../_images/22dd853ac1d8925438843e3cc19049c73a5de287b46ddf0af91d78c8b624acc1.png" />
 </div>
 </div>
 <p>Glacier runoff in OGGM (and in several other glacier models) is computed as the sum of <strong>ice melt, snow melt, and liquid precipitation</strong> over the glacier domain. The model follows a temperature-index approach to estimate melt rates. Precipitation and temperature data are provided by W5E5 or a climate model.</p>
@@ -1956,7 +2195,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/be74d14f984e11e7e1738547df1d965bc11d7610e1372e529bfe8ced471a8317.png" src="../_images/be74d14f984e11e7e1738547df1d965bc11d7610e1372e529bfe8ced471a8317.png" />
+<img alt="../_images/98d8f61946e3b4b465fe1ca5a4b43398faea06ff3adef1718a83479d861568f4.png" src="../_images/98d8f61946e3b4b465fe1ca5a4b43398faea06ff3adef1718a83479d861568f4.png" />
 </div>
 </div>
 </section>
@@ -1998,7 +2237,7 @@ Attributes:
 <h3>Method 1: looping over all available files<a class="headerlink" href="#method-1-looping-over-all-available-files" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
 
 <span class="c1"># The * indicates that we allow all kinds of patters here - i.e. all GCMs, but still ssp126</span>
 <span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">&quot;../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_*_ssp126.nc&quot;</span>
@@ -2052,7 +2291,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a5da95fa8aa214b11435e6df6efb50d797ab0869cfe9fa37a88b4ce51c408945.png" src="../_images/a5da95fa8aa214b11435e6df6efb50d797ab0869cfe9fa37a88b4ce51c408945.png" />
+<img alt="../_images/d5e00598db5926adfdfe26a60fe433fc18f38ceafbd1c3fb51e3cb05accc4033.png" src="../_images/d5e00598db5926adfdfe26a60fe433fc18f38ceafbd1c3fb51e3cb05accc4033.png" />
 </div>
 </div>
 <p><strong>Q: interpret the plot above. Why is the data before 2020 always the same? What is the full range of outcomes for this scenario at the end of the century?</strong></p>
@@ -2096,7 +2335,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b034c39c8f91242b187168eebf8363868ba90ee429ded6b46d0dac578c2e6bdb.png" src="../_images/b034c39c8f91242b187168eebf8363868ba90ee429ded6b46d0dac578c2e6bdb.png" />
+<img alt="../_images/a5e7dc80c1e0ffce7c4dfecffa370ea79a365648ae2690ddb95e4fc9adb73100.png" src="../_images/a5e7dc80c1e0ffce7c4dfecffa370ea79a365648ae2690ddb95e4fc9adb73100.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2107,7 +2346,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d11b17e15d8963c8d083a1cd79e04afa15a9b083a97e50e71315097a00e588e4.png" src="../_images/d11b17e15d8963c8d083a1cd79e04afa15a9b083a97e50e71315097a00e588e4.png" />
+<img alt="../_images/f0e7341ad472476ad47a65f654b01d437590dc27889f30341ec0ccdd9fc8caaf.png" src="../_images/f0e7341ad472476ad47a65f654b01d437590dc27889f30341ec0ccdd9fc8caaf.png" />
 </div>
 </div>
 <p>For runoff, we prefer to compute the relative runoff with respect to an average period instead of a single year, for example 2000-2019:</p>
@@ -2119,7 +2358,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3e40c3a39a45aacf52489073260bb1d6b10a86fd2ef5cbc57ffac5491d07ad0f.png" src="../_images/3e40c3a39a45aacf52489073260bb1d6b10a86fd2ef5cbc57ffac5491d07ad0f.png" />
+<img alt="../_images/e0557de77452f3d2ea7ff065511d9115a7de3163338ce5217762ec241e6a86b4.png" src="../_images/e0557de77452f3d2ea7ff065511d9115a7de3163338ce5217762ec241e6a86b4.png" />
 </div>
 </div>
 </section>
@@ -2163,7 +2402,104 @@ Attributes:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 13 files.
 </pre></div>
 </div>
-<img alt="../_images/f12a035c57048e72118e168e3496fba6b3e61f1c30c9beb87ed27f4aa675fc6b.png" src="../_images/f12a035c57048e72118e168e3496fba6b3e61f1c30c9beb87ed27f4aa675fc6b.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files.&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Open all files as a single dataset, adding a new dimension from file name</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">ds_all</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">files</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;gcm&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">preprocess</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ds</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2099</span><span class="p">)),</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span>  <span class="c1"># or omit if using default</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># Extract GCM names from filenames</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">gcm_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;2000_2019_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_ssp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:1635,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="n">open_</span> <span class="o">=</span> <span class="n">open_dataset</span>
+<span class="g g-Whitespace">   </span><span class="mi">1633</span>     <span class="n">getattr_</span> <span class="o">=</span> <span class="nb">getattr</span>
+<span class="ne">-&gt; </span><span class="mi">1635</span> <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">open_</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths1d</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1636</span> <span class="n">closers</span> <span class="o">=</span> <span class="p">[</span><span class="n">getattr_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;_close&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1637</span> <span class="k">if</span> <span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:1635,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="n">open_</span> <span class="o">=</span> <span class="n">open_dataset</span>
+<span class="g g-Whitespace">   </span><span class="mi">1633</span>     <span class="n">getattr_</span> <span class="o">=</span> <span class="nb">getattr</span>
+<span class="ne">-&gt; </span><span class="mi">1635</span> <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">open_</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths1d</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1636</span> <span class="n">closers</span> <span class="o">=</span> <span class="p">[</span><span class="n">getattr_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;_close&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1637</span> <span class="k">if</span> <span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:693,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">686</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">693</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span>     <span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="n">chunks</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">698</span>     <span class="n">cache</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="n">overwrite_encoded_chunks</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="n">inline_array</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">701</span>     <span class="n">chunked_array_type</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="n">from_array_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="k">return</span> <span class="n">ds</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:402,</span> in <span class="ni">_dataset_from_backend_dataset</span><span class="nt">(backend_ds, filename_or_obj, engine, chunks, cache, overwrite_encoded_chunks, inline_array, chunked_array_type, from_array_kwargs, **extra_tokens)</span>
+<span class="g g-Whitespace">    </span><span class="mi">400</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">backend_ds</span>
+<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">402</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">_chunk_ds</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">403</span>         <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span>         <span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="n">chunks</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>         <span class="n">overwrite_encoded_chunks</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>         <span class="n">inline_array</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="n">chunked_array_type</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="n">from_array_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="o">**</span><span class="n">extra_tokens</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="n">ds</span><span class="o">.</span><span class="n">set_close</span><span class="p">(</span><span class="n">backend_ds</span><span class="o">.</span><span class="n">_close</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="c1"># Ensure source filename always stored in dataset object</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:350,</span> in <span class="ni">_chunk_ds</span><span class="nt">(backend_ds, filename_or_obj, engine, chunks, overwrite_encoded_chunks, inline_array, chunked_array_type, from_array_kwargs, **extra_tokens)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">def</span> <span class="nf">_chunk_ds</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="n">backend_ds</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="o">**</span><span class="n">extra_tokens</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">350</span>     <span class="n">chunkmanager</span> <span class="o">=</span> <span class="n">guess_chunkmanager</span><span class="p">(</span><span class="n">chunked_array_type</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">352</span>     <span class="c1"># TODO refactor to move this dask-specific logic inside the DaskManager class</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunkmanager</span><span class="p">,</span> <span class="n">DaskManager</span><span class="p">):</span>
+
+<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/namedarray/parallelcompat.py:116,</span> in <span class="ni">guess_chunkmanager</span><span class="nt">(manager)</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="n">manager</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_chunkmanagers</span> <span class="ow">and</span> <span class="n">manager</span> <span class="ow">in</span> <span class="n">KNOWN_CHUNKMANAGERS</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">116</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>             <span class="sa">f</span><span class="s2">&quot;chunk manager </span><span class="si">{</span><span class="n">manager</span><span class="si">!r}</span><span class="s2"> is not available.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>             <span class="sa">f</span><span class="s2">&quot; Please make sure </span><span class="si">{</span><span class="n">KNOWN_CHUNKMANAGERS</span><span class="p">[</span><span class="n">manager</span><span class="p">]</span><span class="si">!r}</span><span class="s2"> is installed&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>             <span class="s2">&quot; and importable.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">available_chunkmanagers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>             <span class="s2">&quot;no chunk managers available. Try installing `dask` or another package&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="s2">&quot; that provides a chunk manager.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="p">)</span>
+
+<span class="ne">ImportError</span>: chunk manager &#39;dask&#39; is not available. Please make sure &#39;dask&#39; is installed and importable.
+</pre></div>
+</div>
 </div>
 </div>
 <p>The advantage of this method is that all data can be handled within xarray without for loops. It also allows to handle extremely large datasets - if you are curious, ask your instructor about it! Otherwise just move on to the next bit:</p>
@@ -2204,7 +2540,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/163c2c0d3cc71bbde55ff4311161e833bf5bb4753d5ce2ff4de3006eb90542ff.png" src="../_images/163c2c0d3cc71bbde55ff4311161e833bf5bb4753d5ce2ff4de3006eb90542ff.png" />
+<img alt="../_images/850c0a0b72cc911c1bd13a97cc446bb22d4873d4eeb0d085f43835b512bf39a9.png" src="../_images/850c0a0b72cc911c1bd13a97cc446bb22d4873d4eeb0d085f43835b512bf39a9.png" />
 </div>
 </div>
 <p><strong>E: now repeat the steps above with with the 0.05 and 0.95 quantiles instead - do you see much difference? Maybe you can even plot both the 10-90% and th 5-95% range on the same plot?</strong></p>
@@ -2298,8 +2634,7 @@ Attributes:
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -2350,7 +2685,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 08, 2026.
+  Last updated on Sep 11, 2026.
   <br/>
 </p>
   </div>
@@ -2379,8 +2714,8 @@ These lecture notes and exercises are licensed under a <a href="https://creative
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

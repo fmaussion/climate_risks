@@ -27,7 +27,7 @@ Open a miniforge/anaconda prompt (or a terminal on Linux/macOS) and type:
 :sync: university
 
 ```
-conda create --name qcr --channel conda-forge jupyterlab==4.0.13 jupyterlab-myst numpy scipy pandas matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray rasterio cf_xarray dask regionmask
+conda create --name qcr --channel conda-forge jupyterlab==4.0.1 jupyterlab-myst numpy scipy pandas matplotlib xarray netcdf4 cartopy cftime geopandas seaborn rioxarray rasterio cf_xarray dask regionmask
 ```
 
 ````
@@ -49,7 +49,7 @@ This will install jupyter-lab and all the packages at the same time. Say "yes" t
 One package used later in the class, [spei](https://github.com/martinvonk/SPEI) (Workshop 05, droughts), is not available on conda-forge. Install it with `pip` once the environment above is created and activated:
 
 ```none
-mamba activate qcr
+conda activate qcr
 pip install spei
 ```
 

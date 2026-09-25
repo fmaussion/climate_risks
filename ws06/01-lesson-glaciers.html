@@ -16,38 +16,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -67,7 +70,8 @@
     <link rel="prev" title="Assignment: Droughts, CMIP6 projections" href="../ws05/02-assignment-droughts-cmip6.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 11, 2026"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Sep 25, 2026"/>
   </head>
   
   
@@ -83,19 +87,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -103,7 +96,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -111,8 +103,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -128,7 +120,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -158,21 +151,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Quantifying Climate Risks - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -252,9 +241,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -401,7 +395,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -415,25 +409,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -512,10 +498,10 @@ document.write(`
 <h2>Import the packages<a class="headerlink" href="#import-the-packages" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -527,7 +513,7 @@ document.write(`
 <p>Let’s open one single file to get started. This is the data for the Rhone basin, the OGGM model is forced with with W5E5 data for 2000-2020, and then with the BCC-CSM2-MR climate model under the scenario ssp126 until 2100. You can ignore the rest of the very long filename!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_BCC-CSM2-MR_ssp126.nc&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">'../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_BCC-CSM2-MR_ssp126.nc'</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds</span><span class="p">:</span>
     <span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>  <span class="c1"># This is a safer way to open files with xarray - we open the file, load the data, and close the netCDF file</span>
 </pre></div>
 </div>
@@ -556,9 +542,7 @@ document.write(`
 </symbol>
 </defs>
 </svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
 
 :root {
   --xr-font-color0: var(
@@ -637,6 +621,8 @@ body.vscode-dark {
   display: block !important;
   min-width: 300px;
   max-width: 700px;
+  line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -647,8 +633,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -659,46 +648,62 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-array-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
   grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .xr-section-item {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
+  margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -706,11 +711,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -738,9 +757,9 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .xr-section-inline-details {
@@ -748,13 +767,79 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
+  margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
+}
+
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 30px auto;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 26px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -988,16 +1073,16 @@ dl.xr-attrs {
 Dimensions:            (scenario: 1, gcm: 1, time: 101, rgi_id: 1169,
                         month_2d: 12)
 Coordinates:
+  * scenario           (scenario) &lt;U6 24B &#x27;ssp126&#x27;
+  * gcm                (gcm) &lt;U11 44B &#x27;BCC-CSM2-MR&#x27;
   * time               (time) float64 808B 2e+03 2.001e+03 ... 2.099e+03 2.1e+03
-  * rgi_id             (rgi_id) &lt;U14 65kB &#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.03820&#x27;
     hydro_year         (time) int64 808B 2000 2001 2002 2003 ... 2098 2099 2100
     hydro_month        (time) int64 808B 4 4 4 4 4 4 4 4 4 ... 4 4 4 4 4 4 4 4 4
     calendar_year      (time) int64 808B 2000 2001 2002 2003 ... 2098 2099 2100
     calendar_month     (time) int64 808B 1 1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1 1
+  * rgi_id             (rgi_id) &lt;U14 65kB &#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.03820&#x27;
   * month_2d           (month_2d) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
     calendar_month_2d  (month_2d) int64 96B 1 2 3 4 5 6 7 8 9 10 11 12
-  * gcm                (gcm) &lt;U11 44B &#x27;BCC-CSM2-MR&#x27;
-  * scenario           (scenario) &lt;U6 24B &#x27;ssp126&#x27;
     bias_correction    &lt;U12 48B &#x27;bc_2000_2019&#x27;
 Data variables:
     runoff             (scenario, gcm, time, rgi_id) float32 472kB 6.94e+10 ....
@@ -1008,7 +1093,7 @@ Attributes:
     description:    OGGM model output
     oggm_version:   1.6.1.dev26+gf8a1745
     calendar:       365-day no leap
-    creation_date:  2023-06-05 05:37:08</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-aff3dfb0-bdbd-49ef-bb0d-bbb4de9d77a3' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-aff3dfb0-bdbd-49ef-bb0d-bbb4de9d77a3' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>scenario</span>: 1</li><li><span class='xr-has-index'>gcm</span>: 1</li><li><span class='xr-has-index'>time</span>: 101</li><li><span class='xr-has-index'>rgi_id</span>: 1169</li><li><span class='xr-has-index'>month_2d</span>: 12</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-75325403-0eb5-4817-879c-9f323dbe036c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-75325403-0eb5-4817-879c-9f323dbe036c' class='xr-section-summary' >Coordinates: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2e+03 2.001e+03 ... 2.1e+03</div><input id='attrs-32b6e6ac-e6da-4a1c-85c5-05bf03506364' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-32b6e6ac-e6da-4a1c-85c5-05bf03506364' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7cabc51-f381-4dfa-87a6-46c43a39980e' class='xr-var-data-in' type='checkbox'><label for='data-f7cabc51-f381-4dfa-87a6-46c43a39980e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Floating year</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2001., 2002., 2003., 2004., 2005., 2006., 2007., 2008., 2009.,
+    creation_date:  2023-06-05 05:37:08</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-5ed3b178-46ae-4c92-aa3c-a9467260b772' class='xr-section-summary-in' type='checkbox' disabled /><label for='section-5ed3b178-46ae-4c92-aa3c-a9467260b772' class='xr-section-summary'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>scenario</span>: 1</li><li><span class='xr-has-index'>gcm</span>: 1</li><li><span class='xr-has-index'>time</span>: 101</li><li><span class='xr-has-index'>rgi_id</span>: 1169</li><li><span class='xr-has-index'>month_2d</span>: 12</li></ul></div></li><li class='xr-section-item'><input id='section-db7a530c-fbcd-4463-96f5-1524d1b9af6e' class='xr-section-summary-in' type='checkbox' checked /><label for='section-db7a530c-fbcd-4463-96f5-1524d1b9af6e' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(11)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>scenario</span></div><div class='xr-var-dims'>(scenario)</div><div class='xr-var-dtype'>&lt;U6</div><div class='xr-var-preview xr-preview'>&#x27;ssp126&#x27;</div><input id='attrs-c3410996-8f39-4dba-b8ab-e96034b8c570' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c3410996-8f39-4dba-b8ab-e96034b8c570' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-bf976120-cbce-4ffb-bf75-207f64689bc2' class='xr-var-data-in' type='checkbox'><label for='data-bf976120-cbce-4ffb-bf75-207f64689bc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used scenario (here SSPs)</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;ssp126&#x27;], dtype=&#x27;&lt;U6&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-fd7c83e0-4ee7-473b-94ed-901b4de5c1ff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd7c83e0-4ee7-473b-94ed-901b4de5c1ff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-758d2475-ea0a-46f8-a9d5-aff66ae124ad' class='xr-var-data-in' type='checkbox'><label for='data-758d2475-ea0a-46f8-a9d5-aff66ae124ad' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2e+03 2.001e+03 ... 2.1e+03</div><input id='attrs-26bf3f70-cf86-48d9-b21c-5368eefc1c59' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-26bf3f70-cf86-48d9-b21c-5368eefc1c59' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-925b042c-fd5f-498e-bad7-42dd569b0449' class='xr-var-data-in' type='checkbox'><label for='data-925b042c-fd5f-498e-bad7-42dd569b0449' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Floating year</dd></dl></div><div class='xr-var-data'><pre>array([2000., 2001., 2002., 2003., 2004., 2005., 2006., 2007., 2008., 2009.,
        2010., 2011., 2012., 2013., 2014., 2015., 2016., 2017., 2018., 2019.,
        2020., 2021., 2022., 2023., 2024., 2025., 2026., 2027., 2028., 2029.,
        2030., 2031., 2032., 2033., 2034., 2035., 2036., 2037., 2038., 2039.,
@@ -1018,35 +1103,35 @@ Attributes:
        2070., 2071., 2072., 2073., 2074., 2075., 2076., 2077., 2078., 2079.,
        2080., 2081., 2082., 2083., 2084., 2085., 2086., 2087., 2088., 2089.,
        2090., 2091., 2092., 2093., 2094., 2095., 2096., 2097., 2098., 2099.,
-       2100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-c01d5355-18b0-4e15-be19-e51184649bff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c01d5355-18b0-4e15-be19-e51184649bff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ebda0b6c-9015-48f4-ae8a-e8ff68c256a3' class='xr-var-data-in' type='checkbox'><label for='data-ebda0b6c-9015-48f4-ae8a-e8ff68c256a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+       2100.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-02bef348-2a87-4ee1-b639-e9cdbc2e80e6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-02bef348-2a87-4ee1-b639-e9cdbc2e80e6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-65d7e50b-77d5-4039-8d8a-7e17b0de92a1' class='xr-var-data-in' type='checkbox'><label for='data-65d7e50b-77d5-4039-8d8a-7e17b0de92a1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+       2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+       2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
+       2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
+       2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054,
+       2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065,
+       2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
+       2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
+       2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
+       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>4 4 4 4 4 4 4 4 ... 4 4 4 4 4 4 4 4</div><input id='attrs-31b13bdd-c851-4089-8652-346dbdc82bb6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-31b13bdd-c851-4089-8652-346dbdc82bb6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-016fa03b-e69c-4166-91a6-f714b3ac0b14' class='xr-var-data-in' type='checkbox'><label for='data-016fa03b-e69c-4166-91a6-f714b3ac0b14' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological month</dd></dl></div><div class='xr-var-data'><pre>array([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-73cc4de9-60b2-4fc5-bddb-21028ada5e7f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-73cc4de9-60b2-4fc5-bddb-21028ada5e7f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8bb28d51-591c-4868-91bd-d9ab1214529a' class='xr-var-data-in' type='checkbox'><label for='data-8bb28d51-591c-4868-91bd-d9ab1214529a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+       2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+       2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
+       2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
+       2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054,
+       2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065,
+       2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
+       2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
+       2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
+       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1</div><input id='attrs-d183fe8c-8eec-4570-823f-9444906c1444' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d183fe8c-8eec-4570-823f-9444906c1444' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7d45489d-6133-44d0-97eb-f9a47343f9a7' class='xr-var-data-in' type='checkbox'><label for='data-7d45489d-6133-44d0-97eb-f9a47343f9a7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar month</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-6c8ad3d7-40b8-4645-b5b8-31a2f660e889' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c8ad3d7-40b8-4645-b5b8-31a2f660e889' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0986a0b9-ee67-4741-a636-0d0c177716c5' class='xr-var-data-in' type='checkbox'><label for='data-0986a0b9-ee67-4741-a636-0d0c177716c5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
        &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-4cd4113d-ed6b-4d85-8c40-242d6416eb25' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4cd4113d-ed6b-4d85-8c40-242d6416eb25' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8fe04d92-9e85-4428-b8b0-351450afa651' class='xr-var-data-in' type='checkbox'><label for='data-8fe04d92-9e85-4428-b8b0-351450afa651' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
-       2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
-       2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
-       2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
-       2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054,
-       2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065,
-       2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
-       2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
-       2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
-       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>hydro_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>4 4 4 4 4 4 4 4 ... 4 4 4 4 4 4 4 4</div><input id='attrs-ffc9d14e-2b99-4679-9f0a-6477145f1f51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ffc9d14e-2b99-4679-9f0a-6477145f1f51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-da856e1e-1a16-496c-b03f-f2793ad50f77' class='xr-var-data-in' type='checkbox'><label for='data-da856e1e-1a16-496c-b03f-f2793ad50f77' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Hydrological month</dd></dl></div><div class='xr-var-data'><pre>array([4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-       4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_year</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>2000 2001 2002 ... 2098 2099 2100</div><input id='attrs-1cf6554f-fd5a-4694-9e28-589024c9c13c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1cf6554f-fd5a-4694-9e28-589024c9c13c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-db166b5a-4c90-4cc0-9840-09eda4d90d67' class='xr-var-data-in' type='checkbox'><label for='data-db166b5a-4c90-4cc0-9840-09eda4d90d67' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar year</dd></dl></div><div class='xr-var-data'><pre>array([2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
-       2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
-       2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032,
-       2033, 2034, 2035, 2036, 2037, 2038, 2039, 2040, 2041, 2042, 2043,
-       2044, 2045, 2046, 2047, 2048, 2049, 2050, 2051, 2052, 2053, 2054,
-       2055, 2056, 2057, 2058, 2059, 2060, 2061, 2062, 2063, 2064, 2065,
-       2066, 2067, 2068, 2069, 2070, 2071, 2072, 2073, 2074, 2075, 2076,
-       2077, 2078, 2079, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2087,
-       2088, 2089, 2090, 2091, 2092, 2093, 2094, 2095, 2096, 2097, 2098,
-       2099, 2100])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 1 1 1 1 1 1 1 ... 1 1 1 1 1 1 1 1</div><input id='attrs-2c6d3028-1fcd-4329-9bbe-2edbb25fcfdb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-2c6d3028-1fcd-4329-9bbe-2edbb25fcfdb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cbc949c7-7e2f-4885-a011-fc121466a75d' class='xr-var-data-in' type='checkbox'><label for='data-cbc949c7-7e2f-4885-a011-fc121466a75d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Calendar month</dd></dl></div><div class='xr-var-data'><pre>array([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-499b04fc-ee8e-476f-9650-c08d57ef8878' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-499b04fc-ee8e-476f-9650-c08d57ef8878' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b278fecb-ae43-470a-8628-818b84823377' class='xr-var-data-in' type='checkbox'><label for='data-b278fecb-ae43-470a-8628-818b84823377' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-1eecb8f5-fc18-426c-b710-98b6c278247f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1eecb8f5-fc18-426c-b710-98b6c278247f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b643e777-68d0-4b6d-bedf-382830dafa21' class='xr-var-data-in' type='checkbox'><label for='data-b643e777-68d0-4b6d-bedf-382830dafa21' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-28e4f5cc-190b-4a87-b2bd-4cb039b18e7a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-28e4f5cc-190b-4a87-b2bd-4cb039b18e7a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7208cd79-44f6-44da-a56c-dcd8e3e25cb6' class='xr-var-data-in' type='checkbox'><label for='data-7208cd79-44f6-44da-a56c-dcd8e3e25cb6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>scenario</span></div><div class='xr-var-dims'>(scenario)</div><div class='xr-var-dtype'>&lt;U6</div><div class='xr-var-preview xr-preview'>&#x27;ssp126&#x27;</div><input id='attrs-c6ef7e68-5209-498c-b0ab-3a14f6a446c1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c6ef7e68-5209-498c-b0ab-3a14f6a446c1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7250efa-94a7-4905-a154-4b8e7a636193' class='xr-var-data-in' type='checkbox'><label for='data-f7250efa-94a7-4905-a154-4b8e7a636193' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used scenario (here SSPs)</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;ssp126&#x27;], dtype=&#x27;&lt;U6&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-216b7c60-1d44-4b51-8ac2-85f4c6aaf2ae' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-216b7c60-1d44-4b51-8ac2-85f4c6aaf2ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5e490840-9035-457e-8aed-6b1f5fdeff25' class='xr-var-data-in' type='checkbox'><label for='data-5e490840-9035-457e-8aed-6b1f5fdeff25' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-16280888-3f78-44e6-8f27-ac78056a4c03' class='xr-section-summary-in' type='checkbox'  checked><label for='section-16280888-3f78-44e6-8f27-ac78056a4c03' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>6.94e+10 1.193e+08 ... nan nan</div><input id='attrs-57efb160-9e49-4cbb-86a6-39a72f235a8f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-57efb160-9e49-4cbb-86a6-39a72f235a8f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-41f1fa1a-43d6-44e2-820a-1645d34833d6' class='xr-var-data-in' type='checkbox'><label for='data-41f1fa1a-43d6-44e2-820a-1645d34833d6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg yr-1</dd><dt><span>description :</span></dt><dd>Annual glacier runoff: sum of annual melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[6.9402599e+10, 1.1929375e+08, 1.2085760e+08, ...,
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-37dae930-f7c3-4bb1-86af-890a455c5961' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-37dae930-f7c3-4bb1-86af-890a455c5961' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-096ffcc2-4b66-450b-933a-fe51a47fb3cb' class='xr-var-data-in' type='checkbox'><label for='data-096ffcc2-4b66-450b-933a-fe51a47fb3cb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>calendar_month_2d</span></div><div class='xr-var-dims'>(month_2d)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 7 8 9 10 11 12</div><input id='attrs-daf8283b-ef49-44d1-8776-807f84d1b1af' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-daf8283b-ef49-44d1-8776-807f84d1b1af' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-470896a8-5f7a-4254-97f2-d29b4661bf00' class='xr-var-data-in' type='checkbox'><label for='data-470896a8-5f7a-4254-97f2-d29b4661bf00' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-44134b76-04fa-4e95-86aa-5e165bf50b99' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-44134b76-04fa-4e95-86aa-5e165bf50b99' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9ef9d944-e7dd-4d12-a3e7-c2ca0d35f5b2' class='xr-var-data-in' type='checkbox'><label for='data-9ef9d944-e7dd-4d12-a3e7-c2ca0d35f5b2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-878f3b1a-c2bb-4b68-b138-b6d572ee890e' class='xr-section-summary-in' type='checkbox' checked /><label for='section-878f3b1a-c2bb-4b68-b138-b6d572ee890e' class='xr-section-summary' title='Expand/collapse section'>Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>runoff</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>6.94e+10 1.193e+08 ... nan nan</div><input id='attrs-b7dfbe4c-2cba-43cc-bbe7-41f31be2a0ec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7dfbe4c-2cba-43cc-bbe7-41f31be2a0ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5a3c15f1-d24a-41ce-b23f-82dedd69f6d7' class='xr-var-data-in' type='checkbox'><label for='data-5a3c15f1-d24a-41ce-b23f-82dedd69f6d7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg yr-1</dd><dt><span>description :</span></dt><dd>Annual glacier runoff: sum of annual melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[6.9402599e+10, 1.1929375e+08, 1.2085760e+08, ...,
           1.6118181e+08, 1.7959005e+08, 3.9047944e+07],
          [6.6753536e+10, 1.0778564e+08, 1.1742621e+08, ...,
           1.3125256e+08, 1.5233630e+08, 3.1809086e+07],
@@ -1059,7 +1144,7 @@ Attributes:
           1.3276478e+08, 1.2910605e+08, 2.8052664e+07],
          [          nan,           nan,           nan, ...,
                     nan,           nan,           nan]]]],
-      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff_monthly</span></div><div class='xr-var-dims'>(scenario, gcm, time, month_2d, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... nan nan nan nan</div><input id='attrs-52f384c7-f4f4-4928-9a12-6afd58e0a52c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-52f384c7-f4f4-4928-9a12-6afd58e0a52c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-becfd6ba-bd1d-4a22-886f-db43d6211878' class='xr-var-data-in' type='checkbox'><label for='data-becfd6ba-bd1d-4a22-886f-db43d6211878' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg month-1</dd><dt><span>description :</span></dt><dd>Monthly glacier runoff from sum of monthly melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[[0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>runoff_monthly</span></div><div class='xr-var-dims'>(scenario, gcm, time, month_2d, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... nan nan nan nan</div><input id='attrs-c6129d56-3c86-4cd9-aade-6bdce4de5c22' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c6129d56-3c86-4cd9-aade-6bdce4de5c22' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-605ab68a-6932-423d-940b-42975fbe3d8d' class='xr-var-data-in' type='checkbox'><label for='data-605ab68a-6932-423d-940b-42975fbe3d8d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>unit :</span></dt><dd>kg month-1</dd><dt><span>description :</span></dt><dd>Monthly glacier runoff from sum of monthly melt and liquid precipitation on and off the glacier using a fixed-gauge with a glacier minimum reference area from year 2000</dd></dl></div><div class='xr-var-data'><pre>array([[[[[0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
            0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
           [0.0000000e+00, 0.0000000e+00, 0.0000000e+00, ...,
            0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
@@ -1099,7 +1184,7 @@ Attributes:
                      nan,           nan,           nan],
           [          nan,           nan,           nan, ...,
                      nan,           nan,           nan]]]]],
-      shape=(1, 1, 101, 12, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>volume</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.624e+09 1.867e+05 ... 0.0 0.0</div><input id='attrs-7760f1b3-a2bd-4dcb-a48e-25a3dccf54fb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7760f1b3-a2bd-4dcb-a48e-25a3dccf54fb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0dc9514e-e154-4b63-81a5-dc39c95c2133' class='xr-var-data-in' type='checkbox'><label for='data-0dc9514e-e154-4b63-81a5-dc39c95c2133' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier volume</dd><dt><span>unit :</span></dt><dd>m 3</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.6241650e+09, 1.8667317e+05, 4.3289291e+05, ...,
+      shape=(1, 1, 101, 12, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>volume</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.624e+09 1.867e+05 ... 0.0 0.0</div><input id='attrs-f0205d41-af97-4b31-b833-d123be388b5b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f0205d41-af97-4b31-b833-d123be388b5b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c47dde64-b87a-4791-b9e5-ab3fdc2bfdf0' class='xr-var-data-in' type='checkbox'><label for='data-c47dde64-b87a-4791-b9e5-ab3fdc2bfdf0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier volume</dd><dt><span>unit :</span></dt><dd>m 3</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.6241650e+09, 1.8667317e+05, 4.3289291e+05, ...,
           3.2804781e+05, 1.7269730e+05, 1.3363569e+05],
          [1.6113715e+09, 1.9350661e+05, 4.4557959e+05, ...,
           3.6561031e+05, 1.8256978e+05, 1.3730347e+05],
@@ -1112,7 +1197,7 @@ Attributes:
           0.0000000e+00, 0.0000000e+00, 0.0000000e+00],
          [1.6358560e+08, 0.0000000e+00, 0.0000000e+00, ...,
           0.0000000e+00, 0.0000000e+00, 0.0000000e+00]]]],
-      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>area</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.575e+07 3.414e+04 ... 0.0 0.0</div><input id='attrs-6c41ddd0-3615-4980-93ab-2fb3de57e947' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6c41ddd0-3615-4980-93ab-2fb3de57e947' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-81e2f575-b15a-415e-be12-612ccd23115b' class='xr-var-data-in' type='checkbox'><label for='data-81e2f575-b15a-415e-be12-612ccd23115b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier area</dd><dt><span>unit :</span></dt><dd>m 2</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.57548590e+07, 3.41406797e+04, 3.60000000e+04, ...,
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>area</span></div><div class='xr-var-dims'>(scenario, gcm, time, rgi_id)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>1.575e+07 3.414e+04 ... 0.0 0.0</div><input id='attrs-945831dc-713f-49d5-9ead-65b81bf8c227' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-945831dc-713f-49d5-9ead-65b81bf8c227' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-46e573a0-fe5e-47c6-9433-cf60c350de2a' class='xr-var-data-in' type='checkbox'><label for='data-46e573a0-fe5e-47c6-9433-cf60c350de2a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>Total glacier area</dd><dt><span>unit :</span></dt><dd>m 2</dd></dl></div><div class='xr-var-data'><pre>array([[[[1.57548590e+07, 3.41406797e+04, 3.60000000e+04, ...,
           5.11789492e+04, 5.26232617e+04, 1.50000000e+04],
          [1.57379990e+07, 2.62278691e+04, 3.61035273e+04, ...,
           5.34598711e+04, 5.68840586e+04, 1.50826865e+04],
@@ -1125,19 +1210,7 @@ Attributes:
           0.00000000e+00, 0.00000000e+00, 0.00000000e+00],
          [4.58239750e+06, 0.00000000e+00, 0.00000000e+00, ...,
           0.00000000e+00, 0.00000000e+00, 0.00000000e+00]]]],
-      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-b8a37e59-aaa8-465c-9ade-d41a55199d49' class='xr-section-summary-in' type='checkbox'  ><label for='section-b8a37e59-aaa8-465c-9ade-d41a55199d49' class='xr-section-summary' >Indexes: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-0bc5d309-e4de-4b6a-8b73-1734924ee4bc' class='xr-index-data-in' type='checkbox'/><label for='index-0bc5d309-e4de-4b6a-8b73-1734924ee4bc' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2000.0, 2001.0, 2002.0, 2003.0, 2004.0, 2005.0, 2006.0, 2007.0, 2008.0,
-       2009.0,
-       ...
-       2091.0, 2092.0, 2093.0, 2094.0, 2095.0, 2096.0, 2097.0, 2098.0, 2099.0,
-       2100.0],
-      dtype=&#x27;float64&#x27;, name=&#x27;time&#x27;, length=101))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c3ee4a5a-f96c-47e3-b202-a36d28a94c55' class='xr-index-data-in' type='checkbox'/><label for='index-c3ee4a5a-f96c-47e3-b202-a36d28a94c55' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
-       &#x27;RGI60-11.01326&#x27;, &#x27;RGI60-11.01336&#x27;, &#x27;RGI60-11.01348&#x27;, &#x27;RGI60-11.01368&#x27;,
-       &#x27;RGI60-11.01372&#x27;, &#x27;RGI60-11.01450&#x27;,
-       ...
-       &#x27;RGI60-11.03811&#x27;, &#x27;RGI60-11.03812&#x27;, &#x27;RGI60-11.03813&#x27;, &#x27;RGI60-11.03814&#x27;,
-       &#x27;RGI60-11.03815&#x27;, &#x27;RGI60-11.03816&#x27;, &#x27;RGI60-11.03817&#x27;, &#x27;RGI60-11.03818&#x27;,
-       &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>month_2d</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-9429f1b7-92de-4776-9125-f161b23aa790' class='xr-index-data-in' type='checkbox'/><label for='index-9429f1b7-92de-4776-9125-f161b23aa790' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], dtype=&#x27;int64&#x27;, name=&#x27;month_2d&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-44836daa-d0a6-4861-8189-1eec520e6890' class='xr-index-data-in' type='checkbox'/><label for='index-44836daa-d0a6-4861-8189-1eec520e6890' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>scenario</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-019e913b-038f-4f29-babb-d548041e06fa' class='xr-index-data-in' type='checkbox'/><label for='index-019e913b-038f-4f29-babb-d548041e06fa' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;ssp126&#x27;], dtype=&#x27;object&#x27;, name=&#x27;scenario&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-09e7d18b-9e89-4a70-9017-f01bec3c886a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-09e7d18b-9e89-4a70-9017-f01bec3c886a' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>OGGM model output</dd><dt><span>oggm_version :</span></dt><dd>1.6.1.dev26+gf8a1745</dd><dt><span>calendar :</span></dt><dd>365-day no leap</dd><dt><span>creation_date :</span></dt><dd>2023-06-05 05:37:08</dd></dl></div></li></ul></div></div></div></div>
+      shape=(1, 1, 101, 1169), dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f15cdb2d-be37-4a83-b265-83faacf274cd' class='xr-section-summary-in' type='checkbox' checked /><label for='section-f15cdb2d-be37-4a83-b265-83faacf274cd' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>OGGM model output</dd><dt><span>oggm_version :</span></dt><dd>1.6.1.dev26+gf8a1745</dd><dt><span>calendar :</span></dt><dd>365-day no leap</dd><dt><span>creation_date :</span></dt><dd>2023-06-05 05:37:08</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1161,9 +1234,7 @@ Attributes:
 </symbol>
 </defs>
 </svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
 
 :root {
   --xr-font-color0: var(
@@ -1242,6 +1313,8 @@ body.vscode-dark {
   display: block !important;
   min-width: 300px;
   max-width: 700px;
+  line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -1252,8 +1325,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -1264,46 +1340,62 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-array-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
   grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .xr-section-item {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
+  margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -1311,11 +1403,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -1343,9 +1449,9 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .xr-section-inline-details {
@@ -1353,13 +1459,79 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
+  margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
+}
+
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 30px auto;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 26px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -1595,7 +1767,7 @@ Coordinates:
   * gcm              (gcm) &lt;U11 44B &#x27;BCC-CSM2-MR&#x27;
     bias_correction  &lt;U12 48B &#x27;bc_2000_2019&#x27;
 Attributes:
-    description:  used global circulation model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'gcm'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>gcm</span>: 1</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ff82e43d-2a7d-4a6e-aef2-9a2fca679348' class='xr-array-in' type='checkbox' checked><label for='section-ff82e43d-2a7d-4a6e-aef2-9a2fca679348' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;BCC-CSM2-MR&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-ecc3a584-fc75-4217-91cb-b3f92cc5f6fd' class='xr-section-summary-in' type='checkbox'  checked><label for='section-ecc3a584-fc75-4217-91cb-b3f92cc5f6fd' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-37309be2-55a2-4b15-9001-54f2a0fdac51' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-37309be2-55a2-4b15-9001-54f2a0fdac51' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-edd110fa-026c-4b71-8168-f675d14e636f' class='xr-var-data-in' type='checkbox'><label for='data-edd110fa-026c-4b71-8168-f675d14e636f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-fa1010d9-89be-47e1-a8a6-c5860bd9053f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-fa1010d9-89be-47e1-a8a6-c5860bd9053f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1c028014-ffa5-4ea1-a153-061303a563df' class='xr-var-data-in' type='checkbox'><label for='data-1c028014-ffa5-4ea1-a153-061303a563df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-023e2e35-8cee-4808-9f42-b283aff1e3dd' class='xr-section-summary-in' type='checkbox'  ><label for='section-023e2e35-8cee-4808-9f42-b283aff1e3dd' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>gcm</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-d1842f6a-a7a3-4fad-a51d-1aed35da696a' class='xr-index-data-in' type='checkbox'/><label for='index-d1842f6a-a7a3-4fad-a51d-1aed35da696a' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;object&#x27;, name=&#x27;gcm&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-7c6bd861-530f-48bc-a5b9-b0b01d612635' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7c6bd861-530f-48bc-a5b9-b0b01d612635' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div></li></ul></div></div></div></div>
+    description:  used global circulation model</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-obj-name'>&#x27;gcm&#x27;</div><ul class='xr-dim-list'><li><span class='xr-has-index'>gcm</span>: 1</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-0e41e3df-e206-4aa0-986f-8571fe4dd589' class='xr-array-in' type='checkbox' checked><label for='section-0e41e3df-e206-4aa0-986f-8571fe4dd589' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;BCC-CSM2-MR&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-4fc93d9f-c6a8-422a-931d-f118851aa8a0' class='xr-section-summary-in' type='checkbox' checked /><label for='section-4fc93d9f-c6a8-422a-931d-f118851aa8a0' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>gcm</span></div><div class='xr-var-dims'>(gcm)</div><div class='xr-var-dtype'>&lt;U11</div><div class='xr-var-preview xr-preview'>&#x27;BCC-CSM2-MR&#x27;</div><input id='attrs-321533c2-5e2d-4081-bd16-49cd1411e28b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-321533c2-5e2d-4081-bd16-49cd1411e28b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b7d0a9de-2214-4284-bcc3-dbd0b2bad9b3' class='xr-var-data-in' type='checkbox'><label for='data-b7d0a9de-2214-4284-bcc3-dbd0b2bad9b3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;BCC-CSM2-MR&#x27;], dtype=&#x27;&lt;U11&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-981eb8f0-7336-4006-b443-8937ee76cfc6' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-981eb8f0-7336-4006-b443-8937ee76cfc6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-02bc0ef5-84e9-4e9b-abd3-9eda014a72c6' class='xr-var-data-in' type='checkbox'><label for='data-02bc0ef5-84e9-4e9b-abd3-9eda014a72c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-442d3320-99dc-4e0c-bce7-d9118932fbf1' class='xr-section-summary-in' type='checkbox' checked /><label for='section-442d3320-99dc-4e0c-bce7-d9118932fbf1' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>used global circulation model</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>The structure is quite different from what we’ve seen so far. First of all, there are more coordinates than we are used to. And no lats and lons! At least there is a time coordinate - this at least we are familiar with.</p>
 <p><strong>Q: There are four variables - can you name them? And give their dimensions and units?</strong></p>
@@ -1639,9 +1811,7 @@ Attributes:
 </symbol>
 </defs>
 </svg>
-<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
- *
- */
+<style>/* CSS stylesheet for displaying xarray objects in notebooks */
 
 :root {
   --xr-font-color0: var(
@@ -1720,6 +1890,8 @@ body.vscode-dark {
   display: block !important;
   min-width: 300px;
   max-width: 700px;
+  line-height: 1.6;
+  padding-bottom: 4px;
 }
 
 .xr-text-repr-fallback {
@@ -1730,8 +1902,11 @@ body.vscode-dark {
 .xr-header {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-bottom: 4px;
+}
+
+.xr-header {
   border-bottom: solid 1px var(--xr-border-color);
+  margin-bottom: 4px;
 }
 
 .xr-header > div,
@@ -1742,46 +1917,62 @@ body.vscode-dark {
 }
 
 .xr-obj-type,
-.xr-array-name {
+.xr-obj-name {
   margin-left: 2px;
   margin-right: 10px;
 }
 
-.xr-obj-type {
+.xr-obj-type,
+.xr-group-box-contents > label {
   color: var(--xr-font-color2);
+  display: block;
 }
 
 .xr-sections {
   padding-left: 0 !important;
   display: grid;
   grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 .xr-section-item {
   display: contents;
 }
 
-.xr-section-item input {
-  display: inline-block;
+.xr-section-item > input,
+.xr-group-box-contents > input,
+.xr-array-wrap > input {
+  display: block;
   opacity: 0;
   height: 0;
+  margin: 0;
 }
 
-.xr-section-item input + label {
+.xr-section-item > input + label,
+.xr-var-item > input + label {
   color: var(--xr-disabled-color);
-  border: 2px solid transparent !important;
 }
 
-.xr-section-item input:enabled + label {
+.xr-section-item > input:enabled + label,
+.xr-var-item > input:enabled + label,
+.xr-array-wrap > input:enabled + label,
+.xr-group-box-contents > input:enabled + label {
   cursor: pointer;
   color: var(--xr-font-color2);
 }
 
-.xr-section-item input:focus + label {
-  border: 2px solid var(--xr-font-color0) !important;
+.xr-section-item > input:focus-visible + label,
+.xr-var-item > input:focus-visible + label,
+.xr-array-wrap > input:focus-visible + label,
+.xr-group-box-contents > input:focus-visible + label {
+  outline: auto;
 }
 
-.xr-section-item input:enabled + label:hover {
+.xr-section-item > input:enabled + label:hover,
+.xr-var-item > input:enabled + label:hover,
+.xr-array-wrap > input:enabled + label:hover,
+.xr-group-box-contents > input:enabled + label:hover {
   color: var(--xr-font-color0);
 }
 
@@ -1789,11 +1980,25 @@ body.vscode-dark {
   grid-column: 1;
   color: var(--xr-font-color2);
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.xr-section-summary > em {
+  font-weight: normal;
+}
+
+.xr-span-grid {
+  grid-column-end: -1;
 }
 
 .xr-section-summary > span {
   display: inline-block;
-  padding-left: 0.5em;
+  padding-left: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label > span {
+  display: inline-block;
+  padding-left: 0.6em;
 }
 
 .xr-section-summary-in:disabled + label {
@@ -1821,9 +2026,9 @@ body.vscode-dark {
 }
 
 .xr-section-summary,
-.xr-section-inline-details {
+.xr-section-inline-details,
+.xr-group-box-contents > label {
   padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 .xr-section-inline-details {
@@ -1831,13 +2036,79 @@ body.vscode-dark {
 }
 
 .xr-section-details {
-  display: none;
   grid-column: 1 / -1;
+  margin-top: 4px;
   margin-bottom: 5px;
+}
+
+.xr-section-summary-in ~ .xr-section-details {
+  display: none;
 }
 
 .xr-section-summary-in:checked ~ .xr-section-details {
   display: contents;
+}
+
+.xr-children {
+  display: inline-grid;
+  grid-template-columns: 100%;
+  grid-column: 1 / -1;
+  padding-top: 4px;
+}
+
+.xr-group-box {
+  display: inline-grid;
+  grid-template-columns: 0px 30px auto;
+}
+
+.xr-group-box-vline {
+  grid-column-start: 1;
+  border-right: 0.2em solid;
+  border-color: var(--xr-border-color);
+  width: 0px;
+}
+
+.xr-group-box-hline {
+  grid-column-start: 2;
+  grid-row-start: 1;
+  height: 1em;
+  width: 26px;
+  border-bottom: 0.2em solid;
+  border-color: var(--xr-border-color);
+}
+
+.xr-group-box-contents {
+  grid-column-start: 3;
+  padding-bottom: 4px;
+}
+
+.xr-group-box-contents > label::before {
+  content: "📂";
+  padding-right: 0.3em;
+}
+
+.xr-group-box-contents > input:checked + label::before {
+  content: "📁";
+}
+
+.xr-group-box-contents > input:checked + label {
+  padding-bottom: 0px;
+}
+
+.xr-group-box-contents > input:checked ~ .xr-sections {
+  display: none;
+}
+
+.xr-group-box-contents > input + label > span {
+  display: none;
+}
+
+.xr-group-box-ellipsis {
+  font-size: 1.4em;
+  font-weight: 900;
+  color: var(--xr-font-color2);
+  letter-spacing: 0.15em;
+  cursor: default;
 }
 
 .xr-array-wrap {
@@ -2075,28 +2346,21 @@ Coordinates:
   * rgi_id           (rgi_id) &lt;U14 65kB &#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.03820&#x27;
     bias_correction  &lt;U12 48B &#x27;bc_2000_2019&#x27;
 Attributes:
-    description:  RGI glacier identifier</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'rgi_id'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rgi_id</span>: 1169</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-ebf511a8-eff5-4759-a3d8-3b5159ca2797' class='xr-array-in' type='checkbox' checked><label for='section-ebf511a8-eff5-4759-a3d8-3b5159ca2797' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;RGI60-11.01238&#x27; &#x27;RGI60-11.01299&#x27; ... &#x27;RGI60-11.03820&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+    description:  RGI glacier identifier</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-obj-name'>&#x27;rgi_id&#x27;</div><ul class='xr-dim-list'><li><span class='xr-has-index'>rgi_id</span>: 1169</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-aa8ed7f0-184c-45a9-98b1-fecdb85cbfc5' class='xr-array-in' type='checkbox' checked><label for='section-aa8ed7f0-184c-45a9-98b1-fecdb85cbfc5' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>&#x27;RGI60-11.01238&#x27; &#x27;RGI60-11.01299&#x27; ... &#x27;RGI60-11.03820&#x27;</span></div><div class='xr-array-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
        &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-dd6bf46a-1951-4ea1-9f66-96a8aa1fb884' class='xr-section-summary-in' type='checkbox'  checked><label for='section-dd6bf46a-1951-4ea1-9f66-96a8aa1fb884' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-5f284c77-c4b8-407d-a4a4-b8011b5d10ea' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5f284c77-c4b8-407d-a4a4-b8011b5d10ea' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-86df747c-996c-429d-afa6-d285e3cf691a' class='xr-var-data-in' type='checkbox'><label for='data-86df747c-996c-429d-afa6-d285e3cf691a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></div></li><li class='xr-section-item'><input id='section-a907f701-6509-423a-a08f-8b39b0fc1746' class='xr-section-summary-in' type='checkbox' checked /><label for='section-a907f701-6509-423a-a08f-8b39b0fc1746' class='xr-section-summary' title='Expand/collapse section'>Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rgi_id</span></div><div class='xr-var-dims'>(rgi_id)</div><div class='xr-var-dtype'>&lt;U14</div><div class='xr-var-preview xr-preview'>&#x27;RGI60-11.01238&#x27; ... &#x27;RGI60-11.0...</div><input id='attrs-bf3c9a92-f753-4118-967f-d2a1f30e1424' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf3c9a92-f753-4118-967f-d2a1f30e1424' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e3240584-2107-429d-9d42-f2f2c724a9a6' class='xr-var-data-in' type='checkbox'><label for='data-e3240584-2107-429d-9d42-f2f2c724a9a6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, ...,
        &#x27;RGI60-11.03818&#x27;, &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-3b07e2c7-9f0d-494a-aea4-e3605861126e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3b07e2c7-9f0d-494a-aea4-e3605861126e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-383848f9-3d1c-4cab-be5a-c02d9082a5f5' class='xr-var-data-in' type='checkbox'><label for='data-383848f9-3d1c-4cab-be5a-c02d9082a5f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-56919520-6b9c-42db-968c-7900f74ff8f0' class='xr-section-summary-in' type='checkbox'  ><label for='section-56919520-6b9c-42db-968c-7900f74ff8f0' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>rgi_id</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-1b40678d-1204-457a-a97f-d68e72c4ab92' class='xr-index-data-in' type='checkbox'/><label for='index-1b40678d-1204-457a-a97f-d68e72c4ab92' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([&#x27;RGI60-11.01238&#x27;, &#x27;RGI60-11.01299&#x27;, &#x27;RGI60-11.01324&#x27;, &#x27;RGI60-11.01325&#x27;,
-       &#x27;RGI60-11.01326&#x27;, &#x27;RGI60-11.01336&#x27;, &#x27;RGI60-11.01348&#x27;, &#x27;RGI60-11.01368&#x27;,
-       &#x27;RGI60-11.01372&#x27;, &#x27;RGI60-11.01450&#x27;,
-       ...
-       &#x27;RGI60-11.03811&#x27;, &#x27;RGI60-11.03812&#x27;, &#x27;RGI60-11.03813&#x27;, &#x27;RGI60-11.03814&#x27;,
-       &#x27;RGI60-11.03815&#x27;, &#x27;RGI60-11.03816&#x27;, &#x27;RGI60-11.03817&#x27;, &#x27;RGI60-11.03818&#x27;,
-       &#x27;RGI60-11.03819&#x27;, &#x27;RGI60-11.03820&#x27;],
-      dtype=&#x27;object&#x27;, name=&#x27;rgi_id&#x27;, length=1169))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-10c97a75-7387-4ee5-8eae-a895f397568e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-10c97a75-7387-4ee5-8eae-a895f397568e' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div></li></ul></div></div></div></div>
+      shape=(1169,), dtype=&#x27;&lt;U14&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bias_correction</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>&lt;U12</div><div class='xr-var-preview xr-preview'>&#x27;bc_2000_2019&#x27;</div><input id='attrs-35f28237-d11c-47ba-b080-73315f4b5912' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-35f28237-d11c-47ba-b080-73315f4b5912' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-0c3bea43-c284-4495-bf42-268061f52bdc' class='xr-var-data-in' type='checkbox'><label for='data-0c3bea43-c284-4495-bf42-268061f52bdc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array(&#x27;bc_2000_2019&#x27;, dtype=&#x27;&lt;U12&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d9870bfc-e3ab-40e4-9273-c3bf520b7807' class='xr-section-summary-in' type='checkbox' checked /><label for='section-d9870bfc-e3ab-40e4-9273-c3bf520b7807' class='xr-section-summary' title='Expand/collapse section'>Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>description :</span></dt><dd>RGI glacier identifier</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>These are just a list of strings. Should we be interested in plotting the volume evolution of one glacier in particular, we could select it like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="p">[</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">rgi_id</span><span class="o">=</span><span class="s1">&#39;RGI60-11.03643&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>  <span class="c1"># This is the Mer de glace glacier near Chamonix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span><span class="p">[</span><span class="s1">'volume'</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">rgi_id</span><span class="o">=</span><span class="s1">'RGI60-11.03643'</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>  <span class="c1"># This is the Mer de glace glacier near Chamonix</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3204498b66da9eefba3e6153daa8f2bef075152a8fed5c0bbdb200fe63be9285.png" src="../_images/3204498b66da9eefba3e6153daa8f2bef075152a8fed5c0bbdb200fe63be9285.png" />
+<img alt="../_images/253be93a6b54fbe170ac21115ad1af52460084b98db4f1e6dc66e6bdbf85b09f.png" src="../_images/253be93a6b54fbe170ac21115ad1af52460084b98db4f1e6dc66e6bdbf85b09f.png" />
 </div>
 </div>
 <p><strong>E: now add a new line to the plot for the Argentière glacier nearby (RGI60-11.03638). Then repeat but for the area and runoff variables.</strong></p>
@@ -2111,13 +2375,13 @@ Attributes:
 <p>OGGM simulates all the glaciers individually. But for many applications, we want to compute the total volume or runoff in a specific area (here the entire basin). Fortunately, it’s very simple to compute this using xarray:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_volume</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_volume</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span>
 <span class="n">total_volume</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d3a2acec54926c71bdf9199e72dd9a7e2aca23a7cfce85163724bcd8a06a2e7e.png" src="../_images/d3a2acec54926c71bdf9199e72dd9a7e2aca23a7cfce85163724bcd8a06a2e7e.png" />
+<img alt="../_images/29d85f9c27aaf31e406ee4dc4801b558261284d007fe949cb182fdfba4280154.png" src="../_images/29d85f9c27aaf31e406ee4dc4801b558261284d007fe949cb182fdfba4280154.png" />
 </div>
 </div>
 <p><strong>E: repeat the basin-wide plot for area and runoff.</strong></p>
@@ -2154,7 +2418,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/07b7c2bdc89bc9a421bb3de121ac77afd00b8608f6eb427158e1ee0dee61f986.png" src="../_images/07b7c2bdc89bc9a421bb3de121ac77afd00b8608f6eb427158e1ee0dee61f986.png" />
+<img alt="../_images/f854590e3019c9d14f628871c9cd24f8a536025d420ad72cd82406541f2122be.png" src="../_images/f854590e3019c9d14f628871c9cd24f8a536025d420ad72cd82406541f2122be.png" />
 </div>
 </div>
 <p><strong>Q: how much volume (in %) did the Rhone basin loose betwen 2000 and 2020? for this GCM and scenario, what is the remaining volume (in %) at the end of the century?</strong></p>
@@ -2172,14 +2436,14 @@ Attributes:
 <p>Let’s compute the glacier runoff in gigatons per year:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_runoff</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">runoff</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-12</span>  <span class="c1"># convert to gigatons</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_runoff</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">runoff</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-12</span>  <span class="c1"># convert to gigatons</span>
 <span class="n">total_runoff</span><span class="o">.</span><span class="n">plot</span><span class="p">();</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Annual runoff (Gt yr$^{-1}$)&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Annual runoff (Gt yr$^{-1}$)'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/22dd853ac1d8925438843e3cc19049c73a5de287b46ddf0af91d78c8b624acc1.png" src="../_images/22dd853ac1d8925438843e3cc19049c73a5de287b46ddf0af91d78c8b624acc1.png" />
+<img alt="../_images/43c507a116f6fec48d7e21a907c6e275b119677238dae47ed9647d9d08bdd0a4.png" src="../_images/43c507a116f6fec48d7e21a907c6e275b119677238dae47ed9647d9d08bdd0a4.png" />
 </div>
 </div>
 <p>Glacier runoff in OGGM (and in several other glacier models) is computed as the sum of <strong>ice melt, snow melt, and liquid precipitation</strong> over the glacier domain. The model follows a temperature-index approach to estimate melt rates. Precipitation and temperature data are provided by W5E5 or a climate model.</p>
@@ -2188,14 +2452,14 @@ Attributes:
 <p><strong>The plot above shows the decreasing glacier contribution to overall runoff, overlaid with interannual variability of melt and precipitation.</strong> When studying runoff, it may be useful to compute running averages to smooth out short-term variability and highlight long-term trends:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_runoff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Annual runoff&#39;</span><span class="p">);</span>
-<span class="n">total_runoff</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;21-yr average&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Annual runoff (Gt yr$^{-1}$)&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_runoff</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">'Annual runoff'</span><span class="p">);</span>
+<span class="n">total_runoff</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">'21-yr average'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Annual runoff (Gt yr$^{-1}$)'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/98d8f61946e3b4b465fe1ca5a4b43398faea06ff3adef1718a83479d861568f4.png" src="../_images/98d8f61946e3b4b465fe1ca5a4b43398faea06ff3adef1718a83479d861568f4.png" />
+<img alt="../_images/607314ce15d7b25f4fd55acb22736b8aa71be9b963d43776d99046546898cbcf.png" src="../_images/607314ce15d7b25f4fd55acb22736b8aa71be9b963d43776d99046546898cbcf.png" />
 </div>
 </div>
 </section>
@@ -2237,16 +2501,16 @@ Attributes:
 <h3>Method 1: looping over all available files<a class="headerlink" href="#method-1-looping-over-all-available-files" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
 
 <span class="c1"># The * indicates that we allow all kinds of patters here - i.e. all GCMs, but still ssp126</span>
-<span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">&quot;../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_*_ssp126.nc&quot;</span>
+<span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">"../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_*_ssp126.nc"</span>
 
 <span class="c1"># Get all matching files</span>
 <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">)</span>
 
 <span class="c1"># Print the list of files</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'There are </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files:'</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
@@ -2276,22 +2540,22 @@ Attributes:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
     <span class="c1"># Extract the GCM name from the file name</span>
-    <span class="n">gcm_name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;2000_2019_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_ssp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gcm_name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'2000_2019_'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_ssp'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># Open and compute</span>
     <span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds_tmp</span><span class="p">:</span>
         <span class="n">ds_tmp</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2099</span><span class="p">))</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-        <span class="n">tmp_volume</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>
+        <span class="n">tmp_volume</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>
 
     <span class="c1"># Plot</span>
     <span class="n">tmp_volume</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">gcm_name</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Basin volume (km$^3$)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SSP126&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Basin volume (km$^3$)'</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'SSP126'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d5e00598db5926adfdfe26a60fe433fc18f38ceafbd1c3fb51e3cb05accc4033.png" src="../_images/d5e00598db5926adfdfe26a60fe433fc18f38ceafbd1c3fb51e3cb05accc4033.png" />
+<img alt="../_images/17b5fdb97b39b0a1eafb9f65a8a7c1fa7680b1cd3f3e1ad2833072454c2f3745.png" src="../_images/17b5fdb97b39b0a1eafb9f65a8a7c1fa7680b1cd3f3e1ad2833072454c2f3745.png" />
 </div>
 </div>
 <p><strong>Q: interpret the plot above. Why is the data before 2020 always the same? What is the full range of outcomes for this scenario at the end of the century?</strong></p>
@@ -2312,13 +2576,13 @@ Attributes:
 
 <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
     <span class="c1"># Extract the GCM name from the file name</span>
-    <span class="n">gcm_name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;2000_2019_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_ssp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gcm_name</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'2000_2019_'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_ssp'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="c1"># Open and compute</span>
     <span class="k">with</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">as</span> <span class="n">ds_tmp</span><span class="p">:</span>
         <span class="n">ds_tmp</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2099</span><span class="p">))</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-        <span class="n">tmp_volume</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>
-        <span class="n">tmp_runoff</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">runoff</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-12</span>
+        <span class="n">tmp_volume</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>
+        <span class="n">tmp_runoff</span> <span class="o">=</span> <span class="n">ds_tmp</span><span class="o">.</span><span class="n">runoff</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-12</span>
 
     <span class="c1"># Store for later</span>
     <span class="n">df_runoff</span><span class="p">[</span><span class="n">gcm_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_runoff</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">to_series</span><span class="p">()</span>
@@ -2335,7 +2599,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a5e7dc80c1e0ffce7c4dfecffa370ea79a365648ae2690ddb95e4fc9adb73100.png" src="../_images/a5e7dc80c1e0ffce7c4dfecffa370ea79a365648ae2690ddb95e4fc9adb73100.png" />
+<img alt="../_images/003569b5cc48ae478a7eedfd50007885056783513e481ffd625c2dc8aabf5d2f.png" src="../_images/003569b5cc48ae478a7eedfd50007885056783513e481ffd625c2dc8aabf5d2f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2346,7 +2610,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f0e7341ad472476ad47a65f654b01d437590dc27889f30341ec0ccdd9fc8caaf.png" src="../_images/f0e7341ad472476ad47a65f654b01d437590dc27889f30341ec0ccdd9fc8caaf.png" />
+<img alt="../_images/3f799ffb692f0cd64afd37c4627f15e46a30b5cfb927762ef4e0393b4102a598.png" src="../_images/3f799ffb692f0cd64afd37c4627f15e46a30b5cfb927762ef4e0393b4102a598.png" />
 </div>
 </div>
 <p>For runoff, we prefer to compute the relative runoff with respect to an average period instead of a single year, for example 2000-2019:</p>
@@ -2358,7 +2622,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e0557de77452f3d2ea7ff065511d9115a7de3163338ce5217762ec241e6a86b4.png" src="../_images/e0557de77452f3d2ea7ff065511d9115a7de3163338ce5217762ec241e6a86b4.png" />
+<img alt="../_images/5a00fa48057ffdc4e498c4df7169dfc8d54ae2bc2695bb5c211c525f36979dfc.png" src="../_images/5a00fa48057ffdc4e498c4df7169dfc8d54ae2bc2695bb5c211c525f36979dfc.png" />
 </div>
 </div>
 </section>
@@ -2369,32 +2633,32 @@ Attributes:
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># File pattern (same as before)</span>
-<span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">&quot;../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_*_ssp126.nc&quot;</span>
+<span class="n">file_pattern</span> <span class="o">=</span> <span class="s2">"../data/glaciers/6243/basin_6243_run_hydro_w5e5_gcm_merged_endyr2100_CMIP6_bc_2000_2019_*_ssp126.nc"</span>
 
 <span class="c1"># Get matching files</span>
 <span class="n">files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file_pattern</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files.'</span><span class="p">)</span>
 
 <span class="c1"># Open all files as a single dataset, adding a new dimension from file name</span>
 <span class="n">ds_all</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
     <span class="n">files</span><span class="p">,</span>
-    <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span>
-    <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;gcm&#39;</span><span class="p">,</span>
+    <span class="n">combine</span><span class="o">=</span><span class="s1">'nested'</span><span class="p">,</span>
+    <span class="n">concat_dim</span><span class="o">=</span><span class="s1">'gcm'</span><span class="p">,</span>
     <span class="n">preprocess</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ds</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2099</span><span class="p">)),</span>
-    <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span>  <span class="c1"># or omit if using default</span>
+    <span class="n">engine</span><span class="o">=</span><span class="s1">'netcdf4'</span>  <span class="c1"># or omit if using default</span>
 <span class="p">)</span>
 
 <span class="c1"># Extract GCM names from filenames</span>
-<span class="n">gcm_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;2000_2019_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_ssp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
-<span class="n">ds_all</span><span class="p">[</span><span class="s1">&#39;gcm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;gcm&#39;</span><span class="p">,</span> <span class="n">gcm_names</span><span class="p">)</span>
+<span class="n">gcm_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'2000_2019_'</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'_ssp'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
+<span class="n">ds_all</span><span class="p">[</span><span class="s1">'gcm'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'gcm'</span><span class="p">,</span> <span class="n">gcm_names</span><span class="p">)</span>
 
 <span class="c1"># Sum volume over all glaciers</span>
-<span class="n">volume_by_gcm</span> <span class="o">=</span> <span class="n">ds_all</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;rgi_id&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>  <span class="c1"># Convert to km³</span>
+<span class="n">volume_by_gcm</span> <span class="o">=</span> <span class="n">ds_all</span><span class="o">.</span><span class="n">volume</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">'rgi_id'</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-9</span>  <span class="c1"># Convert to km³</span>
 
 <span class="c1"># Plot spaghetti plot</span>
-<span class="n">volume_by_gcm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s1">&#39;gcm&#39;</span><span class="p">);</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Basin volume (km$^3$)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;SSP126 ensemble: Rhone basin glacier volume&#39;</span><span class="p">);</span>
+<span class="n">volume_by_gcm</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">hue</span><span class="o">=</span><span class="s1">'gcm'</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Basin volume (km$^3$)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'SSP126 ensemble: Rhone basin glacier volume'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2402,104 +2666,7 @@ Attributes:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found 13 files.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span><span class="si">}</span><span class="s1"> files.&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># Open all files as a single dataset, adding a new dimension from file name</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="n">ds_all</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">files</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;gcm&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">preprocess</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ds</span><span class="p">:</span> <span class="n">ds</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2099</span><span class="p">)),</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;netcdf4&#39;</span>  <span class="c1"># or omit if using default</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># Extract GCM names from filenames</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">gcm_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;2000_2019_&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;_ssp&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">]</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:1635,</span> in <span class="ni">open_mfdataset</span><span class="nt">(paths, chunks, concat_dim, compat, preprocess, engine, data_vars, coords, combine, parallel, join, attrs_file, combine_attrs, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="n">open_</span> <span class="o">=</span> <span class="n">open_dataset</span>
-<span class="g g-Whitespace">   </span><span class="mi">1633</span>     <span class="n">getattr_</span> <span class="o">=</span> <span class="nb">getattr</span>
-<span class="ne">-&gt; </span><span class="mi">1635</span> <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">open_</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths1d</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1636</span> <span class="n">closers</span> <span class="o">=</span> <span class="p">[</span><span class="n">getattr_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;_close&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1637</span> <span class="k">if</span> <span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:1635,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1632</span>     <span class="n">open_</span> <span class="o">=</span> <span class="n">open_dataset</span>
-<span class="g g-Whitespace">   </span><span class="mi">1633</span>     <span class="n">getattr_</span> <span class="o">=</span> <span class="nb">getattr</span>
-<span class="ne">-&gt; </span><span class="mi">1635</span> <span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">open_</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="o">**</span><span class="n">open_kwargs</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">paths1d</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1636</span> <span class="n">closers</span> <span class="o">=</span> <span class="p">[</span><span class="n">getattr_</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="s2">&quot;_close&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1637</span> <span class="k">if</span> <span class="n">preprocess</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:693,</span> in <span class="ni">open_dataset</span><span class="nt">(filename_or_obj, engine, chunks, cache, decode_cf, mask_and_scale, decode_times, decode_timedelta, use_cftime, concat_characters, decode_coords, drop_variables, inline_array, chunked_array_type, from_array_kwargs, backend_kwargs, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">686</span> <span class="n">overwrite_encoded_chunks</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;overwrite_encoded_chunks&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">687</span> <span class="n">backend_ds</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">689</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">690</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span> <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">693</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">_dataset_from_backend_dataset</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span>     <span class="n">backend_ds</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">695</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span>     <span class="n">engine</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>     <span class="n">chunks</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">698</span>     <span class="n">cache</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="n">overwrite_encoded_chunks</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="n">inline_array</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">701</span>     <span class="n">chunked_array_type</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span>     <span class="n">from_array_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="n">drop_variables</span><span class="o">=</span><span class="n">drop_variables</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="o">**</span><span class="n">decoders</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="k">return</span> <span class="n">ds</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:402,</span> in <span class="ni">_dataset_from_backend_dataset</span><span class="nt">(backend_ds, filename_or_obj, engine, chunks, cache, overwrite_encoded_chunks, inline_array, chunked_array_type, from_array_kwargs, **extra_tokens)</span>
-<span class="g g-Whitespace">    </span><span class="mi">400</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">backend_ds</span>
-<span class="g g-Whitespace">    </span><span class="mi">401</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">402</span>     <span class="n">ds</span> <span class="o">=</span> <span class="n">_chunk_ds</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">403</span>         <span class="n">backend_ds</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">404</span>         <span class="n">filename_or_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">405</span>         <span class="n">engine</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">406</span>         <span class="n">chunks</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">407</span>         <span class="n">overwrite_encoded_chunks</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">408</span>         <span class="n">inline_array</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span>         <span class="n">chunked_array_type</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">410</span>         <span class="n">from_array_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="o">**</span><span class="n">extra_tokens</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="n">ds</span><span class="o">.</span><span class="n">set_close</span><span class="p">(</span><span class="n">backend_ds</span><span class="o">.</span><span class="n">_close</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="c1"># Ensure source filename always stored in dataset object</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/backends/api.py:350,</span> in <span class="ni">_chunk_ds</span><span class="nt">(backend_ds, filename_or_obj, engine, chunks, overwrite_encoded_chunks, inline_array, chunked_array_type, from_array_kwargs, **extra_tokens)</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">def</span> <span class="nf">_chunk_ds</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="n">backend_ds</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">filename_or_obj</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">348</span>     <span class="o">**</span><span class="n">extra_tokens</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">350</span>     <span class="n">chunkmanager</span> <span class="o">=</span> <span class="n">guess_chunkmanager</span><span class="p">(</span><span class="n">chunked_array_type</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">352</span>     <span class="c1"># TODO refactor to move this dask-specific logic inside the DaskManager class</span>
-<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunkmanager</span><span class="p">,</span> <span class="n">DaskManager</span><span class="p">):</span>
-
-<span class="nn">File ~/.mambaforge/lib/python3.10/site-packages/xarray/namedarray/parallelcompat.py:116,</span> in <span class="ni">guess_chunkmanager</span><span class="nt">(manager)</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">manager</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>     <span class="k">if</span> <span class="n">manager</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">available_chunkmanagers</span> <span class="ow">and</span> <span class="n">manager</span> <span class="ow">in</span> <span class="n">KNOWN_CHUNKMANAGERS</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">116</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">117</span>             <span class="sa">f</span><span class="s2">&quot;chunk manager </span><span class="si">{</span><span class="n">manager</span><span class="si">!r}</span><span class="s2"> is not available.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">118</span>             <span class="sa">f</span><span class="s2">&quot; Please make sure </span><span class="si">{</span><span class="n">KNOWN_CHUNKMANAGERS</span><span class="p">[</span><span class="n">manager</span><span class="p">]</span><span class="si">!r}</span><span class="s2"> is installed&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">119</span>             <span class="s2">&quot; and importable.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">available_chunkmanagers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">123</span>             <span class="s2">&quot;no chunk managers available. Try installing `dask` or another package&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="s2">&quot; that provides a chunk manager.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="p">)</span>
-
-<span class="ne">ImportError</span>: chunk manager &#39;dask&#39; is not available. Please make sure &#39;dask&#39; is installed and importable.
-</pre></div>
-</div>
+<img alt="../_images/a70484a9e11b680a489964664a8ebbe903c42cff1a4a639dc61793c76319e9ac.png" src="../_images/a70484a9e11b680a489964664a8ebbe903c42cff1a4a639dc61793c76319e9ac.png" />
 </div>
 </div>
 <p>The advantage of this method is that all data can be handled within xarray without for loops. It also allows to handle extremely large datasets - if you are curious, ask your instructor about it! Otherwise just move on to the next bit:</p>
@@ -2526,21 +2693,21 @@ Attributes:
 <span class="n">time</span> <span class="o">=</span> <span class="n">df_volume_relative</span><span class="o">.</span><span class="n">index</span>
 
 <span class="c1"># Plot the filled quantile range</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">q10</span><span class="p">,</span> <span class="n">q90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;10-90</span><span class="si">% r</span><span class="s2">ange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">q10</span><span class="p">,</span> <span class="n">q90</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C0"</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"10-90</span><span class="si">% r</span><span class="s2">ange"</span><span class="p">)</span>
 
 <span class="c1"># Plot the median line</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">q50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Median&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">q50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"C0"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Median"</span><span class="p">)</span>
 
 <span class="c1"># Labels and legend</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Basin volume (% 2020)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SSP126 Glacier Volume Projections (N=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_volume</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Basin volume (% 2020)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Year"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SSP126 Glacier Volume Projections (N=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_volume</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/850c0a0b72cc911c1bd13a97cc446bb22d4873d4eeb0d085f43835b512bf39a9.png" src="../_images/850c0a0b72cc911c1bd13a97cc446bb22d4873d4eeb0d085f43835b512bf39a9.png" />
+<img alt="../_images/a89a00cd31727931ede59fd105de0c5b17d6cd1759473ebf830b2135129b83f3.png" src="../_images/a89a00cd31727931ede59fd105de0c5b17d6cd1759473ebf830b2135129b83f3.png" />
 </div>
 </div>
 <p><strong>E: now repeat the steps above with with the 0.05 and 0.95 quantiles instead - do you see much difference? Maybe you can even plot both the 10-90% and th 5-95% range on the same plot?</strong></p>
@@ -2634,14 +2801,16 @@ Attributes:
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-and-context">Data and context</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-packages">Import the packages</a></li>
@@ -2685,7 +2854,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 11, 2026.
+  Last updated on Sep 25, 2026.
   <br/>
 </p>
   </div>
@@ -2714,8 +2883,8 @@ These lecture notes and exercises are licensed under a <a href="https://creative
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

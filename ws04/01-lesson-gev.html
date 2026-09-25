@@ -16,38 +16,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -69,7 +72,8 @@
     <link rel="prev" title="Assignment: timeseries analysis and extreme values" href="../ws03/02-assignment-timeseries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 11, 2026"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Sep 25, 2026"/>
   </head>
   
   
@@ -85,19 +89,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -105,7 +98,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -113,8 +105,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -130,7 +122,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -160,21 +153,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Quantifying Climate Risks - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -254,9 +243,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -403,7 +397,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -417,25 +411,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -501,10 +487,10 @@ document.write(`
 <p>Let’s start by importing the packages as usual. We’ll continue to use Pandas today.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span> 
 </pre></div>
 </div>
 </div>
@@ -515,16 +501,16 @@ document.write(`
 <p>We’ll resume our work on the daily rainfall timeseries. Let me do all the reading for you:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/csv/53004_cdr.csv&#39;</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Date&#39;</span>
-<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cdr&#39;</span><span class="p">,</span> <span class="s1">&#39;qual&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/csv/53004_cdr.csv'</span><span class="p">,</span> <span class="n">skiprows</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">'Date'</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'cdr'</span><span class="p">,</span> <span class="s1">'qual'</span><span class="p">]</span>
 
 <span class="c1"># Check that time series is complete</span>
-<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span> 
-<span class="k">assert</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cdr&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">freq</span><span class="o">=</span><span class="s1">'D'</span><span class="p">))</span> 
+<span class="k">assert</span> <span class="n">df</span><span class="p">[</span><span class="s1">'cdr'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span>
 
 <span class="c1"># Extract cdr - catchment daily rainfall</span>
-<span class="n">cdr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cdr&#39;</span><span class="p">]</span>
+<span class="n">cdr</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'cdr'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -539,8 +525,8 @@ document.write(`
 <p>These probabilities and ranks can be computed on data of any size and type, making it possible to generalize the process into a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the empirical return periods of a sample of extreme events.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Compute the empirical return periods of a sample of extreme events.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -552,22 +538,22 @@ document.write(`
 <span class="sd">    -------</span>
 <span class="sd">    edf : pandas.DataFrame</span>
 <span class="sd">        A DataFrame containing:</span>
-<span class="sd">        - &#39;sorted&#39;: The observed values sorted in descending order.</span>
-<span class="sd">        - &#39;ranks&#39;: The rank of each value</span>
-<span class="sd">        - &#39;exceedance&#39;: The empirical exceedance probability (rank / (N + 1)).</span>
-<span class="sd">        - &#39;period&#39;: The empirical return period (1 / exceedance).</span>
+<span class="sd">        - 'sorted': The observed values sorted in descending order.</span>
+<span class="sd">        - 'ranks': The rank of each value</span>
+<span class="sd">        - 'exceedance': The empirical exceedance probability (rank / (N + 1)).</span>
+<span class="sd">        - 'period': The empirical return period (1 / exceedance).</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    - The function assumes that the input data represents independent extreme events.</span>
 <span class="sd">    - The return period is an estimate based on the empirical data and does not assume a fitted</span>
 <span class="sd">      probability distribution.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">edf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
-    <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;ranks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]))</span> 
-    <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span>
+    <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
+    <span class="n">edf</span><span class="p">[</span><span class="s1">'ranks'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">]))</span> 
+    <span class="n">edf</span><span class="p">[</span><span class="s2">"exceedance"</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">"ranks"</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">edf</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">edf</span><span class="p">[</span><span class="s2">"exceedance"</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">edf</span>
 </pre></div>
 </div>
@@ -578,24 +564,24 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Annual daily maxima</span>
-<span class="n">annual_max</span> <span class="o">=</span> <span class="n">cdr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">annual_max</span> <span class="o">=</span> <span class="n">cdr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">'YS'</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
 <span class="c1"># Compute the statistics</span>
 <span class="n">edf</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
 
 <span class="c1"># Plot them</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fig. 1: return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;); </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Fig. 1: return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log"); </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/9e4490cdd3a39698e7179a3315ffaaa05a8afe08e414e674f0a111b7e3be2dd7.png" src="../_images/9e4490cdd3a39698e7179a3315ffaaa05a8afe08e414e674f0a111b7e3be2dd7.png" />
+<img alt="../_images/bb21ab505bed9f829568f742554d2a18f2a2863fc80393e80bec60ad92188c74.png" src="../_images/bb21ab505bed9f829568f742554d2a18f2a2863fc80393e80bec60ad92188c74.png" />
 </div>
 </div>
 <p>Now let’s make an experiment. How would the return levels change if the most extreme event didn’t happen and was replaced, say, with a “normal” annual precipitation maxima? Let’s test this scenario:</p>
@@ -626,19 +612,19 @@ document.write(`
 
 <span class="c1"># Plot them</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_fake</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf_fake</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;&quot;Altered&quot;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Empirical'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_fake</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf_fake</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'"Altered"'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fig. 2: Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Fig. 2: Return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;); </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log"); </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0de4fd7d08b97740b8d335b1d94077b666024d317320a7e51ffdea4b9cb44042.png" src="../_images/0de4fd7d08b97740b8d335b1d94077b666024d317320a7e51ffdea4b9cb44042.png" />
+<img alt="../_images/9df53262d3ce2118ffb787fdae5f6a4bfbd96a064900f57ba40f69aaa785519b.png" src="../_images/9df53262d3ce2118ffb787fdae5f6a4bfbd96a064900f57ba40f69aaa785519b.png" />
 </div>
 </div>
 <p><strong>E: either by looking at the plot (with or without logarithmic scales) or by looking at the <code class="docutils literal notranslate"><span class="pre">edf</span></code> and <code class="docutils literal notranslate"><span class="pre">edf_fake</span></code> variables, answer the following questions:</strong></p>
@@ -690,21 +676,21 @@ Remember, this only works under the assumption that our data is representative o
     <span class="c1"># Compute the return periods</span>
     <span class="n">edf_s</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
     <span class="c1"># Plot them as transparent black lines</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_s</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf_s</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_s</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf_s</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1"># Now plot the &quot;true&quot; ones</span>
+<span class="c1"># Now plot the "true" ones</span>
 <span class="n">edf</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Fig. 3: Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;); </span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Fig. 3: Return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log"); </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1412878715eb886d005a82716257c2cb7e7dceecb6a066d4aa4d6e34c6a44da0.png" src="../_images/1412878715eb886d005a82716257c2cb7e7dceecb6a066d4aa4d6e34c6a44da0.png" />
+<img alt="../_images/4578efa28a8d07084543f05e49e3df46d1f35762ccac8185e38efd8124054eb7.png" src="../_images/4578efa28a8d07084543f05e49e3df46d1f35762ccac8185e38efd8124054eb7.png" />
 </div>
 </div>
 <p>The plot above (Fig. 3) is a generalisation of “Fig. 2” further up. While the previous attempt was only one example, in the above we explored many other possible sequences of 60 years, where certain extreme events happened more, or less often than they happened in reality.</p>
@@ -731,9 +717,9 @@ Remember, this only works under the assumption that our data is representative o
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="n">annual_max</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Events&#39;</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of annual max daily precipitation at Chew&#39;</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily precipitation (mm/day)&#39;</span><span class="p">);</span>
+<span class="n">annual_max</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Events'</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Histogram of annual max daily precipitation at Chew'</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Daily precipitation (mm/day)'</span><span class="p">);</span>
 
 <span class="c1"># Normal distrib parameters</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
@@ -742,13 +728,13 @@ Remember, this only works under the assumption that our data is representative o
 <span class="c1"># add PDF to the plot</span>
 <span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian PDF&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Gaussian PDF'</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bbabe70a4c3792cb660cd0edb4d8cb4b9978718e11b0032ed70a7040063fe6d1.png" src="../_images/bbabe70a4c3792cb660cd0edb4d8cb4b9978718e11b0032ed70a7040063fe6d1.png" />
+<img alt="../_images/346d711569a36e6af8c5ebb87d65f765aacdb1a527c7ff2dda3ede608a07cac1.png" src="../_images/346d711569a36e6af8c5ebb87d65f765aacdb1a527c7ff2dda3ede608a07cac1.png" />
 </div>
 </div>
 <p><strong>Q: describe qualitatively how well (or how poorly) the Gaussian distribution fits the data. Is there a tendency to underestimate the occurence of some values? Or overestimate others?</strong></p>
@@ -786,26 +772,26 @@ Remember, this only works under the assumption that our data is representative o
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 
-<span class="n">annual_max</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Events&#39;</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of annual max daily precipitation at Chew&#39;</span><span class="p">);</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily precipitation (mm/day)&#39;</span><span class="p">);</span>
+<span class="n">annual_max</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Events'</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Histogram of annual max daily precipitation at Chew'</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Daily precipitation (mm/day)'</span><span class="p">);</span>
 
 <span class="c1"># add Gaussian PDF</span>
 <span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian PDF&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Gaussian PDF'</span><span class="p">);</span>
 
 <span class="c1"># add GEV PDF</span>
 <span class="n">x_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">y_pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;C3&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV PDF&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_pdf</span><span class="p">,</span> <span class="n">y_pdf</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">"C3"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'GEV PDF'</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/114b8972275ef6638c08db16dcaa117dd7ba39cf1c22d23235671fab84d330f1.png" src="../_images/114b8972275ef6638c08db16dcaa117dd7ba39cf1c22d23235671fab84d330f1.png" />
+<img alt="../_images/ecdb8abad7ce92959eef57275c36770ec3fbab4f25113c42af17cee8482aa657.png" src="../_images/ecdb8abad7ce92959eef57275c36770ec3fbab4f25113c42af17cee8482aa657.png" />
 </div>
 </div>
 <p><strong>Q: Describe (qualitatively) how the GEV matches the data. Now look closely at the more extreme values in the range - do you see an improvement here as well?</strong></p>
@@ -839,12 +825,12 @@ P(X \geq x) = 1 - F(x)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Between 0 and 1. Multiply by 100 for %</span>
-<span class="sa">f</span><span class="s1">&#39;The probability of exceedance for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%&#39;</span>
+<span class="sa">f</span><span class="s1">'The probability of exceedance for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1">%'</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The probability of exceedance for a return level of 50 mm/day is 15.2%&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'The probability of exceedance for a return level of 50 mm/day is 15.2%'
 </pre></div>
 </div>
 </div>
@@ -878,12 +864,12 @@ T = \frac{1}{1 - F(x)}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># chosen return level in mm/day</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span> 
 <span class="n">t</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">p</span>
-<span class="sa">f</span><span class="s1">&#39;The return period for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> years&#39;</span>
+<span class="sa">f</span><span class="s1">'The return period for a return level of </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1"> mm/day is </span><span class="si">{</span><span class="n">t</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> years'</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The return period for a return level of 50 mm/day is 7 years&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'The return period for a return level of 50 mm/day is 7 years'
 </pre></div>
 </div>
 </div>
@@ -919,12 +905,12 @@ x = F^{-1}(1 - \frac{1}{T})
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># chosen return period in years</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">t</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>  <span class="c1"># Return value</span>
-<span class="sa">f</span><span class="s1">&#39;The return value for an </span><span class="si">{</span><span class="mi">100</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day&#39;</span>
+<span class="sa">f</span><span class="s1">'The return value for an </span><span class="si">{</span><span class="mi">100</span><span class="si">}</span><span class="s1">-year event is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> mm/day'</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;The return value for an 100-year event is 95.4 mm/day&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'The return value for an 100-year event is 95.4 mm/day'
 </pre></div>
 </div>
 </div>
@@ -955,28 +941,28 @@ x = F^{-1}(1 - \frac{1}{T})
 
 <span class="c1"># Empirical  statistics</span>
 <span class="n">edf</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Empirical'</span><span class="p">)</span>
 
 <span class="c1"># create array of years</span>
 <span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 
 <span class="c1"># GEV return values for these years</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'GEV'</span><span class="p">)</span>
 
 <span class="c1"># Gaussian return values for these years</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gaussian&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">std_dev</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="s1">'C1'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Gaussian'</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log");</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5ba4b0b1efc35962f04b6e824d2fe94b60cb55261f2335c2d155e68a6539228a.png" src="../_images/5ba4b0b1efc35962f04b6e824d2fe94b60cb55261f2335c2d155e68a6539228a.png" />
+<img alt="../_images/352c0387f2a90a45ac43d2ae58dffd36fbd6757febf924a7b048ce5e6b3eed25.png" src="../_images/352c0387f2a90a45ac43d2ae58dffd36fbd6757febf924a7b048ce5e6b3eed25.png" />
 </div>
 </div>
 </section>
@@ -1006,29 +992,29 @@ x = F^{-1}(1 - \frac{1}{T})
 
 <span class="c1"># Empirical  statistics</span>
 <span class="n">edf</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Empirical'</span><span class="p">)</span>
 
 <span class="c1"># create array of years</span>
 <span class="n">years</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 
 <span class="c1"># GEV return values for these years</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'GEV'</span><span class="p">)</span>
 
 <span class="c1"># Add confidence interval</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">returns_boot</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;95</span><span class="si">% c</span><span class="s1">onfidence&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">returns_boot</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">returns_boot</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'95</span><span class="si">% c</span><span class="s1">onfidence'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">returns_boot</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log");</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e124151468544a6dfdf492075ef3aa4e73974601b3c39bd3309f06fe548b1722.png" src="../_images/e124151468544a6dfdf492075ef3aa4e73974601b3c39bd3309f06fe548b1722.png" />
+<img alt="../_images/fe96acf1a76dabdd26cabad3c157003839aa2fd2434e24405c5f810ff1d550ad.png" src="../_images/fe96acf1a76dabdd26cabad3c157003839aa2fd2434e24405c5f810ff1d550ad.png" />
 </div>
 </div>
 </section>
@@ -1041,7 +1027,7 @@ x = F^{-1}(1 - \frac{1}{T})
 <p>We start by selecting a threshold and keeping the values that exceed that threshold:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s extract all exceedances above a threshold, say the 99th percentile</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let's extract all exceedances above a threshold, say the 99th percentile</span>
 <span class="n">threshold</span> <span class="o">=</span> <span class="n">cdr</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
 <span class="n">exceedances</span> <span class="o">=</span> <span class="n">cdr</span><span class="p">[</span><span class="n">cdr</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">]</span> 
 </pre></div>
@@ -1051,17 +1037,17 @@ x = F^{-1}(1 - \frac{1}{T})
 <p>We note that the number of exceedances now varies per year:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_per_year</span> <span class="o">=</span> <span class="n">exceedances</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;YS&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">n_per_year</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exceedances per year&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_per_year</span> <span class="o">=</span> <span class="n">exceedances</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">'YS'</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">n_per_year</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">'Exceedances per year'</span><span class="p">);</span>
 
 <span class="n">rate</span> <span class="o">=</span> <span class="n">n_per_year</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean rate&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">rate</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Mean rate'</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d5ee159386f7044daa766e537dc103bce3231dba489257fd8e4cc37ef1590835.png" src="../_images/d5ee159386f7044daa766e537dc103bce3231dba489257fd8e4cc37ef1590835.png" />
+<img alt="../_images/49cd59619a00975c6224ec04279d1d2c2b353b24e3b65c782f87d1ffc4d6ee9b.png" src="../_images/49cd59619a00975c6224ec04279d1d2c2b353b24e3b65c782f87d1ffc4d6ee9b.png" />
 </div>
 </div>
 <section id="empirical-return-level-plots">
@@ -1086,8 +1072,8 @@ T = \frac{1}{\lambda \cdot P}
 <p>This adjustment is now implemented in the <code class="docutils literal notranslate"><span class="pre">return_period()</span></code> function via the optional <code class="docutils literal notranslate"><span class="pre">rate_per_year</span></code> argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">return_period</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Compute the empirical return periods of a sample of extreme events.</span>
 
 <span class="sd">    Parameters</span>
@@ -1103,27 +1089,27 @@ T = \frac{1}{\lambda \cdot P}
 <span class="sd">    -------</span>
 <span class="sd">    edf : pandas.DataFrame</span>
 <span class="sd">        A DataFrame containing:</span>
-<span class="sd">        - &#39;sorted&#39;: The observed values sorted in descending order.</span>
-<span class="sd">        - &#39;ranks&#39;: The rank of each value.</span>
-<span class="sd">        - &#39;exceedance&#39;: The empirical exceedance probability (rank / (N + 1)).</span>
-<span class="sd">        - &#39;period&#39;: The empirical return period. If rate_per_year is provided, in years.</span>
+<span class="sd">        - 'sorted': The observed values sorted in descending order.</span>
+<span class="sd">        - 'ranks': The rank of each value.</span>
+<span class="sd">        - 'exceedance': The empirical exceedance probability (rank / (N + 1)).</span>
+<span class="sd">        - 'period': The empirical return period. If rate_per_year is provided, in years.</span>
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    - For POT data, providing `rate_per_year` is necessary to express return periods in years.</span>
-<span class="sd">    - If no rate is provided, the return period is in &quot;event count&quot; units (i.e., per exceedance).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    - If no rate is provided, the return period is in "event count" units (i.e., per exceedance).</span>
+<span class="sd">    """</span>
     <span class="n">edf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
-    <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;ranks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">]))</span> 
-    <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;ranks&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> 
+    <span class="n">edf</span><span class="p">[</span><span class="s1">'ranks'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="o">-</span><span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">]))</span> 
+    <span class="n">edf</span><span class="p">[</span><span class="s2">"exceedance"</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">"ranks"</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edf</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     
     <span class="c1"># Raw return period: how many events between occurrences of this magnitude</span>
-    <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;exceedance&quot;</span><span class="p">]</span>
+    <span class="n">edf</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">edf</span><span class="p">[</span><span class="s2">"exceedance"</span><span class="p">]</span>
     
     <span class="c1"># If we want to convert to time units</span>
     <span class="k">if</span> <span class="n">rate_per_year</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">&quot;period&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">rate_per_year</span>
+        <span class="n">edf</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span> <span class="o">=</span> <span class="n">edf</span><span class="p">[</span><span class="s2">"period"</span><span class="p">]</span> <span class="o">/</span> <span class="n">rate_per_year</span>
 
     <span class="k">return</span> <span class="n">edf</span>
 </pre></div>
@@ -1138,21 +1124,21 @@ T = \frac{1}{\lambda \cdot P}
 <span class="c1"># Empirical  statistics</span>
 <span class="n">edf</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">annual_max</span><span class="p">)</span>
 <span class="n">edf_pot</span> <span class="o">=</span> <span class="n">return_period</span><span class="p">(</span><span class="n">exceedances</span><span class="p">,</span> <span class="n">rate_per_year</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Annual Max&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_pot</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">],</span> <span class="n">edf_pot</span><span class="p">[</span><span class="s1">&#39;sorted&#39;</span><span class="p">],</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical POT&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Empirical Annual Max'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edf_pot</span><span class="p">[</span><span class="s1">'period'</span><span class="p">],</span> <span class="n">edf_pot</span><span class="p">[</span><span class="s1">'sorted'</span><span class="p">],</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Empirical POT'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'C1'</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Return periods/levels of annual maximum daily precipitation at Chew&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">);</span> <span class="c1"># ax.set_yscale(&quot;log&quot;);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Return periods/levels of annual maximum daily precipitation at Chew'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">);</span> <span class="c1"># ax.set_yscale("log");</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'lower right'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/54f8089fadc835e0ab38a0699b1b4766b3923b61af496dffbe807151d2cb96d2.png" src="../_images/54f8089fadc835e0ab38a0699b1b4766b3923b61af496dffbe807151d2cb96d2.png" />
+<img alt="../_images/861e279453f1257c70c8276da42971d974a82fe743e8529c03b7960004f4a254.png" src="../_images/861e279453f1257c70c8276da42971d974a82fe743e8529c03b7960004f4a254.png" />
 </div>
 </div>
 <p>What we observe here is that using the POT method gives us more data points, which allows us to compute empirical return levels for return periods below one year. These are not our main interest, which is why we cut the plot on the left.</p>
@@ -1192,22 +1178,22 @@ T = \frac{1}{\lambda \cdot P}
 
 <span class="c1"># Plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">return_levels</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GPD (POT)&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;C3&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">return_levels</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'GPD (POT)'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'C3'</span><span class="p">)</span>
 
 <span class="c1"># Optional: add GEV plot for comparison</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">years</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">),</span> 
-        <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV (Annual Max)&#39;</span><span class="p">)</span>
+        <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'GEV (Annual Max)'</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Return Period (years)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Return Level (mm/day)&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Return levels from POT method (GPD fit)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Return Period (years)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Return Level (mm/day)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">"Return levels from POT method (GPD fit)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/69d70a71928857140beb321d16debf09653bfc1b97ca1508467472e9c02001b0.png" src="../_images/69d70a71928857140beb321d16debf09653bfc1b97ca1508467472e9c02001b0.png" />
+<img alt="../_images/f04d39f74ab0445325a8ce4c017240b32304668d9466fbb1545223aae5fd8a40.png" src="../_images/f04d39f74ab0445325a8ce4c017240b32304668d9466fbb1545223aae5fd8a40.png" />
 </div>
 </div>
 <p>As you can see the two methods and distributions yield slightly different results. Both are quite sensitive to the tail of the distributions, but one is less sensitive than the other! That’s for you to discover if you are interested ;-).</p>
@@ -1280,14 +1266,16 @@ T = \frac{1}{\lambda \cdot P}
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#revisiting-the-1968-bristol-flood">Revisiting the 1968 Bristol flood</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalise-the-computation-of-empirical-return-periods-with-a-function">Generalise the computation of empirical return periods with a function</a></li>
@@ -1333,7 +1321,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 11, 2026.
+  Last updated on Sep 25, 2026.
   <br/>
 </p>
   </div>
@@ -1362,8 +1350,8 @@ These lecture notes and exercises are licensed under a <a href="https://creative
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

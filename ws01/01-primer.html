@@ -16,38 +16,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=85d83640" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -69,7 +72,8 @@
     <link rel="prev" title="Downloading the data" href="../ready/03-download.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="Sep 11, 2026"/>
+  <meta name="docsearch:version" content="" />
+    <meta name="docbuild:last-update" content="Sep 25, 2026"/>
   </head>
   
   
@@ -85,19 +89,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -105,7 +98,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -113,8 +105,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -130,7 +122,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -160,21 +153,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Quantifying Climate Risks - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Quantifying Climate Risks - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Quantifying Climate Risks - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -254,9 +243,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -403,7 +397,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -417,25 +411,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -516,7 +502,7 @@ document.write(`
 <p>At first sight, the jupyter notebook looks like a text editor. Below the toolbar you can see a <strong>cell</strong>. The default purpose of a cell is to write code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="s1">'Hello'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -541,7 +527,7 @@ document.write(`
 <p>The variables created in one cell can be used (or overwritten) in subsequent cells:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">'Hello'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -554,14 +540,14 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s1">&#39; Python!&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="s1">' Python!'</span>
 <span class="c1"># Note that lines starting with # are not executed. These are for comments.</span>
 <span class="n">s</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello Python!&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'Hello Python!'
 </pre></div>
 </div>
 </div>
@@ -622,16 +608,16 @@ That’s what you get by pressing <code class="docutils literal notranslate"><sp
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I&#39;m here!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"I'm here!"</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Am I?&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Now I&#39;m there&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Am I?"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Now I'm there"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I&#39;m here!
-Now I&#39;m there
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I'm here!
+Now I'm there
 </pre></div>
 </div>
 </div>
@@ -653,7 +639,7 @@ Now I&#39;m there
 <p>If you feel like it, you can even define your own functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># Be carefull: the indentation!!!</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
@@ -701,7 +687,7 @@ Now I&#39;m there
 <p>Python has a particular mechanism to give access to other functions. This is the <strong>import</strong> mechanism and is one of the great strengths of the Python language.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span>
 </pre></div>
 </div>
 </div>
@@ -724,7 +710,7 @@ Now I&#39;m there
 <p>Because writing “<code class="docutils literal notranslate"><span class="pre">numpy.function()</span></code>” can be time consuming (especially if one uses numpy often), there is the possibility to give an <strong>alias</strong> to the imported module. The convention for numpy is following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -752,7 +738,7 @@ Now I&#39;m there
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Hi!&#39;</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">'Hi!'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -786,8 +772,8 @@ Hi!
 <h3>Strings:<a class="headerlink" href="#strings" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This is a string.&#39;</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;This is also a string.&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">'This is a string.'</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">"This is also a string."</span>
 </pre></div>
 </div>
 </div>
@@ -795,8 +781,8 @@ Hi!
 <p>Strings can be concatenated:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s1">&#39;42&#39;</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;The answer is: &#39;</span> <span class="o">+</span> <span class="n">answer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="s1">'42'</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">'The answer is: '</span> <span class="o">+</span> <span class="n">answer</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -811,7 +797,7 @@ Hi!
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="mi">42</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;The answer is: &#39;</span> <span class="o">+</span> <span class="n">answer</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">'The answer is: '</span> <span class="o">+</span> <span class="n">answer</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># this will raise a TypeError</span>
 </pre></div>
 </div>
@@ -821,10 +807,10 @@ Hi!
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">42</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;The answer is: &#39;</span> <span class="o">+</span> <span class="n">answer</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">s</span> <span class="o">=</span> <span class="s1">'The answer is: '</span> <span class="o">+</span> <span class="n">answer</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>  <span class="c1"># this will raise a TypeError</span>
 
-<span class="ne">TypeError</span>: can only concatenate str (not &quot;int&quot;) to str
+<span class="ne">TypeError</span>: can only concatenate str (not "int") to str
 </pre></div>
 </div>
 </div>
@@ -832,7 +818,7 @@ Hi!
 <p>Numbers can be converted to strings like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Pi is equal to &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">'Pi is equal to '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -846,7 +832,7 @@ Hi!
 <p>Or they can be formated at whish (note the <code class="docutils literal notranslate"><span class="pre">f</span></code> before the <code class="docutils literal notranslate"><span class="pre">'</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Pi is equal to  </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (approximately).&#39;</span> <span class="c1"># the {:.2f} means: print the number with two digits precision</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'Pi is equal to  </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> (approximately).'</span> <span class="c1"># the {:.2f} means: print the number with two digits precision</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -871,7 +857,7 @@ Hi!
 <p>A list is simply a sequence of things:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'Blue'</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -895,13 +881,13 @@ Blue
 <p>Python lists are <strong>not</strong> like Matlab or R arrays:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Blue&#39;</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Red&#39;</span><span class="p">,</span> <span class="s1">&#39;Green&#39;</span><span class="p">]</span>  <span class="c1"># adding lists together concatenates them</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">'Blue'</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">'Red'</span><span class="p">,</span> <span class="s1">'Green'</span><span class="p">]</span>  <span class="c1"># adding lists together concatenates them</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, &#39;Blue&#39;, 3.14, &#39;Red&#39;, &#39;Green&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 'Blue', 3.14, 'Red', 'Green']
 </pre></div>
 </div>
 </div>
@@ -1062,11 +1048,11 @@ Blue
 <p>For example, even simple integers are also “things with attributes”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s define an interger</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let's define an interger</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># Get its attributes</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The real part of a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The imaginary part of a is&#39;</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'The real part of a is'</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'The imaginary part of a is'</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1094,14 +1080,14 @@ The imaginary part of a is 0
 <p>Importantly, objects can also have functions that apply to them. For example, strings have a function called <code class="docutils literal notranslate"><span class="pre">split()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;This:is:a:splitted:example&#39;</span>
-<span class="n">s_splitted</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s1">'This:is:a:splitted:example'</span>
+<span class="n">s_splitted</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">':'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">s_splitted</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;This&#39;, &#39;is&#39;, &#39;a&#39;, &#39;splitted&#39;, &#39;example&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['This', 'is', 'a', 'splitted', 'example']
 </pre></div>
 </div>
 </div>
@@ -1110,12 +1096,12 @@ The imaginary part of a is 0
 <p>Strings also have a <code class="docutils literal notranslate"><span class="pre">join()</span></code> method by the way:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s_splitted</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s_splitted</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;This is a splitted example&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>'This is a splitted example'
 </pre></div>
 </div>
 </div>
@@ -1139,264 +1125,268 @@ The imaginary part of a is 0
 class int(object)
  |  int([x]) -&gt; integer
  |  int(x, base=10) -&gt; integer
- |  
+ |
  |  Convert a number or string to an integer, or return 0 if no arguments
- |  are given.  If x is a number, return x.__int__().  For floating point
+ |  are given.  If x is a number, return x.__int__().  For floating-point
  |  numbers, this truncates towards zero.
- |  
+ |
  |  If x is not a number or if base is given, then x must be a string,
  |  bytes, or bytearray instance representing an integer literal in the
- |  given base.  The literal can be preceded by &#39;+&#39; or &#39;-&#39; and be surrounded
+ |  given base.  The literal can be preceded by '+' or '-' and be surrounded
  |  by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
- |  Base 0 means to interpret the base from the string as an integer literal.
- |  &gt;&gt;&gt; int(&#39;0b100&#39;, base=0)
+ |  Base 0 means to interpret the base from the string as an integer
+ |  iteral.
+ |  &gt;&gt;&gt; int('0b100', base=0)
  |  4
- |  
+ |
  |  Built-in subclasses:
  |      bool
- |  
+ |
  |  Methods defined here:
- |  
+ |
  |  __abs__(self, /)
  |      abs(self)
- |  
+ |
  |  __add__(self, value, /)
  |      Return self+value.
- |  
+ |
  |  __and__(self, value, /)
  |      Return self&amp;value.
- |  
+ |
  |  __bool__(self, /)
  |      True if self else False
- |  
- |  __ceil__(...)
+ |
+ |  __ceil__(self, /)
  |      Ceiling of an Integral returns itself.
- |  
+ |
  |  __divmod__(self, value, /)
  |      Return divmod(self, value).
- |  
+ |
  |  __eq__(self, value, /)
  |      Return self==value.
- |  
+ |
  |  __float__(self, /)
  |      float(self)
- |  
- |  __floor__(...)
+ |
+ |  __floor__(self, /)
  |      Flooring an Integral returns itself.
- |  
+ |
  |  __floordiv__(self, value, /)
  |      Return self//value.
- |  
+ |
  |  __format__(self, format_spec, /)
- |      Default object formatter.
- |  
+ |      Convert to a string according to format_spec.
+ |
  |  __ge__(self, value, /)
  |      Return self&gt;=value.
- |  
- |  __getattribute__(self, name, /)
- |      Return getattr(self, name).
- |  
+ |
  |  __getnewargs__(self, /)
- |  
+ |
  |  __gt__(self, value, /)
  |      Return self&gt;value.
- |  
+ |
  |  __hash__(self, /)
  |      Return hash(self).
- |  
+ |
  |  __index__(self, /)
  |      Return self converted to an integer, if self is suitable for use as an index into a list.
- |  
+ |
  |  __int__(self, /)
  |      int(self)
- |  
+ |
  |  __invert__(self, /)
  |      ~self
- |  
+ |
  |  __le__(self, value, /)
  |      Return self&lt;=value.
- |  
+ |
  |  __lshift__(self, value, /)
  |      Return self&lt;&lt;value.
- |  
+ |
  |  __lt__(self, value, /)
  |      Return self&lt;value.
- |  
+ |
  |  __mod__(self, value, /)
  |      Return self%value.
- |  
+ |
  |  __mul__(self, value, /)
  |      Return self*value.
- |  
+ |
  |  __ne__(self, value, /)
  |      Return self!=value.
- |  
+ |
  |  __neg__(self, /)
  |      -self
- |  
+ |
  |  __or__(self, value, /)
  |      Return self|value.
- |  
+ |
  |  __pos__(self, /)
  |      +self
- |  
+ |
  |  __pow__(self, value, mod=None, /)
  |      Return pow(self, value, mod).
- |  
+ |
  |  __radd__(self, value, /)
  |      Return value+self.
- |  
+ |
  |  __rand__(self, value, /)
  |      Return value&amp;self.
- |  
+ |
  |  __rdivmod__(self, value, /)
  |      Return divmod(value, self).
- |  
+ |
  |  __repr__(self, /)
  |      Return repr(self).
- |  
+ |
  |  __rfloordiv__(self, value, /)
  |      Return value//self.
- |  
+ |
  |  __rlshift__(self, value, /)
  |      Return value&lt;&lt;self.
- |  
+ |
  |  __rmod__(self, value, /)
  |      Return value%self.
- |  
+ |
  |  __rmul__(self, value, /)
  |      Return value*self.
- |  
+ |
  |  __ror__(self, value, /)
  |      Return value|self.
- |  
- |  __round__(...)
+ |
+ |  __round__(self, ndigits=None, /)
  |      Rounding an Integral returns itself.
- |      
+ |
  |      Rounding with an ndigits argument also returns an integer.
- |  
+ |
  |  __rpow__(self, value, mod=None, /)
  |      Return pow(value, self, mod).
- |  
+ |
  |  __rrshift__(self, value, /)
  |      Return value&gt;&gt;self.
- |  
+ |
  |  __rshift__(self, value, /)
  |      Return self&gt;&gt;value.
- |  
+ |
  |  __rsub__(self, value, /)
  |      Return value-self.
- |  
+ |
  |  __rtruediv__(self, value, /)
  |      Return value/self.
- |  
+ |
  |  __rxor__(self, value, /)
  |      Return value^self.
- |  
+ |
  |  __sizeof__(self, /)
  |      Returns size in memory, in bytes.
- |  
+ |
  |  __sub__(self, value, /)
  |      Return self-value.
- |  
+ |
  |  __truediv__(self, value, /)
  |      Return self/value.
- |  
- |  __trunc__(...)
+ |
+ |  __trunc__(self, /)
  |      Truncating an Integral returns itself.
- |  
+ |
  |  __xor__(self, value, /)
  |      Return self^value.
- |  
+ |
  |  as_integer_ratio(self, /)
- |      Return integer ratio.
- |      
- |      Return a pair of integers, whose ratio is exactly equal to the original int
- |      and with a positive denominator.
- |      
+ |      Return a pair of integers, whose ratio is equal to the original int.
+ |
+ |      The ratio is in lowest terms and has a positive denominator.
+ |
  |      &gt;&gt;&gt; (10).as_integer_ratio()
  |      (10, 1)
  |      &gt;&gt;&gt; (-10).as_integer_ratio()
  |      (-10, 1)
  |      &gt;&gt;&gt; (0).as_integer_ratio()
  |      (0, 1)
- |  
+ |
  |  bit_count(self, /)
  |      Number of ones in the binary representation of the absolute value of self.
- |      
+ |
  |      Also known as the population count.
- |      
+ |
  |      &gt;&gt;&gt; bin(13)
- |      &#39;0b1101&#39;
+ |      '0b1101'
  |      &gt;&gt;&gt; (13).bit_count()
  |      3
- |  
+ |
  |  bit_length(self, /)
  |      Number of bits necessary to represent self in binary.
- |      
+ |
  |      &gt;&gt;&gt; bin(37)
- |      &#39;0b100101&#39;
+ |      '0b100101'
  |      &gt;&gt;&gt; (37).bit_length()
  |      6
- |  
- |  conjugate(...)
+ |
+ |  conjugate(self, /)
  |      Returns self, the complex conjugate of any int.
- |  
- |  to_bytes(self, /, length, byteorder, *, signed=False)
+ |
+ |  is_integer(self, /)
+ |      Returns True. Exists for duck type compatibility with float.is_integer.
+ |
+ |  to_bytes(self, /, length=1, byteorder='big', *, signed=False)
  |      Return an array of bytes representing an integer.
- |      
+ |
  |      length
- |        Length of bytes object to use.  An OverflowError is raised if the
- |        integer is not representable with the given number of bytes.
+ |        Length of bytes object to use.  An OverflowError is raised if
+ |        the integer is not representable with the given number of bytes.
+ |        Default is length 1.
  |      byteorder
- |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
- |        the most significant byte is at the beginning of the byte array.  If
- |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
- |        byte array.  To request the native byte order of the host system, use
- |        `sys.byteorder&#39; as the byte order value.
+ |        The byte order used to represent the integer.  If byteorder is
+ |        'big', the most significant byte is at the beginning of the byte
+ |        array.  If byteorder is 'little', the most significant byte is at
+ |        the end of the byte array.  To request the native byte order of
+ |        the host system, use sys.byteorder as the byte order value.
+ |        Default is to use 'big'.
  |      signed
- |        Determines whether two&#39;s complement is used to represent the integer.
- |        If signed is False and a negative integer is given, an OverflowError
- |        is raised.
- |  
+ |        Determines whether two's complement is used to represent the
+ |        integer.  If signed is False and a negative integer is given,
+ |        an OverflowError is raised.
+ |
  |  ----------------------------------------------------------------------
  |  Class methods defined here:
- |  
- |  from_bytes(bytes, byteorder, *, signed=False) from builtins.type
+ |
+ |  from_bytes(bytes, byteorder='big', *, signed=False)
  |      Return the integer represented by the given array of bytes.
- |      
+ |
  |      bytes
  |        Holds the array of bytes to convert.  The argument must either
- |        support the buffer protocol or be an iterable object producing bytes.
- |        Bytes and bytearray are examples of built-in objects that support the
- |        buffer protocol.
+ |        support the buffer protocol or be an iterable object producing
+ |        bytes.  Bytes and bytearray are examples of built-in objects that
+ |        support the buffer protocol.
  |      byteorder
- |        The byte order used to represent the integer.  If byteorder is &#39;big&#39;,
- |        the most significant byte is at the beginning of the byte array.  If
- |        byteorder is &#39;little&#39;, the most significant byte is at the end of the
- |        byte array.  To request the native byte order of the host system, use
- |        `sys.byteorder&#39; as the byte order value.
+ |        The byte order used to represent the integer.  If byteorder is
+ |        'big', the most significant byte is at the beginning of the byte
+ |        array.  If byteorder is 'little', the most significant byte is at
+ |        the end of the byte array.  To request the native byte order of
+ |        the host system, use sys.byteorder as the byte order value.
+ |        Default is to use 'big'.
  |      signed
- |        Indicates whether two&#39;s complement is used to represent the integer.
- |  
+ |        Indicates whether two's complement is used to represent the
+ |        integer.
+ |
  |  ----------------------------------------------------------------------
  |  Static methods defined here:
- |  
- |  __new__(*args, **kwargs) from builtins.type
+ |
+ |  __new__(*args, **kwargs)
  |      Create and return a new object.  See help(type) for accurate signature.
- |  
+ |
  |  ----------------------------------------------------------------------
  |  Data descriptors defined here:
- |  
+ |
  |  denominator
  |      the denominator of a rational number in lowest terms
- |  
+ |
  |  imag
  |      the imaginary part of a complex number
- |  
+ |
  |  numerator
  |      the numerator of a rational number in lowest terms
- |  
+ |
  |  real
  |      the real part of a complex number
 </pre></div>
@@ -1433,7 +1423,7 @@ class int(object)
 <p>The most widely used plotting tool for Python is <a class="reference external" href="http://matplotlib.org/">Matplotlib</a>. First, import it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -1444,14 +1434,14 @@ class int(object)
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;x square&#39;</span><span class="p">);</span>  <span class="c1"># the semicolon (;) is optional. Try to remove it and see what happens</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'f(x)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'x square'</span><span class="p">);</span>  <span class="c1"># the semicolon (;) is optional. Try to remove it and see what happens</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6cff512891119074ae1e8597d463d81cf03b998ba5de8cb52924ee4b5b289de2.png" src="../_images/6cff512891119074ae1e8597d463d81cf03b998ba5de8cb52924ee4b5b289de2.png" />
+<img alt="../_images/c00eec5f8d543141c725452c32820fd70360caef8912a35fdb1294e8c7f44b99.png" src="../_images/c00eec5f8d543141c725452c32820fd70360caef8912a35fdb1294e8c7f44b99.png" />
 </div>
 </div>
 <p>It is possible to save the figure to a file by adding for example <code class="docutils literal notranslate"><span class="pre">plt.savefig('test.png')</span></code> <em>at the end of the cell</em>. This will create an image file in the same directory as the notebook.</p>
@@ -1459,16 +1449,16 @@ class int(object)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) = x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;f(x) = x$^</span><span class="si">{2}</span><span class="s1">$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'f(x) = x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'f(x) = x$^</span><span class="si">{2}</span><span class="s1">$'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'f(x)'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">'best'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/1a42a3999720b49188a8dab02be0da6e1b68d1ac83988d36263f8ede09edda3d.png" src="../_images/1a42a3999720b49188a8dab02be0da6e1b68d1ac83988d36263f8ede09edda3d.png" />
+<img alt="../_images/a2b6362f8aff2b5235bff11ede6309379480311bbf4cc704232a23fffd8a8ad9.png" src="../_images/a2b6362f8aff2b5235bff11ede6309379480311bbf4cc704232a23fffd8a8ad9.png" />
 </div>
 </div>
 <p><strong>Practice: add a third curve to the plot above (e.g. x<span class="math notranslate nohighlight">\(^3\)</span>) and save the plot to a png on your computer.</strong></p>
@@ -1508,7 +1498,7 @@ $$ E = m c^2$$
 
 I can also write text in **bold** or *cursive*, and inline formulas: $i^2 = -1$.
 
-The markdown &quot;`code`&quot; of this cell is:
+The markdown "`code`" of this cell is:
 </pre></div>
 </div>
 <p>You can also link to images online (this needs internet to display!) or locally with a path:</p>
@@ -1603,14 +1593,16 @@ Now you can</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-steps">First steps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-cells">Code Cells</a></li>
@@ -1660,7 +1652,7 @@ By Fabien Maussion
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on Sep 11, 2026.
+  Last updated on Sep 25, 2026.
   <br/>
 </p>
   </div>
@@ -1689,8 +1681,8 @@ These lecture notes and exercises are licensed under a <a href="https://creative
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
